@@ -1,0 +1,68 @@
+site_name: Odoo Website Team Handbook
+site_description: Shared knowledge for the Odoo Website team (dev, process, guides)
+site_url: https://sergebayet.github.io/website-team-handbook/
+repo_name: SergeBayet/website-team-handbook
+repo_url: https://github.com/SergeBayet/website-team-handbook
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  features:
+    - content.code.copy
+    - navigation.instant
+    - navigation.tabs
+    - navigation.sections
+    - search.suggest
+    - search.share
+    - toc.integrate
+  language: en
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+markdown_extensions:
+  - admonition
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.critic
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+
+plugins:
+  - search
+  - awesome-pages
+  - git-revision-date-localized:
+      enable_creation_date: true
+
+nav:
+  - Home: index.md
+  - Handbook:
+    - Mission & Scope: handbook/mission.md
+    - Team Structure: handbook/team-structure.md
+    - Ways of Working: handbook/ways-of-working.md
+    - Glossary: handbook/glossary.md
+  - Development:
+    - Environment: dev/environment.md
+    - Coding Standards: dev/coding-standards.md
+    - Builder Architecture: dev/builder-architecture.md
+    - Snippets & Plugins: dev/snippets-plugins.md
+    - Testing & Runbot: dev/testing-and-runbot.md
+    - PR Flow & Forward-ports: dev/pr-flow-forwardports.md
+  - Guides:
+    - Contribution Guide: guides/contribution-guide.md
+    - Debugging Cheatsheet: guides/debugging-cheatsheet.md
+    - Website Theming: guides/website-theming.md
+  - Resources: resources.md
