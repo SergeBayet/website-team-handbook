@@ -67,3 +67,5 @@ nav:
     - Debugging Cheatsheet: guides/debugging-cheatsheet.md
     - Website Theming: guides/website-theming.md
   - Resources: resources.md
+  - Reports:
+    - Website & HTML Builder Commits (17–24 Sep 2025): reports/2025-09-24-odoo-website-html-builder-commits.md
