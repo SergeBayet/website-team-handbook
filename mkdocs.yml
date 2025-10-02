@@ -50,7 +50,20 @@ plugins:
 nav:
   - Home: index.md
   - Development:
-    - Html Builder (Full Handbook): dev/html_builder/html_builder.md
+    - HTML Builder:
+        - Introduction: dev/html_builder/index.md
+        - Overview: dev/html_builder/overview.md
+        - Architecture: dev/html_builder/architecture.md
+        - Core Concepts: dev/html_builder/core-concepts.md
+        - Builder Actions: dev/html_builder/builder-actions.md
+        - Integration Points: dev/html_builder/integration.md
+        - Key Components: dev/html_builder/key-components.md
+        - Plugin Catalog: dev/html_builder/plugin-catalog.md
+        - Migration Guide: dev/html_builder/migration.md
+        - Examples: dev/html_builder/examples.md
+        - Best Practices: dev/html_builder/best-practices.md
+        - Troubleshooting: dev/html_builder/troubleshooting.md
+        - Reference: dev/html_builder/reference.md
     - Website Editor Roles & Access: dev/website-editor-roles.md
   - Guides:
     - Debugging Cheatsheet: guides/debugging-cheatsheet.md
