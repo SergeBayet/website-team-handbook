@@ -55,6 +55,7 @@ nav:
         - Overview: dev/html_builder/overview.md
         - Architecture: dev/html_builder/architecture.md
         - Core Concepts: dev/html_builder/core-concepts.md
+        - Structure Containers & COW: dev/html_builder/oe-structures.md
         - Builder Actions: dev/html_builder/builder-actions.md
         - Integration Points: dev/html_builder/integration.md
         - Key Components: dev/html_builder/key-components.md
