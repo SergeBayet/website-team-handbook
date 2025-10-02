@@ -2,6 +2,10 @@
 
 This digest covers all commits that touched the `addons/website` and `addons/html_builder` directories of the [Odoo community repository](https://github.com/odoo/odoo) between **17 and 24 September 2025** (UTC). The list was assembled on 24 Sep 2025 using the GitHub REST API with path filters for both modules.
 
+## Commit of the Week
+
+- **[0a0aa09](https://github.com/odoo/odoo/commit/0a0aa09651849d0f35a4490573e5218b82aa2f1f)** — Enabled full-page AI translation flows so site builders can localise entire layouts in a single action.
+
 ## Highlights
 
 - **Editor resilience & usability.** Patches harden the website/html editor against tricky scenarios such as pasting cross-document nodes, losing selection when triple-clicking UI controls, or drifting tooltips/popovers inside the iframe.
@@ -32,6 +36,7 @@ This digest covers all commits that touched the `addons/website` and `addons/htm
 | 2025-09-17 | [940d08c](https://github.com/odoo/odoo/commit/940d08c1f21cb2e25ac7d1a18de77d7dbac32feb) | Xavier Morel | website | Remove the obsolete `link_tools` tour that no longer reflects current flows. |
 | 2025-09-17 | [c82b4a8](https://github.com/odoo/odoo/commit/c82b4ad87de66d4b890c64feaff8dd691e18a563) | Laetitia (ldau) | auth_totp_mail, website | Drop the deprecated `.btn-block` class across mail/login flows, including Website pages. |
 | 2025-09-17 | [d4e0deb](https://github.com/odoo/odoo/commit/d4e0deb08bd31295deff94526260770a5f15eca8) | Claire Nguyen (clan) | website | Swap the empty-search icon for a maintained asset to avoid broken links. |
+| 2025-09-17 | [5345971](https://github.com/odoo/odoo/commit/5345971bc27d156df7038ebd9294e1ab55321b34) | Brieuc Dejean (brd) | website_sale | Restore the showcase design overlay option inside the shop builder panel. |
 | 2025-09-17 | [0a0aa09](https://github.com/odoo/odoo/commit/0a0aa09651849d0f35a4490573e5218b82aa2f1f) | Garvish Panchal | website, html_builder | Allow translating an entire page with AI, wiring builder actions into the new flow. |
 | 2025-09-17 | [42c1ef9](https://github.com/odoo/odoo/commit/42c1ef9c6a21fbfcec05f72c07e33ef88939bf75) | divy-odoo | website | Move the translation tab template into its own folder to match refactored structure. |
 | 2025-09-17 | [65cdbec](https://github.com/odoo/odoo/commit/65cdbece7edfd4e48807aa0b183265377b075a88) | Lucas Perais (lpe) | web_tour, website | Drop hard hoot-dom dependencies from website/web tours for compatibility with the new test runner. |

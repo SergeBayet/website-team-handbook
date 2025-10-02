@@ -2,6 +2,10 @@
 
 This digest covers all commits that touched the `addons/website` and `addons/html_builder` directories of the [Odoo community repository](https://github.com/odoo/odoo) between **25 September and 1 October 2025** (UTC). The list was assembled on 1 Oct 2025 using the GitHub REST API with path filters for both modules.
 
+## Commit of the Week
+
+- **[4682748](https://github.com/odoo/odoo/commit/4682748e6e3c2c6df3f50e2840b9931cd7a934a2)** — Refactored Website Sale interactions into focused modules, paving the way for cleaner cart and product page behaviours.
+
 ## Highlights
 
 - **Builder polish & preview parity.** HTML Builder regains live previews for many2one pickers, improves translation handling, fixes color picker previews, and tweaks the mobile preview button and background overlay assets for smoother authoring.
@@ -24,8 +28,10 @@ This digest covers all commits that touched the `addons/website` and `addons/htm
 | 2025-09-30 | [daacfee](https://github.com/odoo/odoo/commit/daacfee5b89b3dd5bac4e4edbd15bdd0bf65fa77) | Benjamin Vray | web, website | Show an image icon fallback for broken SEO previews so missing assets remain obvious. |
 | 2025-09-30 | [9d513f9](https://github.com/odoo/odoo/commit/9d513f9187dcc04354345690b850184a2cdbe2ee) | Parth Vyas | web, website | Exclude dynamic template images from the SEO dialog to avoid flagging transient placeholders. |
 | 2025-09-30 | [bbced6f](https://github.com/odoo/odoo/commit/bbced6fc418f0ddef977698c7e886ea9d11416d6) | Julien (jula) | web, website | Fix an asynchronous wait in website animation tests so reposition checks don’t race. |
+| 2025-09-29 | [1739b95](https://github.com/odoo/odoo/commit/1739b954fa34bc62223d892f2cdacbccebd5f8a2) | Brieuc Dejean (brd) | website_sale, website_sale_wishlist | Introduce the “Bento” showcase design with new assets and styling tweaks. |
 | 2025-09-29 | [b4a2b5a](https://github.com/odoo/odoo/commit/b4a2b5a47a0c79b9ececec8fbaf9e1bd712a9ea4) | Louis (loco) | html_builder, web, website | Rework the translation plugin to rely on new `o_editable_attribute` markers instead of forcing `contenteditable`. |
 | 2025-09-26 | [4ed28a0](https://github.com/odoo/odoo/commit/4ed28a0cebe847ab69d1e58840b38be49707cada) | Augustin (duau) | html_builder, web, website, website_sale | Retool website and builder tests to share html_builder utilities, cutting suite runtime. |
+| 2025-09-26 | [4682748](https://github.com/odoo/odoo/commit/4682748e6e3c2c6df3f50e2840b9931cd7a934a2) | Louis (loti) | website_sale, website_sale_stock, website_sale_collect, website_sale_wishlist, l10n_ar_website_sale | Split the Website Sale interaction bundle into targeted files for cart, product, and shop flows. |
 | 2025-09-26 | [beef707](https://github.com/odoo/odoo/commit/beef7078138c4185f912ebbd042faf2782b2d17e) | Augustin (duau) | html_builder, web, website | Relocate generic builder tests into the html_builder module to match their scope. |
 | 2025-09-25 | [df61467](https://github.com/odoo/odoo/commit/df6146737aa0b3963d4341100b0a1214e5345d41) | Rodolpho Lima | html_builder, html_editor, mass_mailing | Split the color tooling into separate logic and UI plugins so editors can opt out of the selector. |
 | 2025-09-25 | [11e13e0](https://github.com/odoo/odoo/commit/11e13e0907ca92442d0547c97dd5ed3c26a99c46) | romo | web, website | Reset section backgrounds when applying color combinations to avoid residual styling. |
