@@ -6,8 +6,9 @@ Welcome! This handbook centralizes how we build, test, review, and ship **Odoo W
     Use the left nav or the search bar to find topics quickly.
 
 **Start here:**
- 
-- [Mission & Scope](handbook/mission.md)
-- [PR Flow & Forward-ports](dev/pr-flow-forwardports.md)
-- [Builder Architecture](dev/builder-architecture.md)
+
+- [Html Builder Handbook](dev/html_builder/html_builder.md)
+- [Website Editor Roles & Access](dev/website-editor-roles.md)
 - [Debugging Cheatsheet](guides/debugging-cheatsheet.md)
+- [Latest Commit Reports](reports/2025-10-01-odoo-website-html-builder-commits.md)
+

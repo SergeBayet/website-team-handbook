@@ -49,25 +49,11 @@ plugins:
 
 nav:
   - Home: index.md
-  - Handbook:
-    - Mission & Scope: handbook/mission.md
-    - Team Structure: handbook/team-structure.md
-    - Ways of Working: handbook/ways-of-working.md
-    - Glossary: handbook/glossary.md
   - Development:
-    - Environment: dev/environment.md
-    - Coding Standards: dev/coding-standards.md
-    - Builder Architecture: dev/builder-architecture.md
-    - Website Editor Roles & Access: dev/website-editor-roles.md
     - Html Builder (Full Handbook): dev/html_builder/html_builder.md
-    - Snippets & Plugins: dev/snippets-plugins.md
-    - Testing & Runbot: dev/testing-and-runbot.md
-    - PR Flow & Forward-ports: dev/pr-flow-forwardports.md
+    - Website Editor Roles & Access: dev/website-editor-roles.md
   - Guides:
-    - Contribution Guide: guides/contribution-guide.md
     - Debugging Cheatsheet: guides/debugging-cheatsheet.md
-    - Website Theming: guides/website-theming.md
-  - Resources: resources.md
   - Reports:
     - Website & HTML Builder Commits (25 Sep–1 Oct 2025): reports/2025-10-01-odoo-website-html-builder-commits.md
     - Website & HTML Builder Commits (17–24 Sep 2025): reports/2025-09-24-odoo-website-html-builder-commits.md
