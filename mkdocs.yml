@@ -58,6 +58,7 @@ nav:
     - Environment: dev/environment.md
     - Coding Standards: dev/coding-standards.md
     - Builder Architecture: dev/builder-architecture.md
+    - Website Editor Roles & Access: dev/website-editor-roles.md
     - Html Builder (Full Handbook): dev/html_builder/html_builder.md
     - Snippets & Plugins: dev/snippets-plugins.md
     - Testing & Runbot: dev/testing-and-runbot.md
