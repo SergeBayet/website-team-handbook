@@ -65,6 +65,52 @@ Key points illustrated in the example:
 
 The Website app implements copy-on-write on QWeb views so that each website keeps its own customisations. The mechanism lives in `addons/website/models/ir_ui_view.py` and is triggered whenever the editor writes on a generic view while the context contains a `website_id`.
 
+### What “COWed” Views Look Like
+
+When a view is COWed the framework produces a website-specific copy that mirrors the generic record but carries a `website_id`. The clone keeps the same `key`, `inherit_id`, priority, and architecture so it can seamlessly slot in the rendering tree.
+
+```xml
+<!-- Generic template shipped by a module -->
+<t t-name="website.s_banner" priority="20" key="website.s_banner">
+    <section class="s_banner o_cc o_cc2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="oe_structure">
+                        <section class="s_media_block">
+                            <h1>Build a website in minutes</h1>
+                            <p class="lead">Drag, drop, and publish.</p>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</t>
+
+<!-- COWed copy generated after editing Website A -->
+<t t-name="website.s_banner" priority="20" key="website.s_banner" website_id="1">
+    <xpath expr="." position="replace">
+        <section class="s_banner o_cc o_cc2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="oe_structure">
+                            <section class="s_media_block">
+                                <h1>Grow your business online</h1>
+                                <p class="lead">A tailored headline for Website A.</p>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </xpath>
+</t>
+```
+
+The XML shows two records with the same `t-name`/`key`. The second carries a `website_id`, signalling it is the COW copy. Rendering picks the version matching the current site, falling back to the generic template when no specific copy exists.
+
 ### Lifecycle of an Edit
 
 1. **User edits a page**: the builder serialises only the dirty `oe_structure` zones and posts them to `/website/save`. The request runs with `context={'website_id': current_website.id}`.
@@ -80,6 +126,88 @@ As a result, edits never touch the shared (generic) views. New websites start fr
 - Always supply a stable `key` on templates that may be customised. It lets the COW code locate existing copies across websites.
 - Avoid forcing `website_id=False` in contexts while writing website views—doing so bypasses the safety net and risks leaking edits to other sites.
 - When introducing new inherited views, use `_create_all_specific_views` (invoked during module updates) to populate the missing copies for existing websites.
+
+### Following Inheritance Through COW Copies
+
+Views often inherit from other views using `inherit_id` and XPath operations. Copy-on-write respects those relationships, ensuring each website gets a full branch when any node is edited.
+
+```xml
+<!-- Generic header -->
+<template id="website.layout" name="Base Layout" inherit_id="web.layout">
+    <xpath expr="//header" position="replace">
+        <header class="o_header o_we_header_default">
+            <div class="oe_structure">
+                <section class="s_text_block">
+                    <h1>Default header</h1>
+                </section>
+            </div>
+        </header>
+    </xpath>
+</template>
+
+<!-- Generic child that tweaks the header -->
+<template id="website.header_links" inherit_id="website.layout">
+    <xpath expr="//header/div[@class='oe_structure']" position="inside">
+        <section class="s_button_box">
+            <a class="btn btn-primary" href="/contactus">Contact</a>
+        </section>
+    </xpath>
+</template>
+
+<!-- After editing the header on Website B -->
+<template id="website.layout" inherit_id="web.layout" website_id="2">
+    <xpath expr="//header" position="replace">
+        <header class="o_header o_we_header_default">
+            <div class="oe_structure">
+                <section class="s_text_block">
+                    <h1>Welcome to Website B</h1>
+                </section>
+            </div>
+        </header>
+    </xpath>
+</template>
+
+<template id="website.header_links" inherit_id="website.layout" website_id="2">
+    <xpath expr="//header/div[@class='oe_structure']" position="inside">
+        <section class="s_button_box">
+            <a class="btn btn-primary" href="/shop">Shop now</a>
+        </section>
+    </xpath>
+</template>
+```
+
+Notice how both the parent and child views obtain a `website_id`. The inheritance chain is preserved, so the child still points to the COWed parent rather than the generic one. Without this duplication, Website B would mix custom and generic content unpredictably.
+
+### Custom Views Created from the Builder
+
+When an editor drops a brand new snippet or creates a page section, the system generates a **custom view**. Custom views are regular `ir.ui.view` records with a `key` beginning with `website.custom_...` and, in most cases, a specific `website_id`. They inherit from the container view that owns the structure being edited.
+
+```xml
+<!-- Website C custom hero created via the builder -->
+<template id="website.custom_hero_abcd" inherit_id="website.s_banner" website_id="3" priority="40">
+    <xpath expr="//section[@class='s_banner o_cc o_cc2']" position="replace">
+        <section class="s_banner o_cc o_cc3">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="oe_structure">
+                            <section class="s_call_to_action">
+                                <h2>Website C exclusive</h2>
+                                <p class="lead">This block lives only on Website C.</p>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-center">
+                        <img class="img-fluid" src="/website/static/src/img/sample.png" alt=""/>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </xpath>
+</template>
+```
+
+The builder assigns a deterministic `id`/`key` so future edits can target the same record. Because the view inherits from `website.s_banner`, it benefits from the same COW propagation: if the parent is cloned for another website later, `_create_all_specific_views` also clones the custom child to keep layouts consistent.
 
 ## Dirty Tracking with `oe_dirty`
 
