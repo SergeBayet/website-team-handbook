@@ -1,6 +1,6 @@
 # Odoo Website & HTML Builder — Weekly Commit Digest (1–8 Oct 2025)
 This digest covers all commits that touched the `addons/website`, `addons/html_builder`, and `addons/website_sale/static/src/website_builder` directories of the [Odoo community repository](https://github.com/odoo/odoo) between **1 and 8 October 2025** (UTC). The list was assembled on 8 Oct 2025 using the GitHub REST API with path filters for all three areas.
-## Most Important Commit
+## Commit of the Week
 - **[6c8a90e](https://github.com/odoo/odoo/commit/6c8a90ecba45fb99addf1b86fe237fd626fba650)** — Introduces a high-level cache on `website.page` with granular opt-outs, dramatically reducing page render time while keeping dynamic pages safe.
 ## Highlights
 - **Storefront performance wins.** Website now prefetches page fields, skips redundant ORM calls, and adds a configurable page cache, while Website Sale consolidates controller queries—together shaving hundreds of SQL calls off shop requests.
