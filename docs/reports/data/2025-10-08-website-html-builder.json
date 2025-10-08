@@ -1,0 +1,2128 @@
+[
+  {
+    "sha": "7193b12193f7b720dd8d303cc55b3fd18a956bf9",
+    "html_url": "https://github.com/odoo/odoo/commit/7193b12193f7b720dd8d303cc55b3fd18a956bf9",
+    "author": {
+      "name": "Serge Bayet (seba)",
+      "email": "seba@odoo.com",
+      "date": "2025-06-27T11:17:27Z"
+    },
+    "committer": {
+      "name": "Serge Bayet (seba)",
+      "email": "seba@odoo.com",
+      "date": "2025-10-02T17:00:16Z"
+    },
+    "message": "[FIX] test_website, website: fix page properties tour\n\nSince [1], the page dependencies algorithm was updated, requiring\nadjustments to the tour logic. Additionally, following [2], the\n\"Add new content\" button was changed from an `<a>` tag to a `<button>`,\nwhich also needed to be reflected in the tour.\n\nFurthermore (see [3]), removing a page from the menu could silently fail\nwhen the page URL was changed in the same save because the wizard only\nlooked up menus by the current URL. Resolve menus by page_id (fallback\nto URL) in both compute and inverse, and unlink accordingly, ensuring\n\"In Menu\" toggles work reliably across URL changes.\n\nAlso, since [4], the \"New Page\" dialog cached the templates list, so\npages newly marked as \"Is a Template\" didn't appear until a reload.\nFetch templates without client-side caching so the Custom tab reflects\nchanges immediately. This fixes the tour steps for \"Verify is not in\nmenu\" and \"Verify template Cool Page exists.\"\n\nSteps to reproduce:\n\nA. \"In Menu\" toggle fails when URL also changes (unlink by URL only)\n\n- Website > Go to any page (e.g., /cool-page).\n- Click Edit > Page (properties).\n- Change URL from /cool-page to /cool-page-2.\n- In the same dialog, disable \"In Menu\".\n- Click Save & Close.\n- Bug (before): The corresponding menu item is not removed because the\n  unlink resolves only by the old/current URL.\n\n  Now: Menus are resolved and unlinked by page_id (fallback to URL), so\n  the menu entry is correctly removed.\n\nB. \"New Page\" > Custom templates list becomes stale (client cache)\n\n- Create a normal website page (not a template).\n- Open Page (properties) and enable \"Is a Template\". Save.\n- Without reloading the site, click New (Add new content) > New Page.\n- Open the Custom tab.\n- Bug (before): The page you just turned into a template doesn't appear\n  because the dialog used a cached list.\n\n  Now: The dialog fetches templates without client caching, so the new\n  template appears immediately.\n\n[1]: https://github.com/odoo/odoo/commit/cd4b0c91c1cf60ff72e91cf0544cb255ee5aff3f\n[2]: https://github.com/odoo/odoo/commit/9fe45e2b7ddbbfd0445ffe25a859e67a316d02b2\n[3]: https://github.com/odoo/odoo/commit/d6c8177824be3\n[4]: https://github.com/odoo/odoo/commit/b7fe6e6704fad\nrunbot-224020\n\ncloses odoo/odoo#229327\n\nX-original-commit: 898427fa8b1a04eda69efcebd64a13e0339649cf\nSigned-off-by: Benjamin Vray (bvr) <bvr@odoo.com>\nSigned-off-by: Serge Bayet (seba) <seba@odoo.com>",
+    "files": [
+      "addons/test_website/static/tests/tours/website_page_properties.js",
+      "addons/website/models/website_page_properties.py",
+      "addons/website/static/src/components/dialog/add_page_dialog.js",
+      "addons/website/static/src/services/website_custom_menus.js"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "5bba1c9608da715c1e619fee8607ced9a4a1644c",
+    "html_url": "https://github.com/odoo/odoo/commit/5bba1c9608da715c1e619fee8607ced9a4a1644c",
+    "author": {
+      "name": "Nicolas Lempereur",
+      "email": "nle@odoo.com",
+      "date": "2025-08-18T15:22:27Z"
+    },
+    "committer": {
+      "name": "Nicolas Lempereur",
+      "email": "nle@odoo.com",
+      "date": "2025-10-06T18:15:13Z"
+    },
+    "message": "[FIX] web_editor: no WebP quality change on safari\n\nScenario:\n\n- select a WebP image in the editor with safari\n- change the quality with the slider\n\nResult:\n\n- the size and the image quality don't change\n\nCause:\n\nSafari doesn't support HTMLCanvasElement.toDataURL() with WebP, so the\nimage is exported in PNG instead which is lossless and doesn't support\ncompression.\n\nFix:\n\nDisable the quality for WebP images if this is not supported (in safari\n+ iOS webview) and display a message.\n\nopw-4979378\n\ncloses odoo/odoo#224342\n\ncloses odoo/odoo#226505\n\nX-original-commit: ecc89796f7344d49359b6c378676628d0de2bb80\nSigned-off-by: Quentin Smetz (qsm) <qsm@odoo.com>\nSigned-off-by: Nicolas Lempereur (nle) <nle@odoo.com>",
+    "files": [
+      "addons/html_builder/i18n/html_builder.pot",
+      "addons/html_builder/static/src/plugins/image/image_format_option.js",
+      "addons/html_builder/static/src/plugins/image/image_format_option.xml"
+    ],
+    "paths": [
+      "addons/html_builder"
+    ]
+  },
+  {
+    "sha": "2b08426b4c8c13ff80fa4d993e5180b2de7a8737",
+    "html_url": "https://github.com/odoo/odoo/commit/2b08426b4c8c13ff80fa4d993e5180b2de7a8737",
+    "author": {
+      "name": "bhna-odoo",
+      "email": "bhna@odoo.com",
+      "date": "2025-08-19T06:02:04Z"
+    },
+    "committer": {
+      "name": "bhna-odoo",
+      "email": "bhna@odoo.com",
+      "date": "2025-10-08T04:38:26Z"
+    },
+    "message": "[FIX] website: prevent error on invalid domain\n\nCurrently, an error occurs when user tries to save an invalid domain.\n\nSteps to replicate:\n- Install `website_sale`.\n- Go to `Settings > Website`.\n- In the domain field, give value as `[`.\n  (any normal URL with a square bracket will also work).\n- Save and error will occur.\n\nError:\n`ValueError: Invalid IPv6 URL`\n\nCause:\n- The error happens because `config.get_base_url()` returns a malformed URL\n  (like containing stray `[`), which makes urljoin [1] raise the error.\n\nSolution:\n- The solution prevents error by by adding a constraint and raising a\n  user-friendly `ValidationError` if the URL is invalid.\n\n[1]: https://github.com/odoo/odoo/blob/77398aefc291d33264b039e38681f0cd8f65483f/addons/website_sale/models/res_config_settings.py#L135\n\nsentry-6805151048\n\ncloses odoo/odoo#230432\n\nX-original-commit: 7a4cd6d312e890e4c261632f9e69319bf3c0ff3e\nSigned-off-by: Benjamin Vray (bvr) <bvr@odoo.com>\nSigned-off-by: Bhavya Ashesh Nanavati (bhna) <bhna@odoo.com>",
+    "files": [
+      "addons/website/models/website.py",
+      "addons/website/tests/test_base_url.py"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "27107dcf0e1919987c01fa95776a7c181247b4f2",
+    "html_url": "https://github.com/odoo/odoo/commit/27107dcf0e1919987c01fa95776a7c181247b4f2",
+    "author": {
+      "name": "Gorash",
+      "email": "chm@odoo.com",
+      "date": "2025-09-03T13:59:41Z"
+    },
+    "committer": {
+      "name": "Gorash",
+      "email": "chm@odoo.com",
+      "date": "2025-10-01T13:05:09Z"
+    },
+    "message": "[IMP] website: use _fields instead of fields_get() in template.layout\n\nThis commit optimizes the template.layout XML view by replacing the slow\nfields_get() method with the more efficient _fields attribute. The\nprevious implementation was overly comprehensive, fetching a large amount\nof field data (including descriptions and names) that was not needed.\n\nThe objective was simply to check for a field's presence on a record. By\nusing _fields, we can now access the raw list of fields without the\nexpensive post-processing that fields_get() performs. This leads to a\nsignificant performance gain of approximately 8ms per page.\n\nPart-of: odoo/odoo#226627\nRelated: odoo/enterprise#94487\nRelated: odoo/design-themes#1151\nSigned-off-by: Raphael Collet <rco@odoo.com>",
+    "files": [
+      "addons/website/views/website_templates.xml"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "d9047eae91e86432b0d3839178864bb47914f518",
+    "html_url": "https://github.com/odoo/odoo/commit/d9047eae91e86432b0d3839178864bb47914f518",
+    "author": {
+      "name": "Gorash",
+      "email": "chm@odoo.com",
+      "date": "2025-09-03T17:38:52Z"
+    },
+    "committer": {
+      "name": "Gorash",
+      "email": "chm@odoo.com",
+      "date": "2025-10-01T13:05:09Z"
+    },
+    "message": "[IMP] website: manually fetch fields to reduce SQL queries on all pages\n\nThis commit introduces an optimization to the website's data fetching\nmechanism by explicitly fetching the required fields. Previously,\nqueries were executed at different times to retrieve page information,\nview details and website meta information, leading to multiple database\ncalls.\n\nBy fetching all column fields at once, regardless of their prefetch\nvalue, we can retrieve all necessary data with a single, consolidated\nquery. This change leverages the ORM's prefetch functionality to its\nfull potential, significantly reducing the number of database queries\nand improving overall performance, particularly for the website's front\nend.\n\nPart-of: odoo/odoo#226627\nRelated: odoo/enterprise#94487\nRelated: odoo/design-themes#1151\nSigned-off-by: Raphael Collet <rco@odoo.com>",
+    "files": [
+      "addons/website/models/ir_http.py",
+      "addons/website/tests/test_performance.py"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "547f9425c9b8873aa84a954d480e2e765e041774",
+    "html_url": "https://github.com/odoo/odoo/commit/547f9425c9b8873aa84a954d480e2e765e041774",
+    "author": {
+      "name": "Gorash",
+      "email": "chm@odoo.com",
+      "date": "2025-09-04T22:07:52Z"
+    },
+    "committer": {
+      "name": "Gorash",
+      "email": "chm@odoo.com",
+      "date": "2025-10-01T13:05:09Z"
+    },
+    "message": "[IMP] website: use search_fetch() to save an SQL query from the visitor use\n\nThat's a quick win to save a query on every page.\n\nPart-of: odoo/odoo#226627\nRelated: odoo/enterprise#94487\nRelated: odoo/design-themes#1151\nSigned-off-by: Raphael Collet <rco@odoo.com>",
+    "files": [
+      "addons/website/models/website_visitor.py"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "84aa87468e16b227b43d2fa1997802e5a47f1dab",
+    "html_url": "https://github.com/odoo/odoo/commit/84aa87468e16b227b43d2fa1997802e5a47f1dab",
+    "author": {
+      "name": "Alessandro Lupo",
+      "email": "alup@odoo.com",
+      "date": "2025-09-08T13:15:51Z"
+    },
+    "committer": {
+      "name": "FrancoisGe",
+      "email": "fge@odoo.com",
+      "date": "2025-10-01T13:05:36Z"
+    },
+    "message": "[FIX] website: stop interactions having a disconnected target element\n\nBefore this commit, interactions where not always destroyed when their target was removed\nfrom the DOM. An example of this problem is given by the `s_countdown` snippet. When the\nsnippet is removed by `DeletePlugin`, the interaction is not destroyed, and a recurrent\ninterval keeps expiring every second triggering multiple errors.\n\nThis commit introduces the following changes:\n1. `EditInteractionPlugin.refreshInteractions`, which is called on normalization, now checks\n   for every interaction and destroyes the ones linked to a disconnected DOM element.\n2. `websiteEditService.refresh` now checks if the target element is disconnected, and in\n   this case stops the interaction.\n3. `Countdown` now uses the `waitForTimeout` function, which does not execute any callback\n   if the interation has been destroyed.\n\nHow to reproduce the problem with `s_countdown`:\n1. Insert the snippet `s_text_block`\n2. Insert the snippet `s_countdown` in the middle of the text\n3. Place the cursor after the countdown\n4. Press \"backspace\" until the countdown is deleted\n5. The error appears\n(Alternatively, place the cursor before the countdown and press delete, or select a portion\nof text including the countdown and press backspace).\n\ntask-4367641\n\ncloses odoo/odoo#229387\n\nX-original-commit: 2512c760561689ae369807321145c6debbe2e545\nSigned-off-by: Robin Lejeune (role) <role@odoo.com>",
+    "files": [
+      "addons/website/static/src/core/website_edit_service.js",
+      "addons/website/static/src/snippets/s_countdown/countdown.js"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "6b160cc4313782656aab52139629f76fe533d4f8",
+    "html_url": "https://github.com/odoo/odoo/commit/6b160cc4313782656aab52139629f76fe533d4f8",
+    "author": {
+      "name": "S\u00e9bastien (blse)",
+      "email": "blse@odoo.com",
+      "date": "2025-09-09T09:00:43Z"
+    },
+    "committer": {
+      "name": "S\u00e9bastien (blse)",
+      "email": "blse@odoo.com",
+      "date": "2025-10-01T09:20:22Z"
+    },
+    "message": "[FIX] website: fix footer visibility tooltip message\n\nA tooltip message was added to the option for the visibility of\nthe footer in e0474c19d212d9c19fd1c3bbc9546b4258770018. The message\nindicates the opposite of the effect. This commit changes the message to\nmatch the behavior of the checkbox.\n\nSteps to reproduce:\n- Open website builder\n- Click on footer\n- Hover \"Page Visibility\"\n- Bug: the message \"Enable to hide...\", but enabling actually shows\n\ntask-4991435\n\ncloses odoo/odoo#226027\n\nSigned-off-by: Francois Georis (fge) <fge@odoo.com>",
+    "files": [
+      "addons/website/static/src/builder/plugins/options/website_page_config_option.xml"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "83ef0481a39adf117c9c3fbc826eb852bc06df11",
+    "html_url": "https://github.com/odoo/odoo/commit/83ef0481a39adf117c9c3fbc826eb852bc06df11",
+    "author": {
+      "name": "Subhadeep R. Dev",
+      "email": "sdev@odoo.com",
+      "date": "2025-09-10T13:49:14Z"
+    },
+    "committer": {
+      "name": "Subhadeep R. Dev",
+      "email": "sdev@odoo.com",
+      "date": "2025-10-02T17:00:23Z"
+    },
+    "message": "[FIX] website: display image gallery snippet without error\n\nClicking on an image gallery snippet currently triggers a \"missing\ntemplate\" error. This happens because the gallery template is only\ndefined in the 000 version file, while the corresponding view record for\nthat version has been disabled.\n\nThis commit resolves the issue by moving the gallery templates to the\n001 version file, ensuring they are properly loaded.\n\nSteps to reproduce:\n1. In Website, navigate to /jobs.\n2. Create a new job and save it.\n3. Click on any image at the end of the job page.\n4. Observe the \"missing template\" error.\n\ncloses odoo/odoo#229608\n\nX-original-commit: 7a882e2ed6a6181dee3335279b87709b52ace7b8\nSigned-off-by: Colin Louis (loco) <loco@odoo.com>",
+    "files": [
+      "addons/website/static/src/snippets/s_image_gallery/000.xml",
+      "addons/website/static/src/snippets/s_image_gallery/001.xml"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "f7c1b7e073ebacd986750e2e26b8adc1fe144a6e",
+    "html_url": "https://github.com/odoo/odoo/commit/f7c1b7e073ebacd986750e2e26b8adc1fe144a6e",
+    "author": {
+      "name": "Gorash",
+      "email": "chm@odoo.com",
+      "date": "2025-09-11T12:22:57Z"
+    },
+    "committer": {
+      "name": "Gorash",
+      "email": "chm@odoo.com",
+      "date": "2025-10-01T13:05:09Z"
+    },
+    "message": "[IMP] website_sale: better performance by reducing SQL queries\n\nThis commit significantly improves performance by refactoring database\nqueries to be handled more efficiently within the controller. This\napproach groups multiple queries into a single batch, leveraging Odoo's\nprefetch mechanism and reducing the total number of database calls.\n\nMove queries to controller: By centralizing queries in the controller,\nwe decouple data fetching from the XML views. This makes it possible to\nmodify the business logic without needing to change the XML data,\nproviding greater internal flexibility and maintainability.  (And also\nfix the inefficient template Python expression\n`category.child_id.filtered(lambda c: category.id in search_categories_ids)`.)\n\nOptimize cart management: The cart management logic was improved to\nminimize database queries, as these operations affect every page of the\nwebsite. Ensuring that features used across all pages have the lowest\npossible impact is critical for overall performance.\n\nOptimize barcode nomenclature: The nomenclature `is_gs1_nomenclature`\ncheck was moved to a later stage, after the field condition, to remove a\nquery from the product fetching ORM.\n\nOptimize fields: Don't read every field data `fields_get()` to check if\na field exists. Fetch id and data in the binary field.\n\nThese optimizations result in 165 fewer SQL queries and a performance\nimprovement of over 120 ms for /shop with demo data.\n\ncloses odoo/odoo#226627\n\nRelated: odoo/enterprise#94487\nRelated: odoo/design-themes#1151\nSigned-off-by: Raphael Collet <rco@odoo.com>",
+    "files": [
+      "addons/barcodes_gs1_nomenclature/models/barcode_nomenclature.py",
+      "addons/test_website_modules/tests/test_performance.py",
+      "addons/website/tests/test_performance.py",
+      "addons/website_sale/controllers/main.py",
+      "addons/website_sale/models/product_public_category.py",
+      "addons/website_sale/models/product_template.py",
+      "addons/website_sale/models/sale_order.py",
+      "addons/website_sale/models/website.py",
+      "addons/website_sale/views/delivery_form_templates.xml",
+      "addons/website_sale/views/product_tile_templates.xml",
+      "addons/website_sale/views/templates.xml",
+      "odoo/orm/fields_binary.py"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "fdf05d2efb010f920f4cc7cdc69f29bbd249b4c4",
+    "html_url": "https://github.com/odoo/odoo/commit/fdf05d2efb010f920f4cc7cdc69f29bbd249b4c4",
+    "author": {
+      "name": "romo",
+      "email": "romo@odoo.com",
+      "date": "2025-09-11T14:52:12Z"
+    },
+    "committer": {
+      "name": "romo",
+      "email": "romo@odoo.com",
+      "date": "2025-10-01T13:05:15Z"
+    },
+    "message": "[FIX] website: fix animation trigger for footer elements\n\nBefore this commit, using animation on elements  within the footer\nwould not work if the footer was set on \"slide over\". The formula\nused to compute when to start / reset the animation was incorrect.\n\nThis commit fixes the formula.\n\nSteps to reproduce:\n- Set the Footer slideout to \"Slide Over\"\n- Set the Animation of an element to \"On Appearance\"\n- Save\n(when scrolling down, the animated element stay hidden)\n\ncloses odoo/odoo#228974\n\nX-original-commit: 5ccdcf857418702362b1d1712248ab83516f62a5\nSigned-off-by: Benoit Socias (bso) <bso@odoo.com>\nSigned-off-by: Romaric Moyeuvre (romo) <romo@odoo.com>",
+    "files": [
+      "addons/website/static/src/interactions/animation.js"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "6c8a90ecba45fb99addf1b86fe237fd626fba650",
+    "html_url": "https://github.com/odoo/odoo/commit/6c8a90ecba45fb99addf1b86fe237fd626fba650",
+    "author": {
+      "name": "Gorash",
+      "email": "chm@odoo.com",
+      "date": "2025-09-12T09:08:14Z"
+    },
+    "committer": {
+      "name": "Gorash",
+      "email": "chm@odoo.com",
+      "date": "2025-10-01T13:05:09Z"
+    },
+    "message": "[IMP] website: introduce high-level cache for website pages\n\nThis commit introduces a high-level cache on the `website.page` model,\nsimilar to the one that existed before the `t-cache` directive was\nimplemented in `ir.qweb`. This cache is designed to significantly improve\nperformance by storing the HTML response of published pages, thereby\nreducing rendering time and database queries. Additionally, each cached\nresponse is automatically refreshed if the page is visited more than one\nhour after its initial caching.\n\nThe management and logic for this cache are placed directly on the\n`website.page` model, as it is the source of the HTML response for these\nrecords. This approach makes it easy to control caching behavior through\na few new, overridable methods:\n\n-  `_allow_to_use_cache`: Determines whether a page is allowed to be\nserved from the cache based on the current request, URL, or session. For\nexample, a page with a `sale.order` in the session would not use the cache.\n\n-  `_allow_cache_insertion`: Determines whether the generated HTML\ncontent is eligible for caching. This is useful for preventing sensitive\nor dynamic content from being stored. For instance, a page with a\nreference to a `sale.order` would not be inserted into the cache.\n\n-  `_post_process_response_from_cache`: A hook called after a response is\nretrieved from the cache. This method allows for post-processing, such as\nincrementing counters or modifying HTTP headers, without regenerating the\nentire page.\n\n- `_get_cache_key`: Allows for supplementing the base cache key with\ncustom components (e.g., from the URL or session). This is essential for\nensuring that the cache serves the correct version of a page based on\nspecific parameters like user language or currency.\n\nsee https://github.com/odoo/odoo/pull/224487\nsee https://github.com/odoo/odoo/pull/88276\n\nPart-of: odoo/odoo#226627\nRelated: odoo/enterprise#94487\nRelated: odoo/design-themes#1151\nSigned-off-by: Raphael Collet <rco@odoo.com>",
+    "files": [
+      "addons/test_website_modules/tests/test_performance.py",
+      "addons/website/controllers/main.py",
+      "addons/website/models/ir_http.py",
+      "addons/website/models/ir_ui_view.py",
+      "addons/website/models/website_page.py",
+      "addons/website/models/website_technical_page.py",
+      "addons/website/tests/test_performance.py",
+      "addons/website/tests/test_website_visitor.py",
+      "addons/website_hr_recruitment/models/__init__.py",
+      "addons/website_hr_recruitment/models/website_page.py",
+      "addons/website_livechat/models/__init__.py",
+      "addons/website_livechat/models/website_page.py",
+      "addons/website_project/models/__init__.py",
+      "addons/website_project/models/website_page.py",
+      "addons/website_sale/models/__init__.py",
+      "addons/website_sale/models/website_page.py",
+      "addons/website_sale/views/templates.xml"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "6d0a748feff76df00dbcc84c936a8b3e56f12c13",
+    "html_url": "https://github.com/odoo/odoo/commit/6d0a748feff76df00dbcc84c936a8b3e56f12c13",
+    "author": {
+      "name": "Robin Lejeune (role)",
+      "email": "role@odoo.com",
+      "date": "2025-09-12T11:25:59Z"
+    },
+    "committer": {
+      "name": "Robin Lejeune (role)",
+      "email": "role@odoo.com",
+      "date": "2025-10-08T09:17:05Z"
+    },
+    "message": "[FIX] website: disable remove slide option on last slide\n\nSteps to reproduce:\n- Drop a carousel snippet\n- In the builder options, click on the \"-\" button to remove all items\nexcept the last one.\n=> The button is still displayed as working (not disabled), even though\nclicking on it won't remove the last slide.\n\nTo clarify that this is the expected behavior, we disable the button if\nthere is only one carousel item left.\n\ncloses odoo/odoo#230151\n\nX-original-commit: c0e7b051ca708ea5835b12f19349ff0aac52a6bd\nSigned-off-by: Francois Georis (fge) <fge@odoo.com>",
+    "files": [
+      "addons/website/static/src/builder/plugins/carousel_item_header_buttons.js",
+      "addons/website/static/src/builder/plugins/carousel_option.xml"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "86422aa573dc8a2e341572e4a42c74a57a5cfce0",
+    "html_url": "https://github.com/odoo/odoo/commit/86422aa573dc8a2e341572e4a42c74a57a5cfce0",
+    "author": {
+      "name": "Serhii Rubanskyi",
+      "email": "seru@odoo.com",
+      "date": "2025-09-12T11:43:31Z"
+    },
+    "committer": {
+      "name": "Serhii Rubanskyi",
+      "email": "seru@odoo.com",
+      "date": "2025-10-02T11:55:50Z"
+    },
+    "message": "[FIX] website: remove iframe's flickering after page style change\n\nIn this commit, fallback iframe was added to avoid flickering between\niframe reloads. But the flicker still happens if we change page's style,\n since we do not apply the new styles to the fallback iframe.\n\nTo reproduce the issue:\n- Open Website and start editing\n- Move to the 'Theme' tab\n- Change page layout to 'Boxed'\n- Set background color to not transparent, e.g. red\n- Save, and do any action to reload the iframe, e.g. go to /contactus\n\n=> The iframe flickers from the previous color to red, which shouldn't\nbe the case.\nTask-4985472\n\n[commit]: github.com/odoo/odoo/commit/7b19831\n\ncloses odoo/odoo#229286\n\nX-original-commit: 31127f441934b5ef1e34a03189d7a9b0bbbdce52\nSigned-off-by: Benjamin Vray (bvr) <bvr@odoo.com>\nSigned-off-by: Serhii Rubanskyi (seru) <seru@odoo.com>",
+    "files": [
+      "addons/website/static/src/client_actions/website_preview/website_builder_action.js"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "e48ab0445f12568463da8e7d325906446226bda8",
+    "html_url": "https://github.com/odoo/odoo/commit/e48ab0445f12568463da8e7d325906446226bda8",
+    "author": {
+      "name": "S\u00e9bastien (blse)",
+      "email": "blse@odoo.com",
+      "date": "2025-09-15T12:55:28Z"
+    },
+    "committer": {
+      "name": "S\u00e9bastien (blse)",
+      "email": "blse@odoo.com",
+      "date": "2025-10-07T15:15:35Z"
+    },
+    "message": "[FIX] website: change the visibility option of footer&header from panel\n\nWith the initial [website builder refactor], clicking on the eye of the\nentry of the footer or the header in the \"Invisible Elements\" panel only\ntemporarily changed their visibility. Additional clicks in the options\nwere needed for their visibility to persist.\n\nThis commit restores the previous behavior where clicking on the eye in\nthe \"Invisible Elements\" panel for the header and the footer would also\nchange the option.\n\nSteps to reproduce:\n- Open website builder\n- Click on the footer\n- Disable \"Page Visibility\"\n- Click on the eye next to \"Footer\" in the \"Invisible Elements\" panel\n- Save\n- Bug: the footer is invisible, but it was just before save\n\n[website builder refactor]: 9fe45e2b7ddbbfd0445ffe25a859e67a316d02b2\ntask-4367641\n\ncloses odoo/odoo#230150\n\nX-original-commit: 786a65acadb0411a38c1298a732186dfdd799b2e\nSigned-off-by: Francois Georis (fge) <fge@odoo.com>\nSigned-off-by: S\u00e9bastien Blondiau (blse) <blse@odoo.com>",
+    "files": [
+      "addons/website/static/src/builder/plugins/options/website_page_config_option_plugin.js",
+      "addons/website/static/tests/tours/website_page_options.js"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "ec495a8f1ff98c4261e1cb4457ea0d9b22588408",
+    "html_url": "https://github.com/odoo/odoo/commit/ec495a8f1ff98c4261e1cb4457ea0d9b22588408",
+    "author": {
+      "name": "romo",
+      "email": "romo@odoo.com",
+      "date": "2025-09-15T13:51:00Z"
+    },
+    "committer": {
+      "name": "romo",
+      "email": "romo@odoo.com",
+      "date": "2025-10-01T13:05:33Z"
+    },
+    "message": "[FIX] html_builder, website: avoid nan on invalid number input\n\nBefore this commit, putting an invalid input in the progressbar\nvalue would lead to a traceback. Moreover, the input could display\n\"0%%\" (one being in the input, the other being the displayed unit).\n\nThis commit solves this issue by defining a saveUnit for the input\nand using the defaultValue when an input is invalid.\n\ncloses odoo/odoo#227729\n\nX-original-commit: deecc61f0eaf465397e6db2e6f98fb01955300dc\nSigned-off-by: Benoit Socias (bso) <bso@odoo.com>\nSigned-off-by: Souk\u00e9ina Bojabza (sobo) <sobo@odoo.com>",
+    "files": [
+      "addons/html_builder/static/src/core/building_blocks/builder_number_input.js",
+      "addons/html_builder/static/tests/custom_tab/builder_components/builder_number_input.test.js",
+      "addons/website/static/src/builder/plugins/options/progress_bar_option.xml"
+    ],
+    "paths": [
+      "addons/html_builder",
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "79f1890f3f989ad935e74d729316c3ed12c821cf",
+    "html_url": "https://github.com/odoo/odoo/commit/79f1890f3f989ad935e74d729316c3ed12c821cf",
+    "author": {
+      "name": "Antoine (anso)",
+      "email": "anso@odoo.com",
+      "date": "2025-09-16T12:35:48Z"
+    },
+    "committer": {
+      "name": "qsm-odoo",
+      "email": "qsm@odoo.com",
+      "date": "2025-10-01T09:20:18Z"
+    },
+    "message": "[FIX] html_builder, *: replace `fa-times` with `oi-close`\n\n*: html_editor, website\n\nThis commit replaces occurrences of `fa-times` in the html builder and\neditor with our own `oi-close` icon, which is less bulky and more\nelegant.\n\nIt also changes button structures where icon classes were placed\ndirectly on the `button`, ensuring they are applied to a child `<i>`\nelement (which is not the preferred behavior but currently fixes\nalignment issues).\n\nIt also ensures `.o-hb-selectMany2X-wrapper` has `min-w-0` so the\ndropdown is truncated properly without pushing the remove button out of\nthe screen.\n\ntask-5090805\n\ncloses odoo/odoo#227481\n\nSigned-off-by: Quentin Smetz (qsm) <qsm@odoo.com>",
+    "files": [
+      "addons/html_builder/i18n/html_builder.pot",
+      "addons/html_builder/static/src/core/building_blocks/builder_many2one.xml",
+      "addons/html_builder/static/src/core/building_blocks/select_many2x.xml",
+      "addons/html_builder/static/src/plugins/background_option/background_shape_option.xml",
+      "addons/html_builder/static/tests/builder_action.test.js",
+      "addons/html_editor/static/src/main/media/image_crop.xml",
+      "addons/html_editor/static/src/main/media/media_dialog/file_selector.xml",
+      "addons/html_editor/static/src/main/media/media_dialog/upload_progress_toast/upload_progress_toast.xml",
+      "addons/html_editor/static/tests/toolbar.test.js",
+      "addons/website/static/src/components/views/theme_preview.xml"
+    ],
+    "paths": [
+      "addons/html_builder",
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "0c59f2aa13b5343ba853252d317a75a2eb6f1ecd",
+    "html_url": "https://github.com/odoo/odoo/commit/0c59f2aa13b5343ba853252d317a75a2eb6f1ecd",
+    "author": {
+      "name": "Serhii Rubanskyi",
+      "email": "seru@odoo.com",
+      "date": "2025-09-17T08:55:10Z"
+    },
+    "committer": {
+      "name": "Serhii Rubanskyi",
+      "email": "seru@odoo.com",
+      "date": "2025-10-06T16:47:17Z"
+    },
+    "message": "[REF] html_editor, *: rename color picker's color prefix prop\n\n*: html_builder, web.\nWhen this prop was added in this [commit], it was named\nthemeColorPrefix, which does not reflect its purpose properly. It could\nmistakenly be taken as a prop for the theme tab of the color picker,\nwhen actually it's a prefix CSS variable names used to display colors\ncorrectly.\n\n[commit]: https://github.com/odoo/odoo/commit/62bdb31587f2586d6d45f53d264e193028b3c860\n\ncloses odoo/odoo#227642\n\nSigned-off-by: Francois Georis (fge) <fge@odoo.com>",
+    "files": [
+      "addons/html_builder/static/src/core/building_blocks/builder_colorpicker.js",
+      "addons/html_builder/static/src/core/color_ui_plugin.js",
+      "addons/html_editor/static/src/main/font/color_selector.js",
+      "addons/html_editor/static/src/main/link/link_popover.js",
+      "addons/web/static/src/core/color_picker/color_picker.js",
+      "addons/web/static/src/core/color_picker/color_picker.xml",
+      "addons/web/static/src/core/color_picker/tabs/color_picker_custom_tab.js",
+      "addons/web/static/src/core/color_picker/tabs/color_picker_custom_tab.xml",
+      "addons/web/static/src/core/color_picker/tabs/color_picker_solid_tab.js",
+      "addons/web/static/src/core/color_picker/tabs/color_picker_solid_tab.xml",
+      "addons/web/static/tests/core/color_picker.test.js"
+    ],
+    "paths": [
+      "addons/html_builder"
+    ]
+  },
+  {
+    "sha": "ba6d261ecc1ac315d9ed41c0f43ea909e8e09d7e",
+    "html_url": "https://github.com/odoo/odoo/commit/ba6d261ecc1ac315d9ed41c0f43ea909e8e09d7e",
+    "author": {
+      "name": "Subhadeep R. Dev",
+      "email": "sdev@odoo.com",
+      "date": "2025-09-22T08:54:23Z"
+    },
+    "committer": {
+      "name": "Subhadeep R. Dev",
+      "email": "sdev@odoo.com",
+      "date": "2025-10-02T10:22:49Z"
+    },
+    "message": "[FIX] html_builder: enable \"On Hover\" animation for images with shapes\n\nApplying a shape to an image unintentionally disabled the \"On Hover\"\nanimation option. This commit restores the option with proper checks,\nensuring it remains disabled only when the applied shape includes an\nanimation.\n\nThe related code was also refactored slightly for improved readability.\n\nSteps to reproduce:\n1. Enter edit mode in Website.\n2. Add an image and apply a shape.\n3. Notice that the \"On Hover\" animation option is incorrectly hidden.\n\ncloses odoo/odoo#229020\n\nX-original-commit: b227a067e8d4071843519f945bd10c806c424ffa\nSigned-off-by: Robin Lejeune (role) <role@odoo.com>\nSigned-off-by: Subhadeep Ranjan Dev (sdev) <sdev@odoo.com>",
+    "files": [
+      "addons/html_builder/static/src/plugins/image/image_shape_option_plugin.js",
+      "addons/html_builder/static/src/plugins/image/image_tool_option_plugin.js",
+      "addons/website/static/src/builder/plugins/options/animate_option_plugin.js"
+    ],
+    "paths": [
+      "addons/html_builder",
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "8fa7d7cae6b12f002b1a8e6bbfbc19f1e94d3edc",
+    "html_url": "https://github.com/odoo/odoo/commit/8fa7d7cae6b12f002b1a8e6bbfbc19f1e94d3edc",
+    "author": {
+      "name": "S\u00e9bastien (blse)",
+      "email": "blse@odoo.com",
+      "date": "2025-09-22T11:43:59Z"
+    },
+    "committer": {
+      "name": "S\u00e9bastien (blse)",
+      "email": "blse@odoo.com",
+      "date": "2025-10-07T10:59:23Z"
+    },
+    "message": "[FIX] website: move selection with menu when auto-hiding menus\n\nWhen some menu are moved to be hidden in the dropdown, if the selection\nis inside a moved menu, it was lost.\n\nThis commit fixes that by opening the dropdown and moving the selection\nif it is in a menu moved to the dropdown.\n\nSteps to reproduce:\n- Open website builder\n- Add text in the label of a menu until it is moved to the dropdown\n- Bug: the selection is lost, keep writing does not write anywhere\n\ntask-4367641\n\nX-original-commit: 0c89e8ad80beb676dbfc490e652ab23c3302a314\nPart-of: odoo/odoo#229942\nSigned-off-by: Colin Louis (loco) <loco@odoo.com>\nSigned-off-by: S\u00e9bastien Blondiau (blse) <blse@odoo.com>",
+    "files": [
+      "addons/website/static/src/js/content/auto_hide_menu.js"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "a79e43341dd0bfb1dc73cf4b9498bc7380a0bc11",
+    "html_url": "https://github.com/odoo/odoo/commit/a79e43341dd0bfb1dc73cf4b9498bc7380a0bc11",
+    "author": {
+      "name": "S\u00e9bastien (blse)",
+      "email": "blse@odoo.com",
+      "date": "2025-09-22T11:43:59Z"
+    },
+    "committer": {
+      "name": "S\u00e9bastien (blse)",
+      "email": "blse@odoo.com",
+      "date": "2025-10-07T10:59:23Z"
+    },
+    "message": "[FIX] website: re-adapt extra menu on size changes of menu and navbar\n\nWhen the size available or needed for the the top menu changes (for\nother reasons than a window resize), the menus were not auto-hidden.\nThey were auto-hidden only if the window changes size.\n\nIf the user is editing the website and increases the width of some\nelement in the header, it may overflow. The overflow disappears only\nonce the user changes the size of the window (which causes some menu to\nbe hidden again).\n\nThis commit fixes that by replacing the listener for a window `resize`\nevent by a `ResizeObserver` that observes the sizes of the navbar, the\nmenu and the menu's siblings.\n\nSteps to reproduce:\n- Open website builder\n- Add text in the header until it gets too large\n- Bug: the last menu is not moved to the dropdown to make more space\n  available\n\ntask-4367641\n\nX-original-commit: 75fcd1459e03faee54e16f24efe9f774523aa561\nPart-of: odoo/odoo#229942\nSigned-off-by: Colin Louis (loco) <loco@odoo.com>\nSigned-off-by: S\u00e9bastien Blondiau (blse) <blse@odoo.com>",
+    "files": [
+      "addons/website/static/src/js/content/auto_hide_menu.js"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "cdffe8ab905068a3947ea62562c7209d216b2b8d",
+    "html_url": "https://github.com/odoo/odoo/commit/cdffe8ab905068a3947ea62562c7209d216b2b8d",
+    "author": {
+      "name": "Nicolas Lempereur",
+      "email": "nle@odoo.com",
+      "date": "2025-09-26T21:55:32Z"
+    },
+    "committer": {
+      "name": "Nicolas Lempereur",
+      "email": "nle@odoo.com",
+      "date": "2025-10-05T12:18:52Z"
+    },
+    "message": "[FIX] website: accept website_meta_og_img with domain\n\nIn 17.0 up to master, website_meta_og_img for newly added cover image\nshould be a relative URL instead of an absolute URL since 27th september\n2025 commit 4c5d9861e389534f9ca684b9faa1ce6289df5639.\n\nThis solves an issue in 19.0 where:\n\n- if you have a website_meta_og_img field with absolute URL\n- and then you change domain or have multiple domain\n\n=> you would get an error 500 on the page with that website_meta_og_img\n\nBut for existing 19.0 instances that have set custom website_meta_og_img\nbefore the fix, the issue could still happen at any moment they change\ndomain.\n\nThis fix allows to have an absolute URL in website_meta_og_img and\nmodify it on the fly only in 19.0 version.\n\nnote: a migration script (the same than [1] but in 19.0 to saas-19.1)\nshould be added to ensure there is no remaining absolute URL.\n\n[1]: odoo/upgrade@5408746b110d660901645b9c7b9aa9cee7aaf235\n\nopw-5101875\nopw-5102079\nopw-5105258\nopw-5107443\nopw-5111474\nopw-5112343\nopw-5113844\nopw-5114544\n\ncloses odoo/odoo#228947\n\nSigned-off-by: Quentin Smetz (qsm) <qsm@odoo.com>",
+    "files": [
+      "addons/website/models/mixins.py",
+      "addons/website/tests/test_page.py"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "7b7b8c42547b65c78ad36c4a6ce210b235b58a0f",
+    "html_url": "https://github.com/odoo/odoo/commit/7b7b8c42547b65c78ad36c4a6ce210b235b58a0f",
+    "author": {
+      "name": "Julien Mougenot",
+      "email": "jum@odoo.com",
+      "date": "2025-09-29T07:42:36Z"
+    },
+    "committer": {
+      "name": "Julien Mougenot",
+      "email": "jum@odoo.com",
+      "date": "2025-10-01T13:05:43Z"
+    },
+    "message": "[FIX] *: fix ignored failed tests\n\nDue to a commit in the same PR restoring error catching in Hoot, this\ncommit fixes tests that have been ignored by the CI.\n\ncloses odoo/odoo#229226\n\nX-original-commit: 6ebb1b7a9560eeb57eca962b55273536dbaa1628\nRelated: odoo/enterprise#95873\nSigned-off-by: Micha\u00ebl Mattiello (mcm) <mcm@odoo.com>\nSigned-off-by: Julien Mougenot (jum) <jum@odoo.com>",
+    "files": [
+      "addons/crm_livechat/__manifest__.py",
+      "addons/website/static/tests/builder/options/spacing_option.test.js"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "c2a76acee65c240c591da8593192bcb942b6b045",
+    "html_url": "https://github.com/odoo/odoo/commit/c2a76acee65c240c591da8593192bcb942b6b045",
+    "author": {
+      "name": "Julien (jula)",
+      "email": "jula@odoo.com",
+      "date": "2025-09-29T11:37:29Z"
+    },
+    "committer": {
+      "name": "Julien (jula)",
+      "email": "jula@odoo.com",
+      "date": "2025-10-01T13:05:17Z"
+    },
+    "message": "[FIX] html_editor: fix css unit conversion precision\n\n__Current behavior before commit:__\nWhen typing an integer value in the font size input, some decimals are\nadded automatically because the value entered in `px` is first converted\nto `rem` then it's converted back to `px` but some precision is lost in\n`convertNumericToUnit` because `toFixed(3)` is called on the result.\n\n__Description of the fix:__\n`toFixed` is removed from `convertNumericToUnit` to avoid any loss of\nprecision on the value saved. However it's now used in `formatRawValue`\nso that the value displayed to the user is stays clean. This way we keep\nthe behavior intended by [this PR].\n\n__Steps to reproduce the issue on runbot:__\n1. Open the website builder.\n2. Go to the *Theme* tab.\n3. In Paragraph section, set the Font Size to 19px.\n=> It gets changed to 19.008px automatically.\n\n[this PR]: https://github.com/odoo/odoo/pull/221754\n\ncloses odoo/odoo#229384\n\nX-original-commit: 3fa8d2a4959b39861f6ae1ec73a6d8dbd7358827\nSigned-off-by: Francois Georis (fge) <fge@odoo.com>",
+    "files": [
+      "addons/html_builder/static/src/core/building_blocks/builder_number_input.js",
+      "addons/html_builder/static/tests/custom_tab/builder_components/builder_number_input.test.js",
+      "addons/html_editor/static/src/utils/formatting.js",
+      "addons/html_editor/static/tests/utils/numeric_to_unit_converter.test.js"
+    ],
+    "paths": [
+      "addons/html_builder"
+    ]
+  },
+  {
+    "sha": "dc07555035268c27046dd7f232caeba076704ea4",
+    "html_url": "https://github.com/odoo/odoo/commit/dc07555035268c27046dd7f232caeba076704ea4",
+    "author": {
+      "name": "Laetitia (ldau)",
+      "email": "ldau@odoo.com",
+      "date": "2025-09-29T15:03:49Z"
+    },
+    "committer": {
+      "name": "Laetitia (ldau)",
+      "email": "ldau@odoo.com",
+      "date": "2025-10-07T06:58:18Z"
+    },
+    "message": "[FIX] html_builder: correct options layout issues\n\nThis commit fixes several options-related issues in the HTML Builder:\n- Fixed the height of the font-family picker and the \u201cNone\u201d shadow\noption; the issue was caused by the font metrics.\n- Improved the vertical sublevel line, which appeared blurry due to\nthe transform property and an incorrect height.\n- Harmonized the padding of the visibility layout options and\nthe background image position to align with the other pickers.\n\ntask-4985348\n\ncloses odoo/odoo#229806\n\nX-original-commit: ee6717c8480d68901dc93e281a408ee9e1949062\nSigned-off-by: Quentin Smetz (qsm) <qsm@odoo.com>\nSigned-off-by: Laetitia Daubechies (ldau) <ldau@odoo.com>",
+    "files": [
+      "addons/html_builder/static/src/core/building_blocks/builder_fontfamilypicker.scss",
+      "addons/html_builder/static/src/core/building_blocks/builder_fontfamilypicker.xml",
+      "addons/html_builder/static/src/core/building_blocks/builder_row.scss",
+      "addons/html_builder/static/src/core/building_blocks/select_many2x.scss",
+      "addons/html_builder/static/src/plugins/shadow_option.xml"
+    ],
+    "paths": [
+      "addons/html_builder"
+    ]
+  },
+  {
+    "sha": "e1d75f2726ba82c4533723e88134f3a6d8f99b8f",
+    "html_url": "https://github.com/odoo/odoo/commit/e1d75f2726ba82c4533723e88134f3a6d8f99b8f",
+    "author": {
+      "name": "Benjamin Vray",
+      "email": "bvr@odoo.com",
+      "date": "2025-09-30T08:01:15Z"
+    },
+    "committer": {
+      "name": "Benjamin Vray",
+      "email": "bvr@odoo.com",
+      "date": "2025-10-03T06:51:17Z"
+    },
+    "message": "[FIX] website: keep pricelist blocks intact\n\nBuild the unsplittable selector from the three pricelist snippet base\nclasses so that the HTML editor no longer splits or merges their item,\nprice, or description elements when users delete content with Backspace.\n\nSteps to reproduce:\n\n- Drag and drop a pricelist snippet (e.g., Pricelist Cafe).\n- Place the cursor before the first letter of one of the descriptions.\n- Press Backspace.\n- Bug: the description content is merged with the price.\n\ntask-5117864\n\ncloses odoo/odoo#229808\n\nX-original-commit: 5bb7970d5f3e11a9bdc0ef74dd22a862c2a1b809\nSigned-off-by: Souk\u00e9ina Bojabza (sobo) <sobo@odoo.com>\nSigned-off-by: Benjamin Vray (bvr) <bvr@odoo.com>",
+    "files": [
+      "addons/website/static/src/builder/plugins/options/pricelist_option/pricelist_boxed_option_plugin.js",
+      "addons/website/static/src/builder/plugins/options/pricelist_option/pricelist_cafe_plugin.js",
+      "addons/website/static/src/builder/plugins/options/pricelist_option/product_catalog_plugin.js"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "d0f9862a1f378919880c7aab84544a46612f18fe",
+    "html_url": "https://github.com/odoo/odoo/commit/d0f9862a1f378919880c7aab84544a46612f18fe",
+    "author": {
+      "name": "Augustin (duau)",
+      "email": "duau@odoo.com",
+      "date": "2025-09-30T13:10:21Z"
+    },
+    "committer": {
+      "name": "Augustin (duau)",
+      "email": "duau@odoo.com",
+      "date": "2025-10-01T13:05:38Z"
+    },
+    "message": "[REF] html_builder, *: move back builder-specific scss to html_builder\n\n*: html_editor, mass_mailing, web\n\nIn [1], all the former `web_editor` scss that was in `html_builder` was\nmoved to `html_editor` as an emergency fix, because it was breaking\nassets compilation when `html_builder` was not installed.\nThis commit is now splitting correctly the scss between the two modules.\n\n[1]: https://github.com/odoo/odoo/commit/f7ca58c38ff548d62aa24bebae890ff93a979491\n\nPart-of: odoo/odoo#229049\nSigned-off-by: Francois Georis (fge) <fge@odoo.com>",
+    "files": [
+      "addons/html_builder/__manifest__.py",
+      "addons/html_builder/static/src/scss/background.scss",
+      "addons/html_builder/static/src/scss/builder.variables.scss",
+      "addons/html_editor/__manifest__.py",
+      "addons/html_editor/static/src/scss/bootstrap_overridden.scss",
+      "addons/html_editor/static/src/scss/html_editor.common.scss",
+      "addons/html_editor/static/src/scss/html_editor.variables.scss",
+      "addons/mass_mailing/__manifest__.py",
+      "addons/web/static/src/core/color_picker/color_picker.scss"
+    ],
+    "paths": [
+      "addons/html_builder"
+    ]
+  },
+  {
+    "sha": "f2a30640721fc4963a372d5f7f84ee9f6951f73a",
+    "html_url": "https://github.com/odoo/odoo/commit/f2a30640721fc4963a372d5f7f84ee9f6951f73a",
+    "author": {
+      "name": "Mehdi Outagant (MOU)",
+      "email": "mou@odoo.com",
+      "date": "2025-09-30T17:55:57Z"
+    },
+    "committer": {
+      "name": "Mehdi Outagant (MOU)",
+      "email": "mou@odoo.com",
+      "date": "2025-10-06T16:47:13Z"
+    },
+    "message": "[FIX] website: fix the highlight effects in content Preview\n\nStarting from [1], the code from the \"Snippets Preview\" and the \"New\nPage Templates Preview\" was adapted to be able to build a highlight\nusing its simplified format when provided in XML.\n\nThe goal of this commit is to fix the new page DOM when a template with\nhighlights is selected. The DOM will be simply cloned and used for\nthe created page, so we need to reset the inner highlights to their\nminimal format.\n\nA implified `ResizeObserver` was also used to adapt highlights in page\npreviews when text size changes, instead of relying on a timeout.\n\n[1]: https://github.com/odoo/odoo/commit/4a29fa66003ce1f42a7011bc56fc019f34a887f5\n\ntask-4215788\n\ncloses odoo/odoo#228321\n\nX-original-commit: 374b9fba12199d244ca4fdfaf64cb984ace5b5a9\nSigned-off-by: Quentin Smetz (qsm) <qsm@odoo.com>",
+    "files": [
+      "addons/website/static/src/components/dialog/add_page_dialog.js",
+      "addons/website/static/src/interactions/text_highlights.js",
+      "addons/website/static/src/js/highlight_utils.js"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "b1041951d436b4b6adc90d8b8dd7b8c88cc69a46",
+    "html_url": "https://github.com/odoo/odoo/commit/b1041951d436b4b6adc90d8b8dd7b8c88cc69a46",
+    "author": {
+      "name": "Odoo Translation Bot",
+      "email": "c3p@odoo.com",
+      "date": "2025-10-01T02:31:31Z"
+    },
+    "committer": {
+      "name": "Odoo Translation Bot",
+      "email": "c3p@odoo.com",
+      "date": "2025-10-01T02:31:31Z"
+    },
+    "message": "[I18N] *: fetch translation updates",
+    "files": [
+      "addons/account/i18n/es_419.po",
+      "addons/account/i18n/fr.po",
+      "addons/account_peppol_advanced_fields/i18n/ko.po",
+      "addons/api_doc/i18n/es_419.po",
+      "addons/auth_signup/i18n/fr.po",
+      "addons/auth_timeout/i18n/pt_BR.po",
+      "addons/calendar/i18n/es_419.po",
+      "addons/calendar/i18n/fr.po",
+      "addons/event/i18n/fr.po",
+      "addons/fleet/i18n/es_419.po",
+      "addons/google_address_autocomplete/i18n/ko.po",
+      "addons/hr_recruitment/i18n/es_419.po",
+      "addons/hr_recruitment_sms/i18n/de.po",
+      "addons/html_builder/i18n/pt_BR.po",
+      "addons/mail/i18n/es_419.po",
+      "addons/mail/i18n/fr.po",
+      "addons/maintenance/i18n/el.po",
+      "addons/marketing_card/i18n/es_419.po",
+      "addons/mass_mailing/i18n/es_419.po",
+      "addons/partnership/i18n/es_419.po",
+      "addons/payment_iyzico/i18n/ko.po",
+      "addons/payment_paymob/i18n/es_419.po",
+      "addons/payment_redsys/i18n/ko.po",
+      "addons/point_of_sale/i18n/es_419.po",
+      "addons/pos_account_tax_python/i18n/ko.po",
+      "addons/pos_glory_cash/i18n/ko.po",
+      "addons/pos_repair/i18n/de.po",
+      "addons/product/i18n/ca.po",
+      "addons/project_mrp_stock_landed_costs/i18n/ko.po",
+      "addons/project_stock_landed_costs/i18n/ko.po",
+      "addons/sale_project_stock_account/i18n/ko.po",
+      "addons/sale_stock_product_expiry/i18n/de.po",
+      "addons/sms/i18n/es_419.po",
+      "addons/stock_maintenance/i18n/ko.po",
+      "addons/survey/i18n/es_419.po",
+      "addons/survey_crm/i18n/pt_BR.po",
+      "addons/web/i18n/es_419.po",
+      "addons/website/i18n/fr.po",
+      "addons/website_event_track/i18n/fr.po",
+      "addons/website_hr_recruitment_livechat/i18n/ko.po",
+      "addons/website_slides/i18n/es_419.po",
+      "odoo/addons/base/i18n/es_419.po",
+      "odoo/addons/base/i18n/zh_TW.po"
+    ],
+    "paths": [
+      "addons/html_builder",
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "c26b1f6e0e644835ec82ccd8b46372768678a9c1",
+    "html_url": "https://github.com/odoo/odoo/commit/c26b1f6e0e644835ec82ccd8b46372768678a9c1",
+    "author": {
+      "name": "Mahamadasif Ansari",
+      "email": "maan@odoo.com",
+      "date": "2025-10-01T05:42:00Z"
+    },
+    "committer": {
+      "name": "Mahamadasif Ansari",
+      "email": "maan@odoo.com",
+      "date": "2025-10-03T11:15:26Z"
+    },
+    "message": "[FIX] website: load a relative URL instead of an absolute in the SEO cover image\n\nCurrently an error is generated when a user selects existing\nimages inside the cover image of SEO.\n\nSteps to produce:\n- Install the `Ecommerce` module with demo data\n- Add existing image inside `website_meta_og_img`\n  (Website > Editor > Site > Optimize   SEO > Cover Image)\n-Set a domain on the website\n- Go to the shop page and get a 500 error\n\nError: `ValueError: Extra URL must use same scheme and host as base,\nand begin with base path`\n\nThis is because in 19 with commit [1], Werkzeug `url_join` is replaced\nby odoo `urljoin`, which requires that the path that is appended has no\nhost or the same host. Since the current code loads the scheme and\nhost of the existing image, if the URL is different than the saved one\n(because of the domain or another reason), we get an error.\n\nThis commit will fix the above issue by loading the relative URL\ninstead of an absolute one.\n\n[1]:https://github.com/odoo/odoo/commit/977e62d91f3e8235e251e9d21b08f53db1856c6b\n\nsentry-6912373261\n\ncloses odoo/odoo#229459\n\nSigned-off-by: Serge Bayet (seba) <seba@odoo.com>",
+    "files": [
+      "addons/website/static/src/components/dialog/seo.js"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "c034fed2eeb194961af7e1b3c60203141784acf2",
+    "html_url": "https://github.com/odoo/odoo/commit/c034fed2eeb194961af7e1b3c60203141784acf2",
+    "author": {
+      "name": "Odoo Translation Bot",
+      "email": "c3p@odoo.com",
+      "date": "2025-10-01T07:48:16Z"
+    },
+    "committer": {
+      "name": "Odoo Translation Bot",
+      "email": "c3p@odoo.com",
+      "date": "2025-10-01T07:48:16Z"
+    },
+    "message": "[I18N] *: export 19.0 source terms",
+    "files": [
+      "addons/account/i18n/account.pot",
+      "addons/account_edi_ubl_cii/i18n/account_edi_ubl_cii.pot",
+      "addons/account_peppol/i18n/account_peppol.pot",
+      "addons/barcodes/i18n/barcodes.pot",
+      "addons/base_automation/i18n/base_automation.pot",
+      "addons/crm/i18n/crm.pot",
+      "addons/event/i18n/event.pot",
+      "addons/fleet/i18n/fleet.pot",
+      "addons/hr/i18n/hr.pot",
+      "addons/hr_attendance/i18n/hr_attendance.pot",
+      "addons/hr_skills/i18n/hr_skills.pot",
+      "addons/hr_work_entry/i18n/hr_work_entry.pot",
+      "addons/html_builder/i18n/html_builder.pot",
+      "addons/html_editor/i18n/html_editor.pot",
+      "addons/mail/i18n/mail.pot",
+      "addons/mass_mailing/i18n/mass_mailing.pot",
+      "addons/mrp/i18n/mrp.pot",
+      "addons/mrp_account/i18n/mrp_account.pot",
+      "addons/mrp_subcontracting/i18n/mrp_subcontracting.pot",
+      "addons/payment/i18n/payment.pot",
+      "addons/payment_mercado_pago/i18n/payment_mercado_pago.pot",
+      "addons/point_of_sale/i18n/point_of_sale.pot",
+      "addons/portal_rating/i18n/portal_rating.pot",
+      "addons/pos_imin/i18n/pos_imin.pot",
+      "addons/pos_loyalty/i18n/pos_loyalty.pot",
+      "addons/pos_self_order/i18n/pos_self_order.pot",
+      "addons/product/i18n/product.pot",
+      "addons/product_expiry/i18n/product_expiry.pot",
+      "addons/project/i18n/project.pot",
+      "addons/purchase/i18n/purchase.pot",
+      "addons/purchase_stock/i18n/purchase_stock.pot",
+      "addons/sale_stock/i18n/sale_stock.pot",
+      "addons/spreadsheet/i18n/spreadsheet.pot",
+      "addons/stock/i18n/stock.pot",
+      "addons/stock_account/i18n/stock_account.pot",
+      "addons/stock_fleet/i18n/stock_fleet.pot",
+      "addons/web/i18n/web.pot",
+      "addons/website/i18n/website.pot",
+      "addons/website_blog/i18n/website_blog.pot",
+      "addons/website_crm_partner_assign/i18n/website_crm_partner_assign.pot",
+      "addons/website_event/i18n/website_event.pot",
+      "addons/website_event_track/i18n/website_event_track.pot",
+      "addons/website_livechat/i18n/website_livechat.pot",
+      "addons/website_mail/i18n/website_mail.pot",
+      "addons/website_mass_mailing/i18n/website_mass_mailing.pot",
+      "addons/website_sale/i18n/website_sale.pot",
+      "addons/website_sale_collect/i18n/website_sale_collect.pot",
+      "addons/website_sale_comparison/i18n/website_sale_comparison.pot",
+      "addons/website_sale_mrp/i18n/website_sale_mrp.pot"
+    ],
+    "paths": [
+      "addons/html_builder",
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "c3bbd7509b381fce59fc9e1aad43d5147e5b9af4",
+    "html_url": "https://github.com/odoo/odoo/commit/c3bbd7509b381fce59fc9e1aad43d5147e5b9af4",
+    "author": {
+      "name": "Julien (jula)",
+      "email": "jula@odoo.com",
+      "date": "2025-10-01T08:23:28Z"
+    },
+    "committer": {
+      "name": "Julien (jula)",
+      "email": "jula@odoo.com",
+      "date": "2025-10-06T16:47:08Z"
+    },
+    "message": "[FIX] html_builder, *: fix non-deterministic crash on editor reload\n\n*: website_sale\n\n__Current behavior before commit:__\nSome builder actions (e.g `ProductPageImageLayoutAction`) reload the\neditor after being applied. If another button in the builder is pressed\nrapidly, `refreshCurrentItem` might be called after the editor is\ndestroyed leading to the following error in [`isApplied`]:\n\n`TypeError: Cannot read properties of undefined (reading 'getAction')`.\n\nThe \"Product page options\" test fails in rare occasion due to this\nissue.\n\n__Description of the fix:__\n- Add a safety guard to make sure the editor is not destroyed before\ncalling `refreshCurrentItem`.\n- Add some checks at the end of the test in order for the crash to\nappear consistently (if the fix is not applied).\n- Make the test more robust (some code is backported from\n[this commit]).\n\n[this commit]: https://github.com/odoo/odoo/commit/670b1daa2254d76\n[`isApplied`]: https://github.com/odoo/odoo/blob/f258b263136f606f7896/addons/html_builder/static/src/core/utils.js#L939\n\nRunbot error: https://runbot.odoo.com/odoo/runbot.build.error/232649\n\ncloses odoo/odoo#229389\n\nX-original-commit: fbdfe645b03e5ecbabebce460affd4420b3d1d7c\nSigned-off-by: Francois Georis (fge) <fge@odoo.com>",
+    "files": [
+      "addons/html_builder/static/src/core/utils.js",
+      "addons/website_sale/static/tests/builder/product_page_option.test.js"
+    ],
+    "paths": [
+      "addons/html_builder"
+    ]
+  },
+  {
+    "sha": "a057f57b59cbd705f36a602145af7607f6c15ee5",
+    "html_url": "https://github.com/odoo/odoo/commit/a057f57b59cbd705f36a602145af7607f6c15ee5",
+    "author": {
+      "name": "Benjamin Vray",
+      "email": "bvr@odoo.com",
+      "date": "2025-10-01T12:01:55Z"
+    },
+    "committer": {
+      "name": "Benjamin Vray",
+      "email": "bvr@odoo.com",
+      "date": "2025-10-01T15:35:34Z"
+    },
+    "message": "[FIX] website: fix categories showcase hover effect\n\nSince commit [1], the hover effect on the \"categories showcase\" snippet\nis no longer working. Nothing happens when it\u2019s hovered with the mouse.\n\nThis is caused by a missing comma in the CSS rule that handles the\neffect.\n\n[1]: https://github.com/odoo/odoo/commit/dea725a4e45b584689813bdbf09e51070a3c55d3\n\ncloses odoo/odoo#229510\n\nSigned-off-by: Francois Georis (fge) <fge@odoo.com>",
+    "files": [
+      "addons/website/static/src/snippets/s_ecomm_categories_showcase/000.scss"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "5e6db568833a5df90af07ee1f0fcb71abffec5b0",
+    "html_url": "https://github.com/odoo/odoo/commit/5e6db568833a5df90af07ee1f0fcb71abffec5b0",
+    "author": {
+      "name": "Elier Ayala Bernal",
+      "email": "elier@wclik.com",
+      "date": "2025-10-01T18:47:06Z"
+    },
+    "committer": {
+      "name": "Elier Ayala Bernal",
+      "email": "elier@wclik.com",
+      "date": "2025-10-05T20:26:09Z"
+    },
+    "message": "[FIX] website: Google Cookie usage on websites url\n\ncloses odoo/odoo#230028\n\nX-original-commit: c8b44ad9caa4de7539d1e0a21482421046ce1775\nSigned-off-by: Quentin Smetz (qsm) <qsm@odoo.com>",
+    "files": [
+      "addons/website/data/website_data.xml"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "af0e75f1c7c46df848599c6d8d0642d712083e2c",
+    "html_url": "https://github.com/odoo/odoo/commit/af0e75f1c7c46df848599c6d8d0642d712083e2c",
+    "author": {
+      "name": "Odoo Translation Bot",
+      "email": "c3p@odoo.com",
+      "date": "2025-10-02T02:39:25Z"
+    },
+    "committer": {
+      "name": "Odoo Translation Bot",
+      "email": "c3p@odoo.com",
+      "date": "2025-10-02T02:39:27Z"
+    },
+    "message": "[I18N] *: fetch translation updates",
+    "files": [
+      "addons/account/i18n/ar.po",
+      "addons/account/i18n/az.po",
+      "addons/account/i18n/bg.po",
+      "addons/account/i18n/ca.po",
+      "addons/account/i18n/cs.po",
+      "addons/account/i18n/da.po",
+      "addons/account/i18n/de.po",
+      "addons/account/i18n/el.po",
+      "addons/account/i18n/es.po",
+      "addons/account/i18n/es_419.po",
+      "addons/account/i18n/et.po",
+      "addons/account/i18n/fa.po",
+      "addons/account/i18n/fi.po",
+      "addons/account/i18n/fr.po",
+      "addons/account/i18n/he.po",
+      "addons/account/i18n/hi.po",
+      "addons/account/i18n/hr.po",
+      "addons/account/i18n/hu.po",
+      "addons/account/i18n/id.po",
+      "addons/account/i18n/it.po",
+      "addons/account/i18n/ja.po",
+      "addons/account/i18n/ko.po",
+      "addons/account/i18n/ku.po",
+      "addons/account/i18n/lt.po",
+      "addons/account/i18n/mn.po",
+      "addons/account/i18n/my.po",
+      "addons/account/i18n/nb.po",
+      "addons/account/i18n/nl.po",
+      "addons/account/i18n/pl.po",
+      "addons/account/i18n/pt.po",
+      "addons/account/i18n/pt_BR.po",
+      "addons/account/i18n/ro.po",
+      "addons/account/i18n/ru.po",
+      "addons/account/i18n/sl.po",
+      "addons/account/i18n/sr@latin.po",
+      "addons/account/i18n/sv.po",
+      "addons/account/i18n/th.po",
+      "addons/account/i18n/tr.po",
+      "addons/account/i18n/uk.po",
+      "addons/account/i18n/vi.po",
+      "addons/account/i18n/zh_CN.po",
+      "addons/account/i18n/zh_TW.po",
+      "addons/account_edi_ubl_cii/i18n/ar.po",
+      "addons/account_edi_ubl_cii/i18n/az.po",
+      "addons/account_edi_ubl_cii/i18n/bg.po",
+      "addons/account_edi_ubl_cii/i18n/ca.po",
+      "addons/account_edi_ubl_cii/i18n/cs.po",
+      "addons/account_edi_ubl_cii/i18n/da.po",
+      "addons/account_edi_ubl_cii/i18n/de.po",
+      "addons/account_edi_ubl_cii/i18n/el.po",
+      "addons/account_edi_ubl_cii/i18n/es.po",
+      "addons/account_edi_ubl_cii/i18n/es_419.po",
+      "addons/account_edi_ubl_cii/i18n/et.po",
+      "addons/account_edi_ubl_cii/i18n/fa.po",
+      "addons/account_edi_ubl_cii/i18n/fi.po",
+      "addons/account_edi_ubl_cii/i18n/fr.po",
+      "addons/account_edi_ubl_cii/i18n/he.po",
+      "addons/account_edi_ubl_cii/i18n/hi.po",
+      "addons/account_edi_ubl_cii/i18n/hr.po",
+      "addons/account_edi_ubl_cii/i18n/hu.po",
+      "addons/account_edi_ubl_cii/i18n/id.po",
+      "addons/account_edi_ubl_cii/i18n/it.po",
+      "addons/account_edi_ubl_cii/i18n/ja.po",
+      "addons/account_edi_ubl_cii/i18n/ko.po",
+      "addons/account_edi_ubl_cii/i18n/ku.po",
+      "addons/account_edi_ubl_cii/i18n/lt.po",
+      "addons/account_edi_ubl_cii/i18n/mn.po",
+      "addons/account_edi_ubl_cii/i18n/my.po",
+      "addons/account_edi_ubl_cii/i18n/nb.po",
+      "addons/account_edi_ubl_cii/i18n/nl.po",
+      "addons/account_edi_ubl_cii/i18n/pl.po",
+      "addons/account_edi_ubl_cii/i18n/pt.po",
+      "addons/account_edi_ubl_cii/i18n/pt_BR.po",
+      "addons/account_edi_ubl_cii/i18n/ro.po",
+      "addons/account_edi_ubl_cii/i18n/ru.po",
+      "addons/account_edi_ubl_cii/i18n/sl.po",
+      "addons/account_edi_ubl_cii/i18n/sr@latin.po",
+      "addons/account_edi_ubl_cii/i18n/sv.po",
+      "addons/account_edi_ubl_cii/i18n/th.po",
+      "addons/account_edi_ubl_cii/i18n/tr.po",
+      "addons/account_edi_ubl_cii/i18n/uk.po",
+      "addons/account_edi_ubl_cii/i18n/vi.po",
+      "addons/account_edi_ubl_cii/i18n/zh_CN.po",
+      "addons/account_edi_ubl_cii/i18n/zh_TW.po",
+      "addons/account_peppol/i18n/ar.po",
+      "addons/account_peppol/i18n/az.po",
+      "addons/account_peppol/i18n/bg.po",
+      "addons/account_peppol/i18n/ca.po",
+      "addons/account_peppol/i18n/cs.po",
+      "addons/account_peppol/i18n/da.po",
+      "addons/account_peppol/i18n/de.po",
+      "addons/account_peppol/i18n/el.po",
+      "addons/account_peppol/i18n/es.po",
+      "addons/account_peppol/i18n/es_419.po",
+      "addons/account_peppol/i18n/et.po",
+      "addons/account_peppol/i18n/fa.po",
+      "addons/account_peppol/i18n/fi.po",
+      "addons/account_peppol/i18n/fr.po",
+      "addons/account_peppol/i18n/he.po",
+      "addons/account_peppol/i18n/hi.po",
+      "addons/account_peppol/i18n/hr.po",
+      "addons/account_peppol/i18n/hu.po",
+      "addons/account_peppol/i18n/id.po",
+      "addons/account_peppol/i18n/it.po",
+      "addons/account_peppol/i18n/ja.po",
+      "addons/account_peppol/i18n/ko.po",
+      "addons/account_peppol/i18n/ku.po",
+      "addons/account_peppol/i18n/lt.po",
+      "addons/account_peppol/i18n/mn.po",
+      "addons/account_peppol/i18n/my.po",
+      "addons/account_peppol/i18n/nb.po",
+      "addons/account_peppol/i18n/nl.po",
+      "addons/account_peppol/i18n/pl.po",
+      "addons/account_peppol/i18n/pt.po",
+      "addons/account_peppol/i18n/pt_BR.po",
+      "addons/account_peppol/i18n/ro.po",
+      "addons/account_peppol/i18n/ru.po",
+      "addons/account_peppol/i18n/sl.po",
+      "addons/account_peppol/i18n/sr@latin.po",
+      "addons/account_peppol/i18n/sv.po",
+      "addons/account_peppol/i18n/th.po",
+      "addons/account_peppol/i18n/tr.po",
+      "addons/account_peppol/i18n/uk.po",
+      "addons/account_peppol/i18n/vi.po",
+      "addons/account_peppol/i18n/zh_CN.po",
+      "addons/account_peppol/i18n/zh_TW.po",
+      "addons/account_peppol_advanced_fields/i18n/de.po",
+      "addons/api_doc/i18n/es_419.po",
+      "addons/attachment_indexation/i18n/es.po",
+      "addons/auth_ldap/i18n/es.po",
+      "addons/auth_oauth/i18n/es.po",
+      "addons/auth_passkey_portal/i18n/ko.po",
+      "addons/auth_password_policy/i18n/es.po",
+      "addons/auth_timeout/i18n/es_419.po",
+      "addons/auth_timeout/i18n/ko.po",
+      "addons/barcodes/i18n/ar.po",
+      "addons/barcodes/i18n/az.po",
+      "addons/barcodes/i18n/bg.po",
+      "addons/barcodes/i18n/ca.po",
+      "addons/barcodes/i18n/cs.po",
+      "addons/barcodes/i18n/da.po",
+      "addons/barcodes/i18n/de.po",
+      "addons/barcodes/i18n/el.po",
+      "addons/barcodes/i18n/es.po",
+      "addons/barcodes/i18n/es_419.po",
+      "addons/barcodes/i18n/et.po",
+      "addons/barcodes/i18n/fa.po",
+      "addons/barcodes/i18n/fi.po",
+      "addons/barcodes/i18n/fr.po",
+      "addons/barcodes/i18n/he.po",
+      "addons/barcodes/i18n/hi.po",
+      "addons/barcodes/i18n/hr.po",
+      "addons/barcodes/i18n/hu.po",
+      "addons/barcodes/i18n/id.po",
+      "addons/barcodes/i18n/it.po",
+      "addons/barcodes/i18n/ja.po",
+      "addons/barcodes/i18n/ko.po",
+      "addons/barcodes/i18n/ku.po",
+      "addons/barcodes/i18n/lt.po",
+      "addons/barcodes/i18n/mn.po",
+      "addons/barcodes/i18n/my.po",
+      "addons/barcodes/i18n/nb.po",
+      "addons/barcodes/i18n/nl.po",
+      "addons/barcodes/i18n/pl.po",
+      "addons/barcodes/i18n/pt.po",
+      "addons/barcodes/i18n/pt_BR.po",
+      "addons/barcodes/i18n/ro.po",
+      "addons/barcodes/i18n/ru.po",
+      "addons/barcodes/i18n/sl.po",
+      "addons/barcodes/i18n/sr@latin.po",
+      "addons/barcodes/i18n/sv.po",
+      "addons/barcodes/i18n/th.po",
+      "addons/barcodes/i18n/tr.po",
+      "addons/barcodes/i18n/uk.po",
+      "addons/barcodes/i18n/vi.po",
+      "addons/barcodes/i18n/zh_CN.po",
+      "addons/barcodes/i18n/zh_TW.po",
+      "addons/base_automation/i18n/ar.po",
+      "addons/base_automation/i18n/az.po",
+      "addons/base_automation/i18n/bg.po",
+      "addons/base_automation/i18n/ca.po",
+      "addons/base_automation/i18n/cs.po",
+      "addons/base_automation/i18n/da.po",
+      "addons/base_automation/i18n/de.po",
+      "addons/base_automation/i18n/el.po",
+      "addons/base_automation/i18n/es.po",
+      "addons/base_automation/i18n/es_419.po",
+      "addons/base_automation/i18n/et.po",
+      "addons/base_automation/i18n/fa.po",
+      "addons/base_automation/i18n/fi.po",
+      "addons/base_automation/i18n/fr.po",
+      "addons/base_automation/i18n/he.po",
+      "addons/base_automation/i18n/hi.po",
+      "addons/base_automation/i18n/hr.po",
+      "addons/base_automation/i18n/hu.po",
+      "addons/base_automation/i18n/id.po",
+      "addons/base_automation/i18n/it.po",
+      "addons/base_automation/i18n/ja.po",
+      "addons/base_automation/i18n/ko.po",
+      "addons/base_automation/i18n/ku.po",
+      "addons/base_automation/i18n/lt.po",
+      "addons/base_automation/i18n/mn.po",
+      "addons/base_automation/i18n/my.po",
+      "addons/base_automation/i18n/nb.po",
+      "addons/base_automation/i18n/nl.po",
+      "addons/base_automation/i18n/pl.po",
+      "addons/base_automation/i18n/pt.po",
+      "addons/base_automation/i18n/pt_BR.po",
+      "addons/base_automation/i18n/ro.po",
+      "addons/base_automation/i18n/ru.po",
+      "addons/base_automation/i18n/sl.po",
+      "addons/base_automation/i18n/sr@latin.po",
+      "addons/base_automation/i18n/sv.po",
+      "addons/base_automation/i18n/th.po",
+      "addons/base_automation/i18n/tr.po",
+      "addons/base_automation/i18n/uk.po",
+      "addons/base_automation/i18n/vi.po",
+      "addons/base_automation/i18n/zh_CN.po",
+      "addons/base_automation/i18n/zh_TW.po",
+      "addons/calendar/i18n/th.po",
+      "addons/crm/i18n/ar.po",
+      "addons/crm/i18n/az.po",
+      "addons/crm/i18n/bg.po",
+      "addons/crm/i18n/ca.po",
+      "addons/crm/i18n/cs.po",
+      "addons/crm/i18n/da.po",
+      "addons/crm/i18n/de.po",
+      "addons/crm/i18n/el.po",
+      "addons/crm/i18n/es.po",
+      "addons/crm/i18n/es_419.po",
+      "addons/crm/i18n/et.po",
+      "addons/crm/i18n/fa.po",
+      "addons/crm/i18n/fi.po",
+      "addons/crm/i18n/fr.po",
+      "addons/crm/i18n/he.po",
+      "addons/crm/i18n/hi.po",
+      "addons/crm/i18n/hr.po",
+      "addons/crm/i18n/hu.po",
+      "addons/crm/i18n/id.po",
+      "addons/crm/i18n/it.po",
+      "addons/crm/i18n/ja.po",
+      "addons/crm/i18n/ko.po",
+      "addons/crm/i18n/ku.po",
+      "addons/crm/i18n/lt.po",
+      "addons/crm/i18n/mn.po",
+      "addons/crm/i18n/my.po",
+      "addons/crm/i18n/nb.po",
+      "addons/crm/i18n/nl.po",
+      "addons/crm/i18n/pl.po",
+      "addons/crm/i18n/pt.po",
+      "addons/crm/i18n/pt_BR.po",
+      "addons/crm/i18n/ro.po",
+      "addons/crm/i18n/ru.po",
+      "addons/crm/i18n/sl.po",
+      "addons/crm/i18n/sr@latin.po",
+      "addons/crm/i18n/sv.po",
+      "addons/crm/i18n/th.po",
+      "addons/crm/i18n/tr.po",
+      "addons/crm/i18n/uk.po",
+      "addons/crm/i18n/vi.po",
+      "addons/crm/i18n/zh_CN.po",
+      "addons/crm/i18n/zh_TW.po",
+      "addons/crm_mail_plugin/i18n/he.po",
+      "addons/event/i18n/ar.po",
+      "addons/event/i18n/az.po",
+      "addons/event/i18n/bg.po",
+      "addons/event/i18n/ca.po",
+      "addons/event/i18n/cs.po",
+      "addons/event/i18n/da.po",
+      "addons/event/i18n/de.po",
+      "addons/event/i18n/el.po",
+      "addons/event/i18n/es.po",
+      "addons/event/i18n/es_419.po",
+      "addons/event/i18n/et.po",
+      "addons/event/i18n/fa.po",
+      "addons/event/i18n/fi.po",
+      "addons/event/i18n/fr.po",
+      "addons/event/i18n/he.po",
+      "addons/event/i18n/hi.po",
+      "addons/event/i18n/hr.po",
+      "addons/event/i18n/hu.po",
+      "addons/event/i18n/id.po",
+      "addons/event/i18n/it.po",
+      "addons/event/i18n/ja.po",
+      "addons/event/i18n/ko.po",
+      "addons/event/i18n/ku.po",
+      "addons/event/i18n/lt.po",
+      "addons/event/i18n/mn.po",
+      "addons/event/i18n/my.po",
+      "addons/event/i18n/nb.po",
+      "addons/event/i18n/nl.po",
+      "addons/event/i18n/pl.po",
+      "addons/event/i18n/pt.po",
+      "addons/event/i18n/pt_BR.po",
+      "addons/event/i18n/ro.po",
+      "addons/event/i18n/ru.po",
+      "addons/event/i18n/sl.po",
+      "addons/event/i18n/sr@latin.po",
+      "addons/event/i18n/sv.po",
+      "addons/event/i18n/th.po"
+    ],
+    "paths": [
+      "addons/html_builder",
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "4ef046367238801c39333319bddcb5c2c33e9b0f",
+    "html_url": "https://github.com/odoo/odoo/commit/4ef046367238801c39333319bddcb5c2c33e9b0f",
+    "author": {
+      "name": "S\u00e9bastien (blse)",
+      "email": "blse@odoo.com",
+      "date": "2025-10-02T08:55:25Z"
+    },
+    "committer": {
+      "name": "S\u00e9bastien (blse)",
+      "email": "blse@odoo.com",
+      "date": "2025-10-07T10:59:23Z"
+    },
+    "message": "[FIX] website: remove selection in dropdown when it closes\n\nWhen the user has the selection inside a dropdown that closes, the\nselection was kept. If the toolbar was shown on the selection, then used\nto stays floating where the selection used to be.\n\nThis commits listen for the closing of the dropdown to remove the\nselection if it was in the dropdown.\n\nSteps to reproduce:\n- Open website builder\n- Click on the user's name to open the dropdown\n- Select some text in the dropdown (the toolbar should appear)\n- Press \"esc\" (the dropdown should close)\n- Bug: the toolbar is left hanging where the selection used to be\n\ntask-4367641\n\ncloses odoo/odoo#229942\n\nX-original-commit: a45c879472a929ff9381fdb3ef47642a801795c7\nSigned-off-by: Colin Louis (loco) <loco@odoo.com>\nSigned-off-by: S\u00e9bastien Blondiau (blse) <blse@odoo.com>",
+    "files": [
+      "addons/website/static/src/interactions/dropdown.edit.js"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "f7221e9da4c7b227f264fa7bced83c456e48df61",
+    "html_url": "https://github.com/odoo/odoo/commit/f7221e9da4c7b227f264fa7bced83c456e48df61",
+    "author": {
+      "name": "Odoo Translation Bot",
+      "email": "c3p@odoo.com",
+      "date": "2025-10-03T02:37:17Z"
+    },
+    "committer": {
+      "name": "Odoo Translation Bot",
+      "email": "c3p@odoo.com",
+      "date": "2025-10-03T02:37:18Z"
+    },
+    "message": "[I18N] *: fetch translation updates",
+    "files": [
+      "addons/account/i18n/es_419.po",
+      "addons/account/i18n/fr.po",
+      "addons/account/i18n/ja.po",
+      "addons/account/i18n/nl.po",
+      "addons/account_edi_ubl_cii/i18n/pt_BR.po",
+      "addons/account_peppol/i18n/pt_BR.po",
+      "addons/account_peppol_advanced_fields/i18n/pt_BR.po",
+      "addons/api_doc/i18n/pt_BR.po",
+      "addons/auth_timeout/i18n/es_419.po",
+      "addons/auth_timeout/i18n/pt_BR.po",
+      "addons/barcodes/i18n/pt_BR.po",
+      "addons/calendar/i18n/ar.po",
+      "addons/delivery/i18n/ja.po",
+      "addons/event/i18n/ar.po",
+      "addons/event/i18n/ko.po",
+      "addons/hr/i18n/it.po",
+      "addons/hr_org_chart/i18n/it.po",
+      "addons/hr_recruitment/i18n/pt_BR.po",
+      "addons/hr_skills_slides/i18n/pt_BR.po",
+      "addons/hr_skills_survey/i18n/it.po",
+      "addons/hr_work_entry/i18n/pt_BR.po",
+      "addons/html_builder/i18n/pt_BR.po",
+      "addons/html_editor/i18n/pt_BR.po",
+      "addons/link_tracker/i18n/it.po",
+      "addons/loyalty/i18n/pt_BR.po",
+      "addons/marketing_card/i18n/ja.po",
+      "addons/mass_mailing/i18n/ja.po",
+      "addons/mass_mailing/i18n/pt_BR.po",
+      "addons/mrp_account/i18n/pt_BR.po",
+      "addons/partnership/i18n/es_419.po",
+      "addons/partnership/i18n/pt_BR.po",
+      "addons/payment_dpo/i18n/zh_CN.po",
+      "addons/payment_mercado_pago/i18n/pt_BR.po",
+      "addons/payment_paymob/i18n/pt_BR.po",
+      "addons/payment_stripe/i18n/pt_BR.po",
+      "addons/point_of_sale/i18n/es_419.po",
+      "addons/point_of_sale/i18n/nl.po",
+      "addons/point_of_sale/i18n/pt_BR.po",
+      "addons/portal_rating/i18n/pt_BR.po",
+      "addons/pos_glory_cash/i18n/pt_BR.po",
+      "addons/pos_loyalty/i18n/pt_BR.po",
+      "addons/pos_qfpay/i18n/pt_BR.po",
+      "addons/pos_self_order/i18n/pt_BR.po",
+      "addons/project/i18n/it.po",
+      "addons/purchase_stock/i18n/pt_BR.po",
+      "addons/sale/i18n/ar.po",
+      "addons/sale/i18n/it.po",
+      "addons/sale_stock/i18n/pt_BR.po",
+      "addons/sale_timesheet/i18n/pt_BR.po",
+      "addons/spreadsheet/i18n/ja.po",
+      "addons/spreadsheet/i18n/pt_BR.po",
+      "addons/spreadsheet_dashboard_im_livechat/i18n/pt_BR.po",
+      "addons/stock/i18n/el.po",
+      "addons/stock_fleet/i18n/pt_BR.po",
+      "addons/survey_crm/i18n/es_419.po",
+      "addons/survey_crm/i18n/pt_BR.po",
+      "addons/web/i18n/ja.po",
+      "addons/website/i18n/es_419.po",
+      "addons/website/i18n/ja.po",
+      "addons/website/i18n/ko.po",
+      "addons/website_blog/i18n/es_419.po",
+      "addons/website_crm_partner_assign/i18n/es_419.po",
+      "addons/website_crm_partner_assign/i18n/pt_BR.po",
+      "addons/website_event/i18n/es_419.po",
+      "addons/website_event/i18n/pt_BR.po",
+      "addons/website_event_track/i18n/ar.po",
+      "addons/website_event_track/i18n/ko.po",
+      "addons/website_event_track/i18n/pt_BR.po",
+      "addons/website_hr_recruitment_livechat/i18n/pt_BR.po",
+      "addons/website_livechat/i18n/pt_BR.po",
+      "addons/website_mail/i18n/pt_BR.po",
+      "addons/website_mass_mailing/i18n/pt_BR.po",
+      "addons/website_payment/i18n/es_419.po",
+      "addons/website_profile/i18n/pt_BR.po",
+      "addons/website_sale/i18n/es_419.po",
+      "addons/website_sale/i18n/ja.po",
+      "addons/website_sale/i18n/pt_BR.po",
+      "addons/website_sale_collect/i18n/pt_BR.po",
+      "addons/website_sale_comparison/i18n/pt_BR.po",
+      "addons/website_sale_stock/i18n/es_419.po",
+      "addons/website_sale_wishlist/i18n/es_419.po",
+      "addons/website_slides/i18n/es_419.po"
+    ],
+    "paths": [
+      "addons/html_builder",
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "5917bea7fe50b65a91e9981ac7c93bb3e1cff539",
+    "html_url": "https://github.com/odoo/odoo/commit/5917bea7fe50b65a91e9981ac7c93bb3e1cff539",
+    "author": {
+      "name": "Sanjay Sharma",
+      "email": "shsa@odoo.com",
+      "date": "2025-10-03T14:24:55Z"
+    },
+    "committer": {
+      "name": "Sanjay Sharma",
+      "email": "shsa@odoo.com",
+      "date": "2025-10-07T08:57:00Z"
+    },
+    "message": "[FIX] website: ensure copied configurator pages have website_id\n\nThis commit resolves the runbot build error\nhttps://runbot.odoo.com/odoo/runbot.build.error/232963\n\nStandalone script test_02_theme_default_generate_primary_templates\n\nReason:\nThe issue was introduced by commit [1], which creates a copy of\nconfigurator pages but does not set the website_id field on the new\ncopy. As a result, the copied page is missing its website association,\nleading to error.\n\n[1]:https://github.com/odoo/odoo/commit/4231c9e545f\n\ncloses odoo/odoo#229957\n\nSigned-off-by: Serge Bayet (seba) <seba@odoo.com>",
+    "files": [
+      "addons/website/models/website.py"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "082aa2b1f6e5ce8d5e38a153de8c39675dbd042c",
+    "html_url": "https://github.com/odoo/odoo/commit/082aa2b1f6e5ce8d5e38a153de8c39675dbd042c",
+    "author": {
+      "name": "Odoo Translation Bot",
+      "email": "c3p@odoo.com",
+      "date": "2025-10-04T02:33:19Z"
+    },
+    "committer": {
+      "name": "Odoo Translation Bot",
+      "email": "c3p@odoo.com",
+      "date": "2025-10-04T02:33:20Z"
+    },
+    "message": "[I18N] *: fetch translation updates",
+    "files": [
+      "addons/account/i18n/es.po",
+      "addons/account/i18n/hu.po",
+      "addons/account/i18n/ja.po",
+      "addons/account/i18n/lt.po",
+      "addons/account_check_printing/i18n/it.po",
+      "addons/account_edi_ubl_cii/i18n/ko.po",
+      "addons/account_peppol/i18n/ko.po",
+      "addons/api_doc/i18n/it.po",
+      "addons/auth_passkey_portal/i18n/it.po",
+      "addons/auth_signup/i18n/it.po",
+      "addons/auth_signup/i18n/ja.po",
+      "addons/auth_timeout/i18n/it.po",
+      "addons/auth_totp_mail/i18n/zh_TW.po",
+      "addons/barcodes/i18n/el.po",
+      "addons/barcodes/i18n/it.po",
+      "addons/barcodes/i18n/ko.po",
+      "addons/base_import/i18n/lt.po",
+      "addons/base_install_request/i18n/de.po",
+      "addons/calendar/i18n/zh_CN.po",
+      "addons/calendar/i18n/zh_TW.po",
+      "addons/calendar_sms/i18n/lt.po",
+      "addons/crm/i18n/ja.po",
+      "addons/event/i18n/de.po",
+      "addons/fleet/i18n/lt.po",
+      "addons/gamification/i18n/de.po",
+      "addons/hr/i18n/it.po",
+      "addons/hr/i18n/ko.po",
+      "addons/hr_attendance/i18n/ko.po",
+      "addons/hr_holidays/i18n/ja.po",
+      "addons/hr_homeworking/i18n/ja.po",
+      "addons/hr_homeworking_calendar/i18n/ja.po",
+      "addons/hr_recruitment/i18n/ja.po",
+      "addons/hr_skills/i18n/ko.po",
+      "addons/hr_timesheet/i18n/hu.po",
+      "addons/hr_work_entry/i18n/ko.po",
+      "addons/html_builder/i18n/ko.po",
+      "addons/html_editor/i18n/de.po",
+      "addons/link_tracker/i18n/zh_CN.po",
+      "addons/mail/i18n/ko.po",
+      "addons/mail_group/i18n/de.po",
+      "addons/mail_group/i18n/zh_CN.po",
+      "addons/mass_mailing/i18n/ko.po",
+      "addons/mrp_subcontracting/i18n/ko.po",
+      "addons/payment/i18n/es.po",
+      "addons/payment/i18n/ko.po",
+      "addons/payment_dpo/i18n/ko.po",
+      "addons/payment_mercado_pago/i18n/ko.po",
+      "addons/point_of_sale/i18n/de.po",
+      "addons/point_of_sale/i18n/ja.po",
+      "addons/point_of_sale/i18n/ko.po",
+      "addons/pos_event/i18n/it.po",
+      "addons/pos_loyalty/i18n/de.po",
+      "addons/pos_loyalty/i18n/ko.po",
+      "addons/pos_restaurant/i18n/ja.po",
+      "addons/pos_self_order/i18n/de.po",
+      "addons/pos_self_order/i18n/ko.po",
+      "addons/pos_self_order/i18n/zh_CN.po",
+      "addons/product/i18n/el.po",
+      "addons/product_margin/i18n/lt.po",
+      "addons/project/i18n/ja.po",
+      "addons/project/i18n/zh_TW.po",
+      "addons/sale/i18n/ja.po",
+      "addons/sale_timesheet/i18n/fr.po",
+      "addons/spreadsheet/i18n/ko.po",
+      "addons/stock/i18n/el.po",
+      "addons/stock/i18n/es.po",
+      "addons/stock_delivery/i18n/el.po",
+      "addons/stock_fleet/i18n/ko.po",
+      "addons/uom/i18n/el.po",
+      "addons/web/i18n/el.po",
+      "addons/web/i18n/ja.po",
+      "addons/website/i18n/es.po",
+      "addons/website/i18n/ja.po",
+      "addons/website/i18n/ko.po",
+      "addons/website_blog/i18n/ko.po",
+      "addons/website_crm_partner_assign/i18n/ko.po",
+      "addons/website_event/i18n/de.po",
+      "addons/website_event/i18n/ko.po",
+      "addons/website_event_track/i18n/de.po",
+      "addons/website_event_track/i18n/ko.po",
+      "addons/website_livechat/i18n/ko.po",
+      "addons/website_mail/i18n/ko.po",
+      "addons/website_mass_mailing/i18n/it.po",
+      "addons/website_mass_mailing/i18n/ko.po",
+      "addons/website_sale/i18n/ja.po",
+      "addons/website_sale_collect/i18n/ja.po",
+      "addons/website_sale_comparison/i18n/ko.po",
+      "addons/website_slides_survey/i18n/de.po"
+    ],
+    "paths": [
+      "addons/html_builder",
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "d10ca540f4da4cd466054941952107c80dcb9118",
+    "html_url": "https://github.com/odoo/odoo/commit/d10ca540f4da4cd466054941952107c80dcb9118",
+    "author": {
+      "name": "Odoo Translation Bot",
+      "email": "c3p@odoo.com",
+      "date": "2025-10-04T21:40:57Z"
+    },
+    "committer": {
+      "name": "Odoo Translation Bot",
+      "email": "c3p@odoo.com",
+      "date": "2025-10-04T21:40:57Z"
+    },
+    "message": "[I18N] *: export 19.0 source terms",
+    "files": [
+      "addons/account/i18n/account.pot",
+      "addons/hr/i18n/hr.pot",
+      "addons/mail/i18n/mail.pot",
+      "addons/purchase_stock/i18n/purchase_stock.pot",
+      "addons/sale_loyalty/i18n/sale_loyalty.pot",
+      "addons/website/i18n/website.pot",
+      "addons/website_hr_recruitment/i18n/website_hr_recruitment.pot",
+      "addons/website_livechat/i18n/website_livechat.pot",
+      "addons/website_project/i18n/website_project.pot",
+      "addons/website_sale/i18n/website_sale.pot"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "16ce571fb38ad11ee77ac910230a8817d9e61967",
+    "html_url": "https://github.com/odoo/odoo/commit/16ce571fb38ad11ee77ac910230a8817d9e61967",
+    "author": {
+      "name": "Odoo Translation Bot",
+      "email": "c3p@odoo.com",
+      "date": "2025-10-04T22:46:26Z"
+    },
+    "committer": {
+      "name": "Odoo Translation Bot",
+      "email": "c3p@odoo.com",
+      "date": "2025-10-04T22:46:27Z"
+    },
+    "message": "[I18N] *: fetch translation updates",
+    "files": [
+      "addons/account/i18n/ar.po",
+      "addons/account/i18n/az.po",
+      "addons/account/i18n/bg.po",
+      "addons/account/i18n/ca.po",
+      "addons/account/i18n/cs.po",
+      "addons/account/i18n/da.po",
+      "addons/account/i18n/de.po",
+      "addons/account/i18n/el.po",
+      "addons/account/i18n/es.po",
+      "addons/account/i18n/es_419.po",
+      "addons/account/i18n/et.po",
+      "addons/account/i18n/fa.po",
+      "addons/account/i18n/fi.po",
+      "addons/account/i18n/fr.po",
+      "addons/account/i18n/he.po",
+      "addons/account/i18n/hi.po",
+      "addons/account/i18n/hr.po",
+      "addons/account/i18n/hu.po",
+      "addons/account/i18n/id.po",
+      "addons/account/i18n/it.po",
+      "addons/account/i18n/ja.po",
+      "addons/account/i18n/ko.po",
+      "addons/account/i18n/ku.po",
+      "addons/account/i18n/lt.po",
+      "addons/account/i18n/mn.po",
+      "addons/account/i18n/my.po",
+      "addons/account/i18n/nb.po",
+      "addons/account/i18n/nl.po",
+      "addons/account/i18n/pl.po",
+      "addons/account/i18n/pt.po",
+      "addons/account/i18n/pt_BR.po",
+      "addons/account/i18n/ro.po",
+      "addons/account/i18n/ru.po",
+      "addons/account/i18n/sl.po",
+      "addons/account/i18n/sr@latin.po",
+      "addons/account/i18n/sv.po",
+      "addons/account/i18n/th.po",
+      "addons/account/i18n/tr.po",
+      "addons/account/i18n/uk.po",
+      "addons/account/i18n/vi.po",
+      "addons/account/i18n/zh_CN.po",
+      "addons/account/i18n/zh_TW.po",
+      "addons/hr/i18n/ar.po",
+      "addons/hr/i18n/az.po",
+      "addons/hr/i18n/bg.po",
+      "addons/hr/i18n/ca.po",
+      "addons/hr/i18n/cs.po",
+      "addons/hr/i18n/da.po",
+      "addons/hr/i18n/de.po",
+      "addons/hr/i18n/el.po",
+      "addons/hr/i18n/es.po",
+      "addons/hr/i18n/es_419.po",
+      "addons/hr/i18n/et.po",
+      "addons/hr/i18n/fa.po",
+      "addons/hr/i18n/fi.po",
+      "addons/hr/i18n/fr.po",
+      "addons/hr/i18n/he.po",
+      "addons/hr/i18n/hi.po",
+      "addons/hr/i18n/hr.po",
+      "addons/hr/i18n/hu.po",
+      "addons/hr/i18n/id.po",
+      "addons/hr/i18n/it.po",
+      "addons/hr/i18n/ja.po",
+      "addons/hr/i18n/ko.po",
+      "addons/hr/i18n/ku.po",
+      "addons/hr/i18n/lt.po",
+      "addons/hr/i18n/mn.po",
+      "addons/hr/i18n/my.po",
+      "addons/hr/i18n/nb.po",
+      "addons/hr/i18n/nl.po",
+      "addons/hr/i18n/pl.po",
+      "addons/hr/i18n/pt.po",
+      "addons/hr/i18n/pt_BR.po",
+      "addons/hr/i18n/ro.po",
+      "addons/hr/i18n/ru.po",
+      "addons/hr/i18n/sl.po",
+      "addons/hr/i18n/sr@latin.po",
+      "addons/hr/i18n/sv.po",
+      "addons/hr/i18n/th.po",
+      "addons/hr/i18n/tr.po",
+      "addons/hr/i18n/uk.po",
+      "addons/hr/i18n/vi.po",
+      "addons/hr/i18n/zh_CN.po",
+      "addons/hr/i18n/zh_TW.po",
+      "addons/hr_timesheet/i18n/hu.po",
+      "addons/mail/i18n/ar.po",
+      "addons/mail/i18n/az.po",
+      "addons/mail/i18n/bg.po",
+      "addons/mail/i18n/ca.po",
+      "addons/mail/i18n/cs.po",
+      "addons/mail/i18n/da.po",
+      "addons/mail/i18n/de.po",
+      "addons/mail/i18n/el.po",
+      "addons/mail/i18n/es.po",
+      "addons/mail/i18n/es_419.po",
+      "addons/mail/i18n/et.po",
+      "addons/mail/i18n/fa.po",
+      "addons/mail/i18n/fi.po",
+      "addons/mail/i18n/fr.po",
+      "addons/mail/i18n/he.po",
+      "addons/mail/i18n/hi.po",
+      "addons/mail/i18n/hr.po",
+      "addons/mail/i18n/hu.po",
+      "addons/mail/i18n/id.po",
+      "addons/mail/i18n/it.po",
+      "addons/mail/i18n/ja.po",
+      "addons/mail/i18n/ko.po",
+      "addons/mail/i18n/ku.po",
+      "addons/mail/i18n/lt.po",
+      "addons/mail/i18n/mn.po",
+      "addons/mail/i18n/my.po",
+      "addons/mail/i18n/nb.po",
+      "addons/mail/i18n/nl.po",
+      "addons/mail/i18n/pl.po",
+      "addons/mail/i18n/pt.po",
+      "addons/mail/i18n/pt_BR.po",
+      "addons/mail/i18n/ro.po",
+      "addons/mail/i18n/ru.po",
+      "addons/mail/i18n/sl.po",
+      "addons/mail/i18n/sr@latin.po",
+      "addons/mail/i18n/sv.po",
+      "addons/mail/i18n/th.po",
+      "addons/mail/i18n/tr.po",
+      "addons/mail/i18n/uk.po",
+      "addons/mail/i18n/vi.po",
+      "addons/mail/i18n/zh_CN.po",
+      "addons/mail/i18n/zh_TW.po",
+      "addons/product/i18n/lt.po",
+      "addons/purchase_stock/i18n/ar.po",
+      "addons/purchase_stock/i18n/az.po",
+      "addons/purchase_stock/i18n/bg.po",
+      "addons/purchase_stock/i18n/ca.po",
+      "addons/purchase_stock/i18n/cs.po",
+      "addons/purchase_stock/i18n/da.po",
+      "addons/purchase_stock/i18n/de.po",
+      "addons/purchase_stock/i18n/el.po",
+      "addons/purchase_stock/i18n/es.po",
+      "addons/purchase_stock/i18n/es_419.po",
+      "addons/purchase_stock/i18n/et.po",
+      "addons/purchase_stock/i18n/fa.po",
+      "addons/purchase_stock/i18n/fi.po",
+      "addons/purchase_stock/i18n/fr.po",
+      "addons/purchase_stock/i18n/he.po",
+      "addons/purchase_stock/i18n/hi.po",
+      "addons/purchase_stock/i18n/hr.po",
+      "addons/purchase_stock/i18n/hu.po",
+      "addons/purchase_stock/i18n/id.po",
+      "addons/purchase_stock/i18n/it.po",
+      "addons/purchase_stock/i18n/ja.po",
+      "addons/purchase_stock/i18n/ko.po",
+      "addons/purchase_stock/i18n/ku.po",
+      "addons/purchase_stock/i18n/lt.po",
+      "addons/purchase_stock/i18n/mn.po",
+      "addons/purchase_stock/i18n/my.po",
+      "addons/purchase_stock/i18n/nb.po",
+      "addons/purchase_stock/i18n/nl.po",
+      "addons/purchase_stock/i18n/pl.po",
+      "addons/purchase_stock/i18n/pt.po",
+      "addons/purchase_stock/i18n/pt_BR.po",
+      "addons/purchase_stock/i18n/ro.po",
+      "addons/purchase_stock/i18n/ru.po",
+      "addons/purchase_stock/i18n/sl.po",
+      "addons/purchase_stock/i18n/sr@latin.po",
+      "addons/purchase_stock/i18n/sv.po",
+      "addons/purchase_stock/i18n/th.po",
+      "addons/purchase_stock/i18n/tr.po",
+      "addons/purchase_stock/i18n/uk.po",
+      "addons/purchase_stock/i18n/vi.po",
+      "addons/purchase_stock/i18n/zh_CN.po",
+      "addons/purchase_stock/i18n/zh_TW.po",
+      "addons/sale_loyalty/i18n/ar.po",
+      "addons/sale_loyalty/i18n/az.po",
+      "addons/sale_loyalty/i18n/bg.po",
+      "addons/sale_loyalty/i18n/ca.po",
+      "addons/sale_loyalty/i18n/cs.po",
+      "addons/sale_loyalty/i18n/da.po",
+      "addons/sale_loyalty/i18n/de.po",
+      "addons/sale_loyalty/i18n/el.po",
+      "addons/sale_loyalty/i18n/es.po",
+      "addons/sale_loyalty/i18n/es_419.po",
+      "addons/sale_loyalty/i18n/et.po",
+      "addons/sale_loyalty/i18n/fa.po",
+      "addons/sale_loyalty/i18n/fi.po",
+      "addons/sale_loyalty/i18n/fr.po",
+      "addons/sale_loyalty/i18n/he.po",
+      "addons/sale_loyalty/i18n/hi.po",
+      "addons/sale_loyalty/i18n/hr.po",
+      "addons/sale_loyalty/i18n/hu.po",
+      "addons/sale_loyalty/i18n/id.po",
+      "addons/sale_loyalty/i18n/it.po",
+      "addons/sale_loyalty/i18n/ja.po",
+      "addons/sale_loyalty/i18n/ko.po",
+      "addons/sale_loyalty/i18n/ku.po",
+      "addons/sale_loyalty/i18n/lt.po",
+      "addons/sale_loyalty/i18n/mn.po",
+      "addons/sale_loyalty/i18n/my.po",
+      "addons/sale_loyalty/i18n/nb.po",
+      "addons/sale_loyalty/i18n/nl.po",
+      "addons/sale_loyalty/i18n/pl.po",
+      "addons/sale_loyalty/i18n/pt.po",
+      "addons/sale_loyalty/i18n/pt_BR.po",
+      "addons/sale_loyalty/i18n/ro.po",
+      "addons/sale_loyalty/i18n/ru.po",
+      "addons/sale_loyalty/i18n/sl.po",
+      "addons/sale_loyalty/i18n/sr@latin.po",
+      "addons/sale_loyalty/i18n/sv.po",
+      "addons/sale_loyalty/i18n/th.po",
+      "addons/sale_loyalty/i18n/tr.po",
+      "addons/sale_loyalty/i18n/uk.po",
+      "addons/sale_loyalty/i18n/vi.po",
+      "addons/sale_loyalty/i18n/zh_CN.po",
+      "addons/sale_loyalty/i18n/zh_TW.po",
+      "addons/website/i18n/ar.po",
+      "addons/website/i18n/az.po",
+      "addons/website/i18n/bg.po",
+      "addons/website/i18n/ca.po",
+      "addons/website/i18n/cs.po",
+      "addons/website/i18n/da.po",
+      "addons/website/i18n/de.po",
+      "addons/website/i18n/el.po",
+      "addons/website/i18n/es.po",
+      "addons/website/i18n/es_419.po",
+      "addons/website/i18n/et.po",
+      "addons/website/i18n/fa.po",
+      "addons/website/i18n/fi.po",
+      "addons/website/i18n/fr.po",
+      "addons/website/i18n/he.po",
+      "addons/website/i18n/hi.po",
+      "addons/website/i18n/hr.po",
+      "addons/website/i18n/hu.po",
+      "addons/website/i18n/id.po",
+      "addons/website/i18n/it.po",
+      "addons/website/i18n/ja.po",
+      "addons/website/i18n/ko.po",
+      "addons/website/i18n/ku.po",
+      "addons/website/i18n/lt.po",
+      "addons/website/i18n/mn.po",
+      "addons/website/i18n/my.po",
+      "addons/website/i18n/nb.po",
+      "addons/website/i18n/nl.po",
+      "addons/website/i18n/pl.po",
+      "addons/website/i18n/pt.po",
+      "addons/website/i18n/pt_BR.po",
+      "addons/website/i18n/ro.po",
+      "addons/website/i18n/ru.po",
+      "addons/website/i18n/sl.po",
+      "addons/website/i18n/sr@latin.po",
+      "addons/website/i18n/sv.po",
+      "addons/website/i18n/th.po",
+      "addons/website/i18n/tr.po",
+      "addons/website/i18n/uk.po",
+      "addons/website/i18n/vi.po",
+      "addons/website/i18n/zh_CN.po",
+      "addons/website/i18n/zh_TW.po",
+      "addons/website_hr_recruitment/i18n/ar.po",
+      "addons/website_hr_recruitment/i18n/az.po",
+      "addons/website_hr_recruitment/i18n/bg.po",
+      "addons/website_hr_recruitment/i18n/ca.po",
+      "addons/website_hr_recruitment/i18n/cs.po",
+      "addons/website_hr_recruitment/i18n/da.po",
+      "addons/website_hr_recruitment/i18n/de.po",
+      "addons/website_hr_recruitment/i18n/el.po",
+      "addons/website_hr_recruitment/i18n/es.po",
+      "addons/website_hr_recruitment/i18n/es_419.po",
+      "addons/website_hr_recruitment/i18n/et.po",
+      "addons/website_hr_recruitment/i18n/fa.po",
+      "addons/website_hr_recruitment/i18n/fi.po",
+      "addons/website_hr_recruitment/i18n/fr.po",
+      "addons/website_hr_recruitment/i18n/he.po",
+      "addons/website_hr_recruitment/i18n/hi.po",
+      "addons/website_hr_recruitment/i18n/hr.po",
+      "addons/website_hr_recruitment/i18n/hu.po",
+      "addons/website_hr_recruitment/i18n/id.po",
+      "addons/website_hr_recruitment/i18n/it.po",
+      "addons/website_hr_recruitment/i18n/ja.po",
+      "addons/website_hr_recruitment/i18n/ko.po",
+      "addons/website_hr_recruitment/i18n/ku.po",
+      "addons/website_hr_recruitment/i18n/lt.po",
+      "addons/website_hr_recruitment/i18n/mn.po",
+      "addons/website_hr_recruitment/i18n/my.po",
+      "addons/website_hr_recruitment/i18n/nb.po",
+      "addons/website_hr_recruitment/i18n/nl.po",
+      "addons/website_hr_recruitment/i18n/pl.po",
+      "addons/website_hr_recruitment/i18n/pt.po",
+      "addons/website_hr_recruitment/i18n/pt_BR.po",
+      "addons/website_hr_recruitment/i18n/ro.po",
+      "addons/website_hr_recruitment/i18n/ru.po",
+      "addons/website_hr_recruitment/i18n/sl.po",
+      "addons/website_hr_recruitment/i18n/sr@latin.po",
+      "addons/website_hr_recruitment/i18n/sv.po",
+      "addons/website_hr_recruitment/i18n/th.po",
+      "addons/website_hr_recruitment/i18n/tr.po",
+      "addons/website_hr_recruitment/i18n/uk.po",
+      "addons/website_hr_recruitment/i18n/vi.po",
+      "addons/website_hr_recruitment/i18n/zh_CN.po",
+      "addons/website_hr_recruitment/i18n/zh_TW.po",
+      "addons/website_livechat/i18n/ar.po",
+      "addons/website_livechat/i18n/az.po",
+      "addons/website_livechat/i18n/bg.po",
+      "addons/website_livechat/i18n/ca.po"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "0fc107a3cca85e107302d108ee7a85abdc376412",
+    "html_url": "https://github.com/odoo/odoo/commit/0fc107a3cca85e107302d108ee7a85abdc376412",
+    "author": {
+      "name": "FrancoisGe",
+      "email": "fge@odoo.com",
+      "date": "2025-10-06T09:26:45Z"
+    },
+    "committer": {
+      "name": "FrancoisGe",
+      "email": "fge@odoo.com",
+      "date": "2025-10-08T09:16:59Z"
+    },
+    "message": "[FIX] website: unskip test_03_snippets_all_drag_and_drop\n\nSince PR odoo/odoo#214984, the \u201ctest_03_snippets_all_drag_and_drop\u201d test fails\nbecause the video snippet opens the media dialog and the test does\nnot handle it.\n\ncloses odoo/odoo#230087\n\nSolution: as with image snippets, we will ignore them in this test.\nError: https://runbot.odoo.com/odoo/runbot.build.error/231594\nSigned-off-by: Benoit Socias (bso) <bso@odoo.com>",
+    "files": [
+      "addons/website/tests/test_snippets.py"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "4cd1ad3aa46ad4645fc7b5e530b79d53382de6d5",
+    "html_url": "https://github.com/odoo/odoo/commit/4cd1ad3aa46ad4645fc7b5e530b79d53382de6d5",
+    "author": {
+      "name": "Odoo Translation Bot",
+      "email": "c3p@odoo.com",
+      "date": "2025-10-06T23:44:48Z"
+    },
+    "committer": {
+      "name": "Odoo Translation Bot",
+      "email": "c3p@odoo.com",
+      "date": "2025-10-06T23:44:49Z"
+    },
+    "message": "[I18N] *: fetch translation updates",
+    "files": [
+      "addons/account/i18n/es_419.po",
+      "addons/account/i18n/he.po",
+      "addons/account_edi_ubl_cii/i18n/pt_BR.po",
+      "addons/account_peppol_advanced_fields/i18n/es_419.po",
+      "addons/account_peppol_advanced_fields/i18n/pt_BR.po",
+      "addons/api_doc/i18n/es_419.po",
+      "addons/api_doc/i18n/pt_BR.po",
+      "addons/auth_passkey_portal/i18n/es_419.po",
+      "addons/auth_timeout/i18n/es_419.po",
+      "addons/auth_timeout/i18n/pt_BR.po",
+      "addons/barcodes/i18n/pt_BR.po",
+      "addons/base_import_module/i18n/pt_BR.po",
+      "addons/calendar/i18n/pt_BR.po",
+      "addons/gamification/i18n/ko.po",
+      "addons/google_address_autocomplete/i18n/es_419.po",
+      "addons/google_address_autocomplete/i18n/pt_BR.po",
+      "addons/hr_attendance/i18n/pt_BR.po",
+      "addons/hr_expense/i18n/es_419.po",
+      "addons/hr_gamification/i18n/ko.po",
+      "addons/hr_gamification/i18n/pt_BR.po",
+      "addons/hr_presence/i18n/pt_BR.po",
+      "addons/hr_recruitment/i18n/pt_BR.po",
+      "addons/hr_skills/i18n/es_419.po",
+      "addons/hr_skills_event/i18n/es_419.po",
+      "addons/hr_work_entry/i18n/pt_BR.po",
+      "addons/html_builder/i18n/pt_BR.po",
+      "addons/html_editor/i18n/ko.po",
+      "addons/partnership/i18n/es_419.po",
+      "addons/partnership/i18n/pt_BR.po",
+      "addons/payment_dpo/i18n/es_419.po",
+      "addons/payment_iyzico/i18n/es_419.po",
+      "addons/payment_mercado_pago/i18n/pt_BR.po",
+      "addons/payment_paymob/i18n/pt_BR.po",
+      "addons/payment_redsys/i18n/es_419.po",
+      "addons/point_of_sale/i18n/es_419.po",
+      "addons/pos_adyen/i18n/pt_BR.po",
+      "addons/pos_glory_cash/i18n/es_419.po",
+      "addons/pos_glory_cash/i18n/pt_BR.po",
+      "addons/pos_loyalty/i18n/pt_BR.po",
+      "addons/pos_qfpay/i18n/pt_BR.po",
+      "addons/pos_repair/i18n/es_419.po",
+      "addons/pos_self_order/i18n/ko.po",
+      "addons/pos_self_order_qfpay/i18n/es_419.po",
+      "addons/product/i18n/es_419.po",
+      "addons/purchase_stock/i18n/pt_BR.po",
+      "addons/resource/i18n/pt_BR.po",
+      "addons/sale_project/i18n/pt_BR.po",
+      "addons/sale_stock_product_expiry/i18n/es_419.po",
+      "addons/sale_timesheet/i18n/pt_BR.po",
+      "addons/spreadsheet/i18n/ko.po",
+      "addons/spreadsheet/i18n/pt_BR.po",
+      "addons/spreadsheet_dashboard_im_livechat/i18n/pt_BR.po",
+      "addons/stock_account/i18n/pt_BR.po",
+      "addons/stock_fleet/i18n/pt_BR.po",
+      "addons/survey_crm/i18n/es_419.po",
+      "addons/survey_crm/i18n/pt_BR.po",
+      "addons/web/i18n/es_419.po",
+      "addons/web/i18n/ko.po",
+      "addons/web_tour/i18n/pt_BR.po",
+      "addons/web_unsplash/i18n/pt_BR.po",
+      "addons/website/i18n/ko.po",
+      "addons/website_blog/i18n/pt_BR.po",
+      "addons/website_crm_partner_assign/i18n/pt_BR.po",
+      "addons/website_event/i18n/pt_BR.po",
+      "addons/website_event_track/i18n/pt_BR.po",
+      "addons/website_event_track/i18n/zh_CN.po",
+      "addons/website_forum/i18n/ko.po",
+      "addons/website_hr_recruitment/i18n/pt_BR.po",
+      "addons/website_hr_recruitment_livechat/i18n/es_419.po",
+      "addons/website_hr_recruitment_livechat/i18n/pt_BR.po",
+      "addons/website_links/i18n/pt_BR.po",
+      "addons/website_livechat/i18n/pt_BR.po",
+      "addons/website_mass_mailing/i18n/es_419.po",
+      "addons/website_mass_mailing/i18n/pt_BR.po",
+      "addons/website_partner/i18n/es_419.po",
+      "addons/website_profile/i18n/ko.po",
+      "addons/website_profile/i18n/pt_BR.po",
+      "addons/website_project/i18n/pt_BR.po",
+      "addons/website_sale/i18n/es_419.po",
+      "addons/website_sale/i18n/ko.po",
+      "addons/website_sale/i18n/pt_BR.po",
+      "addons/website_sale_comparison/i18n/es_419.po",
+      "addons/website_sale_comparison/i18n/pt_BR.po",
+      "addons/website_sale_wishlist/i18n/es_419.po",
+      "addons/website_slides/i18n/ko.po",
+      "odoo/addons/base/i18n/es_419.po"
+    ],
+    "paths": [
+      "addons/html_builder",
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "a8818f596774a902eb8568fbe7634c3a4bcf7268",
+    "html_url": "https://github.com/odoo/odoo/commit/a8818f596774a902eb8568fbe7634c3a4bcf7268",
+    "author": {
+      "name": "Tiffany Chang (tic)",
+      "email": "tic@odoo.com",
+      "date": "2025-10-07T13:45:43Z"
+    },
+    "committer": {
+      "name": "Tiffany Chang (tic)",
+      "email": "tic@odoo.com",
+      "date": "2025-10-07T17:06:15Z"
+    },
+    "message": "[I18N] html_builder: add missing msgstr \"\"\n\npot file was manually edited, resulting in invalid pot file.\n\ncloses odoo/odoo#230326\n\nSigned-off-by: Tiffany Chang (tic) <tic@odoo.com>",
+    "files": [
+      "addons/html_builder/i18n/html_builder.pot"
+    ],
+    "paths": [
+      "addons/html_builder"
+    ]
+  },
+  {
+    "sha": "5ed72bffc30290ac100a8c716677e8869e4ea287",
+    "html_url": "https://github.com/odoo/odoo/commit/5ed72bffc30290ac100a8c716677e8869e4ea287",
+    "author": {
+      "name": "Odoo Translation Bot",
+      "email": "c3p@odoo.com",
+      "date": "2025-10-08T02:31:45Z"
+    },
+    "committer": {
+      "name": "Odoo Translation Bot",
+      "email": "c3p@odoo.com",
+      "date": "2025-10-08T02:31:45Z"
+    },
+    "message": "[I18N] *: fetch translation updates",
+    "files": [
+      "addons/account_peppol_advanced_fields/i18n/es_419.po",
+      "addons/api_doc/i18n/es_419.po",
+      "addons/auth_passkey_portal/i18n/es_419.po",
+      "addons/auth_timeout/i18n/es_419.po",
+      "addons/auth_totp_portal/i18n/es_419.po",
+      "addons/base_automation/i18n/it.po",
+      "addons/base_import/i18n/es_419.po",
+      "addons/base_install_request/i18n/ja.po",
+      "addons/crm/i18n/es_419.po",
+      "addons/crm/i18n/it.po",
+      "addons/crm_livechat/i18n/es_419.po",
+      "addons/delivery/i18n/es_419.po",
+      "addons/delivery_mondialrelay/i18n/it.po",
+      "addons/event/i18n/ar.po",
+      "addons/event/i18n/es_419.po",
+      "addons/event_booth_sale/i18n/it.po",
+      "addons/google_address_autocomplete/i18n/es_419.po",
+      "addons/hr_org_chart/i18n/es_419.po",
+      "addons/hr_recruitment/i18n/es_419.po",
+      "addons/hr_skills_event/i18n/es_419.po",
+      "addons/html_builder/i18n/ar.po",
+      "addons/html_builder/i18n/az.po",
+      "addons/html_builder/i18n/bg.po",
+      "addons/html_builder/i18n/ca.po",
+      "addons/html_builder/i18n/cs.po",
+      "addons/html_builder/i18n/da.po",
+      "addons/html_builder/i18n/de.po",
+      "addons/html_builder/i18n/el.po",
+      "addons/html_builder/i18n/es.po",
+      "addons/html_builder/i18n/es_419.po",
+      "addons/html_builder/i18n/et.po",
+      "addons/html_builder/i18n/fa.po",
+      "addons/html_builder/i18n/fi.po",
+      "addons/html_builder/i18n/fr.po",
+      "addons/html_builder/i18n/he.po",
+      "addons/html_builder/i18n/hi.po",
+      "addons/html_builder/i18n/hr.po",
+      "addons/html_builder/i18n/hu.po",
+      "addons/html_builder/i18n/id.po",
+      "addons/html_builder/i18n/it.po",
+      "addons/html_builder/i18n/ja.po",
+      "addons/html_builder/i18n/ko.po",
+      "addons/html_builder/i18n/ku.po",
+      "addons/html_builder/i18n/lt.po",
+      "addons/html_builder/i18n/mn.po",
+      "addons/html_builder/i18n/my.po",
+      "addons/html_builder/i18n/nb.po",
+      "addons/html_builder/i18n/nl.po",
+      "addons/html_builder/i18n/pl.po",
+      "addons/html_builder/i18n/pt.po",
+      "addons/html_builder/i18n/pt_BR.po",
+      "addons/html_builder/i18n/ro.po",
+      "addons/html_builder/i18n/ru.po",
+      "addons/html_builder/i18n/sl.po",
+      "addons/html_builder/i18n/sr@latin.po",
+      "addons/html_builder/i18n/sv.po",
+      "addons/html_builder/i18n/th.po",
+      "addons/html_builder/i18n/tr.po",
+      "addons/html_builder/i18n/uk.po",
+      "addons/html_builder/i18n/vi.po",
+      "addons/html_builder/i18n/zh_CN.po",
+      "addons/html_builder/i18n/zh_TW.po",
+      "addons/im_livechat/i18n/es_419.po",
+      "addons/mail/i18n/es_419.po",
+      "addons/mail_group/i18n/ja.po",
+      "addons/mass_mailing_sms/i18n/es_419.po",
+      "addons/partnership/i18n/es_419.po",
+      "addons/payment/i18n/es_419.po",
+      "addons/payment_dpo/i18n/es_419.po",
+      "addons/payment_iyzico/i18n/es_419.po",
+      "addons/payment_paymob/i18n/es_419.po",
+      "addons/payment_redsys/i18n/es_419.po",
+      "addons/phone_validation/i18n/es_419.po",
+      "addons/point_of_sale/i18n/es_419.po",
+      "addons/portal/i18n/es_419.po",
+      "addons/pos_glory_cash/i18n/es_419.po",
+      "addons/pos_qfpay/i18n/es_419.po",
+      "addons/pos_self_order/i18n/ja.po",
+      "addons/product/i18n/es_419.po",
+      "addons/project/i18n/es_419.po",
+      "addons/sale_gelato/i18n/ja.po",
+      "addons/sale_stock_product_expiry/i18n/es_419.po",
+      "addons/spreadsheet/i18n/ko.po",
+      "addons/stock_maintenance/i18n/es_419.po",
+      "addons/survey_crm/i18n/es_419.po",
+      "addons/website/i18n/es_419.po",
+      "addons/website_blog/i18n/es_419.po",
+      "addons/website_customer/i18n/es_419.po",
+      "addons/website_event/i18n/es_419.po",
+      "addons/website_event_sale/i18n/it.po",
+      "addons/website_forum/i18n/es_419.po",
+      "addons/website_forum/i18n/it.po",
+      "addons/website_hr_recruitment/i18n/es_419.po",
+      "addons/website_hr_recruitment_livechat/i18n/es_419.po",
+      "addons/website_mass_mailing/i18n/es_419.po",
+      "addons/website_partner/i18n/es_419.po",
+      "addons/website_payment/i18n/es_419.po",
+      "addons/website_profile/i18n/es_419.po",
+      "addons/website_sale/i18n/es_419.po",
+      "addons/website_sale_collect/i18n/es_419.po",
+      "addons/website_sale_comparison/i18n/es_419.po",
+      "addons/website_sale_mass_mailing/i18n/es_419.po",
+      "addons/website_sale_slides/i18n/es_419.po",
+      "addons/website_sale_stock/i18n/es_419.po",
+      "addons/website_sale_stock/i18n/it.po",
+      "addons/website_sale_stock_wishlist/i18n/it.po",
+      "addons/website_sale_wishlist/i18n/es_419.po",
+      "addons/website_slides/i18n/es_419.po",
+      "addons/website_slides_forum/i18n/it.po",
+      "addons/website_slides_survey/i18n/it.po",
+      "addons/website_timesheet/i18n/it.po",
+      "odoo/addons/base/i18n/es_419.po",
+      "odoo/addons/base/i18n/fr.po",
+      "odoo/addons/base/i18n/sv.po"
+    ],
+    "paths": [
+      "addons/html_builder",
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "2a7d0fadc859611908b1e9780d907546e60ec373",
+    "html_url": "https://github.com/odoo/odoo/commit/2a7d0fadc859611908b1e9780d907546e60ec373",
+    "author": {
+      "name": "Odoo Translation Bot",
+      "email": "c3p@odoo.com",
+      "date": "2025-10-08T07:51:35Z"
+    },
+    "committer": {
+      "name": "Odoo Translation Bot",
+      "email": "c3p@odoo.com",
+      "date": "2025-10-08T07:51:35Z"
+    },
+    "message": "[I18N] *: fetch translation updates",
+    "files": [
+      "addons/api_doc/i18n/ja.po",
+      "addons/auth_signup/i18n/ja.po",
+      "addons/iot_base/i18n/ja.po",
+      "addons/sale_gelato_stock/i18n/ja.po",
+      "addons/website/i18n/ja.po"
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  }
+]
