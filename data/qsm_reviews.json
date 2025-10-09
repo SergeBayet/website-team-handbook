@@ -1,0 +1,2598 @@
+[
+  {
+    "number": 230612,
+    "url": "https://github.com/odoo/odoo/pull/230612",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-10-08T14:41:02Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/230612#pullrequestreview-3315165569"
+      }
+    ]
+  },
+  {
+    "number": 230030,
+    "url": "https://github.com/odoo/odoo/pull/230030",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-10-05T20:25:28Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/230030#pullrequestreview-3302529918"
+      }
+    ]
+  },
+  {
+    "number": 229594,
+    "url": "https://github.com/odoo/odoo/pull/229594",
+    "comments": [
+      {
+        "type": "review",
+        "body": "Seems good, thanks :+1: We normally don't *change* XML in stable but I think this is an acceptable exception.\r\n\r\n@robodoo r+",
+        "submitted_at": "2025-10-03T17:09:57Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/229594#pullrequestreview-3300015064"
+      }
+    ]
+  },
+  {
+    "number": 229086,
+    "url": "https://github.com/odoo/odoo/pull/229086",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-10-02T14:45:56Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/229086#pullrequestreview-3294999817"
+      }
+    ]
+  },
+  {
+    "number": 228947,
+    "url": "https://github.com/odoo/odoo/pull/228947",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-10-05T12:18:40Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/228947#pullrequestreview-3302373986"
+      }
+    ]
+  },
+  {
+    "number": 228860,
+    "url": "https://github.com/odoo/odoo/pull/228860",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-26T18:55:21Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/228860#pullrequestreview-3273506934"
+      }
+    ]
+  },
+  {
+    "number": 228728,
+    "url": "https://github.com/odoo/odoo/pull/228728",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "This commit only includes the addition of the import I guess something more should be in this commit (the removal of isArtificialVoidElement) I guess",
+        "created_at": "2025-09-26T11:47:08Z",
+        "html_url": "https://github.com/odoo/odoo/pull/228728#discussion_r2382147403",
+        "path": "addons/html_editor/static/src/core/content_editable_plugin.js",
+        "position": 3
+      },
+      {
+        "type": "review_comment",
+        "body": "For this second commit, you know where is the code that handles the double click?\r\n<img width=\"548\" height=\"221\" alt=\"image\" src=\"https://github.com/user-attachments/assets/0cf06c21-c776-4088-8ea6-67f547f4ae9b\" />\r\n\r\nJust curious",
+        "created_at": "2025-09-26T11:58:46Z",
+        "html_url": "https://github.com/odoo/odoo/pull/228728#discussion_r2382189624",
+        "path": "addons/html_editor/static/src/core/content_editable_plugin.js",
+        "position": 28
+      },
+      {
+        "type": "review_comment",
+        "body": "@dmo-odoo Sorry, forgot to send my answer. I don't know about finding an existing case but it's easy to create one: a non-savable area which contains an image with that class.\r\n\r\no_editable_media means that the image is editable, despite its **first** potential contenteditable=\"false\" ancestor. E.g. your team snippet case: the column that contains the image is not editable (because we don't want users to add text inside by mistake) but the image is. So we use a combination of contenteditable=\"false\" on the column and the o_editable_media class on the image (I guess you know all this since we decided it together).\r\n\r\nThen the `shouldEditableMediaBeEditable` is still necessary as a way to check that editing the image actually make sense: if it is *savable*. That function checks that the image is in a savable section.\r\n\r\nEasy to reproduce:\r\n- Add a team snippet in a page: see that the images are editable\r\n- Open the dev tools: inside one of the team member description, add `<t t-out=\"website.name\"/>`\r\n- Save the page (the website name appears in your member description)\r\n- Now re-enter edit mode: see that we now rightfully can still edit the images of the team members **except the one where there is the t-out** (well in theory it could but that's a limitation in this case, because the image column is marked as non editable in the first place).\r\n\r\nLOCO has been working on distinguishing the \"editable\" notion from the \"savable\" notion (and I thought his plan was to rename o_editable into o_savable, don't know). `shouldEditableMediaBeEditable` should probably have been named `shouldEditableMediaBeActuallyEditableBecauseItActuallyIsSavable` but it seemed too much :upside_down_face:  I preferred adding comments explaining why the function name is bad :upside_down_face: I guess I was not clear enough. But the \"savable\" notion is just a shortcut to explain it, my original code (which now changed to only support that \"savable\" notion I see :shrug:) was meant to support more. For example: simply a team snippet that was marked as not editable anymore thanks to the o_not_editable class so that some users don't break it (as we did in the past and probably still for some blocks on internal).",
+        "created_at": "2025-10-02T15:16:38Z",
+        "html_url": "https://github.com/odoo/odoo/pull/228728#discussion_r2399192417",
+        "path": "addons/html_editor/static/src/core/content_editable_plugin.js",
+        "position": 28
+      },
+      {
+        "type": "review_comment",
+        "body": "> The fix I am suggesting would only put the class on images that are \"savable\", that is the ones having a closest('.o_editable')\r\n\r\nThat's impossible, as the whole point of the class is to declare an image as editable in a non-editable sub-area, in a savable zone. I don't even know/remember why we have a  JS code adding the class in the first place (was it the case before 18.4?). But in any case, if it makes sense, it should surely not be conditional on the image being in a savable zone (at least not as an exception: it probably never make sense to edit a non-savable area, not just that particular class).\r\n\r\nThe steps to reproduce I sent you are actually the proof: we have images with the class, then the zone becomes unsavable... but the o_editable_media class will still be there and won't mean it is editable.\r\n\r\nAnother way to say it: if it was possible to do what you are saying (\"determine if the class should be added based on the environment\"), then we would not need the class at all.",
+        "created_at": "2025-10-06T12:02:24Z",
+        "html_url": "https://github.com/odoo/odoo/pull/228728#discussion_r2405936589",
+        "path": "addons/html_editor/static/src/core/content_editable_plugin.js",
+        "position": 28
+      },
+      {
+        "type": "review_comment",
+        "body": "Ok, I spoke a bit with @loco-odoo : I kinda forgot the system changed but still:\r\n\r\n- Either we base the new system on adding the `o_editable_media` class automatically during edit mode only, in which case you either have to:\r\n  - Ignore existing databases that had the class saved (never fan of that) and the errors that come with them in the new system\r\n  - Upgrade scripts\r\n  - Remove the class everywhere when entering edit mode\r\n- Or we live with both systems at the same time, in which case the `shouldEditableMediaBeEditable` check is still required**\r\n\r\n\r\n** living with both system is what I recommend for `o_not_editable` for example as it is way older, an easy way for people to declare non editable zone and just an extra selection in the \"non editable element selector list\" (without any associated code like `shouldEditableMediaBeEditable`, hopefully)\r\n ",
+        "created_at": "2025-10-06T12:47:41Z",
+        "html_url": "https://github.com/odoo/odoo/pull/228728#discussion_r2406072089",
+        "path": "addons/html_editor/static/src/core/content_editable_plugin.js",
+        "position": 28
+      },
+      {
+        "type": "review",
+        "body": "Thanks for checking",
+        "submitted_at": "2025-09-26T11:59:00Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/228728#pullrequestreview-3271869495"
+      }
+    ]
+  },
+  {
+    "number": 228575,
+    "url": "https://github.com/odoo/odoo/pull/228575",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "In stable we generally avoid changing attribute values. If someone currently sells your fix as a custo, he might create a view that xpaths `//div[data-selector=\".o_wcrm_filters_top\"]`, which would later crash if the app is updated.\r\n\r\nAlso, nobody would get this fix in 17.0 as they would need to -u.\r\n\r\nThere are two other workarounds:\r\n- Using `_patchForComputeSnippetTemplates`, but when it's about *changing* an attribute, it's not the best.\r\n- Using `_computeWidgetVisibility` (possibly combined to `_patchForComputeSnippetTemplates` to add a data-name if no other ways to differentiate the widget via `params`).\r\n\r\nIn 19.0, as this became static XML, this would at least ease adding the potentially required data-name, but I still think we should get more careful about *changing attribute values* (even in static XML) when there are ways to avoid it easily as the more Odoo will be used, the more that kind of custom xpath will get likely :grimacing: ",
+        "created_at": "2025-10-06T15:25:58Z",
+        "html_url": "https://github.com/odoo/odoo/pull/228575#discussion_r2407007112",
+        "path": "addons/website_customer/views/snippets.xml",
+        "position": 1
+      }
+    ]
+  },
+  {
+    "number": 228428,
+    "url": "https://github.com/odoo/odoo/pull/228428",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+ up to saas-18.4",
+        "submitted_at": "2025-09-26T11:12:01Z",
+        "state": "COMMENTED",
+        "html_url": "https://github.com/odoo/odoo/pull/228428#pullrequestreview-3271720759"
+      }
+    ]
+  },
+  {
+    "number": 228321,
+    "url": "https://github.com/odoo/odoo/pull/228321",
+    "comments": [
+      {
+        "type": "issue_comment",
+        "body": "@xO-Tx Status here? :pray: ",
+        "created_at": "2025-10-02T16:43:33Z",
+        "html_url": "https://github.com/odoo/odoo/pull/228321#issuecomment-3362128556"
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-10-06T13:11:35Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/228321#pullrequestreview-3304523885"
+      }
+    ]
+  },
+  {
+    "number": 228314,
+    "url": "https://github.com/odoo/odoo/pull/228314",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-10-06T12:25:28Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/228314#pullrequestreview-3304276561"
+      }
+    ]
+  },
+  {
+    "number": 228253,
+    "url": "https://github.com/odoo/odoo/pull/228253",
+    "comments": [
+      {
+        "type": "issue_comment",
+        "body": "@nle-odoo Yes I think it's worth it: with that one week, there was nearly 100k trials that started with website, most are probably testing things of course but that still potentially a lot of new customers who could stumble upon that issue in the next months.\r\n\r\nAnd I guess we could add an unit test in the 19.0 version :pray: \r\n\r\nThanks! ",
+        "created_at": "2025-09-27T06:41:07Z",
+        "html_url": "https://github.com/odoo/odoo/pull/228253#issuecomment-3341311882"
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+\r\n\r\nActually how do we plan to fix that in existing 19.0 databases @nle-odoo ? Surely there are more problematic cases (that could happen in 3 months once they set up a domain) than there are tickets :grimacing: ",
+        "submitted_at": "2025-09-26T14:54:46Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/228253#pullrequestreview-3272639474"
+      }
+    ]
+  },
+  {
+    "number": 228016,
+    "url": "https://github.com/odoo/odoo/pull/228016",
+    "comments": [
+      {
+        "type": "issue_comment",
+        "body": "@bikh-odoo This forward-port PR on 19.0 seems to be blocked for a new reason, could you have a look ?",
+        "created_at": "2025-10-06T14:24:54Z",
+        "html_url": "https://github.com/odoo/odoo/pull/228016#issuecomment-3371960679"
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-10-08T11:52:23Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/228016#pullrequestreview-3314456884"
+      }
+    ]
+  },
+  {
+    "number": 227606,
+    "url": "https://github.com/odoo/odoo/pull/227606",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-17T13:20:22Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/227606#pullrequestreview-3234441562"
+      }
+    ]
+  },
+  {
+    "number": 227527,
+    "url": "https://github.com/odoo/odoo/pull/227527",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-16T15:26:02Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/227527#pullrequestreview-3230542032"
+      }
+    ]
+  },
+  {
+    "number": 227481,
+    "url": "https://github.com/odoo/odoo/pull/227481",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "- `role=\"img\"` is not the right one for those: those pictures don't bring anything, they are just decoration, the meaning comes from the text next to it. Using `role=\"presentation\"` (or aria-hidden=\"true\", but I prefer the presentation role) is best.\r\n- You could also remove the title on those button... it's the same as the text, which is just annoying for no reason.",
+        "created_at": "2025-09-17T13:35:41Z",
+        "html_url": "https://github.com/odoo/odoo/pull/227481#discussion_r2355552309",
+        "path": "addons/html_editor/static/src/main/media/image_crop.xml",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "In this case, `role=\"img\"` could be the right one... but not if no aria-label or title. IMO I would:\r\n- Add a `title` on the `<button>`\r\n- Remove the `<i>` and use the `oi` class on the button itself as before (does not that work?)",
+        "created_at": "2025-09-17T13:38:52Z",
+        "html_url": "https://github.com/odoo/odoo/pull/227481#discussion_r2355563144",
+        "path": "addons/html_builder/static/src/core/building_blocks/builder_many2one.xml",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "> IMO using the icon classes on the button itself makes it clearer that the icon serves as the button\u2019s label.\r\n\r\nExactly... that's what I am asking?\r\n\r\n> It also lets us specify its role\r\n\r\nThat's contradicting :thinking: I guess the first part of your sentence meant the opposite, in which case this is just wrong: `<button class=\"fa fa-home\"/>` is way more clear than `<button><i class=\"fa fa-home/></button>`: you don't have to analyze the button's content and other attributes to know if there is text or if the structure/roles are right: the button is using the fa class, it is a button with an icon only.\r\n\r\n> and prevents styles from .oi to maybe conflict with .btn.\r\n\r\nWhat style could conflict? `oi` is defined afterwards and any `hover` or anything else should style apply, no? In any case, we always have been using `fa` on button directly, that's a case that is supposed to work. That's actually required by some layouts to work (as we have some rules targeting `.btn.fa`), at least that was the case a few days ago still.\r\n\r\nAnyways, you can choose to use the inner `<i>` if you prefer and it works but just adding `role=\"img\"` is not enough then. The button needs a `title` either way and if you use `role=\"img\"` it probably requires an `aria-label` on the icon itself... which IMO is just useless info that pollute the DOM for no reason. From an accessibility point of view, I think an user would just prefer to know there is a button with a certain function (title) and not having to know there is a picture which is an icon that says the same thing... but I might be wrong :shrug: ",
+        "created_at": "2025-09-23T13:54:49Z",
+        "html_url": "https://github.com/odoo/odoo/pull/227481#discussion_r2372427289",
+        "path": "addons/html_builder/static/src/core/building_blocks/builder_many2one.xml",
+        "position": 1
+      },
+      {
+        "type": "review",
+        "body": "Last \"unstable\" change we merge in 19.0 ;)\r\n\r\n@robodoo r+",
+        "submitted_at": "2025-09-24T12:09:55Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/227481#pullrequestreview-3262590408"
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-30T15:32:59Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/227481#pullrequestreview-3285607359"
+      }
+    ]
+  },
+  {
+    "number": 227408,
+    "url": "https://github.com/odoo/odoo/pull/227408",
+    "comments": [
+      {
+        "type": "issue_comment",
+        "body": "@xmo-odoo I think the other work has been merged and forward-ported, can this move forward?",
+        "created_at": "2025-09-22T09:30:13Z",
+        "html_url": "https://github.com/odoo/odoo/pull/227408#issuecomment-3317802002"
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-23T09:20:04Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/227408#pullrequestreview-3257020316"
+      }
+    ]
+  },
+  {
+    "number": 227125,
+    "url": "https://github.com/odoo/odoo/pull/227125",
+    "comments": [
+      {
+        "type": "issue_comment",
+        "body": "My bad then, I thought the big \"test-tags\" ribbon on the runbot error record combined with the newly assigned fixing PR meant that :shrug: ",
+        "created_at": "2025-09-16T11:53:25Z",
+        "html_url": "https://github.com/odoo/odoo/pull/227125#issuecomment-3298194622"
+      },
+      {
+        "type": "review",
+        "body": "From what I understand, merging this now is the best bet: the test has been re-disabled while waiting for https://github.com/odoo/odoo/pull/227224 (see runbot-229949) so I guess it is best to remove our framework-fighting protections now.\r\n\r\n@robodoo r+",
+        "submitted_at": "2025-09-15T14:34:14Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/227125#pullrequestreview-3224969535"
+      }
+    ]
+  },
+  {
+    "number": 227124,
+    "url": "https://github.com/odoo/odoo/pull/227124",
+    "comments": [
+      {
+        "type": "review",
+        "body": "Don't forget to mention the commit that I merged that was incomplete here and also precise the commit message, you don't seem to speak about the header at all",
+        "submitted_at": "2025-09-17T14:02:40Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/227124#pullrequestreview-3234634885"
+      }
+    ]
+  },
+  {
+    "number": 227107,
+    "url": "https://github.com/odoo/odoo/pull/227107",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-15T08:23:24Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/227107#pullrequestreview-3223430398"
+      }
+    ]
+  },
+  {
+    "number": 227099,
+    "url": "https://github.com/odoo/odoo/pull/227099",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-15T11:22:01Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/227099#pullrequestreview-3224137777"
+      }
+    ]
+  },
+  {
+    "number": 227096,
+    "url": "https://github.com/odoo/odoo/pull/227096",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-14T20:44:57Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/227096#pullrequestreview-3222432768"
+      }
+    ]
+  },
+  {
+    "number": 227070,
+    "url": "https://github.com/odoo/odoo/pull/227070",
+    "comments": [
+      {
+        "type": "issue_comment",
+        "body": "@robodoo retry",
+        "created_at": "2025-09-13T22:28:28Z",
+        "html_url": "https://github.com/odoo/odoo/pull/227070#issuecomment-3288906992"
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-13T19:09:28Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/227070#pullrequestreview-3221262549"
+      }
+    ]
+  },
+  {
+    "number": 227043,
+    "url": "https://github.com/odoo/odoo/pull/227043",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-12T23:02:29Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/227043#pullrequestreview-3219008022"
+      }
+    ]
+  },
+  {
+    "number": 226870,
+    "url": "https://github.com/odoo/odoo/pull/226870",
+    "comments": [
+      {
+        "type": "review",
+        "body": "This is not the right fix. The `small` class should stay in `em` unit as explained in the commit message of the line you are touching and explained in the comment above... The o_small font-size was broken by the editor team, I already created a task about it here: https://www.odoo.com/odoo/all-tasks/5055807 -> you can probably close this PR and let us handle this, we are not sure of what we'll do yet.",
+        "submitted_at": "2025-09-12T14:10:59Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/226870#pullrequestreview-3216905912"
+      }
+    ]
+  },
+  {
+    "number": 226847,
+    "url": "https://github.com/odoo/odoo/pull/226847",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-14T19:13:41Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/226847#pullrequestreview-3222364457"
+      }
+    ]
+  },
+  {
+    "number": 226627,
+    "url": "https://github.com/odoo/odoo/pull/226627",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "Is the t-if/t-set split useful?",
+        "created_at": "2025-09-15T08:48:59Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2348294263",
+        "path": "addons/website/views/website_templates.xml",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "<img width=\"550\" height=\"50\" alt=\"image\" src=\"https://github.com/user-attachments/assets/c65baf56-9c12-47af-bfb0-f1b981d892fd\" />\r\n",
+        "created_at": "2025-09-15T08:50:39Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2348298283",
+        "path": "addons/website/views/website_templates.xml",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Max 80 chars per line in website :pray: ",
+        "created_at": "2025-09-15T08:52:33Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2348303036",
+        "path": "addons/website/models/ir_http.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Probably a comment for multiple commits of this PR: could you mention the t-cache removal commit in the commit messages so that we can trace that this is a follow up of that :pray: ",
+        "created_at": "2025-09-15T08:54:34Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2348308028",
+        "path": "addons/website/models/ir_http.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Follow of https://github.com/odoo/odoo/pull/226019#discussion_r2336193572 -> this still looks awful to me.\r\n\r\n1. I guess I don't grasp the distinction between `search_fetch` and `search`: can you explain it to me a bit? Do we still get the same recordset as output? If not, that seems bad to send it as main object for the qweb render. If yes, then why do we have a `search` and a `search_fetch`?\r\n2. The `_search_page` here could normally fail, returning no page. How come you can go and do `page.view_id.fetch` on a falsy `page` variable? :thinking: ",
+        "created_at": "2025-09-15T09:05:09Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2348337205",
+        "path": "addons/website/models/ir_http.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "- Commit title: no uppercase, same for other commits\r\n- Missing changed app website_sale",
+        "created_at": "2025-09-15T09:06:01Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2348339043",
+        "path": "addons/test_website_modules/__manifest__.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Cool :+1: ",
+        "created_at": "2025-09-15T09:06:42Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2348340377",
+        "path": "addons/test_website_modules/tests/test_performance.py",
+        "position": 15
+      },
+      {
+        "type": "review_comment",
+        "body": "Commit message mentions conflicts",
+        "created_at": "2025-09-15T09:09:41Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2348347614",
+        "path": "addons/test_website_modules/tests/test_performance.py",
+        "position": 160
+      },
+      {
+        "type": "review_comment",
+        "body": "> Additionally, each cached\r\nresponse is automatically refreshed if the page is visited more than one\r\nhour after its initial caching.\r\n\r\nMmh, what's the idea behind that? That seems weird to me to have such a small caching time.",
+        "created_at": "2025-09-15T09:15:20Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2348359937",
+        "path": "addons/test_website_modules/tests/test_performance.py",
+        "position": 162
+      },
+      {
+        "type": "review_comment",
+        "body": "Looks weird that all of these are gone in this file, was not the purpose testing the uncached version? (I don't know much about these tests).",
+        "created_at": "2025-09-15T09:21:02Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2348373163",
+        "path": "addons/test_website_modules/tests/test_performance.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "This move might be done in a dedicated commit I think, not related to the page caching stuff I think",
+        "created_at": "2025-09-15T09:21:44Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2348374868",
+        "path": "addons/website/controllers/main.py",
+        "position": 15
+      },
+      {
+        "type": "review_comment",
+        "body": "Cannot :upside_down_face: ",
+        "created_at": "2025-09-15T09:26:02Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2348386422",
+        "path": "addons/website/models/website_page.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Can you explain the difference between the two clear_cache calls with a comment? :pray: ",
+        "created_at": "2025-09-15T09:27:24Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2348391341",
+        "path": "addons/website/models/website_page.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "That looks scary to have to do:\r\n- Not actually sure: can't that page be cached?\r\n- If it can't because of something, can't that something be automatically checked?\r\n\r\nI am scared nobody will think about doing that.",
+        "created_at": "2025-09-15T09:33:08Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2348408166",
+        "path": "addons/website_hr_recruitment/models/website_page.py",
+        "position": 13
+      },
+      {
+        "type": "review_comment",
+        "body": "Continue with the docstring, that helps :pray: ",
+        "created_at": "2025-09-15T09:38:01Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2348421565",
+        "path": "addons/website/models/website_page.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Inline comment could be useful here too IMO, it's not that obvious to me that this uses the cache thanks to `tools.ormcache` but is invalidated by hand with checking the time here. I was dumbly wondering why _get_response_cached called _get_response_raw and you recall _get_response_raw here afterwards :upside_down_face: ",
+        "created_at": "2025-09-15T09:42:05Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2348432105",
+        "path": "addons/website/models/website_page.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "What's that? :open_mouth: ",
+        "created_at": "2025-09-15T09:43:36Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2348436423",
+        "path": "addons/website/models/website_page.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "In fact I am actually not sure: does not this go through `_get_response_raw` twice in the `else` case above? :thinking: ",
+        "created_at": "2025-09-15T09:45:29Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2348441859",
+        "path": "addons/website/models/website_page.py",
+        "position": 144
+      },
+      {
+        "type": "review_comment",
+        "body": "- I am confused, what's the point of having a function just calling another cached one like this?\r\n- Did not we decide to not have stuff like `-> dict | None`?",
+        "created_at": "2025-09-15T09:47:34Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2348447923",
+        "path": "addons/website/models/website_page.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "I know, but it's not the only commit where it makes sense to mention it :+1: \r\n\r\nAlso for the one you mention, could you mention this commit : https://github.com/odoo/odoo/commit/0452d0701fcb8f4588b9b05dad9bbdd507539265 (I assumed it was part of the t-cache introduction but apparently not)",
+        "created_at": "2025-09-16T08:39:24Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2351488118",
+        "path": "addons/website/models/ir_http.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "> they are tested\r\n\r\nyou meant \"cached\"? So these tests does not test the uncached versions?",
+        "created_at": "2025-09-16T08:49:26Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2351533961",
+        "path": "addons/test_website_modules/tests/test_performance.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Those two clear_cache calls's purpose are not obvious to me, so I imagine they are not clear for many others as well... and pretty sure that if I ask you their purpose in 5 years, you won't be sure either so what I was asking is code comments, no? :pray: Just a suggestion anyway.",
+        "created_at": "2025-09-16T08:51:56Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2351544378",
+        "path": "addons/website/models/website_page.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Ok, in any case there is a simpler problem: you can't just compare to `job-thank-you`, page URLs can be changed by the users",
+        "created_at": "2025-09-16T08:54:01Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2351552448",
+        "path": "addons/website_hr_recruitment/models/website_page.py",
+        "position": 13
+      },
+      {
+        "type": "review_comment",
+        "body": "Comment the tricks please :pray: I am sure 99% of people reading `my_func.__cache__.add_value` won't know what this does",
+        "created_at": "2025-09-16T08:56:10Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2351560639",
+        "path": "addons/website/models/website_page.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "That is still computing `fields_to_fetch` for no reason: I agree this is probably negligible but it seems better to explicitly make a check. But as you wish :upside_down_face: ",
+        "created_at": "2025-09-16T11:42:23Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2352148732",
+        "path": "addons/website/models/ir_http.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "I don't get why that would be an invalid flow... asking to change controller URL is a common request. And the fact this is implemented as a website.page comes with other advantages (e.g. the possibility to control the header position). Even if we are planning to review models and things in the future to improve all of that (urls, page options, etc), that's not the case yet. And having website.page records for dynamic stuff will probably always be a valid usecase and it's probably widely used in customization (it's actually a very common request to be able to add dynamic things in website.page without losing full edition capabilities).\r\n\r\nNote that there is also an old task (still not merged this year) about allowing translating URL too. Your check would fail in that case too.\r\n\r\nWould be nice if everything that is existing but unknown by some people is not immediately judged as useless or stupid, just saying... :shrug: Anyways, that's the last website-related PR where I'll be annoying, hopefully :+1: \r\n\r\nMaybe there is a way here to somehow rely on the `key` of the website.page's view? That will be somewhat more robust.",
+        "created_at": "2025-09-17T14:29:33Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#discussion_r2355733762",
+        "path": "addons/website_hr_recruitment/models/website_page.py",
+        "position": 13
+      },
+      {
+        "type": "review",
+        "body": "Thanks for the PR, I just did a quick scrolling through, follow-up of https://github.com/odoo/odoo/pull/226019#pullrequestreview-3205324793\r\n\r\nMuch nitpicking and then more questions than actual requests of changes :pray: ",
+        "submitted_at": "2025-09-15T09:52:35Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/226627#pullrequestreview-3223528438"
+      }
+    ]
+  },
+  {
+    "number": 226606,
+    "url": "https://github.com/odoo/odoo/pull/226606",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "We should of course not do hack like these :wink: If there is problem with dropdown.js, what I meant is that we will have to prove it with a small example as the framework JS won't be convinced by us directly changing dropdown.js :wink: \r\n\r\nAnd I don't know more either, when I investigated a bit I also was findind that the dropdown.js hacks simply did not work *in our usecase* but I did not find why.\r\n\r\nBtw: mention the task and/or runbot ID in the commit message/PR, took me a while to remember what this is about :wink:",
+        "created_at": "2025-10-02T14:40:38Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226606#discussion_r2399069182",
+        "path": "addons/website/static/src/components/navbar/navbar.js",
+        "position": 16
+      }
+    ]
+  },
+  {
+    "number": 226598,
+    "url": "https://github.com/odoo/odoo/pull/226598",
+    "comments": [
+      {
+        "type": "issue_comment",
+        "body": "@bso-odoo see https://github.com/odoo/odoo/pull/226598#discussion_r2375805262 \r\n\r\nI let you handle this one, I am not confident enough :grimacing: ",
+        "created_at": "2025-09-24T13:42:18Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226598#issuecomment-3328524305"
+      },
+      {
+        "type": "review_comment",
+        "body": "In saas-18.3 we had this kind of code? It seems weird to make an exception with email_to like that. At minimum, it should be commented",
+        "created_at": "2025-09-24T11:52:51Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226598#discussion_r2375530871",
+        "path": "addons/website/static/src/builder/plugins/form/form_option_plugin.js",
+        "position": 1
+      }
+    ]
+  },
+  {
+    "number": 226505,
+    "url": "https://github.com/odoo/odoo/pull/226505",
+    "comments": [
+      {
+        "type": "issue_comment",
+        "body": "@nle-odoo Don't forget this one thanks :pray: ",
+        "created_at": "2025-10-06T13:17:51Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226505#issuecomment-3371603384"
+      },
+      {
+        "type": "review_comment",
+        "body": "(I of course agree that _manually modifying_ is bad)\r\n\r\n@ticodoo What do you mean by \"auto-exported as of April\"? You mean we don't have to export them ourselves anymore when we add new terms in stable versions? Was this communicated? :thinking: How does that work? It's exported every week or something like that? On all versions? I see that if I export manually I have a -500 lines diff for website, that's because the auto-export keeps old terms?\r\n\r\nThanks in advance for the precisions :pray: \r\n",
+        "created_at": "2025-10-08T11:21:24Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226505#discussion_r2413525943",
+        "path": "addons/html_builder/i18n/html_builder.pot",
+        "position": 8
+      },
+      {
+        "type": "review_comment",
+        "body": "> Yes, by email.\r\n\r\nIndeed, I found it :open_mouth: I totally missed it at the time somehow :shrug: \r\n\r\n> before the switch to Weblate\r\n\r\nActually, Weblate was not communicated, right? It was communicated through the Transifex platform and I saw it over there and I communicated it to the website team but I don't think we actually got a RD email for that one? :upside_down_face:\r\n\r\n> We include demo data\r\n\r\nThat might have been it, I probably tested without them.\r\n\r\n> The auto-export does not keep the old terms [...] This is partially why the translation documentation\r\n\r\nWhen it was non-avoidable (e.g. a documentation being entirely wrong in settings because Google changed something and replaced by something new), we actually kept the removed terms in the .pot file that we exported manually (and only commited the added terms). That way translations would not be wiped in outdated database that would still have the outdated XML for some reasons. But of course, that's supposed to be rare and I guess we could just keep the outdated XML in display:none or something like that now, which would be more stable anyway.\r\n\r\nThanks for the details :+1: ",
+        "created_at": "2025-10-08T13:01:38Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226505#discussion_r2413786575",
+        "path": "addons/html_builder/i18n/html_builder.pot",
+        "position": 8
+      },
+      {
+        "type": "review_comment",
+        "body": "> because there were 2 msgid/msgstr's for the same email template (i.e. model term) in the pot file when only 1 is expected\r\n\r\nNot sure what you mean; for example for a specific website view that's a whole lot of the same \"model term\" with different msgid.\r\n\r\n```\r\n#. module: website\r\n#: model_terms:ir.ui.view,arch_db:website.snippets\r\nmsgid \"AAA\"\r\nmsgstr \"\"\r\n\r\n#. module: website\r\n#: model_terms:ir.ui.view,arch_db:website.snippets\r\nmsgid \"BBB\"\r\nmsgstr \"\"\r\n```\r\n\r\nIf we somehow removed the use of AAA and added the use of CCC, we would just commit\r\n\r\n\r\n```\r\n#. module: website\r\n#: model_terms:ir.ui.view,arch_db:website.snippets\r\nmsgid \"AAA\"\r\nmsgstr \"\"\r\n\r\n#. module: website\r\n#: model_terms:ir.ui.view,arch_db:website.snippets\r\nmsgid \"BBB\"\r\nmsgstr \"\"\r\n\r\n#. module: website\r\n#: model_terms:ir.ui.view,arch_db:website.snippets\r\nmsgid \"CCC\"\r\nmsgstr \"\"\r\n```\r\n\r\n(without removing AAA, which should just have no effect in new database, while still being on Transifex and used in translation of old databases).\r\n\r\nBut true, I did not test this was still working, I did not hear of any broken thing because of it (but of course it's not like we did that every week nor even every month). Anyways, that way I know in that rare case, I have to try not removing the outdated part of the XML.\r\n\r\n> It doesn't affect R&D though\r\n\r\nTrue, just a bit when someone explains how translations work to newbies and they would incorrectly mention Transifex :wink: Anyways I was not saying you specifically should communicate about it, just that we should have a place for that kind of news (even in Guru meetings I don't remember it was even mentioned  :upside_down_face:)",
+        "created_at": "2025-10-08T13:52:43Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226505#discussion_r2413942942",
+        "path": "addons/html_builder/i18n/html_builder.pot",
+        "position": 8
+      }
+    ]
+  },
+  {
+    "number": 226488,
+    "url": "https://github.com/odoo/odoo/pull/226488",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-12T09:19:37Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/226488#pullrequestreview-3215628289"
+      }
+    ]
+  },
+  {
+    "number": 226439,
+    "url": "https://github.com/odoo/odoo/pull/226439",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-11T11:07:02Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/226439#pullrequestreview-3210772883"
+      }
+    ]
+  },
+  {
+    "number": 226303,
+    "url": "https://github.com/odoo/odoo/pull/226303",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-15T08:35:52Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/226303#pullrequestreview-3223477989"
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-16T13:49:24Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/226303#pullrequestreview-3230109248"
+      }
+    ]
+  },
+  {
+    "number": 226302,
+    "url": "https://github.com/odoo/odoo/pull/226302",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "Good, in general, we should never use `<font>` anymore anyway",
+        "created_at": "2025-09-11T11:11:11Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226302#discussion_r2340230398",
+        "path": "addons/website/views/website_templates.xml",
+        "position": 81
+      },
+      {
+        "type": "review_comment",
+        "body": "That comment was not sent apparently: I think this should stay a `<h2>` ?",
+        "created_at": "2025-09-11T11:25:15Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226302#discussion_r2340292969",
+        "path": "addons/website/views/website_templates.xml",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Use `h3-fs` on the `<h2>` if you want to change the size, but it should still be a `<h2>`",
+        "created_at": "2025-09-11T11:51:47Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226302#discussion_r2340431432",
+        "path": "addons/website/views/website_templates.xml",
+        "position": 1
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-12T09:25:39Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/226302#pullrequestreview-3215665971"
+      }
+    ]
+  },
+  {
+    "number": 226255,
+    "url": "https://github.com/odoo/odoo/pull/226255",
+    "comments": [
+      {
+        "type": "issue_comment",
+        "body": "@chgo-odoo Could you rebase and retarget both PR on 19.0? :pray: ",
+        "created_at": "2025-09-11T10:45:16Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226255#issuecomment-3279871164"
+      },
+      {
+        "type": "review_comment",
+        "body": "@anso-odoo I was about to delegate you all here too but... what happened to the `o_cc` class? :thinking: ",
+        "created_at": "2025-09-10T16:15:36Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226255#discussion_r2337261298",
+        "path": "addons/website/views/snippets/s_company_team_card.xml",
+        "position": 1
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-14T19:29:06Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/226255#pullrequestreview-3222372515"
+      }
+    ]
+  },
+  {
+    "number": 226225,
+    "url": "https://github.com/odoo/odoo/pull/226225",
+    "comments": [
+      {
+        "type": "review",
+        "body": "> as the default palette for website changed for `.version 19`\r\n\r\nShould have mentioned the commit that changed it... and what's \"`.version 19`\"? :thinking: \r\n\r\n> we change the default preset from `o_cc4` to `o_cc3`, ensuring the text remains readable no matter the color preset.\r\n\r\nI am not sure how it ensures anything but ok :shrug: \r\n\r\nBut sure:\r\n@robodoo r+\r\n",
+        "submitted_at": "2025-09-10T09:14:32Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/226225#pullrequestreview-3205233998"
+      }
+    ]
+  },
+  {
+    "number": 226114,
+    "url": "https://github.com/odoo/odoo/pull/226114",
+    "comments": [
+      {
+        "type": "review",
+        "body": "I doubt this is the right fix, should not you adapt the selector of other plugins instead of adding your own `WebsiteBackgroundOption`? It's not the only block having inner box with background configuration but it's the only snippet redefining the option itself.",
+        "submitted_at": "2025-09-15T11:52:58Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/226114#pullrequestreview-3224243086"
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-17T13:59:27Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/226114#pullrequestreview-3234618739"
+      }
+    ]
+  },
+  {
+    "number": 226061,
+    "url": "https://github.com/odoo/odoo/pull/226061",
+    "comments": [
+      {
+        "type": "issue_comment",
+        "body": "@mano-odoo Why should not you ping rd-website? :thinking: It's actually as good if not better than pinging me :wink: Especially since I won't be handling review in the website team soon :wink:\r\n\r\nWhat you might have heard is that just \"requesting review from rd-website\" might not be enough for me to review (as that can be requested automatically by the mergebot and I don't fully review all PR that are marked as such).\r\n\r\n\r\n> is this mergeable in 19.0\r\n\r\nEverything except new apps / new python fields is still mergeable in 19.0. But this is a CSS and static XML fix for the editor, it _must_ target 19.0, even if we were March 2026.",
+        "created_at": "2025-09-15T08:34:20Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226061#issuecomment-3291034283"
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-16T08:34:24Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/226061#pullrequestreview-3228386284"
+      }
+    ]
+  },
+  {
+    "number": 226021,
+    "url": "https://github.com/odoo/odoo/pull/226021",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "Could you split your work in multiple commits so I can be sure which part is what please? :pray: I'll wait to review that last commit :pray: ",
+        "created_at": "2025-09-10T12:01:45Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226021#discussion_r2336526560",
+        "path": "addons/im_livechat/views/im_livechat_chatbot_templates.xml",
+        "position": 1
+      }
+    ]
+  },
+  {
+    "number": 226019,
+    "url": "https://github.com/odoo/odoo/pull/226019",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "If you `t-set=\"fields\"` here, at the top of the `website.layout`, won't the variable be available for all templates of all apps? I feel it's a useless risk of conflict, \"field\" is not an uncommon name. Maybe just `__fields` ? :shrug: ",
+        "created_at": "2025-09-10T09:35:57Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226019#discussion_r2336173702",
+        "path": "addons/website/views/website_templates.xml",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "I have absolutely no idea what this is about... can we really call that a \"More optimal use of the ORM\"? :thinking: The code here is \"retrieve the first page that matches this domain\"... why do we need this big obfuscation of the code to improve its perf? \r\n\r\nAt minimum this would need comments :pray: ",
+        "created_at": "2025-09-10T09:43:22Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226019#discussion_r2336193572",
+        "path": "addons/website/models/ir_http.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Does this one line change come with a perf improvement?\r\n\r\n> all_menus.filtered: doesn't use ORM prefetch\r\n\r\nI don't understand: how is this not a bug of the ORM? How is leaving the ORM entirely (= converting to a list instead of a recordset) improves the perf... of using the ORM?",
+        "created_at": "2025-09-10T09:46:23Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226019#discussion_r2336201297",
+        "path": "addons/website/models/website.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Nitpick: I would use `False` instead of `None` since it's the value being potentially assigned to a m2o",
+        "created_at": "2025-09-10T09:47:54Z",
+        "html_url": "https://github.com/odoo/odoo/pull/226019#discussion_r2336204765",
+        "path": "addons/website/models/website.py",
+        "position": 1
+      }
+    ]
+  },
+  {
+    "number": 225918,
+    "url": "https://github.com/odoo/odoo/pull/225918",
+    "comments": [
+      {
+        "type": "review",
+        "body": "Was not this snippet in the previous version(s) too? But all right I'll r+ and let you backport it afterwards if needed.\r\n\r\nI'll try the robodoo squash command to fix the wrong app mentioned in the commit message too:\r\n\r\n@robodoo squash r+",
+        "submitted_at": "2025-09-08T17:20:12Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/225918#pullrequestreview-3197427827"
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-09T11:50:34Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/225918#pullrequestreview-3201107574"
+      }
+    ]
+  },
+  {
+    "number": 225913,
+    "url": "https://github.com/odoo/odoo/pull/225913",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "Does not the `translation_multi_language_fr_user_fr_en_site` have the issue too @SergeBayet ? Should not you make this part of the `multiLanguage` function to be sure?",
+        "created_at": "2025-09-09T11:44:26Z",
+        "html_url": "https://github.com/odoo/odoo/pull/225913#discussion_r2333207228",
+        "path": "addons/test_website/static/tests/tours/translation.js",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "No one liner when it comes to `if`",
+        "created_at": "2025-09-09T11:44:48Z",
+        "html_url": "https://github.com/odoo/odoo/pull/225913#discussion_r2333209738",
+        "path": "addons/test_website/static/tests/tours/translation.js",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Same: if you use `{`, it should not be a one-liner.",
+        "created_at": "2025-09-09T11:47:01Z",
+        "html_url": "https://github.com/odoo/odoo/pull/225913#discussion_r2333223600",
+        "path": "addons/test_website/static/tests/tours/translation.js",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Still annoying we have to this to workaround the tour system that does not work but... ok :grimacing: ",
+        "created_at": "2025-09-09T11:48:06Z",
+        "html_url": "https://github.com/odoo/odoo/pull/225913#discussion_r2333228876",
+        "path": "addons/test_website/static/tests/tours/translation.js",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Same",
+        "created_at": "2025-09-09T11:48:36Z",
+        "html_url": "https://github.com/odoo/odoo/pull/225913#discussion_r2333231082",
+        "path": "addons/test_website/static/tests/tours/translation.js",
+        "position": 1
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+\r\n\r\nI was about to set up a priority r+ but I guess it's useless since our test was disabled on runbot at the moment :grimacing: ",
+        "submitted_at": "2025-09-09T13:30:47Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/225913#pullrequestreview-3201621950"
+      }
+    ]
+  },
+  {
+    "number": 225797,
+    "url": "https://github.com/odoo/odoo/pull/225797",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-06T08:49:35Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/225797#pullrequestreview-3191880618"
+      }
+    ]
+  },
+  {
+    "number": 225790,
+    "url": "https://github.com/odoo/odoo/pull/225790",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "You can just remove the .pot change in master. Or ignore it, but in general I remove the .pot change when I have to push-force anyway.",
+        "created_at": "2025-09-10T12:52:33Z",
+        "html_url": "https://github.com/odoo/odoo/pull/225790#discussion_r2336664275",
+        "path": "addons/html_builder/static/src/snippets/snippet_service.js",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "In fact, the parallax notion (and its class) is a website concept. This should not be in `html_builder`.",
+        "created_at": "2025-09-10T15:52:26Z",
+        "html_url": "https://github.com/odoo/odoo/pull/225790#discussion_r2337207182",
+        "path": "addons/html_builder/static/src/snippets/snippet_service.js",
+        "position": 1
+      },
+      {
+        "type": "review",
+        "body": "You'll need to adapt this one and make the master adaptation @bvr-odoo ",
+        "submitted_at": "2025-09-10T09:23:57Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/225790#pullrequestreview-3205277728"
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-12T09:22:26Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/225790#pullrequestreview-3215645372"
+      }
+    ]
+  },
+  {
+    "number": 225783,
+    "url": "https://github.com/odoo/odoo/pull/225783",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "Why do you read this outside of the `if`?",
+        "created_at": "2025-09-09T14:30:19Z",
+        "html_url": "https://github.com/odoo/odoo/pull/225783#discussion_r2333845637",
+        "path": "addons/html_builder/static/src/snippets/snippet_service.js",
+        "position": 1
+      },
+      {
+        "type": "review",
+        "body": "Not related to the bug being fixed here but found another bug: if you go to theme artist and type \"parallax\" in the search of the snippet dialog, you still find \"s_cover\" because it has \"parallax\" as keyword. Maybe we should have the same as for the label: not adding the \"parallax\" in keywords automatically but by hand... but since all the keyword are put together in a translated sentence as a whole, this is not possible with the current system (we would need RDE's work of a \"snippet model\" that FP did not want). Also I am sure \"parallax\" could be used in keywords, not speaking about the parallax options, e.g. the custom s_announcement_scroll parallax.\r\n\r\nAnyways, not important.\r\n\r\n@robodoo r+",
+        "submitted_at": "2025-09-10T09:23:02Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/225783#pullrequestreview-3205273827"
+      }
+    ]
+  },
+  {
+    "number": 225755,
+    "url": "https://github.com/odoo/odoo/pull/225755",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "Why this if it's the default? Don't you want to just remove the copyright-custom value?",
+        "created_at": "2025-09-08T16:59:05Z",
+        "html_url": "https://github.com/odoo/odoo/pull/225755#discussion_r2330827584",
+        "path": "addons/website/static/src/scss/primary_variables.scss",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "My previous remark is still true: I don't think you need to redefine base-1 at all... but I guess this does not hurt, I'll merge like that. Changing the base-color-palette will override all palettes though... hopefully this was considered.",
+        "created_at": "2025-09-08T17:24:22Z",
+        "html_url": "https://github.com/odoo/odoo/pull/225755#discussion_r2330880597",
+        "path": "addons/website/static/src/scss/primary_variables.scss",
+        "position": 15
+      },
+      {
+        "type": "review",
+        "body": "Commit message:\r\n\r\n> Adapts default header and footer styles.\r\n\r\nI don't see a header change ?\r\n\r\n> Adapts `s_numbers_boxed` design to make it work better with the new palette\r\n\r\nI don't see that change either?\r\n\r\n> Changes the default logo to something fresher.\r\n\r\nNote that we changed to a clearly-unmistakable logo image in the past instead of image of \"image followed by text\", because some users were trying to edit the text not understand this was an image. I don't think it was a big issue... but so you know. I prefer the new logo too but it will clearly recreate that old problem, maybe you can find a compromise.",
+        "submitted_at": "2025-09-08T17:06:00Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/225755#pullrequestreview-3197362873"
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-08T17:24:36Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/225755#pullrequestreview-3197439020"
+      }
+    ]
+  },
+  {
+    "number": 225701,
+    "url": "https://github.com/odoo/odoo/pull/225701",
+    "comments": [
+      {
+        "type": "issue_comment",
+        "body": "@robodoo retry",
+        "created_at": "2025-09-07T17:56:49Z",
+        "html_url": "https://github.com/odoo/odoo/pull/225701#issuecomment-3263939871"
+      },
+      {
+        "type": "review",
+        "body": "I re-made the work entirely here, this did not need *more* code, just a bunch of code moved. Hopefully I did not make a mistake but I think this is right.\r\n\r\n@robodoo r+",
+        "submitted_at": "2025-09-07T14:00:32Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/225701#pullrequestreview-3194459370"
+      }
+    ]
+  },
+  {
+    "number": 225672,
+    "url": "https://github.com/odoo/odoo/pull/225672",
+    "comments": [
+      {
+        "type": "issue_comment",
+        "body": "@robodoo retry",
+        "created_at": "2025-09-08T07:24:46Z",
+        "html_url": "https://github.com/odoo/odoo/pull/225672#issuecomment-3264955174"
+      },
+      {
+        "type": "review_comment",
+        "body": "You used CTRL-C during dev = bad. \r\n- Only the action changes: `action=\"condition and 'websiteConfig' or 'previewWebsiteConfig'` ?\r\n- The actionParam can stay the same with or without preview",
+        "created_at": "2025-09-07T09:07:36Z",
+        "html_url": "https://github.com/odoo/odoo/pull/225672#discussion_r2328587221",
+        "path": "addons/website/static/src/builder/plugins/options/header/header_template_option.xml",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Should have kept the double indent",
+        "created_at": "2025-09-07T09:10:33Z",
+        "html_url": "https://github.com/odoo/odoo/pull/225672#discussion_r2328588107",
+        "path": "addons/website/views/website_templates.xml",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Same",
+        "created_at": "2025-09-07T09:11:17Z",
+        "html_url": "https://github.com/odoo/odoo/pull/225672#discussion_r2328588321",
+        "path": "addons/website/views/website_templates.xml",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Missing space",
+        "created_at": "2025-09-07T09:12:03Z",
+        "html_url": "https://github.com/odoo/odoo/pull/225672#discussion_r2328588548",
+        "path": "addons/website/static/src/scss/website.scss",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "That looks wrong, it never make sense to translate except for animation/effects... especially without a comment to explain.",
+        "created_at": "2025-09-07T09:13:05Z",
+        "html_url": "https://github.com/odoo/odoo/pull/225672#discussion_r2328588908",
+        "path": "addons/website/static/src/scss/website.scss",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Ok it's an effect... not sure it's better that way but I'll keep it I guess it was discussed/asked",
+        "created_at": "2025-09-07T20:27:06Z",
+        "html_url": "https://github.com/odoo/odoo/pull/225672#discussion_r2328833159",
+        "path": "addons/website/static/src/scss/website.scss",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "In fact this t-if should have been kept I think? :thinking: I am restoring it",
+        "created_at": "2025-09-07T20:40:19Z",
+        "html_url": "https://github.com/odoo/odoo/pull/225672#discussion_r2328836881",
+        "path": "addons/website/static/src/builder/plugins/options/header/header_template_option.xml",
+        "position": 105
+      },
+      {
+        "type": "review",
+        "body": "Quick scan... I'll see if I can adapt and merge by the end of the day (I'll just rebase for now)",
+        "submitted_at": "2025-09-07T09:14:08Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/225672#pullrequestreview-3194324861"
+      },
+      {
+        "type": "review",
+        "body": "Tested a bit, applied the changes, hopefully should be good to go now. I'll wait runbot green then I'll see",
+        "submitted_at": "2025-09-07T20:49:42Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/225672#pullrequestreview-3194582169"
+      },
+      {
+        "type": "review",
+        "body": "@robodoo rebase-ff r+",
+        "submitted_at": "2025-09-07T22:10:19Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/225672#pullrequestreview-3194624457"
+      }
+    ]
+  },
+  {
+    "number": 225282,
+    "url": "https://github.com/odoo/odoo/pull/225282",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-03T07:59:59Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/225282#pullrequestreview-3179423156"
+      }
+    ]
+  },
+  {
+    "number": 225220,
+    "url": "https://github.com/odoo/odoo/pull/225220",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-22T15:49:23Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/225220#pullrequestreview-3253675261"
+      }
+    ]
+  },
+  {
+    "number": 225160,
+    "url": "https://github.com/odoo/odoo/pull/225160",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-02T18:16:10Z",
+        "state": "COMMENTED",
+        "html_url": "https://github.com/odoo/odoo/pull/225160#pullrequestreview-3177642675"
+      }
+    ]
+  },
+  {
+    "number": 225082,
+    "url": "https://github.com/odoo/odoo/pull/225082",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-02T07:35:31Z",
+        "state": "COMMENTED",
+        "html_url": "https://github.com/odoo/odoo/pull/225082#pullrequestreview-3175252295"
+      }
+    ]
+  },
+  {
+    "number": 225075,
+    "url": "https://github.com/odoo/odoo/pull/225075",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-02T08:43:05Z",
+        "state": "COMMENTED",
+        "html_url": "https://github.com/odoo/odoo/pull/225075#pullrequestreview-3175499368"
+      }
+    ]
+  },
+  {
+    "number": 224880,
+    "url": "https://github.com/odoo/odoo/pull/224880",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-08-29T21:06:07Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/224880#pullrequestreview-3170248603"
+      }
+    ]
+  },
+  {
+    "number": 224817,
+    "url": "https://github.com/odoo/odoo/pull/224817",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-08-29T13:33:34Z",
+        "state": "COMMENTED",
+        "html_url": "https://github.com/odoo/odoo/pull/224817#pullrequestreview-3168758151"
+      }
+    ]
+  },
+  {
+    "number": 224742,
+    "url": "https://github.com/odoo/odoo/pull/224742",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "@Brieuc-brd This was simply removed. It was not to be adapted? So mass_mailing does support `oi` naturally?",
+        "created_at": "2025-09-01T11:22:13Z",
+        "html_url": "https://github.com/odoo/odoo/pull/224742#discussion_r2313682587",
+        "path": "addons/web_editor/controllers/main.py",
+        "position": 1
+      },
+      {
+        "type": "review",
+        "body": "@Brieuc-brd I refactored a bit:\r\n- Used a placeholder selector instead of repeating the fa-XXX classes (so leading to the same CSS but avoiding code duplication, avoiding silent typo etc)\r\n- Refactored the python code, it was badly made before you had to change it, it was a good occasion to add comments & cie\r\n\r\nThanks for the work on the fonts :+1: \r\n\r\nHowever while testing, I found out that the image sent by mail are not well-formed (shrunk horizontally), not because of the font/classes but because of the convertion system which forces bad width and height on the images. Don't know who to ping about that: @abd-msyukyu-odoo maybe? Since you are working on https://github.com/odoo/odoo/pull/215364?\r\n\r\nE.g.\r\n\r\nSent email:\r\n<img width=\"439\" height=\"694\" alt=\"image\" src=\"https://github.com/user-attachments/assets/ad86ac5e-9bba-49f7-98c7-394e02659fea\" />\r\n\r\nReceived email:\r\n<img width=\"352\" height=\"698\" alt=\"image\" src=\"https://github.com/user-attachments/assets/855f151a-6ef8-4863-972c-a5d94a280353\" />\r\n\r\n@robodoo r+",
+        "submitted_at": "2025-09-02T14:38:51Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/224742#pullrequestreview-3176876962"
+      }
+    ]
+  },
+  {
+    "number": 224663,
+    "url": "https://github.com/odoo/odoo/pull/224663",
+    "comments": [
+      {
+        "type": "issue_comment",
+        "body": "@Julien00859 @xmo-odoo Want to have another look at this one? Or should I go ahead, re-test and merge? :)",
+        "created_at": "2025-09-30T15:59:51Z",
+        "html_url": "https://github.com/odoo/odoo/pull/224663#issuecomment-3352866608"
+      },
+      {
+        "type": "review_comment",
+        "body": "If css or binary do this:",
+        "created_at": "2025-09-25T14:25:35Z",
+        "html_url": "https://github.com/odoo/odoo/pull/224663#discussion_r2379352275",
+        "path": "odoo/addons/base/models/assetsbundle.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Let's not support relative path for now",
+        "created_at": "2025-09-25T14:30:50Z",
+        "html_url": "https://github.com/odoo/odoo/pull/224663#discussion_r2379371285",
+        "path": "odoo/addons/base/models/assetsbundle.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "break",
+        "created_at": "2025-09-25T14:33:47Z",
+        "html_url": "https://github.com/odoo/odoo/pull/224663#discussion_r2379383161",
+        "path": "odoo/addons/base/models/assetsbundle.py",
+        "position": 118
+      },
+      {
+        "type": "review_comment",
+        "body": "Probably to remove this one",
+        "created_at": "2025-09-25T14:38:40Z",
+        "html_url": "https://github.com/odoo/odoo/pull/224663#discussion_r2379398901",
+        "path": "odoo/addons/base/models/assetsbundle.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Don't think this is needed",
+        "created_at": "2025-09-25T14:42:38Z",
+        "html_url": "https://github.com/odoo/odoo/pull/224663#discussion_r2379413134",
+        "path": "odoo/addons/base/models/assetsbundle.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": ".",
+        "created_at": "2025-09-25T14:43:17Z",
+        "html_url": "https://github.com/odoo/odoo/pull/224663#discussion_r2379415477",
+        "path": "odoo/addons/base/models/assetsbundle.py",
+        "position": 237
+      },
+      {
+        "type": "review_comment",
+        "body": ".",
+        "created_at": "2025-09-25T14:50:02Z",
+        "html_url": "https://github.com/odoo/odoo/pull/224663#discussion_r2379438520",
+        "path": "odoo/addons/base/models/ir_qweb.py",
+        "position": 83
+      },
+      {
+        "type": "review",
+        "body": "I was hoping to merge this today or over the weekend but unfortunately I think this will wait as there is at least one remaining issue, and I have trouble reviewing this correctly on my own without losing a week :grimacing: Credit to @bso-odoo for having done this that quickly though, as a last-minute request.\r\n\r\nWhat I did here:\r\n- Squashed all commits\r\n- Handled all the comments of JUC\r\n- Handled the comment of XMO (hopefully). To review, in the end I went with the original idea of just changing the path in font CSS files and just stopped using the os.path/Path lib.\r\n- Regrouped the two font bundles into one... actually there are some apps that include one without the other or the fontawesome one without its override (meaning twitter icons are still twitter instead of X, etc), it would fix all of this.\r\n- Split the work in two in the end (also it was missing an enterprise adaptation): I moved the change in app bundles (and its enterprise part) to https://github.com/odoo/odoo/pull/225760. I am not confident enough to merge a change in all apps that close to the OXP for a minor improvement. In this PR here, I only kept the change for the frontend asset bundle.\r\n- Found out that the font preload does not work: it preloads the font asset file with the website ID in the URL... while the font asset file URL added in the CSS is not using the website id (so the browser actually loads the font twice) :grimacing: ... can't seem to find a fix, I don't know this code enough to fix that quickly :cry: \r\n\r\nI'll try to merge this before the OXP after more careful testing, as a first step before the mentioned PR follow-up for all apps. Unfortunately, @bso-odoo is on leave until next Friday. We'll see if I can check with him to do that at that moment. Or find the time to deeply review and fix this on my own.",
+        "submitted_at": "2025-09-05T16:35:12Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/224663#pullrequestreview-3190033201"
+      }
+    ]
+  },
+  {
+    "number": 224541,
+    "url": "https://github.com/odoo/odoo/pull/224541",
+    "comments": [
+      {
+        "type": "review",
+        "body": "The commit message should mention the original commit that was merged in 18.0",
+        "submitted_at": "2025-09-01T08:53:11Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/224541#pullrequestreview-3172746421"
+      },
+      {
+        "type": "review",
+        "body": "> (This is a port of this commit 0da\u200bd5d4, which was merged in 18.0, and\r\nhandled the fix in the `media_dialog_legacy` version of the image\r\nselector.)\r\n\r\nThere are two problems with this:\r\n- You mention the development commit, not the one which was actually merged. Find the proper one in the main branch. You can easily find it by using the pull request dashboard, by clicking on the first message's image of robodoo on the PR in 18.0:\r\n<img width=\"570\" height=\"448\" alt=\"image\" src=\"https://github.com/user-attachments/assets/d6a325ee-a930-4840-a4e5-bda16d058042\" />\r\n- You use a 7-chars hash, which will likely trigger a collision in a few years. I'd suggest you use a full link with a full hash, which allows developers to actually click on the link from their IDE:\r\n\r\n```\r\nThis is a port of commit [1] which ...\r\n\r\n[...]\r\n\r\n[1]: https://github.com/odoo/odoo/commit/XXXXXXXXXXXXXXXXXXXXXX\r\n\r\nopw-XXX\r\n```",
+        "submitted_at": "2025-09-03T08:21:21Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/224541#pullrequestreview-3179503642"
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-05T17:21:35Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/224541#pullrequestreview-3190239853"
+      }
+    ]
+  },
+  {
+    "number": 224527,
+    "url": "https://github.com/odoo/odoo/pull/224527",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@romo-odoo FYI there were also trailing whitespaces in that new file, you might want to check your editor :grimacing: \r\n\r\n@robodoo r+",
+        "submitted_at": "2025-08-28T06:20:13Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/224527#pullrequestreview-3163331884"
+      }
+    ]
+  },
+  {
+    "number": 224487,
+    "url": "https://github.com/odoo/odoo/pull/224487",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "@Gorash Yes, as you know I have never been a fan of t-cache so I won't be sad to see it gone... but the amount of SQL queries has always been a tricky subject for FP. And RDE and JKE have done many things to keep that query count as low as possible, even if from a practical point of view we would probably most of the time prefer simplicity over SQL query optimization but... :shrug:\r\n\r\nWould it be possible for you to check if you can restore the old cache system we had for website.page at least? Not only I was never an expert regarding that part but also I have quite a few things to review at the moment myself :hot_face: \r\n\r\nFYI: FP is actually pinging me at this very moment about micro-optimizations so... kinda funny you are asking me to increase the SQL query count at the same time :upside_down_face: ",
+        "created_at": "2025-08-27T14:54:16Z",
+        "html_url": "https://github.com/odoo/odoo/pull/224487#discussion_r2304218787",
+        "path": "addons/website/tests/test_performance.py",
+        "position": 70
+      },
+      {
+        "type": "review_comment",
+        "body": "FYI:\r\n\r\nI tested this morning based on a fresh master with https://github.com/odoo/odoo/pull/197296 merged (which I guess was related when it comes to the performance of serving pages?), I have similar results: +~30-50% time per request for website.page records.\r\n\r\nIs it critical? I don't know, probably not... but it's obviously less good: again, I was not a fan of t-cache, but we should then restore the cache we had for website pages (that was removed when t-cache was introduced) or something similar.",
+        "created_at": "2025-09-02T06:01:32Z",
+        "html_url": "https://github.com/odoo/odoo/pull/224487#discussion_r2314992942",
+        "path": "addons/website/tests/test_performance.py",
+        "position": 70
+      }
+    ]
+  },
+  {
+    "number": 224465,
+    "url": "https://github.com/odoo/odoo/pull/224465",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-08-27T12:34:09Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/224465#pullrequestreview-3159602692"
+      }
+    ]
+  },
+  {
+    "number": 224406,
+    "url": "https://github.com/odoo/odoo/pull/224406",
+    "comments": [
+      {
+        "type": "issue_comment",
+        "body": "@bvr-odoo can merge it if he checked, yes :+1: ",
+        "created_at": "2025-09-05T13:04:12Z",
+        "html_url": "https://github.com/odoo/odoo/pull/224406#issuecomment-3258279040"
+      },
+      {
+        "type": "review",
+        "body": "Commit message: use `Closes XXX` or `Fixes XXX` instead of `Issue: XXX`, that makes Github link the issue properly and normally closes the issue automatically once this gets merged (I say normally because since robodoo does not merge but closes it might not get done, but still... :upside_down_face:).\r\n\r\nAlso what makes it specific to 18.0? The code in 17.0 seems to be the same",
+        "submitted_at": "2025-08-27T09:01:59Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/224406#pullrequestreview-3158966031"
+      }
+    ]
+  },
+  {
+    "number": 224382,
+    "url": "https://github.com/odoo/odoo/pull/224382",
+    "comments": [
+      {
+        "type": "issue_comment",
+        "body": "> we should do it in the builderAction class, like a wrapper around the apply method? (And actually, probably also around other methods like isApplied, etc., which could also cause errors.)\r\n\r\nProbably something like that indeed, is there an issue doing it? ",
+        "created_at": "2025-09-10T11:06:28Z",
+        "html_url": "https://github.com/odoo/odoo/pull/224382#issuecomment-3274461510"
+      },
+      {
+        "type": "review_comment",
+        "body": "@dery-odoo Is there a reason you kept a `<t>` without attributes?",
+        "created_at": "2025-09-09T14:35:52Z",
+        "html_url": "https://github.com/odoo/odoo/pull/224382#discussion_r2333861311",
+        "path": "addons/html_builder/static/src/sidebar/option_container.xml",
+        "position": 1
+      },
+      {
+        "type": "review",
+        "body": "@dery-odoo I am finally having a look at this PR (well TBH I took a quick look while you were away then had this question immediately and forgot to send it :upside_down_face:)\r\n\r\nI only see removal in your PR here, what happened to the part about ensuring that if an option crashes, we should make sure to check if it not because the snippet is outdated? Did I forget something? Did we cancel that? :thinking: \r\n\r\nIn any case, you can rebase this PR and move it out of draft if ready :pray: ",
+        "submitted_at": "2025-09-09T14:40:22Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/224382#pullrequestreview-3201942529"
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-12T15:37:59Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/224382#pullrequestreview-3217307805"
+      }
+    ]
+  },
+  {
+    "number": 224269,
+    "url": "https://github.com/odoo/odoo/pull/224269",
+    "comments": [
+      {
+        "type": "review",
+        "body": "Not really stable to move a file in stable... but if things [like that](https://github.com/odoo/odoo/pull/222345) were merged this week, I guess I can allow this one too. Also the file here only patches, so the risk is ultra low.\r\n\r\n@robodoo r+",
+        "submitted_at": "2025-08-26T13:51:14Z",
+        "state": "COMMENTED",
+        "html_url": "https://github.com/odoo/odoo/pull/224269#pullrequestreview-3155745079"
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-08-26T22:24:25Z",
+        "state": "COMMENTED",
+        "html_url": "https://github.com/odoo/odoo/pull/224269#pullrequestreview-3157489696"
+      }
+    ]
+  },
+  {
+    "number": 224247,
+    "url": "https://github.com/odoo/odoo/pull/224247",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "Not sure this should have been added here as blog_post/event do not seem to take profit of it... but I guess it makes sense for consistency.",
+        "created_at": "2025-09-09T13:44:46Z",
+        "html_url": "https://github.com/odoo/odoo/pull/224247#discussion_r2333691187",
+        "path": "addons/website/models/mixins.py",
+        "position": 4
+      },
+      {
+        "type": "review_comment",
+        "body": "I am a bit sad because from a quick scrolling through the PR it did seem good... but the very first thing I am testing and that is mentioned in the commit message is not working... so it kinda shattered my confidence in the rest of the PR as well, as I was trying to rush my review to have this for the freeze.\r\n\r\nAnyways, the \"circular avoidance\" thing that is explained in the commit message does not work at all... I guess we'll need some more code testing to ensure it stays fixed once you'll fix it.\r\n\r\n<img width=\"560\" height=\"125\" alt=\"image\" src=\"https://github.com/user-attachments/assets/ef6017b3-af28-4e7b-b5b0-77db4740b44c\" />\r\n\r\nFunctionally, if it was up to me, I would not make a line of code about this. But @lebl-odoo wants a complete check about it: preventing to create a circular dependency on any level (so even the 5th ancestor :shrug:), because indeed, the user do not have the possibility to see the full tree so it might be better to ensure the tree is not \"broken\".\r\n\r\nSo this PR will need some rework and as it introduces new fields, I guess we'll skip 19.0 and target 19.1 as the freeze is about to happen (this was already not sure it would land in 19.0 even if I r+'ed now). I'll stop my review here, we'll make it happen in 19.1.",
+        "created_at": "2025-09-09T14:19:16Z",
+        "html_url": "https://github.com/odoo/odoo/pull/224247#discussion_r2333813090",
+        "path": "addons/website/models/website_page_properties.py",
+        "position": 1
+      }
+    ]
+  },
+  {
+    "number": 224123,
+    "url": "https://github.com/odoo/odoo/pull/224123",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-08-26T10:17:56Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/224123#pullrequestreview-3154962143"
+      }
+    ]
+  },
+  {
+    "number": 224076,
+    "url": "https://github.com/odoo/odoo/pull/224076",
+    "comments": [
+      {
+        "type": "issue_comment",
+        "body": "@robodoo rebase-ff",
+        "created_at": "2025-09-06T15:58:05Z",
+        "html_url": "https://github.com/odoo/odoo/pull/224076#issuecomment-3262481189"
+      },
+      {
+        "type": "review_comment",
+        "body": "The \"homepage\" tours are supposed to be tours that are also shown to the users, for them to discover the builder (first tour launched after the configurator). Now... it has been known to have issues / be outdated (hence why the configurator loading screen is currently hiding the \"follow the tour tip\" message if I am not mistaken). But let's not pile on the problem: that step is not supposed to be shown to users... and I am not sure how it works in the new system of tours. I was thinking there was a `isActive` key or something like that, but maybe it was changed to be automatic for steps that have no `run`? (like the first step here actually). Could you confirm me that? :pray: ",
+        "created_at": "2025-09-03T08:28:49Z",
+        "html_url": "https://github.com/odoo/odoo/pull/224076#discussion_r2318195071",
+        "path": "addons/website/static/src/js/tours/tour_utils.js",
+        "position": 22
+      },
+      {
+        "type": "review_comment",
+        "body": "In my theme repo review I said:\r\n>  It could be automatic in the registerThemeHomepageTour function definition in website?\r\n\r\nHere you don't do that: you only change the definition of the tour for the community repo. You still have to change it automatically for all themes tours (did you run the theme test to confirm it actually checks the bug is solved? I don't think it does... if you run the `test_02_homepage_tour_every_theme` without your CSS change in the themes, it probably passes because it still does not test going to the theme tab on all themes)\r\n\r\nSo here I am thinking about actually changing the `registerThemeHomepageTour` function itself, to actually add the `goToTheme` steps at the end automatically.",
+        "created_at": "2025-09-03T08:34:22Z",
+        "html_url": "https://github.com/odoo/odoo/pull/224076#discussion_r2318212296",
+        "path": "addons/website/static/src/js/tours/homepage.js",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Then there is another bigger bug: the `test_02_homepage_tour_every_theme` does not run the right test :man_facepalming: It is not supposed to use the *community* \"homepage\" tour but each individual theme tour of course. That's the whole purpose of the `registerThemeHomepageTour`... OMG:\r\n<img width=\"1174\" height=\"238\" alt=\"image\" src=\"https://github.com/user-attachments/assets/35c15694-1d37-4038-b3ea-6bc282234d30\" />\r\nhttps://github.com/odoo/odoo/commit/9fe45e2b7ddbbfd0445ffe25a859e67a316d02b2#diff-c7720501ec33f5f92c907d8bb41de50edd832a4564317073e801a6915796a6bdL478\r\n\r\nTo fix first :pray: ",
+        "created_at": "2025-09-03T10:01:35Z",
+        "html_url": "https://github.com/odoo/odoo/pull/224076#discussion_r2318454621",
+        "path": "addons/website/static/src/js/tours/homepage.js",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Note: in the past, there was even a `saveAs` parameter when you had to register a tour as an override of an existing one... don't know what that changed :shrug: ",
+        "created_at": "2025-09-03T10:27:33Z",
+        "html_url": "https://github.com/odoo/odoo/pull/224076#discussion_r2318533714",
+        "path": "addons/website/static/src/js/tours/homepage.js",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "(and it has to be register under the \"homepage\" name as this is the one that should be displayed to users after the configurator is followed)",
+        "created_at": "2025-09-03T10:30:08Z",
+        "html_url": "https://github.com/odoo/odoo/pull/224076#discussion_r2318539616",
+        "path": "addons/website/static/src/js/tours/homepage.js",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "The guy who adapted this tour during the editor refactoring is really a champion...\r\n<img width=\"1192\" height=\"333\" alt=\"image\" src=\"https://github.com/user-attachments/assets/e4ef91ef-d95a-4bd3-b679-b48423a60f62\" />\r\n\r\nNot only the \"homepage\" purpose was removed without so much of a thought but we kept calling prepend_trigger but removing the prepend text? Damn...\r\n\r\nAnyways, removing `prepend_trigger` entirely (especially keeping the function as dead code (although in stable, that's normal)) is not perfect. I think we should restore the prepend_trigger use. That's actually what was checking that we indeed are on the homepage while the tour run no? :grimacing: That might not be critical for the tour *test* but if we do restore the user tour as we should... we don't want to the tour to build a homepage just anywhere I think.\r\n\r\nI'll split this commit in two: you are doing different things in the same commit. I'll add a comment about the prepend and I'll create a follow-up task for handling that.\r\n\r\n",
+        "created_at": "2025-09-06T13:28:11Z",
+        "html_url": "https://github.com/odoo/odoo/pull/224076#discussion_r2327398833",
+        "path": "addons/website/static/src/js/tours/tour_utils.js",
+        "position": 43
+      },
+      {
+        "type": "review",
+        "body": "@duau-odoo To double-check, I don't think this is right :pray: ",
+        "submitted_at": "2025-09-03T08:34:57Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/224076#pullrequestreview-3179528105"
+      },
+      {
+        "type": "review",
+        "body": "(I am changing the PR myself right now)",
+        "submitted_at": "2025-09-06T13:49:38Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/224076#pullrequestreview-3192736762"
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-06T15:56:50Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/224076#pullrequestreview-3193142993"
+      }
+    ]
+  },
+  {
+    "number": 223990,
+    "url": "https://github.com/odoo/odoo/pull/223990",
+    "comments": [
+      {
+        "type": "review",
+        "body": "I have not gone over each detail but I still went over the whole code, this looks clean :+1: I tested (on top of India, LEBL, BVR, ...), seems to work nicely :+1: I only found a minor issue not even related to the work here:\r\n- Add a \"Columns\" snippet\r\n- Make it a grid\r\n- Drop an inner content inside\r\n=> All grid item there have no control over the background color (acceptable I guess... but a bit weird now that we have this feature).\r\n\r\nLet's go :)\r\n\r\n@robodoo rebase-ff r+",
+        "submitted_at": "2025-09-05T20:12:00Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/223990#pullrequestreview-3190657518"
+      }
+    ]
+  },
+  {
+    "number": 223844,
+    "url": "https://github.com/odoo/odoo/pull/223844",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-08-25T11:46:09Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/223844#pullrequestreview-3151075919"
+      }
+    ]
+  },
+  {
+    "number": 223789,
+    "url": "https://github.com/odoo/odoo/pull/223789",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "Maybe it's worth adding precision to that comment. If we already did remove duplicates before, why do we need this? I guess it meant \"duplicates\" across multiple searches and now you mean duplicates in the same unsplash result? Explain that :wink: ",
+        "created_at": "2025-08-21T15:05:52Z",
+        "html_url": "https://github.com/odoo/odoo/pull/223789#discussion_r2291360253",
+        "path": "addons/web_unsplash/static/src/components/media_dialog/image_selector.js",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Should not we ensure that `this.state.unsplashRecords` never contains duplicates in the first place? Or is it already the case and you just want to convert to a set?",
+        "created_at": "2025-08-21T15:08:36Z",
+        "html_url": "https://github.com/odoo/odoo/pull/223789#discussion_r2291368230",
+        "path": "addons/web_unsplash/static/src/components/media_dialog/image_selector.js",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "- We don't use the one-line syntax\r\n- Confusing to make the `existingIds` list grow without comment, during a filter IMO",
+        "created_at": "2025-08-21T15:11:33Z",
+        "html_url": "https://github.com/odoo/odoo/pull/223789#discussion_r2291377460",
+        "path": "addons/web_unsplash/static/src/components/media_dialog/image_selector.js",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Based on my comments, I would go with something like this, if I understood things right:\r\n\r\n```javascript\r\nconst existingIds = this.state.unsplashRecords.map(existing => existing.id);\r\nconst newImages = images.filter((record, index, arr) => {\r\n    // Ignore duplicates from previous searches\r\n    return !existingIds.includes(record.id))\r\n        // Unsplash can actually return duplicate in the same batch, make\r\n        // sure to drop those too.\r\n        && arr.indexOf(record) === index);\r\n});\r\n```\r\n\r\nBut the most important is comments :wink: ",
+        "created_at": "2025-08-21T15:26:04Z",
+        "html_url": "https://github.com/odoo/odoo/pull/223789#discussion_r2291414367",
+        "path": "addons/web_unsplash/static/src/components/media_dialog/image_selector.js",
+        "position": 1
+      },
+      {
+        "type": "review",
+        "body": "Commit message:\r\n- Max 72 characters per line\r\n- Mention opw-XXX on the last line (not just in your branch name)\r\n\r\nRegarding a potential test addition as you were asking, well, that would be better to have one but I am not the most regarding when it comes to tests addition for such corner cases including a library. If you were to write a test, then the test should not call unsplash anyway: you would have to mock the actual unsplash search. E.g., in a tour, patch the Unsplash class to not make a RPC but simulate a result with a duplicated entry.",
+        "submitted_at": "2025-08-21T15:35:52Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/223789#pullrequestreview-3141136144"
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-08-25T09:16:24Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/223789#pullrequestreview-3150578327"
+      }
+    ]
+  },
+  {
+    "number": 223773,
+    "url": "https://github.com/odoo/odoo/pull/223773",
+    "comments": [
+      {
+        "type": "issue_comment",
+        "body": "https://github.com/odoo/odoo/pull/223773#issuecomment-3210530317 cc @robinlej @SergeBayet ",
+        "created_at": "2025-08-21T16:04:51Z",
+        "html_url": "https://github.com/odoo/odoo/pull/223773#issuecomment-3211230208"
+      },
+      {
+        "type": "review_comment",
+        "body": "Just after this rule there is another `> [data-snippet]`, with `[data-preview-interaction-enabled=\"true\"]`, it's not broken?\r\n\r\nBtw what's that `[data-preview-interaction-enabled=\"true\"]` that was added on some snippets and saved with the page :unamused: @bvr-odoo Do you know? ",
+        "created_at": "2025-08-21T16:03:23Z",
+        "html_url": "https://github.com/odoo/odoo/pull/223773#discussion_r2291511038",
+        "path": "addons/html_builder/static/src/snippets/snippet_viewer.scss",
+        "position": 5
+      },
+      {
+        "type": "review_comment",
+        "body": "```suggestion\r\n                &[data-preview-interaction-enabled=\"true\"] {\r\n```\r\n\r\nNest the rule instead of duplicating your selector",
+        "created_at": "2025-08-25T11:49:10Z",
+        "html_url": "https://github.com/odoo/odoo/pull/223773#discussion_r2297890939",
+        "path": "addons/html_builder/static/src/snippets/snippet_viewer.scss",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Can we fix that ? :pray: \r\n- Should be on the t-snippet instruction, not on the snippet definition\r\n- Should definitely not be an attribute saved with the page\r\n\r\nI'll add this in the pad so we don't forget",
+        "created_at": "2025-08-25T11:51:40Z",
+        "html_url": "https://github.com/odoo/odoo/pull/223773#discussion_r2297895671",
+        "path": "addons/html_builder/static/src/snippets/snippet_viewer.scss",
+        "position": 5
+      },
+      {
+        "type": "review",
+        "body": "Commit message: re-read it, there are sentences I can't read.",
+        "submitted_at": "2025-08-21T16:03:57Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/223773#pullrequestreview-3141352512"
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-08-26T14:47:33Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/223773#pullrequestreview-3156010431"
+      },
+      {
+        "type": "review",
+        "body": "Oh :upside_down_face: \r\n\r\n@robodoo r+",
+        "submitted_at": "2025-08-27T09:28:37Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/223773#pullrequestreview-3159051093"
+      }
+    ]
+  },
+  {
+    "number": 223616,
+    "url": "https://github.com/odoo/odoo/pull/223616",
+    "comments": [
+      {
+        "type": "review",
+        "body": "Should not we rather keep the crash (and make it a visible crash / traceback btw, how come is it not the case?) and fix the CSS variable? And potentially make sure our test in test_themes that goes through all themes also try switching to the theme tab of each theme?",
+        "submitted_at": "2025-08-20T15:35:41Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/223616#pullrequestreview-3137178293"
+      }
+    ]
+  },
+  {
+    "number": 223605,
+    "url": "https://github.com/odoo/odoo/pull/223605",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-08-20T15:24:48Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/223605#pullrequestreview-3137141579"
+      }
+    ]
+  },
+  {
+    "number": 223575,
+    "url": "https://github.com/odoo/odoo/pull/223575",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "Is `website` the right location for that code? Surely the problem is the same without website installed?",
+        "created_at": "2025-09-22T15:51:17Z",
+        "html_url": "https://github.com/odoo/odoo/pull/223575#discussion_r2369124294",
+        "path": "addons/website/models/ir_http.py",
+        "position": 1
+      }
+    ]
+  },
+  {
+    "number": 223543,
+    "url": "https://github.com/odoo/odoo/pull/223543",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-08-20T09:50:33Z",
+        "state": "COMMENTED",
+        "html_url": "https://github.com/odoo/odoo/pull/223543#pullrequestreview-3135739328"
+      }
+    ]
+  },
+  {
+    "number": 223531,
+    "url": "https://github.com/odoo/odoo/pull/223531",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-08-28T07:58:39Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/223531#pullrequestreview-3163688786"
+      }
+    ]
+  },
+  {
+    "number": 223499,
+    "url": "https://github.com/odoo/odoo/pull/223499",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-22T10:54:24Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/223499#pullrequestreview-3251906605"
+      }
+    ]
+  },
+  {
+    "number": 223488,
+    "url": "https://github.com/odoo/odoo/pull/223488",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-22T10:59:15Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/223488#pullrequestreview-3251938592"
+      }
+    ]
+  },
+  {
+    "number": 223441,
+    "url": "https://github.com/odoo/odoo/pull/223441",
+    "comments": [
+      {
+        "type": "issue_comment",
+        "body": "FYI I asked to try and not change the specificity of selectors in stable if not strictly required, and you just multiplied it by 11 adding `header#top` without `:where`... not critical but any custo customizing the same properties will have a huge chance of being broken :grimacing: ",
+        "created_at": "2025-08-20T14:03:19Z",
+        "html_url": "https://github.com/odoo/odoo/pull/223441#issuecomment-3206533019"
+      },
+      {
+        "type": "review_comment",
+        "body": "In stable, use `:where([role=\"menu\"])` if it works. That way you don't change the specificity of that CSS",
+        "created_at": "2025-08-20T08:59:41Z",
+        "html_url": "https://github.com/odoo/odoo/pull/223441#discussion_r2287481469",
+        "path": "addons/website/static/src/scss/website.scss",
+        "position": 1
+      },
+      {
+        "type": "review",
+        "body": "I'll leave the full review / r+ to @bvr-odoo ;)",
+        "submitted_at": "2025-08-20T08:59:59Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/223441#pullrequestreview-3135498575"
+      }
+    ]
+  },
+  {
+    "number": 223276,
+    "url": "https://github.com/odoo/odoo/pull/223276",
+    "comments": [
+      {
+        "type": "review",
+        "body": "FYI @kmagusiak @HydrionBurst Seems like some `context_today()` were changed into `'today'` instead of `'now'`, which caused this kind of issue. Might be worth rechecking, we are only fixing our usecase here.\r\n\r\n@robodoo r+",
+        "submitted_at": "2025-08-20T13:40:27Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/223276#pullrequestreview-3136664402"
+      }
+    ]
+  },
+  {
+    "number": 223268,
+    "url": "https://github.com/odoo/odoo/pull/223268",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "\"If unsupported, show it\"? :thinking: ",
+        "created_at": "2025-08-20T13:19:51Z",
+        "html_url": "https://github.com/odoo/odoo/pull/223268#discussion_r2288152991",
+        "path": "addons/web_editor/static/src/js/editor/snippets.options.js",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "I would at least return false at the end of this method. Not a fan of a method that return a boolean or a string... but at least make it not return undefined ;)",
+        "created_at": "2025-08-20T13:20:33Z",
+        "html_url": "https://github.com/odoo/odoo/pull/223268#discussion_r2288154783",
+        "path": "addons/web_editor/static/src/js/editor/snippets.options.js",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "`_computeWidgetVisibility` is a readonly method, it is not supposed to change the DOM. Use `updateUI` for that :pray: ",
+        "created_at": "2025-08-20T13:21:38Z",
+        "html_url": "https://github.com/odoo/odoo/pull/223268#discussion_r2288157398",
+        "path": "addons/web_editor/static/src/js/editor/snippets.options.js",
+        "position": 1
+      },
+      {
+        "type": "review",
+        "body": "> If we select in formats a WebP, then a PNG, we still see the quality\r\noption that are meant for the WebP, and inversely if we start with a PNG\r\nthe quality option is hidden.\r\n\r\nYou are actually fixing more than that:\r\n- Drop an text-image snippet\r\n- Replace the image by a PNG image\r\n=> It is converted to WebP but you don't get the quality option :open_mouth: \r\n\r\nMaybe you could precise that in the commit message while at the same time make the fix available for users that don't update? I think you can replace the TODO part in _renderCustomXML to instead add the missing data-name on the element that you already search with `we-range[data-set-quality]` in fact. Instead of removing it. Or we have also `_patchForComputeSnippetTemplates` for that purpose (but not needed just to add the data-name in an existing option like in this case). Note that in 18.4+, you'll be able to change the XML directly and that's it since it's now static XML :)",
+        "submitted_at": "2025-08-20T16:34:23Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/223268#pullrequestreview-3137407766"
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-08-21T07:42:48Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/223268#pullrequestreview-3139445282"
+      }
+    ]
+  },
+  {
+    "number": 223028,
+    "url": "https://github.com/odoo/odoo/pull/223028",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo rebase-ff r+",
+        "submitted_at": "2025-08-14T14:48:34Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/223028#pullrequestreview-3120901419"
+      }
+    ]
+  },
+  {
+    "number": 223010,
+    "url": "https://github.com/odoo/odoo/pull/223010",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@xO-Tx I don't think we need a patch:\r\n- we already have a system for the masonry ones, steps are **initially created** the right way thanks to it\r\n- the tour registration takes a function that returns the steps, I always guess the point was to allow overrides more easily no? That something could be extended **before** that function is called.\r\n\r\nSo can't it work by:\r\n- exporting `SUB_SNIPPET_TEMPLATES`\r\n- other apps add things inside that\r\n- The use of `SUB_SNIPPET_TEMPLATES` is made **into the function that return the tour steps**.",
+        "submitted_at": "2025-08-14T14:24:46Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/223010#pullrequestreview-3120809399"
+      },
+      {
+        "type": "review",
+        "body": "Alright, this looks good, I'll r+ without testing for once. Since it's about fixing a test, I guess I'll know soon enough if something does not work :upside_down_face: \r\n\r\n@robodoo r+",
+        "submitted_at": "2025-08-14T15:56:16Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/223010#pullrequestreview-3121143442"
+      }
+    ]
+  },
+  {
+    "number": 222548,
+    "url": "https://github.com/odoo/odoo/pull/222548",
+    "comments": [
+      {
+        "type": "review",
+        "body": "Would be great to have the commit message mentions a bit the commits history that lead to this problem :pray: \r\n\r\n@FrancoisGe @divy-odoo This seems linked to the re-implementation of a sub-feature at https://github.com/odoo/odoo/commit/f4230d74c2209d7902df60d9fed91d8000aa267b -> I don't know if you willingly decided to change things when re-introducing the feature or not, I let you check this :pray: ",
+        "submitted_at": "2025-10-06T15:11:35Z",
+        "state": "COMMENTED",
+        "html_url": "https://github.com/odoo/odoo/pull/222548#pullrequestreview-3305353344"
+      }
+    ]
+  },
+  {
+    "number": 221876,
+    "url": "https://github.com/odoo/odoo/pull/221876",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "Max 80 chars per line for comments",
+        "created_at": "2025-09-05T17:00:28Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221876#discussion_r2325614099",
+        "path": "addons/website/static/src/components/translator/translator.js",
+        "position": 1
+      },
+      {
+        "type": "review",
+        "body": "You are replacing a problem:\r\n<img width=\"672\" height=\"115\" alt=\"image\" src=\"https://github.com/user-attachments/assets/e4c01078-2028-4e2c-b6e2-b739aa7b9918\" />\r\n\r\nBy the same problem:\r\n<img width=\"683\" height=\"116\" alt=\"image\" src=\"https://github.com/user-attachments/assets/c027c5bd-5e50-4b59-90c5-99a7ca05fc9c\" />\r\n\r\n... how could this have been reviewed and sent for merge? It's a one-line fix that does not change anything about a very reproducible problem :thinking: ",
+        "submitted_at": "2025-08-19T08:59:12Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/221876#pullrequestreview-3131390617"
+      },
+      {
+        "type": "review",
+        "body": "Max 72 characters per line in the commit message.\r\n\r\nI'll trust you with the r+ for this.\r\n\r\n@robodoo delegate+\r\n@robodoo delegate=@abz-odoo",
+        "submitted_at": "2025-09-05T17:01:53Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/221876#pullrequestreview-3190178076"
+      }
+    ]
+  },
+  {
+    "number": 221791,
+    "url": "https://github.com/odoo/odoo/pull/221791",
+    "comments": [
+      {
+        "type": "issue_comment",
+        "body": "@davidmonnom Could you have a look at this and r+ once you get the time? Thanks! :pray: ",
+        "created_at": "2025-08-04T15:26:54Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221791#issuecomment-3151239957"
+      },
+      {
+        "type": "issue_comment",
+        "body": "@davidmonnom Kind reminder :flushed: ",
+        "created_at": "2025-08-11T11:36:35Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221791#issuecomment-3174394071"
+      },
+      {
+        "type": "issue_comment",
+        "body": "Hello @odoo/pos :wave: Anyone could have a look at this please? :pray: ",
+        "created_at": "2025-08-18T09:18:28Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221791#issuecomment-3195851744"
+      },
+      {
+        "type": "review",
+        "body": "Respect is dead :joy: \r\n\r\n@robodoo r+",
+        "submitted_at": "2025-08-25T11:11:27Z",
+        "state": "COMMENTED",
+        "html_url": "https://github.com/odoo/odoo/pull/221791#pullrequestreview-3150980019"
+      }
+    ]
+  },
+  {
+    "number": 221703,
+    "url": "https://github.com/odoo/odoo/pull/221703",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "@romo-odoo FYI for next time, when you move/rename a file, you should make a dedicated move commit, otherwise not only you lose the history but you also make all forward-port in that file fail ",
+        "created_at": "2025-08-28T06:11:08Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221703#discussion_r2306283581",
+        "path": "addons/website/static/src/builder/plugins/options/header_border_option.xml",
+        "position": 11
+      }
+    ]
+  },
+  {
+    "number": 221542,
+    "url": "https://github.com/odoo/odoo/pull/221542",
+    "comments": [
+      {
+        "type": "issue_comment",
+        "body": "As you guessed, I think that's best too. They can do their demo without this technical refactoring :+1: ",
+        "created_at": "2025-08-08T13:54:06Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#issuecomment-3168000701"
+      },
+      {
+        "type": "review_comment",
+        "body": "Should be prefixed by `website.` as discussed",
+        "created_at": "2025-08-05T12:46:44Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#discussion_r2254240411",
+        "path": "addons/website/models/html_text_processor.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Max 80 chars per line for comments",
+        "created_at": "2025-08-05T12:47:06Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#discussion_r2254241255",
+        "path": "addons/website/models/html_text_processor.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "```suggestion\r\n        return dict(self.env.context.get(cache_key, {}))\r\n```",
+        "created_at": "2025-08-05T12:51:57Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#discussion_r2254253338",
+        "path": "addons/website/models/html_text_processor.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "In the class you start some methods with `_` and some methods without. I think they should all start with `_`, making them not callable from the client-side. Not that important in this case but that way it clearly indicates it is not meant to.",
+        "created_at": "2025-08-05T12:55:45Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#discussion_r2254262902",
+        "path": "addons/website/models/html_text_processor.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "You import things you don't need to",
+        "created_at": "2025-08-05T12:56:25Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#discussion_r2254264662",
+        "path": "addons/website/models/html_text_processor.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Missing doc for one arg",
+        "created_at": "2025-08-05T12:58:05Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#discussion_r2254268854",
+        "path": "addons/website/models/html_text_processor.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Missing args too, review all docstring and comments",
+        "created_at": "2025-08-05T13:00:07Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#discussion_r2254273932",
+        "path": "addons/website/models/html_text_processor.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "I am surprised this is done here, it should be done in `_render_snippet` IMO",
+        "created_at": "2025-08-05T13:02:18Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#discussion_r2254280020",
+        "path": "addons/website/models/html_text_processor.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Not sure but why in this function only?",
+        "created_at": "2025-08-05T13:03:02Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#discussion_r2254281875",
+        "path": "addons/website/models/html_text_processor.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "The change in this file should be in their own commit IMO, I don't think it has much to do with the processor util creation :+1: ",
+        "created_at": "2025-08-05T13:10:15Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#discussion_r2254301073",
+        "path": "addons/website/static/src/components/dialog/add_page_dialog.js",
+        "position": 31
+      },
+      {
+        "type": "review_comment",
+        "body": "Commit messages: max 72 characters per line",
+        "created_at": "2025-08-07T13:02:29Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#discussion_r2260258241",
+        "path": "addons/website/models/__init__.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "You are breaking at <60 characters per line. Use 80 for comments.",
+        "created_at": "2025-08-07T13:03:18Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#discussion_r2260261158",
+        "path": "addons/website/models/html_text_processor.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Actually, Odoo is supposed to use the `:param`, `:return:`, etc syntax. It is even more important now as this is the one required for the new `/doc` feature to work (even if at the moment `AbstractModel` ones are not listed in there).",
+        "created_at": "2025-08-07T13:04:51Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#discussion_r2260266152",
+        "path": "addons/website/models/html_text_processor.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Still should be done in `_render_snippet` IMO but this can wait. In the end, it was already like that before your PR.",
+        "created_at": "2025-08-08T06:24:43Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#discussion_r2262042609",
+        "path": "addons/website/models/html_text_processor.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Why suddenly switching variable here? Can't you keep using `current_processor`?",
+        "created_at": "2025-08-08T06:28:13Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#discussion_r2262047848",
+        "path": "addons/website/models/html_text_processor.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Looks like the \"if not stuff return\" could be done before the call to `_get_processing_cache`",
+        "created_at": "2025-08-08T06:35:12Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#discussion_r2262059010",
+        "path": "addons/website/models/html_text_processor.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "In the other methods you always start with `updated_process` it seems: \r\n<img width=\"289\" height=\"59\" alt=\"image\" src=\"https://github.com/user-attachments/assets/56d37321-e00a-45b5-887c-5828159d3c14\" />\r\nI am just stating that you exactly could do the same here, starting with update_processor first *before* the loop. But that's fine, I am just nitpicking :shrug: ",
+        "created_at": "2025-08-08T13:58:04Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#discussion_r2263059134",
+        "path": "addons/website/models/html_text_processor.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "I'll push-force to fix this kind of linting problem, imports in python outdated after code removal, typo, ...",
+        "created_at": "2025-09-07T06:30:53Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#discussion_r2328538457",
+        "path": "addons/website/static/src/components/dialog/add_page_dialog.js",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "> snippet_key = website._get_snippet_view_key(snippet, page_code)\r\n\r\nYou must have had a conflict when rebasing here at some point and you ignored it... that makes me less confident to trust the rest of your changes without a deeper review :grimacing: The eCommerce team added the `_get_snippet_view_key` apparently, to support snippets from other apps.\r\n\r\n=> To fix :pray: ",
+        "created_at": "2025-09-07T13:35:48Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#discussion_r2328688628",
+        "path": "addons/website/models/website.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "See comment on the enterprise PR for more details: you should not change the whole dialog class in fact (even replacing by one that extends our base one), you should path the base one in place.",
+        "created_at": "2025-09-07T13:38:45Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#discussion_r2328689672",
+        "path": "addons/website/static/src/components/dialog/add_page_dialog.js",
+        "position": 1
+      },
+      {
+        "type": "review",
+        "body": "Quick superficial review, it's looking promising :+1: Can you adapt then I'll have a deeper look tomorrow and I'll test and merge, thanks :pray: ",
+        "submitted_at": "2025-08-05T13:12:14Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#pullrequestreview-3088129506"
+      },
+      {
+        "type": "review",
+        "body": "New batch of comments, after that it should be good to go. At least the community part, I did not look at the enterprise part yet (I'll have a quick look now).\r\n\r\nNote: I tested this community part, it seems to work well :clap: But in the end, not sure if this is really required to merge this this week: it just seem like a risk for the community days next week, now that you merged the AI work without this anyway. But once you adapt here, I'll r+ today, then I'll leave the r+ of the enterprise part to you so you can decide what's best (waiting next week or not).\r\n\r\nPing me once ready :pray: ",
+        "submitted_at": "2025-08-08T07:42:36Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#pullrequestreview-3097060289"
+      },
+      {
+        "type": "review",
+        "body": "I was planning to have this merge today but actually, there is still a problem in the adaptation here + the patching in enterprise needs further work (see enterprise PR). Let's make it happen this week :pray: Thanks :pray: ",
+        "submitted_at": "2025-09-07T13:54:58Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#pullrequestreview-3194263211"
+      },
+      {
+        "type": "review",
+        "body": "Seems good, and I retested, seems good to go. I just had to push-force because the second commit message was not adapted and still mentioned the `getConfirmDialogClass` hook and stuff. I took profit of the push-force to rebase and also use the 72 characters per line and add the missing task-XXX in commit messages in both PR.\r\n\r\n@robodoo rebase-ff r+",
+        "submitted_at": "2025-09-08T16:40:58Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/221542#pullrequestreview-3197312625"
+      }
+    ]
+  },
+  {
+    "number": 221524,
+    "url": "https://github.com/odoo/odoo/pull/221524",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "I am not sure why this would be a specific problem of the image gallery block. In other cases, how does it magically works? I am guessing it depends on the container display, it's probably flex here and it works in other places where it's not flex? But then you are only fixing it for this one while it should work for all flex containers. Actually with a bit of research I found this: https://github.com/odoo/odoo/commit/14bcdbc6f541b573a2de7b639fde27f3751c9b49 -> it was probably fixing the alignment option when the container is flex... but probably left the link case broken.\r\n\r\nAlso I don't think that forcing 100% width is actually good: it means that clicking around the image also follow the invisible link.\r\n\r\nThe solution is probably about making the link adapt according to the alignment option somehow. The ideal way would be using display:contents on the link and be done with it, but that probably does not work on all browsers and screen readers.\r\n\r\nI let you investigate.",
+        "created_at": "2025-08-12T09:48:51Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221524#discussion_r2269314463",
+        "path": "addons/website/static/src/snippets/s_image_gallery/002.scss",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "As I explained in details, the current solution is not good:\r\n1. It fixes a generic problem (all images in a flex environment have the same issues) in a very specific way (only in the CSS for the gallery snippet)\r\n2. It is functionally not great: if I have a 50x50 image I don't want the whole carousel to be a link\r\n\r\nThis should rather be about adapting the link / alignment options to adapt the link element properly.",
+        "created_at": "2025-08-18T10:44:37Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221524#discussion_r2282030643",
+        "path": "addons/website/static/src/snippets/s_image_gallery/002.scss",
+        "position": 1
+      }
+    ]
+  },
+  {
+    "number": 221505,
+    "url": "https://github.com/odoo/odoo/pull/221505",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "`--o-ccX` CSS variables are not designed to be used like that. I was not even sure they were available to visitors TBH but I guess we could go that way anyway while waiting for https://www.odoo.com/odoo/all-tasks/3770405 ...\r\n\r\n... but the minimum would be to make o_cc1 behave like not o_cc at all. Reminder: the o_cc1 class only purposes are:\r\n- Be able to reforce color preset 1 inside another colored contained\r\n- Force the o_cc1 background above the default body background image\r\n\r\nSo the base definition of `.o_dot` should include the right color forcing, base on a bootstrap variable (I guess `$primary` or something like that).",
+        "created_at": "2025-08-18T09:40:09Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221505#discussion_r2281865498",
+        "path": "addons/website/static/src/scss/website.scss",
+        "position": 16
+      },
+      {
+        "type": "review_comment",
+        "body": "To see if really wanted after my previous comment's request (acceptable but not sure it is needed).",
+        "created_at": "2025-08-18T09:41:59Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221505#discussion_r2281871234",
+        "path": "addons/website/views/snippets/s_timeline.xml",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "> start loop from 2\r\n\r\nWhy? You break the \"Be able to reforce color preset 1 inside another colored contained\" part of my explanation if you do that.\r\n\r\nHave a snippet (A) which contains your timeline snippet (B). Add o_ccX to A, and o_cc1 to B => you get the dot color of o_ccX and nothing from the inner o_cc1.\r\n\r\n<img width=\"1630\" height=\"896\" alt=\"image\" src=\"https://github.com/user-attachments/assets/e5127284-59e0-481b-b3a8-f405519f1178\" />\r\n",
+        "created_at": "2025-08-18T17:17:15Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221505#discussion_r2282994105",
+        "path": "addons/website/static/src/scss/website.scss",
+        "position": 16
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-08-19T12:02:28Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/221505#pullrequestreview-3132013697"
+      }
+    ]
+  },
+  {
+    "number": 221458,
+    "url": "https://github.com/odoo/odoo/pull/221458",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-08-07T09:03:40Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/221458#pullrequestreview-3096150366"
+      }
+    ]
+  },
+  {
+    "number": 221448,
+    "url": "https://github.com/odoo/odoo/pull/221448",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-08-07T08:55:25Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/221448#pullrequestreview-3096121452"
+      }
+    ]
+  },
+  {
+    "number": 221305,
+    "url": "https://github.com/odoo/odoo/pull/221305",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-07-31T08:49:49Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/221305#pullrequestreview-3074534011"
+      }
+    ]
+  },
+  {
+    "number": 221246,
+    "url": "https://github.com/odoo/odoo/pull/221246",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "Remove the `(`, it's not very pythonesque :upside_down_face: ",
+        "created_at": "2025-09-11T11:39:18Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221246#discussion_r2340359201",
+        "path": "addons/website/controllers/main.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "You should never duplicate some code, especially when using `filtered`",
+        "created_at": "2025-09-11T11:43:16Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221246#discussion_r2340384747",
+        "path": "addons/website/controllers/main.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "I don't understand why this PR would need to change this function",
+        "created_at": "2025-09-11T11:49:34Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221246#discussion_r2340418982",
+        "path": "addons/website/models/assets.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "General question before reviewing further: do we really need to change the js <-> python communication for this feature? Can't we track things that are being changed on the client side only (when the JS function calling those python controllers are called)?\r\n\r\nIt seems weird to say on the client side:\r\n\r\n- Hey python, change from x to y, and tell me what changed\r\n- ... well it was x, now it is y\r\n- Ok I'll know I have to revert to x\r\n\r\nWhile you could just say\r\n- Hey python, change from x to y, I'll remember it was x",
+        "created_at": "2025-09-11T11:49:46Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221246#discussion_r2340420343",
+        "path": "addons/website/controllers/main.py",
+        "position": 1
+      }
+    ]
+  },
+  {
+    "number": 221240,
+    "url": "https://github.com/odoo/odoo/pull/221240",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "`t-attf-` are normally translated: if not, that's the bug that should be fixed here",
+        "created_at": "2025-07-31T09:07:12Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221240#discussion_r2244805449",
+        "path": "addons/website/static/src/builder/plugins/theme/theme_advanced_option.xml",
+        "position": 5
+      },
+      {
+        "type": "review",
+        "body": "Most of those moves to the JS are annoying IMO. To avoid having to jump between the JS and the XML just to see some labels, I would rather:\r\n- Use `t-attf-` when you can\r\n- Use a `t-set` otherwise\r\n\r\nBut if someone prefers to go fast and merge like this, that's fine by me too.",
+        "submitted_at": "2025-07-31T09:12:06Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/221240#pullrequestreview-3074587550"
+      }
+    ]
+  },
+  {
+    "number": 221202,
+    "url": "https://github.com/odoo/odoo/pull/221202",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "I don't like the `fully_editable` name, I'd go with a simpler `is_designer` (in that order: `editable = is_designer = ...`). That way the condition a few lines below will be `if editable and is_designer:` rather than `if fully_editable and editable:` which looks weird.\r\n\r\nOr `has_group_designer` to do like the variable below, as you prefer.",
+        "created_at": "2025-08-20T11:30:11Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221202#discussion_r2287873737",
+        "path": "addons/website/models/ir_qweb.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Enforce max 80 chars per line for comments. And fix the english and add a point at the end of the sentence please :pray: ",
+        "created_at": "2025-08-20T11:32:04Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221202#discussion_r2287878722",
+        "path": "addons/test_website/tests/test_restricted_editor.py",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "Not sure about those steps:\r\n- Is the first step required given the fact that the second one just checks it's not o_editable?\r\n- Dirty has nothing to do with this test\r\n\r\nI would go with an unique step like this:\r\n`iframe :has(.o_editable) footer:not(.o_editable):not(:has(.o_editable))` => this is the most robust way to write this I think, independently from where the `o_editable` class might end up:\r\n- it ensures the check is only done when one o_editable has been added somewhere\r\n- It checks the non-presence of `o_editable` anywhere in the `footer` tag",
+        "created_at": "2025-08-20T11:44:52Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221202#discussion_r2287906965",
+        "path": "addons/test_website/static/tests/tours/restricted_editor.js",
+        "position": 1
+      },
+      {
+        "type": "review",
+        "body": "Nitpick: commit message should mention the test_website app",
+        "submitted_at": "2025-08-20T11:45:35Z",
+        "state": "CHANGES_REQUESTED",
+        "html_url": "https://github.com/odoo/odoo/pull/221202#pullrequestreview-3136155635"
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-08-21T14:20:54Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/221202#pullrequestreview-3140922604"
+      }
+    ]
+  },
+  {
+    "number": 221200,
+    "url": "https://github.com/odoo/odoo/pull/221200",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-08-04T13:30:21Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/221200#pullrequestreview-3084228523"
+      }
+    ]
+  },
+  {
+    "number": 221057,
+    "url": "https://github.com/odoo/odoo/pull/221057",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo rebase-ff r+",
+        "submitted_at": "2025-09-08T12:32:30Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/221057#pullrequestreview-3196313172"
+      },
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-09-09T11:41:46Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/221057#pullrequestreview-3201064608"
+      }
+    ]
+  },
+  {
+    "number": 221047,
+    "url": "https://github.com/odoo/odoo/pull/221047",
+    "comments": [
+      {
+        "type": "review_comment",
+        "body": "Could you mention in the commit message what you are trying to fix (ideally, steps to reproduce the issue)? The community does not have access to opening the task :upside_down_face: And without opening the task, I lost some time trying to check how it affects popup buttons... well it does not :upside_down_face: ",
+        "created_at": "2025-09-22T13:23:03Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221047#discussion_r2368380350",
+        "path": "addons/website/static/src/scss/website.scss",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "From what I see, bootstrap has this:\r\n```scss\r\n@mixin btn-close-white() {\r\n  filter: var(--#{$prefix}btn-close-white-filter);\r\n}\r\n\r\n.btn-close-white {\r\n  @include btn-close-white();\r\n}\r\n```\r\n\r\n1. I think the minimum would be using their mixin, that will be more robust to future bootstrap lib changes. But maybe it's even better to do `@extend .btn-close-white;` (while I normally don't recommend extending non-placeholder selector, it seems quite controled here). I let you choose :+1: \r\n\r\n2. Instead of `unset` being repeated for potentially all 5 cc classes, put the rule in the `.o_cc {` CSS rules, that's the point of those ;) And that will later be further optimized with task-3770405",
+        "created_at": "2025-09-22T13:33:30Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221047#discussion_r2368427451",
+        "path": "addons/web_editor/static/src/scss/web_editor.common.scss",
+        "position": 1
+      },
+      {
+        "type": "review_comment",
+        "body": "- `unset` for o_cc\r\n- `filter` (or not, depending on `$-bg-color`) for o_ccX",
+        "created_at": "2025-09-24T11:27:50Z",
+        "html_url": "https://github.com/odoo/odoo/pull/221047#discussion_r2375461545",
+        "path": "addons/web_editor/static/src/scss/web_editor.common.scss",
+        "position": 1
+      }
+    ]
+  },
+  {
+    "number": 220843,
+    "url": "https://github.com/odoo/odoo/pull/220843",
+    "comments": [
+      {
+        "type": "review",
+        "body": "@robodoo r+",
+        "submitted_at": "2025-07-30T11:20:11Z",
+        "state": "APPROVED",
+        "html_url": "https://github.com/odoo/odoo/pull/220843#pullrequestreview-3070961242"
+      }
+    ]
+  }
+]

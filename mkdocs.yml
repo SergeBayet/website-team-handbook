@@ -68,6 +68,7 @@ nav:
     - Website Editor Roles & Access: dev/website-editor-roles.md
   - Guides:
     - Debugging Cheatsheet: guides/debugging-cheatsheet.md
+    - qsm-odoo Review Guidelines: guides/qsm-review-guidelines.md
   - Tutorials:
     - Create your own Builder Component: tutorials/create-your-own-builder-component.md
   - Reports:
