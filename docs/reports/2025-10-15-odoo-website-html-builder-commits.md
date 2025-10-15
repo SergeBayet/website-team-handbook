@@ -11,7 +11,7 @@ This digest covers all commits that touched the `addons/website`, `addons/html_b
 - **Content editing polish.** Showcase videos stop flickering, highlighted SVGs stay within the viewport, configurator menus match the new offer set, and multiple tours/tests gained deterministic helpers.
 
 ## Commit details
-| Date (UTC) | Commit | Author | Scope | Summary |
+| Merged (UTC) | Commit | Author | Scope | Summary |
 | --- | --- | --- | --- | --- |
 | 2025-10-15 | [faf42a1](https://github.com/odoo/odoo/commit/faf42a1555fd6d268a0b47a2692ceeabde058aef) | Tiffany Chang (tic) | html_builder | Restore the missing empty translation entry in the HTML Builder POT so exports stay valid. |
 | 2025-10-15 | [899c08b](https://github.com/odoo/odoo/commit/899c08bd2ba2f8571cf025245219621d36ed999c) | Serhii Rubanskyi | html_builder | Export every color picker tab module so downstream patches can hook the pluggable tabs. |
@@ -43,3 +43,5 @@ This digest covers all commits that touched the `addons/website`, `addons/html_b
 | 2025-10-09 | [b7d9ae5](https://github.com/odoo/odoo/commit/b7d9ae53ff0b6df8ceb1f8be79ad3304c843e258) | assk-odoo | website | Fix the mobile new-page dialog so it grabs the right iframe document before loading. |
 | 2025-10-09 | [0cb4545](https://github.com/odoo/odoo/commit/0cb45457ccd59c4caf28fddccb43ccdbd3e73257) | khaj-odoo | website | Refresh configurator menus, feature toggles, and tours to match the current offer mix. |
 | 2025-10-09 | [d3dc69b](https://github.com/odoo/odoo/commit/d3dc69b0431ae2f037ddb9e0e881ddf03b657638) | Benjamin Vray | website | Lock the showcase video iframe size so Chrome stops flickering on hover. |
+
+> **How to read the data:** The accompanying JSON export at [`docs/reports/data/2025-10-15-website-html-builder.json`](./data/2025-10-15-website-html-builder.json) is sorted by the GitHub committer timestamp and includes every file-level diff touching the tracked paths within the window.

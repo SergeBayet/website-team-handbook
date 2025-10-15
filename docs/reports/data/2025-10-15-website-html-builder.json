@@ -1,5 +1,249 @@
 [
   {
+    "sha": "faf42a1555fd6d268a0b47a2692ceeabde058aef",
+    "node_id": "C_kwDOAS1I7NoAKGZhZjQyYTE1NTVmZDZkMjY4YTBiNDdhMjY5MmNlZWFiZGUwNThhZWY",
+    "commit": {
+      "author": {
+        "name": "Tiffany Chang (tic)",
+        "email": "tic@odoo.com",
+        "date": "2025-10-07T13:45:43Z"
+      },
+      "committer": {
+        "name": "Tiffany Chang (tic)",
+        "email": "tic@odoo.com",
+        "date": "2025-10-15T08:55:45Z"
+      },
+      "message": "[I18N] html_builder: add missing msgstr \"\"\n\npot file was manually edited, resulting in invalid pot file.\n\ncloses odoo/odoo#230409\n\nX-original-commit: a8818f596774a902eb8568fbe7634c3a4bcf7268\nSigned-off-by: Tiffany Chang (tic) <tic@odoo.com>",
+      "tree": {
+        "sha": "27670197c5d0eacf61d5963683415a6801371b29",
+        "url": "https://api.github.com/repos/odoo/odoo/git/trees/27670197c5d0eacf61d5963683415a6801371b29"
+      },
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/faf42a1555fd6d268a0b47a2692ceeabde058aef",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/odoo/odoo/commits/faf42a1555fd6d268a0b47a2692ceeabde058aef",
+    "html_url": "https://github.com/odoo/odoo/commit/faf42a1555fd6d268a0b47a2692ceeabde058aef",
+    "comments_url": "https://api.github.com/repos/odoo/odoo/commits/faf42a1555fd6d268a0b47a2692ceeabde058aef/comments",
+    "author": {
+      "login": "ticodoo",
+      "id": 57942143,
+      "node_id": "MDQ6VXNlcjU3OTQyMTQz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/57942143?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ticodoo",
+      "html_url": "https://github.com/ticodoo",
+      "followers_url": "https://api.github.com/users/ticodoo/followers",
+      "following_url": "https://api.github.com/users/ticodoo/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ticodoo/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ticodoo/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ticodoo/subscriptions",
+      "organizations_url": "https://api.github.com/users/ticodoo/orgs",
+      "repos_url": "https://api.github.com/users/ticodoo/repos",
+      "events_url": "https://api.github.com/users/ticodoo/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ticodoo/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "ticodoo",
+      "id": 57942143,
+      "node_id": "MDQ6VXNlcjU3OTQyMTQz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/57942143?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ticodoo",
+      "html_url": "https://github.com/ticodoo",
+      "followers_url": "https://api.github.com/users/ticodoo/followers",
+      "following_url": "https://api.github.com/users/ticodoo/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ticodoo/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ticodoo/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ticodoo/subscriptions",
+      "organizations_url": "https://api.github.com/users/ticodoo/orgs",
+      "repos_url": "https://api.github.com/users/ticodoo/repos",
+      "events_url": "https://api.github.com/users/ticodoo/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ticodoo/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "e29921a6df52ba567132d7ffe63de86eb1efa1ff",
+        "url": "https://api.github.com/repos/odoo/odoo/commits/e29921a6df52ba567132d7ffe63de86eb1efa1ff",
+        "html_url": "https://github.com/odoo/odoo/commit/e29921a6df52ba567132d7ffe63de86eb1efa1ff"
+      }
+    ],
+    "stats": {
+      "total": 1,
+      "additions": 1,
+      "deletions": 0
+    },
+    "files": [
+      {
+        "sha": "3be07df397e921b7f82f0c67ac03d0d492e1d141",
+        "filename": "addons/html_builder/i18n/html_builder.pot",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0,
+        "changes": 1,
+        "blob_url": "https://github.com/odoo/odoo/blob/faf42a1555fd6d268a0b47a2692ceeabde058aef/addons%2Fhtml_builder%2Fi18n%2Fhtml_builder.pot",
+        "raw_url": "https://github.com/odoo/odoo/raw/faf42a1555fd6d268a0b47a2692ceeabde058aef/addons%2Fhtml_builder%2Fi18n%2Fhtml_builder.pot",
+        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fhtml_builder%2Fi18n%2Fhtml_builder.pot?ref=faf42a1555fd6d268a0b47a2692ceeabde058aef",
+        "patch": "@@ -3024,6 +3024,7 @@ msgstr \"\"\n #. odoo-javascript\n #: code:addons/html_builder/static/src/plugins/background_option/background_shapes_definition.js:0\n msgid \"Wavy 14\"\n+msgstr \"\"\n \n #. module: html_builder\n #. odoo-javascript"
+      }
+    ],
+    "paths": [
+      "addons/html_builder"
+    ]
+  },
+  {
+    "sha": "899c08bd2ba2f8571cf025245219621d36ed999c",
+    "node_id": "C_kwDOAS1I7NoAKDg5OWMwOGJkMmJhMmY4NTcxY2YwMjUyNDUyMTk2MjFkMzZlZDk5OWM",
+    "commit": {
+      "author": {
+        "name": "Serhii Rubanskyi",
+        "email": "seru@odoo.com",
+        "date": "2025-10-14T12:28:04Z"
+      },
+      "committer": {
+        "name": "Serhii Rubanskyi",
+        "email": "seru@odoo.com",
+        "date": "2025-10-15T06:36:33Z"
+      },
+      "message": "[IMP] html_editor, web, website: export color picker tabs\n\nSince the [1] color picker tabs are plugable now, and so, in order to\nbe able to patch them we'd need to export them. This commit exports\nthem all at once.\n\n[1]: https://github.com/odoo/odoo/commit/edc9d5bb9582db704ed02051ee4adb3801ddfaa9\n\ncloses odoo/odoo#231551\n\nX-original-commit: 2e175aecf2db567ed879190531cf4f80cc81facd\nSigned-off-by: Robin Lejeune (role) <role@odoo.com>\nSigned-off-by: Serhii Rubanskyi (seru) <seru@odoo.com>",
+      "tree": {
+        "sha": "943e41abe36a75fbe714f4ff1ea3231be71e5772",
+        "url": "https://api.github.com/repos/odoo/odoo/git/trees/943e41abe36a75fbe714f4ff1ea3231be71e5772"
+      },
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/899c08bd2ba2f8571cf025245219621d36ed999c",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/odoo/odoo/commits/899c08bd2ba2f8571cf025245219621d36ed999c",
+    "html_url": "https://github.com/odoo/odoo/commit/899c08bd2ba2f8571cf025245219621d36ed999c",
+    "comments_url": "https://api.github.com/repos/odoo/odoo/commits/899c08bd2ba2f8571cf025245219621d36ed999c/comments",
+    "author": {
+      "login": "Syozik",
+      "id": 82968368,
+      "node_id": "MDQ6VXNlcjgyOTY4MzY4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/82968368?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Syozik",
+      "html_url": "https://github.com/Syozik",
+      "followers_url": "https://api.github.com/users/Syozik/followers",
+      "following_url": "https://api.github.com/users/Syozik/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Syozik/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Syozik/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Syozik/subscriptions",
+      "organizations_url": "https://api.github.com/users/Syozik/orgs",
+      "repos_url": "https://api.github.com/users/Syozik/repos",
+      "events_url": "https://api.github.com/users/Syozik/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Syozik/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "Syozik",
+      "id": 82968368,
+      "node_id": "MDQ6VXNlcjgyOTY4MzY4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/82968368?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Syozik",
+      "html_url": "https://github.com/Syozik",
+      "followers_url": "https://api.github.com/users/Syozik/followers",
+      "following_url": "https://api.github.com/users/Syozik/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Syozik/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Syozik/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Syozik/subscriptions",
+      "organizations_url": "https://api.github.com/users/Syozik/orgs",
+      "repos_url": "https://api.github.com/users/Syozik/repos",
+      "events_url": "https://api.github.com/users/Syozik/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Syozik/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "387bd4f830469555864a36e284339d18c049aeff",
+        "url": "https://api.github.com/repos/odoo/odoo/commits/387bd4f830469555864a36e284339d18c049aeff",
+        "html_url": "https://github.com/odoo/odoo/commit/387bd4f830469555864a36e284339d18c049aeff"
+      }
+    ],
+    "stats": {
+      "total": 8,
+      "additions": 4,
+      "deletions": 4
+    },
+    "files": [
+      {
+        "sha": "80ed3a7e57d9714944574997780145d14664dc8c",
+        "filename": "addons/html_builder/static/src/core/building_blocks/color_picker_theme_tab.js",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2,
+        "blob_url": "https://github.com/odoo/odoo/blob/899c08bd2ba2f8571cf025245219621d36ed999c/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Fbuilding_blocks%2Fcolor_picker_theme_tab.js",
+        "raw_url": "https://github.com/odoo/odoo/raw/899c08bd2ba2f8571cf025245219621d36ed999c/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Fbuilding_blocks%2Fcolor_picker_theme_tab.js",
+        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Fbuilding_blocks%2Fcolor_picker_theme_tab.js?ref=899c08bd2ba2f8571cf025245219621d36ed999c",
+        "patch": "@@ -2,7 +2,7 @@ import { Component } from \"@odoo/owl\";\n import { _t } from \"@web/core/l10n/translation\";\n import { registry } from \"@web/core/registry\";\n \n-class ColorPickerThemeTab extends Component {\n+export class ColorPickerThemeTab extends Component {\n     static template = \"html_builder.ColorPickerThemeTab\";\n     static props = {\n         onColorClick: Function,"
+      },
+      {
+        "sha": "9e6fea4c6124a48f7f438d223c518e20e1951aa4",
+        "filename": "addons/html_editor/static/src/main/font/color_picker_gradient_tab.js",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2,
+        "blob_url": "https://github.com/odoo/odoo/blob/899c08bd2ba2f8571cf025245219621d36ed999c/addons%2Fhtml_editor%2Fstatic%2Fsrc%2Fmain%2Ffont%2Fcolor_picker_gradient_tab.js",
+        "raw_url": "https://github.com/odoo/odoo/raw/899c08bd2ba2f8571cf025245219621d36ed999c/addons%2Fhtml_editor%2Fstatic%2Fsrc%2Fmain%2Ffont%2Fcolor_picker_gradient_tab.js",
+        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fhtml_editor%2Fstatic%2Fsrc%2Fmain%2Ffont%2Fcolor_picker_gradient_tab.js?ref=899c08bd2ba2f8571cf025245219621d36ed999c",
+        "patch": "@@ -15,7 +15,7 @@ const DEFAULT_GRADIENT_COLORS = [\n     \"linear-gradient(135deg, rgb(255, 222, 202) 0%, rgb(202, 115, 69) 100%)\",\n ];\n \n-class ColorPickerGradientTab extends Component {\n+export class ColorPickerGradientTab extends Component {\n     static template = \"html_editor.ColorPickerGradientTab\";\n     static components = { GradientPicker };\n     static props = {"
+      },
+      {
+        "sha": "e7feb5884e934c8779f5d85875d157998285b2e5",
+        "filename": "addons/web/static/src/core/color_picker/tabs/color_picker_custom_tab.js",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2,
+        "blob_url": "https://github.com/odoo/odoo/blob/899c08bd2ba2f8571cf025245219621d36ed999c/addons%2Fweb%2Fstatic%2Fsrc%2Fcore%2Fcolor_picker%2Ftabs%2Fcolor_picker_custom_tab.js",
+        "raw_url": "https://github.com/odoo/odoo/raw/899c08bd2ba2f8571cf025245219621d36ed999c/addons%2Fweb%2Fstatic%2Fsrc%2Fcore%2Fcolor_picker%2Ftabs%2Fcolor_picker_custom_tab.js",
+        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fweb%2Fstatic%2Fsrc%2Fcore%2Fcolor_picker%2Ftabs%2Fcolor_picker_custom_tab.js?ref=899c08bd2ba2f8571cf025245219621d36ed999c",
+        "patch": "@@ -4,7 +4,7 @@ import { registry } from \"@web/core/registry\";\n import { isColorGradient } from \"@web/core/utils/colors\";\n import { CustomColorPicker } from \"../custom_color_picker/custom_color_picker\";\n \n-class ColorPickerCustomTab extends Component {\n+export class ColorPickerCustomTab extends Component {\n     static template = \"web.ColorPickerCustomTab\";\n     static components = { CustomColorPicker };\n     static props = {"
+      },
+      {
+        "sha": "5025a7e4cb037e68c5732de9c9b70e491fe38ace",
+        "filename": "addons/web/static/src/core/color_picker/tabs/color_picker_solid_tab.js",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2,
+        "blob_url": "https://github.com/odoo/odoo/blob/899c08bd2ba2f8571cf025245219621d36ed999c/addons%2Fweb%2Fstatic%2Fsrc%2Fcore%2Fcolor_picker%2Ftabs%2Fcolor_picker_solid_tab.js",
+        "raw_url": "https://github.com/odoo/odoo/raw/899c08bd2ba2f8571cf025245219621d36ed999c/addons%2Fweb%2Fstatic%2Fsrc%2Fcore%2Fcolor_picker%2Ftabs%2Fcolor_picker_solid_tab.js",
+        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fweb%2Fstatic%2Fsrc%2Fcore%2Fcolor_picker%2Ftabs%2Fcolor_picker_solid_tab.js?ref=899c08bd2ba2f8571cf025245219621d36ed999c",
+        "patch": "@@ -2,7 +2,7 @@ import { Component } from \"@odoo/owl\";\n import { _t } from \"@web/core/l10n/translation\";\n import { registry } from \"@web/core/registry\";\n \n-class ColorPickerSolidTab extends Component {\n+export class ColorPickerSolidTab extends Component {\n     static template = \"web.ColorPickerSolidTab\";\n     static props = {\n         colorPickerNavigation: Function,"
+      }
+    ],
+    "paths": [
+      "addons/html_builder"
+    ]
+  },
+  {
     "sha": "1d04c87836daa17ecf0fafc1931395d169372e66",
     "node_id": "C_kwDOAS1I7NoAKDFkMDRjODc4MzZkYWExN2VjZjBmYWZjMTkzMTM5NWQxNjkzNzJlNjY",
     "commit": {
@@ -213,6 +457,183 @@
         "raw_url": "https://github.com/odoo/odoo/raw/ba2ba3f4da043664e17fc62c81ba1f18f4e744be/addons%2Fwebsite%2Fstatic%2Fsrc%2Fscss%2Fwebsite.scss",
         "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fwebsite%2Fstatic%2Fsrc%2Fscss%2Fwebsite.scss?ref=ba2ba3f4da043664e17fc62c81ba1f18f4e744be",
         "patch": "@@ -714,6 +714,14 @@ font[class*='bg-'] {\n     }\n }\n \n+.btn-close {\n+    // Most components with an integrated .btn-close (o_notification, modals,\n+    // offcanvas, ...) use $body-bg by default, which is why we check it here.\n+    @if lightness($body-bg) < 50 {\n+        @include btn-close-white();\n+    }\n+}\n+\n // Badges\n .badge, .o_filter_tag {\n     --badge-color: var(--color);"
+      }
+    ],
+    "paths": [
+      "addons/website"
+    ]
+  },
+  {
+    "sha": "0e03cf93a331b096b79a523cc7f1709b612896ec",
+    "node_id": "C_kwDOAS1I7NoAKDBlMDNjZjkzYTMzMWIwOTZiNzlhNTIzY2M3ZjE3MDliNjEyODk2ZWM",
+    "commit": {
+      "author": {
+        "name": "Robin Lejeune (role)",
+        "email": "role@odoo.com",
+        "date": "2025-09-10T09:21:16Z"
+      },
+      "committer": {
+        "name": "Robin Lejeune (role)",
+        "email": "role@odoo.com",
+        "date": "2025-10-14T14:35:49Z"
+      },
+      "message": "[FIX] website: properly restart AnnouncementScroll interaction\n\nCommit [e1cc670] introduced the `s_announcement_scroll` snippet, with an\ninteraction and some options. The way the interaction was restarted\nafter each option change was hacky, which is what this commit intends to\nfix.\n\nWe also make small CSS adjustements:\n- Make sure the preview is working both on hover and when focusing with\nTab.\n- Avoid the hover effect on mobile. On mobile, a click triggers the\n`:hover` styles, but there is no way to go back to the initial state\nafterwards, leading to the snippet being paused forever.\n- Prevent auto scrolling and parallax if the user's preference is set to\n`prefers-reduced-motion: reduce`.\n\n[e1cc670]: https://github.com/odoo/odoo/commit/e1cc6702a4416204e446d51fdfe047d4ebfd402c\n\ntask-5069849\n\nPart-of: odoo/odoo#230945\nSigned-off-by: Francois Georis (fge) <fge@odoo.com>",
+      "tree": {
+        "sha": "1bb6090aeabd1b0c14d806b26588f16c372291e2",
+        "url": "https://api.github.com/repos/odoo/odoo/git/trees/1bb6090aeabd1b0c14d806b26588f16c372291e2"
+      },
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/0e03cf93a331b096b79a523cc7f1709b612896ec",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/odoo/odoo/commits/0e03cf93a331b096b79a523cc7f1709b612896ec",
+    "html_url": "https://github.com/odoo/odoo/commit/0e03cf93a331b096b79a523cc7f1709b612896ec",
+    "comments_url": "https://api.github.com/repos/odoo/odoo/commits/0e03cf93a331b096b79a523cc7f1709b612896ec/comments",
+    "author": {
+      "login": "robinlej",
+      "id": 95914584,
+      "node_id": "U_kgDOBbeKWA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/95914584?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/robinlej",
+      "html_url": "https://github.com/robinlej",
+      "followers_url": "https://api.github.com/users/robinlej/followers",
+      "following_url": "https://api.github.com/users/robinlej/following{/other_user}",
+      "gists_url": "https://api.github.com/users/robinlej/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/robinlej/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/robinlej/subscriptions",
+      "organizations_url": "https://api.github.com/users/robinlej/orgs",
+      "repos_url": "https://api.github.com/users/robinlej/repos",
+      "events_url": "https://api.github.com/users/robinlej/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/robinlej/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "robinlej",
+      "id": 95914584,
+      "node_id": "U_kgDOBbeKWA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/95914584?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/robinlej",
+      "html_url": "https://github.com/robinlej",
+      "followers_url": "https://api.github.com/users/robinlej/followers",
+      "following_url": "https://api.github.com/users/robinlej/following{/other_user}",
+      "gists_url": "https://api.github.com/users/robinlej/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/robinlej/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/robinlej/subscriptions",
+      "organizations_url": "https://api.github.com/users/robinlej/orgs",
+      "repos_url": "https://api.github.com/users/robinlej/repos",
+      "events_url": "https://api.github.com/users/robinlej/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/robinlej/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "51be3b456d0a65c10175a56a1ba965c35a4e7c62",
+        "url": "https://api.github.com/repos/odoo/odoo/commits/51be3b456d0a65c10175a56a1ba965c35a4e7c62",
+        "html_url": "https://github.com/odoo/odoo/commit/51be3b456d0a65c10175a56a1ba965c35a4e7c62"
+      }
+    ],
+    "stats": {
+      "total": 105,
+      "additions": 55,
+      "deletions": 50
+    },
+    "files": [
+      {
+        "sha": "cac4d7f0edc3947eba749cbdb9ee339ec5b39b01",
+        "filename": "addons/website/__manifest__.py",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0,
+        "changes": 1,
+        "blob_url": "https://github.com/odoo/odoo/blob/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2F__manifest__.py",
+        "raw_url": "https://github.com/odoo/odoo/raw/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2F__manifest__.py",
+        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fwebsite%2F__manifest__.py?ref=0e03cf93a331b096b79a523cc7f1709b612896ec",
+        "patch": "@@ -440,6 +440,7 @@\n         ],\n         'html_builder.iframe_add_dialog': [\n             'website/static/src/snippets/**/*.iframe_add_dialog.scss',\n+            'website/static/src/snippets/**/*.preview.scss',\n         ],\n     },\n     'configurator_snippets': {"
+      },
+      {
+        "sha": "4092e22b7d8bd724d8d12ef1532aafdb06c612bf",
+        "filename": "addons/website/static/src/builder/plugins/options/announcement_scroll_option.xml",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 7,
+        "changes": 11,
+        "blob_url": "https://github.com/odoo/odoo/blob/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2Fstatic%2Fsrc%2Fbuilder%2Fplugins%2Foptions%2Fannouncement_scroll_option.xml",
+        "raw_url": "https://github.com/odoo/odoo/raw/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2Fstatic%2Fsrc%2Fbuilder%2Fplugins%2Foptions%2Fannouncement_scroll_option.xml",
+        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fwebsite%2Fstatic%2Fsrc%2Fbuilder%2Fplugins%2Foptions%2Fannouncement_scroll_option.xml?ref=0e03cf93a331b096b79a523cc7f1709b612896ec",
+        "patch": "@@ -8,7 +8,7 @@\n             applyTo=\"'.s_announcement_scroll_marquee_item:first-child'\"/>\n     </BuilderRow>\n     <BuilderRow label.translate=\"Direction\">\n-        <BuilderSelect action=\"'restartInteraction'\">\n+        <BuilderSelect>\n             <BuilderSelectItem classAction=\"'s_announcement_scroll_direction_left'\">Left</BuilderSelectItem>\n             <BuilderSelectItem classAction=\"'s_announcement_scroll_direction_right'\">Right</BuilderSelectItem>\n             <BuilderSelectItem id=\"'announcement_scroll_direction_none_opt'\"\n@@ -20,14 +20,13 @@\n     <t t-if=\"!this.isActiveItem('announcement_scroll_direction_none_opt')\">\n         <BuilderRow level=\"1\" label.translate=\"Scroll Speed\">\n             <BuilderRange styleAction=\"'--marquee-animation-speed'\"\n-                action=\"'restartInteraction'\"\n                 min=\"1\"\n                 max=\"10\"\n                 step=\"1\"\n                 unit=\"'s'\"/>\n         </BuilderRow>\n         <BuilderRow label.translate=\"Hover effect\">\n-            <BuilderSelect action=\"'restartInteraction'\">\n+            <BuilderSelect>\n                 <BuilderSelectItem classAction=\"''\">None</BuilderSelectItem>\n                 <BuilderSelectItem classAction=\"'s_announcement_scroll_hover_pause'\">Pause</BuilderSelectItem>\n                 <BuilderSelectItem classAction=\"'s_announcement_scroll_hover_slow'\">Slowdown</BuilderSelectItem>\n@@ -36,12 +35,10 @@\n         </BuilderRow>\n     </t>\n     <BuilderRow label.translate=\"Parallax\">\n-        <BuilderCheckbox classAction=\"'s_announcement_scroll_parallax'\"\n-            action=\"'restartInteraction'\"/>\n+        <BuilderCheckbox classAction=\"'s_announcement_scroll_parallax'\"/>\n     </BuilderRow>\n     <BuilderRow label.translate=\"Font Size\">\n         <BuilderRange styleAction=\"'--marquee-item-font-size'\"\n-            action=\"'restartInteraction'\"\n             min=\"40\"\n             max=\"320\"\n             step=\"8\"\n@@ -50,7 +47,7 @@\n     <BuilderRow label.translate=\"Font Family\"\n             applyTo=\"'.s_announcement_scroll_marquee_container'\"\n             tooltip.translate=\"Apply the font-family of your paragraph or headings from your Theme settings\">\n-        <BuilderSelect action=\"'restartInteraction'\">\n+        <BuilderSelect>\n             <BuilderSelectItem classAction=\"'s_announcement_scroll_heading_family'\">Headings</BuilderSelectItem>\n             <BuilderSelectItem classAction=\"''\">Paragraph</BuilderSelectItem>\n         </BuilderSelect>"
+      },
+      {
+        "sha": "614eb406d40c257b9e36b1540cde3a56daf36b03",
+        "filename": "addons/website/static/src/builder/plugins/options/announcement_scroll_option_plugin.js",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 23,
+        "changes": 23,
+        "blob_url": "https://github.com/odoo/odoo/blob/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2Fstatic%2Fsrc%2Fbuilder%2Fplugins%2Foptions%2Fannouncement_scroll_option_plugin.js",
+        "raw_url": "https://github.com/odoo/odoo/raw/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2Fstatic%2Fsrc%2Fbuilder%2Fplugins%2Foptions%2Fannouncement_scroll_option_plugin.js",
+        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fwebsite%2Fstatic%2Fsrc%2Fbuilder%2Fplugins%2Foptions%2Fannouncement_scroll_option_plugin.js?ref=0e03cf93a331b096b79a523cc7f1709b612896ec",
+        "patch": "@@ -5,24 +5,6 @@ import { BuilderAction } from \"@html_builder/core/builder_action\";\n import { after } from \"@html_builder/utils/option_sequence\";\n import { WEBSITE_BACKGROUND_OPTIONS } from \"@website/builder/option_sequence\";\n \n-\n-// TODO this should not be needed: the interaction of this snippet heavily\n-// relies on the size of its inner elements: it should restart on any change\n-// of the related options, at least... but this does not seem achievable without\n-// something like this (`getConfigurationSnapshot` does not work). Even changes\n-// of style/class on the main element does not restart the animation without\n-// overriding `getConfigurationSnapshot` in this case (?).\n-// See ANNOUNCEMENT_SCROLL_INTERACTION_RESTART.\n-class RestartInteraction extends BuilderAction {\n-    static id = \"restartInteraction\";\n-    static dependencies = [\"edit_interaction\"];\n-\n-    apply({ editingElement, value, params }) {\n-        const snippetEl = editingElement.closest('.s_announcement_scroll');\n-        this.dependencies.edit_interaction.restartInteractions(snippetEl);\n-    }\n-}\n-\n class SetItemTextAction extends BuilderAction {\n     static id = \"setItemTextAction\";\n     static dependencies = [\"edit_interaction\"];\n@@ -32,10 +14,6 @@ class SetItemTextAction extends BuilderAction {\n     }\n     apply({ editingElement, value, params }) {\n         editingElement.textContent = value;\n-\n-        // TODO. See ANNOUNCEMENT_SCROLL_INTERACTION_RESTART.\n-        const snippetEl = editingElement.closest('.s_announcement_scroll');\n-        this.dependencies.edit_interaction.restartInteractions(snippetEl);\n     }\n }\n \n@@ -50,7 +28,6 @@ export class AnnouncementScrollOptionPlugin extends Plugin {\n             }),\n         ],\n         builder_actions: {\n-            RestartInteraction,\n             SetItemTextAction,\n         },\n     };"
+      },
+      {
+        "sha": "e7971e54793d79eeae47f43a55003819fe20191a",
+        "filename": "addons/website/static/src/snippets/s_announcement_scroll/000.scss",
+        "status": "modified",
+        "additions": 19,
+        "deletions": 12,
+        "changes": 31,
+        "blob_url": "https://github.com/odoo/odoo/blob/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2Fstatic%2Fsrc%2Fsnippets%2Fs_announcement_scroll%2F000.scss",
+        "raw_url": "https://github.com/odoo/odoo/raw/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2Fstatic%2Fsrc%2Fsnippets%2Fs_announcement_scroll%2F000.scss",
+        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fwebsite%2Fstatic%2Fsrc%2Fsnippets%2Fs_announcement_scroll%2F000.scss?ref=0e03cf93a331b096b79a523cc7f1709b612896ec",
+        "patch": "@@ -5,6 +5,12 @@\n     .s_announcement_scroll_marquee_item {\n         white-space: preserve nowrap;\n         caret-color: transparent; // o_not_editable doesn't hide the caret on Firefox\n+\n+        @media (prefers-reduced-motion: reduce) {\n+            & {\n+                animation: none !important;\n+            }\n+        }\n     }\n \n     // Item options\n@@ -36,23 +42,24 @@\n             --marquee-animation-hover-multiplier: 2;\n         }\n \n-        // Hover effects, only when not scrolling\n-        &:where(:hover:not(.s_announcement_scroll_page_scrolling)) {\n-\n-            &.s_announcement_scroll_hover_pause .s_announcement_scroll_marquee_item {\n-                animation-play-state: paused;\n-            }\n-            &.s_announcement_scroll_hover_slow .s_announcement_scroll_marquee_item {\n-                animation-play-state: running;\n-            }\n-            &.s_announcement_scroll_hover_direction .s_announcement_scroll_marquee_item {\n-                animation-play-state: paused, running;\n+        // Hover effects, only when not scrolling and on devices that support\n+        // hover.\n+        @media (hover: hover) {\n+            &:where(:hover:not(.s_announcement_scroll_page_scrolling)) {\n+                &.s_announcement_scroll_hover_pause .s_announcement_scroll_marquee_item {\n+                    animation-play-state: paused;\n+                }\n+                &.s_announcement_scroll_hover_slow .s_announcement_scroll_marquee_item {\n+                    animation-play-state: running;\n+                }\n+                &.s_announcement_scroll_hover_direction .s_announcement_scroll_marquee_item {\n+                    animation-play-state: paused, running;\n+                }\n             }\n         }\n \n         // Parallax effects: disabling the CSS animation while scrolling\n         &:where(.s_announcement_scroll_page_scrolling) {\n-\n             &.s_announcement_scroll_parallax .s_announcement_scroll_marquee_item {\n                 animation-play-state: paused;\n             }"
+      },
+      {
+        "sha": "53811cd3d16233c501cfaecb8bfffa25ca31e94d",
+        "filename": "addons/website/static/src/snippets/s_announcement_scroll/announcement_scroll.edit.js",
+        "status": "added",
+        "additions": 26,
+        "deletions": 0,
+        "changes": 26,
+        "blob_url": "https://github.com/odoo/odoo/blob/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2Fstatic%2Fsrc%2Fsnippets%2Fs_announcement_scroll%2Fannouncement_scroll.edit.js",
+        "raw_url": "https://github.com/odoo/odoo/raw/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2Fstatic%2Fsrc%2Fsnippets%2Fs_announcement_scroll%2Fannouncement_scroll.edit.js",
+        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fwebsite%2Fstatic%2Fsrc%2Fsnippets%2Fs_announcement_scroll%2Fannouncement_scroll.edit.js?ref=0e03cf93a331b096b79a523cc7f1709b612896ec",
+        "patch": "@@ -0,0 +1,26 @@\n+import { registry } from \"@web/core/registry\";\n+import { AnnouncementScroll } from \"./announcement_scroll\";\n+\n+export const AnnouncementScrollEdit = (I) =>\n+    class extends I {\n+        shouldStop() {\n+            // Should always restart, because each option may modify the width of\n+            // the element, meaning the interaction needs to recompute.\n+            return true;\n+        }\n+        isImpactedBy(el) {\n+            // After an update of the font family or the text content.\n+            return (\n+                this.el.contains(el) &&\n+                el.matches(\n+                    `.s_announcement_scroll_marquee_container,\n+                    .s_announcement_scroll_marquee_item:first-child`\n+                )\n+            );\n+        }\n+    };\n+\n+registry.category(\"public.interactions.edit\").add(\"website.announcement_scroll\", {\n+    Interaction: AnnouncementScroll,\n+    mixin: AnnouncementScrollEdit,\n+});"
+      },
+      {
+        "sha": "d7d4c319f9c6aed1b2f6759acf8e324f0c2d22b4",
+        "filename": "addons/website/static/src/snippets/s_announcement_scroll/announcement_scroll.js",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 7,
+        "changes": 11,
+        "blob_url": "https://github.com/odoo/odoo/blob/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2Fstatic%2Fsrc%2Fsnippets%2Fs_announcement_scroll%2Fannouncement_scroll.js",
+        "raw_url": "https://github.com/odoo/odoo/raw/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2Fstatic%2Fsrc%2Fsnippets%2Fs_announcement_scroll%2Fannouncement_scroll.js",
+        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fwebsite%2Fstatic%2Fsrc%2Fsnippets%2Fs_announcement_scroll%2Fannouncement_scroll.js?ref=0e03cf93a331b096b79a523cc7f1709b612896ec",
+        "patch": "@@ -74,7 +74,10 @@ export class AnnouncementScroll extends Interaction {\n     setParallaxPosition() {\n         const MIN_LEFT_SHIFT = 50;\n \n-        if (!this.el.classList.contains('s_announcement_scroll_parallax')) {\n+        if (\n+            !this.el.classList.contains(\"s_announcement_scroll_parallax\") ||\n+            window.matchMedia(\"(prefers-reduced-motion: reduce)\").matches === true\n+        ) {\n             this.parallaxPosition = -MIN_LEFT_SHIFT;\n             return;\n         }\n@@ -133,9 +136,3 @@ export class AnnouncementScroll extends Interaction {\n registry\n     .category(\"public.interactions\")\n     .add(\"website.announcement_scroll\", AnnouncementScroll);\n-\n-registry\n-    .category(\"public.interactions.edit\")\n-    .add(\"website.announcement_scroll\", {\n-        Interaction: AnnouncementScroll,\n-    });"
+      },
+      {
+        "sha": "f43162c1c4c54864c7d94707e8667b13a7987a2f",
+        "filename": "addons/website/static/src/snippets/s_announcement_scroll/announcement_scroll.preview.scss",
+        "status": "renamed",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2,
+        "blob_url": "https://github.com/odoo/odoo/blob/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2Fstatic%2Fsrc%2Fsnippets%2Fs_announcement_scroll%2Fannouncement_scroll.preview.scss",
+        "raw_url": "https://github.com/odoo/odoo/raw/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2Fstatic%2Fsrc%2Fsnippets%2Fs_announcement_scroll%2Fannouncement_scroll.preview.scss",
+        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fwebsite%2Fstatic%2Fsrc%2Fsnippets%2Fs_announcement_scroll%2Fannouncement_scroll.preview.scss?ref=0e03cf93a331b096b79a523cc7f1709b612896ec",
+        "patch": "@@ -3,7 +3,7 @@\n // Performs an animation on :hover showcasing the user how the snippet behaves\n // in use. Measurements and values are arbitrary, the goal is just to provide\n // a preview.\n-.o_snippet_preview_wrap:hover [data-snippet=\"s_announcement_scroll\"] {\n+.o_snippet_preview_wrap:where(:hover, :focus-visible)  [data-snippet=\"s_announcement_scroll\"] {\n     animation-play-state: running;\n \n     .s_announcement_scroll_marquee_item {",
+        "previous_filename": "addons/website/static/src/snippets/s_announcement_scroll/announcement_scroll.edit.scss"
       }
     ],
     "paths": [
@@ -512,25 +933,25 @@
     ]
   },
   {
-    "sha": "0e03cf93a331b096b79a523cc7f1709b612896ec",
-    "node_id": "C_kwDOAS1I7NoAKDBlMDNjZjkzYTMzMWIwOTZiNzlhNTIzY2M3ZjE3MDliNjEyODk2ZWM",
+    "sha": "19409315e54c28d1b411e0e6ea3226ee09d20084",
+    "node_id": "C_kwDOAS1I7NoAKDE5NDA5MzE1ZTU0YzI4ZDFiNDExZTBlNmVhMzIyNmVlMDlkMjAwODQ",
     "commit": {
       "author": {
-        "name": "Robin Lejeune (role)",
-        "email": "role@odoo.com",
-        "date": "2025-09-10T09:21:16Z"
+        "name": "Julien (jula)",
+        "email": "jula@odoo.com",
+        "date": "2025-10-01T08:23:28Z"
       },
       "committer": {
-        "name": "Robin Lejeune (role)",
-        "email": "role@odoo.com",
-        "date": "2025-10-14T14:35:49Z"
+        "name": "Julien Launois (jula)",
+        "email": "jula@odoo.com",
+        "date": "2025-10-14T10:10:16Z"
       },
-      "message": "[FIX] website: properly restart AnnouncementScroll interaction\n\nCommit [e1cc670] introduced the `s_announcement_scroll` snippet, with an\ninteraction and some options. The way the interaction was restarted\nafter each option change was hacky, which is what this commit intends to\nfix.\n\nWe also make small CSS adjustements:\n- Make sure the preview is working both on hover and when focusing with\nTab.\n- Avoid the hover effect on mobile. On mobile, a click triggers the\n`:hover` styles, but there is no way to go back to the initial state\nafterwards, leading to the snippet being paused forever.\n- Prevent auto scrolling and parallax if the user's preference is set to\n`prefers-reduced-motion: reduce`.\n\n[e1cc670]: https://github.com/odoo/odoo/commit/e1cc6702a4416204e446d51fdfe047d4ebfd402c\n\ntask-5069849\n\nPart-of: odoo/odoo#230945\nSigned-off-by: Francois Georis (fge) <fge@odoo.com>",
+      "message": "[FIX] html_builder, *: fix non-deterministic crash on editor reload\n\n*: website_sale\n\n__Current behavior before commit:__\nSome builder actions (e.g `ProductPageImageLayoutAction`) reload the\neditor after being applied. If another button in the builder is pressed\nrapidly, `refreshCurrentItem` might be called after the editor is\ndestroyed leading to the following error in [`isApplied`]:\n\n`TypeError: Cannot read properties of undefined (reading 'getAction')`.\n\nThe \"Product page options\" test fails in rare occasion due to this\nissue.\n\n__Description of the fix:__\n- Add a safety guard to make sure the editor is not destroyed before\ncalling `refreshCurrentItem`.\n- Add some checks at the end of the test in order for the crash to\nappear consistently (if the fix is not applied).\n- Make the test more robust (some code is backported from\n[this commit]).\n\n[this commit]: https://github.com/odoo/odoo/commit/670b1daa2254d76\n[`isApplied`]: https://github.com/odoo/odoo/blob/f258b263136f606f7896/addons/html_builder/static/src/core/utils.js#L939\n\nRunbot error: https://runbot.odoo.com/odoo/runbot.build.error/232649\n\ncloses odoo/odoo#230179\n\nX-original-commit: c3bbd7509b381fce59fc9e1aad43d5147e5b9af4\nSigned-off-by: Francois Georis (fge) <fge@odoo.com>\nSigned-off-by: Julien Launois (jula) <jula@odoo.com>",
       "tree": {
-        "sha": "1bb6090aeabd1b0c14d806b26588f16c372291e2",
-        "url": "https://api.github.com/repos/odoo/odoo/git/trees/1bb6090aeabd1b0c14d806b26588f16c372291e2"
+        "sha": "9d1931f118d4a3abab4f0b1f88d82dd58d518f06",
+        "url": "https://api.github.com/repos/odoo/odoo/git/trees/9d1931f118d4a3abab4f0b1f88d82dd58d518f06"
       },
-      "url": "https://api.github.com/repos/odoo/odoo/git/commits/0e03cf93a331b096b79a523cc7f1709b612896ec",
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/19409315e54c28d1b411e0e6ea3226ee09d20084",
       "comment_count": 0,
       "verification": {
         "verified": false,
@@ -540,151 +961,91 @@
         "verified_at": null
       }
     },
-    "url": "https://api.github.com/repos/odoo/odoo/commits/0e03cf93a331b096b79a523cc7f1709b612896ec",
-    "html_url": "https://github.com/odoo/odoo/commit/0e03cf93a331b096b79a523cc7f1709b612896ec",
-    "comments_url": "https://api.github.com/repos/odoo/odoo/commits/0e03cf93a331b096b79a523cc7f1709b612896ec/comments",
+    "url": "https://api.github.com/repos/odoo/odoo/commits/19409315e54c28d1b411e0e6ea3226ee09d20084",
+    "html_url": "https://github.com/odoo/odoo/commit/19409315e54c28d1b411e0e6ea3226ee09d20084",
+    "comments_url": "https://api.github.com/repos/odoo/odoo/commits/19409315e54c28d1b411e0e6ea3226ee09d20084/comments",
     "author": {
-      "login": "robinlej",
-      "id": 95914584,
-      "node_id": "U_kgDOBbeKWA",
-      "avatar_url": "https://avatars.githubusercontent.com/u/95914584?v=4",
+      "login": "Dj0ulo",
+      "id": 46035353,
+      "node_id": "MDQ6VXNlcjQ2MDM1MzUz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46035353?v=4",
       "gravatar_id": "",
-      "url": "https://api.github.com/users/robinlej",
-      "html_url": "https://github.com/robinlej",
-      "followers_url": "https://api.github.com/users/robinlej/followers",
-      "following_url": "https://api.github.com/users/robinlej/following{/other_user}",
-      "gists_url": "https://api.github.com/users/robinlej/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/robinlej/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/robinlej/subscriptions",
-      "organizations_url": "https://api.github.com/users/robinlej/orgs",
-      "repos_url": "https://api.github.com/users/robinlej/repos",
-      "events_url": "https://api.github.com/users/robinlej/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/robinlej/received_events",
+      "url": "https://api.github.com/users/Dj0ulo",
+      "html_url": "https://github.com/Dj0ulo",
+      "followers_url": "https://api.github.com/users/Dj0ulo/followers",
+      "following_url": "https://api.github.com/users/Dj0ulo/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Dj0ulo/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Dj0ulo/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Dj0ulo/subscriptions",
+      "organizations_url": "https://api.github.com/users/Dj0ulo/orgs",
+      "repos_url": "https://api.github.com/users/Dj0ulo/repos",
+      "events_url": "https://api.github.com/users/Dj0ulo/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Dj0ulo/received_events",
       "type": "User",
       "user_view_type": "public",
       "site_admin": false
     },
     "committer": {
-      "login": "robinlej",
-      "id": 95914584,
-      "node_id": "U_kgDOBbeKWA",
-      "avatar_url": "https://avatars.githubusercontent.com/u/95914584?v=4",
+      "login": "Dj0ulo",
+      "id": 46035353,
+      "node_id": "MDQ6VXNlcjQ2MDM1MzUz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46035353?v=4",
       "gravatar_id": "",
-      "url": "https://api.github.com/users/robinlej",
-      "html_url": "https://github.com/robinlej",
-      "followers_url": "https://api.github.com/users/robinlej/followers",
-      "following_url": "https://api.github.com/users/robinlej/following{/other_user}",
-      "gists_url": "https://api.github.com/users/robinlej/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/robinlej/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/robinlej/subscriptions",
-      "organizations_url": "https://api.github.com/users/robinlej/orgs",
-      "repos_url": "https://api.github.com/users/robinlej/repos",
-      "events_url": "https://api.github.com/users/robinlej/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/robinlej/received_events",
+      "url": "https://api.github.com/users/Dj0ulo",
+      "html_url": "https://github.com/Dj0ulo",
+      "followers_url": "https://api.github.com/users/Dj0ulo/followers",
+      "following_url": "https://api.github.com/users/Dj0ulo/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Dj0ulo/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Dj0ulo/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Dj0ulo/subscriptions",
+      "organizations_url": "https://api.github.com/users/Dj0ulo/orgs",
+      "repos_url": "https://api.github.com/users/Dj0ulo/repos",
+      "events_url": "https://api.github.com/users/Dj0ulo/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Dj0ulo/received_events",
       "type": "User",
       "user_view_type": "public",
       "site_admin": false
     },
     "parents": [
       {
-        "sha": "51be3b456d0a65c10175a56a1ba965c35a4e7c62",
-        "url": "https://api.github.com/repos/odoo/odoo/commits/51be3b456d0a65c10175a56a1ba965c35a4e7c62",
-        "html_url": "https://github.com/odoo/odoo/commit/51be3b456d0a65c10175a56a1ba965c35a4e7c62"
+        "sha": "421def4492601f15c81efe539755ca96ac2f06f1",
+        "url": "https://api.github.com/repos/odoo/odoo/commits/421def4492601f15c81efe539755ca96ac2f06f1",
+        "html_url": "https://github.com/odoo/odoo/commit/421def4492601f15c81efe539755ca96ac2f06f1"
       }
     ],
     "stats": {
-      "total": 105,
-      "additions": 55,
-      "deletions": 50
+      "total": 16,
+      "additions": 12,
+      "deletions": 4
     },
     "files": [
       {
-        "sha": "cac4d7f0edc3947eba749cbdb9ee339ec5b39b01",
-        "filename": "addons/website/__manifest__.py",
+        "sha": "c42f94b1378928dca48cca0591d11f32517e2dbd",
+        "filename": "addons/html_builder/static/src/core/utils.js",
         "status": "modified",
-        "additions": 1,
+        "additions": 3,
         "deletions": 0,
-        "changes": 1,
-        "blob_url": "https://github.com/odoo/odoo/blob/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2F__manifest__.py",
-        "raw_url": "https://github.com/odoo/odoo/raw/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2F__manifest__.py",
-        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fwebsite%2F__manifest__.py?ref=0e03cf93a331b096b79a523cc7f1709b612896ec",
-        "patch": "@@ -440,6 +440,7 @@\n         ],\n         'html_builder.iframe_add_dialog': [\n             'website/static/src/snippets/**/*.iframe_add_dialog.scss',\n+            'website/static/src/snippets/**/*.preview.scss',\n         ],\n     },\n     'configurator_snippets': {"
+        "changes": 3,
+        "blob_url": "https://github.com/odoo/odoo/blob/19409315e54c28d1b411e0e6ea3226ee09d20084/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Futils.js",
+        "raw_url": "https://github.com/odoo/odoo/raw/19409315e54c28d1b411e0e6ea3226ee09d20084/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Futils.js",
+        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Futils.js?ref=19409315e54c28d1b411e0e6ea3226ee09d20084",
+        "patch": "@@ -239,6 +239,9 @@ export function useSelectableComponent(id, { onItemChange } = {}) {\n     });\n \n     function refreshCurrentItem() {\n+        if (env.editor.isDestroyed) {\n+            return;\n+        }\n         let currentItem;\n         let itemPriority = 0;\n         for (const selectableItem of selectableItems) {"
       },
       {
-        "sha": "4092e22b7d8bd724d8d12ef1532aafdb06c612bf",
-        "filename": "addons/website/static/src/builder/plugins/options/announcement_scroll_option.xml",
+        "sha": "8a30786408c8e78cdaa989fb62a0d107b853f4f3",
+        "filename": "addons/website_sale/static/tests/builder/product_page_option.test.js",
         "status": "modified",
-        "additions": 4,
-        "deletions": 7,
-        "changes": 11,
-        "blob_url": "https://github.com/odoo/odoo/blob/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2Fstatic%2Fsrc%2Fbuilder%2Fplugins%2Foptions%2Fannouncement_scroll_option.xml",
-        "raw_url": "https://github.com/odoo/odoo/raw/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2Fstatic%2Fsrc%2Fbuilder%2Fplugins%2Foptions%2Fannouncement_scroll_option.xml",
-        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fwebsite%2Fstatic%2Fsrc%2Fbuilder%2Fplugins%2Foptions%2Fannouncement_scroll_option.xml?ref=0e03cf93a331b096b79a523cc7f1709b612896ec",
-        "patch": "@@ -8,7 +8,7 @@\n             applyTo=\"'.s_announcement_scroll_marquee_item:first-child'\"/>\n     </BuilderRow>\n     <BuilderRow label.translate=\"Direction\">\n-        <BuilderSelect action=\"'restartInteraction'\">\n+        <BuilderSelect>\n             <BuilderSelectItem classAction=\"'s_announcement_scroll_direction_left'\">Left</BuilderSelectItem>\n             <BuilderSelectItem classAction=\"'s_announcement_scroll_direction_right'\">Right</BuilderSelectItem>\n             <BuilderSelectItem id=\"'announcement_scroll_direction_none_opt'\"\n@@ -20,14 +20,13 @@\n     <t t-if=\"!this.isActiveItem('announcement_scroll_direction_none_opt')\">\n         <BuilderRow level=\"1\" label.translate=\"Scroll Speed\">\n             <BuilderRange styleAction=\"'--marquee-animation-speed'\"\n-                action=\"'restartInteraction'\"\n                 min=\"1\"\n                 max=\"10\"\n                 step=\"1\"\n                 unit=\"'s'\"/>\n         </BuilderRow>\n         <BuilderRow label.translate=\"Hover effect\">\n-            <BuilderSelect action=\"'restartInteraction'\">\n+            <BuilderSelect>\n                 <BuilderSelectItem classAction=\"''\">None</BuilderSelectItem>\n                 <BuilderSelectItem classAction=\"'s_announcement_scroll_hover_pause'\">Pause</BuilderSelectItem>\n                 <BuilderSelectItem classAction=\"'s_announcement_scroll_hover_slow'\">Slowdown</BuilderSelectItem>\n@@ -36,12 +35,10 @@\n         </BuilderRow>\n     </t>\n     <BuilderRow label.translate=\"Parallax\">\n-        <BuilderCheckbox classAction=\"'s_announcement_scroll_parallax'\"\n-            action=\"'restartInteraction'\"/>\n+        <BuilderCheckbox classAction=\"'s_announcement_scroll_parallax'\"/>\n     </BuilderRow>\n     <BuilderRow label.translate=\"Font Size\">\n         <BuilderRange styleAction=\"'--marquee-item-font-size'\"\n-            action=\"'restartInteraction'\"\n             min=\"40\"\n             max=\"320\"\n             step=\"8\"\n@@ -50,7 +47,7 @@\n     <BuilderRow label.translate=\"Font Family\"\n             applyTo=\"'.s_announcement_scroll_marquee_container'\"\n             tooltip.translate=\"Apply the font-family of your paragraph or headings from your Theme settings\">\n-        <BuilderSelect action=\"'restartInteraction'\">\n+        <BuilderSelect>\n             <BuilderSelectItem classAction=\"'s_announcement_scroll_heading_family'\">Headings</BuilderSelectItem>\n             <BuilderSelectItem classAction=\"''\">Paragraph</BuilderSelectItem>\n         </BuilderSelect>"
-      },
-      {
-        "sha": "614eb406d40c257b9e36b1540cde3a56daf36b03",
-        "filename": "addons/website/static/src/builder/plugins/options/announcement_scroll_option_plugin.js",
-        "status": "modified",
-        "additions": 0,
-        "deletions": 23,
-        "changes": 23,
-        "blob_url": "https://github.com/odoo/odoo/blob/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2Fstatic%2Fsrc%2Fbuilder%2Fplugins%2Foptions%2Fannouncement_scroll_option_plugin.js",
-        "raw_url": "https://github.com/odoo/odoo/raw/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2Fstatic%2Fsrc%2Fbuilder%2Fplugins%2Foptions%2Fannouncement_scroll_option_plugin.js",
-        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fwebsite%2Fstatic%2Fsrc%2Fbuilder%2Fplugins%2Foptions%2Fannouncement_scroll_option_plugin.js?ref=0e03cf93a331b096b79a523cc7f1709b612896ec",
-        "patch": "@@ -5,24 +5,6 @@ import { BuilderAction } from \"@html_builder/core/builder_action\";\n import { after } from \"@html_builder/utils/option_sequence\";\n import { WEBSITE_BACKGROUND_OPTIONS } from \"@website/builder/option_sequence\";\n \n-\n-// TODO this should not be needed: the interaction of this snippet heavily\n-// relies on the size of its inner elements: it should restart on any change\n-// of the related options, at least... but this does not seem achievable without\n-// something like this (`getConfigurationSnapshot` does not work). Even changes\n-// of style/class on the main element does not restart the animation without\n-// overriding `getConfigurationSnapshot` in this case (?).\n-// See ANNOUNCEMENT_SCROLL_INTERACTION_RESTART.\n-class RestartInteraction extends BuilderAction {\n-    static id = \"restartInteraction\";\n-    static dependencies = [\"edit_interaction\"];\n-\n-    apply({ editingElement, value, params }) {\n-        const snippetEl = editingElement.closest('.s_announcement_scroll');\n-        this.dependencies.edit_interaction.restartInteractions(snippetEl);\n-    }\n-}\n-\n class SetItemTextAction extends BuilderAction {\n     static id = \"setItemTextAction\";\n     static dependencies = [\"edit_interaction\"];\n@@ -32,10 +14,6 @@ class SetItemTextAction extends BuilderAction {\n     }\n     apply({ editingElement, value, params }) {\n         editingElement.textContent = value;\n-\n-        // TODO. See ANNOUNCEMENT_SCROLL_INTERACTION_RESTART.\n-        const snippetEl = editingElement.closest('.s_announcement_scroll');\n-        this.dependencies.edit_interaction.restartInteractions(snippetEl);\n     }\n }\n \n@@ -50,7 +28,6 @@ export class AnnouncementScrollOptionPlugin extends Plugin {\n             }),\n         ],\n         builder_actions: {\n-            RestartInteraction,\n             SetItemTextAction,\n         },\n     };"
-      },
-      {
-        "sha": "e7971e54793d79eeae47f43a55003819fe20191a",
-        "filename": "addons/website/static/src/snippets/s_announcement_scroll/000.scss",
-        "status": "modified",
-        "additions": 19,
-        "deletions": 12,
-        "changes": 31,
-        "blob_url": "https://github.com/odoo/odoo/blob/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2Fstatic%2Fsrc%2Fsnippets%2Fs_announcement_scroll%2F000.scss",
-        "raw_url": "https://github.com/odoo/odoo/raw/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2Fstatic%2Fsrc%2Fsnippets%2Fs_announcement_scroll%2F000.scss",
-        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fwebsite%2Fstatic%2Fsrc%2Fsnippets%2Fs_announcement_scroll%2F000.scss?ref=0e03cf93a331b096b79a523cc7f1709b612896ec",
-        "patch": "@@ -5,6 +5,12 @@\n     .s_announcement_scroll_marquee_item {\n         white-space: preserve nowrap;\n         caret-color: transparent; // o_not_editable doesn't hide the caret on Firefox\n+\n+        @media (prefers-reduced-motion: reduce) {\n+            & {\n+                animation: none !important;\n+            }\n+        }\n     }\n \n     // Item options\n@@ -36,23 +42,24 @@\n             --marquee-animation-hover-multiplier: 2;\n         }\n \n-        // Hover effects, only when not scrolling\n-        &:where(:hover:not(.s_announcement_scroll_page_scrolling)) {\n-\n-            &.s_announcement_scroll_hover_pause .s_announcement_scroll_marquee_item {\n-                animation-play-state: paused;\n-            }\n-            &.s_announcement_scroll_hover_slow .s_announcement_scroll_marquee_item {\n-                animation-play-state: running;\n-            }\n-            &.s_announcement_scroll_hover_direction .s_announcement_scroll_marquee_item {\n-                animation-play-state: paused, running;\n+        // Hover effects, only when not scrolling and on devices that support\n+        // hover.\n+        @media (hover: hover) {\n+            &:where(:hover:not(.s_announcement_scroll_page_scrolling)) {\n+                &.s_announcement_scroll_hover_pause .s_announcement_scroll_marquee_item {\n+                    animation-play-state: paused;\n+                }\n+                &.s_announcement_scroll_hover_slow .s_announcement_scroll_marquee_item {\n+                    animation-play-state: running;\n+                }\n+                &.s_announcement_scroll_hover_direction .s_announcement_scroll_marquee_item {\n+                    animation-play-state: paused, running;\n+                }\n             }\n         }\n \n         // Parallax effects: disabling the CSS animation while scrolling\n         &:where(.s_announcement_scroll_page_scrolling) {\n-\n             &.s_announcement_scroll_parallax .s_announcement_scroll_marquee_item {\n                 animation-play-state: paused;\n             }"
-      },
-      {
-        "sha": "53811cd3d16233c501cfaecb8bfffa25ca31e94d",
-        "filename": "addons/website/static/src/snippets/s_announcement_scroll/announcement_scroll.edit.js",
-        "status": "added",
-        "additions": 26,
-        "deletions": 0,
-        "changes": 26,
-        "blob_url": "https://github.com/odoo/odoo/blob/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2Fstatic%2Fsrc%2Fsnippets%2Fs_announcement_scroll%2Fannouncement_scroll.edit.js",
-        "raw_url": "https://github.com/odoo/odoo/raw/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2Fstatic%2Fsrc%2Fsnippets%2Fs_announcement_scroll%2Fannouncement_scroll.edit.js",
-        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fwebsite%2Fstatic%2Fsrc%2Fsnippets%2Fs_announcement_scroll%2Fannouncement_scroll.edit.js?ref=0e03cf93a331b096b79a523cc7f1709b612896ec",
-        "patch": "@@ -0,0 +1,26 @@\n+import { registry } from \"@web/core/registry\";\n+import { AnnouncementScroll } from \"./announcement_scroll\";\n+\n+export const AnnouncementScrollEdit = (I) =>\n+    class extends I {\n+        shouldStop() {\n+            // Should always restart, because each option may modify the width of\n+            // the element, meaning the interaction needs to recompute.\n+            return true;\n+        }\n+        isImpactedBy(el) {\n+            // After an update of the font family or the text content.\n+            return (\n+                this.el.contains(el) &&\n+                el.matches(\n+                    `.s_announcement_scroll_marquee_container,\n+                    .s_announcement_scroll_marquee_item:first-child`\n+                )\n+            );\n+        }\n+    };\n+\n+registry.category(\"public.interactions.edit\").add(\"website.announcement_scroll\", {\n+    Interaction: AnnouncementScroll,\n+    mixin: AnnouncementScrollEdit,\n+});"
-      },
-      {
-        "sha": "d7d4c319f9c6aed1b2f6759acf8e324f0c2d22b4",
-        "filename": "addons/website/static/src/snippets/s_announcement_scroll/announcement_scroll.js",
-        "status": "modified",
-        "additions": 4,
-        "deletions": 7,
-        "changes": 11,
-        "blob_url": "https://github.com/odoo/odoo/blob/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2Fstatic%2Fsrc%2Fsnippets%2Fs_announcement_scroll%2Fannouncement_scroll.js",
-        "raw_url": "https://github.com/odoo/odoo/raw/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2Fstatic%2Fsrc%2Fsnippets%2Fs_announcement_scroll%2Fannouncement_scroll.js",
-        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fwebsite%2Fstatic%2Fsrc%2Fsnippets%2Fs_announcement_scroll%2Fannouncement_scroll.js?ref=0e03cf93a331b096b79a523cc7f1709b612896ec",
-        "patch": "@@ -74,7 +74,10 @@ export class AnnouncementScroll extends Interaction {\n     setParallaxPosition() {\n         const MIN_LEFT_SHIFT = 50;\n \n-        if (!this.el.classList.contains('s_announcement_scroll_parallax')) {\n+        if (\n+            !this.el.classList.contains(\"s_announcement_scroll_parallax\") ||\n+            window.matchMedia(\"(prefers-reduced-motion: reduce)\").matches === true\n+        ) {\n             this.parallaxPosition = -MIN_LEFT_SHIFT;\n             return;\n         }\n@@ -133,9 +136,3 @@ export class AnnouncementScroll extends Interaction {\n registry\n     .category(\"public.interactions\")\n     .add(\"website.announcement_scroll\", AnnouncementScroll);\n-\n-registry\n-    .category(\"public.interactions.edit\")\n-    .add(\"website.announcement_scroll\", {\n-        Interaction: AnnouncementScroll,\n-    });"
-      },
-      {
-        "sha": "f43162c1c4c54864c7d94707e8667b13a7987a2f",
-        "filename": "addons/website/static/src/snippets/s_announcement_scroll/announcement_scroll.preview.scss",
-        "status": "renamed",
-        "additions": 1,
-        "deletions": 1,
-        "changes": 2,
-        "blob_url": "https://github.com/odoo/odoo/blob/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2Fstatic%2Fsrc%2Fsnippets%2Fs_announcement_scroll%2Fannouncement_scroll.preview.scss",
-        "raw_url": "https://github.com/odoo/odoo/raw/0e03cf93a331b096b79a523cc7f1709b612896ec/addons%2Fwebsite%2Fstatic%2Fsrc%2Fsnippets%2Fs_announcement_scroll%2Fannouncement_scroll.preview.scss",
-        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fwebsite%2Fstatic%2Fsrc%2Fsnippets%2Fs_announcement_scroll%2Fannouncement_scroll.preview.scss?ref=0e03cf93a331b096b79a523cc7f1709b612896ec",
-        "patch": "@@ -3,7 +3,7 @@\n // Performs an animation on :hover showcasing the user how the snippet behaves\n // in use. Measurements and values are arbitrary, the goal is just to provide\n // a preview.\n-.o_snippet_preview_wrap:hover [data-snippet=\"s_announcement_scroll\"] {\n+.o_snippet_preview_wrap:where(:hover, :focus-visible)  [data-snippet=\"s_announcement_scroll\"] {\n     animation-play-state: running;\n \n     .s_announcement_scroll_marquee_item {",
-        "previous_filename": "addons/website/static/src/snippets/s_announcement_scroll/announcement_scroll.edit.scss"
+        "additions": 9,
+        "deletions": 4,
+        "changes": 13,
+        "blob_url": "https://github.com/odoo/odoo/blob/19409315e54c28d1b411e0e6ea3226ee09d20084/addons%2Fwebsite_sale%2Fstatic%2Ftests%2Fbuilder%2Fproduct_page_option.test.js",
+        "raw_url": "https://github.com/odoo/odoo/raw/19409315e54c28d1b411e0e6ea3226ee09d20084/addons%2Fwebsite_sale%2Fstatic%2Ftests%2Fbuilder%2Fproduct_page_option.test.js",
+        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fwebsite_sale%2Fstatic%2Ftests%2Fbuilder%2Fproduct_page_option.test.js?ref=19409315e54c28d1b411e0e6ea3226ee09d20084",
+        "patch": "@@ -97,22 +97,21 @@ test(\"Product page options\", async () => {\n     await contains(\":iframe .o_wsale_product_page\").click();\n     await contains(\"[data-action-id=productReplaceMainImage]\").click();\n     await contains(\".o_select_media_dialog .o_existing_attachment_cell button\").click();\n+    await expect.waitForSteps([\"theme_customize_data_get\", \"get_image_info\"]);\n     await waitForNone(\".o_select_media_dialog\");\n \n     expect(\":iframe #product_detail_main img[src^='data:image/webp;base64,']\").toHaveCount(1);\n     expect(\":iframe img\").toHaveCount(2);\n-    expect.verifySteps([\"theme_customize_data_get\", \"get_image_info\"]);\n-\n     await contains(\"button#o_wsale_image_width\").click();\n     // Avoid selecting the first option to prevent the image layout option from disappearing\n     await contains(\"[data-action-id=productPageImageWidth][data-action-value='50_pc']\").click();\n+    await expect.waitForSteps([\"config\"]);\n     await waitSidebarUpdated();\n-    expect.verifySteps([\"config\"]);\n \n     await contains(\"button#o_wsale_image_layout\").click();\n     await contains(\"[data-action-id=productPageImageLayout]\").click();\n     await waitSidebarUpdated();\n-    expect.verifySteps([\n+    await expect.waitForSteps([\n         // Activate the carousel view and change the shop config\n         \"config\",\n         // Shop config changes don't trigger the `savePlugin`; image edits are saved because of the\n@@ -125,4 +124,10 @@ test(\"Product page options\", async () => {\n         // Reload the view\n         \"theme_customize_data_get\"\n     ]);\n+\n+    // Make sure that clicking quickly on a builder button after an clicking on\n+    // an action that reloads the editor does not produce a crash.\n+    await contains(\"[data-action-id=websiteConfig].o_we_buy_now_btn\").click();\n+    await contains(\"button#o_wsale_image_layout\").click();\n+    await expect.waitForSteps([\"theme_customize_data\", \"theme_customize_data_get\"]);\n });"
       }
     ],
     "paths": [
+      "addons/html_builder",
       "addons/website"
     ]
   },
@@ -2972,6 +3333,182 @@
     ]
   },
   {
+    "sha": "a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc",
+    "node_id": "C_kwDOAS1I7NoAKGEzNGFlZTZhYWRiOGM5YTI2ZDFmMWQ5M2JjOGQ5NGQ5NjRiYmU4ZGM",
+    "commit": {
+      "author": {
+        "name": "assk-odoo",
+        "email": "assk@odoo.com",
+        "date": "2025-07-24T07:08:18Z"
+      },
+      "committer": {
+        "name": "assk-odoo",
+        "email": "assk@odoo.com",
+        "date": "2025-10-10T16:10:04Z"
+      },
+      "message": "[FIX] website: prevent crash editing job location\n\nSteps to reproduce:\n1. Go to Website \u2192 Jobs.\n2. Open any job application.\n3. Change the Job Location to the option \"Remote\".\n4. A traceback occurs.\n\nContext:\n\"Remote\" option was originally introduced in dropdown (see PR[1]).\nLater, it was removed during refactoring in (see PR[2]).\n\nBefore this commit:\nWhen selecting a job location, initially no Many2One field is selected,\nthat's why no many2oneid is find. which results in a null value being\nreturned. This caused a traceback error\n\nAfter this commit:\nThe \"Remote\" option is explicitly included in the dropdown, restoring\nthe previous behavior.\n\n[1] https://github.com/odoo/odoo/pull/67913\n[2] https://github.com/odoo/odoo/pull/187419\n\ncloses odoo/odoo#230986\n\nX-original-commit: fa81ccfbc6d6bd5837af2b8584de55196f35156a\nSigned-off-by: Francois Georis (fge) <fge@odoo.com>\nSigned-off-by: Sujal Kamleshbhai Asodariya (assk) <assk@odoo.com>",
+      "tree": {
+        "sha": "f621ae6dc44b52b7d900cbf503f6d0cf86f90e88",
+        "url": "https://api.github.com/repos/odoo/odoo/git/trees/f621ae6dc44b52b7d900cbf503f6d0cf86f90e88"
+      },
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/odoo/odoo/commits/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc",
+    "html_url": "https://github.com/odoo/odoo/commit/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc",
+    "comments_url": "https://api.github.com/repos/odoo/odoo/commits/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/comments",
+    "author": {
+      "login": "assk-odoo",
+      "id": 195764924,
+      "node_id": "U_kgDOC6sivA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/195764924?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/assk-odoo",
+      "html_url": "https://github.com/assk-odoo",
+      "followers_url": "https://api.github.com/users/assk-odoo/followers",
+      "following_url": "https://api.github.com/users/assk-odoo/following{/other_user}",
+      "gists_url": "https://api.github.com/users/assk-odoo/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/assk-odoo/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/assk-odoo/subscriptions",
+      "organizations_url": "https://api.github.com/users/assk-odoo/orgs",
+      "repos_url": "https://api.github.com/users/assk-odoo/repos",
+      "events_url": "https://api.github.com/users/assk-odoo/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/assk-odoo/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "assk-odoo",
+      "id": 195764924,
+      "node_id": "U_kgDOC6sivA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/195764924?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/assk-odoo",
+      "html_url": "https://github.com/assk-odoo",
+      "followers_url": "https://api.github.com/users/assk-odoo/followers",
+      "following_url": "https://api.github.com/users/assk-odoo/following{/other_user}",
+      "gists_url": "https://api.github.com/users/assk-odoo/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/assk-odoo/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/assk-odoo/subscriptions",
+      "organizations_url": "https://api.github.com/users/assk-odoo/orgs",
+      "repos_url": "https://api.github.com/users/assk-odoo/repos",
+      "events_url": "https://api.github.com/users/assk-odoo/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/assk-odoo/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "b39b6a0b33b8585c920ce1347ac0d2ff928ac6e2",
+        "url": "https://api.github.com/repos/odoo/odoo/commits/b39b6a0b33b8585c920ce1347ac0d2ff928ac6e2",
+        "html_url": "https://github.com/odoo/odoo/commit/b39b6a0b33b8585c920ce1347ac0d2ff928ac6e2"
+      }
+    ],
+    "stats": {
+      "total": 91,
+      "additions": 84,
+      "deletions": 7
+    },
+    "files": [
+      {
+        "sha": "39e4f239fb3e46062c065f80348133261cb27e10",
+        "filename": "addons/html_builder/static/src/core/building_blocks/builder_many2one.js",
+        "status": "modified",
+        "additions": 12,
+        "deletions": 5,
+        "changes": 17,
+        "blob_url": "https://github.com/odoo/odoo/blob/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Fbuilding_blocks%2Fbuilder_many2one.js",
+        "raw_url": "https://github.com/odoo/odoo/raw/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Fbuilding_blocks%2Fbuilder_many2one.js",
+        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Fbuilding_blocks%2Fbuilder_many2one.js?ref=a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc",
+        "patch": "@@ -23,6 +23,7 @@ export class BuilderMany2One extends Component {\n         allowUnselect: { type: Boolean, optional: true },\n         defaultMessage: { type: String, optional: true },\n         createAction: { type: String, optional: true },\n+        nullText: { type: String, optional: true },\n     };\n     static defaultProps = {\n         ...BuilderComponent.defaultProps,\n@@ -50,16 +51,22 @@ export class BuilderMany2One extends Component {\n             const selectedString = getValue(el);\n             const selected = selectedString && JSON.parse(selectedString);\n             if (selected && !(\"display_name\" in selected && \"name\" in selected)) {\n-                Object.assign(\n-                    selected,\n-                    (\n+                let value;\n+                if (!selected.id) {\n+                    value = {\n+                        display_name: this.props.nullText,\n+                        name: this.props.nullText,\n+                    };\n+                } else {\n+                    value = (\n                         await this.cachedModel.ormRead(\n                             this.props.model,\n                             [selected.id],\n                             [\"display_name\", \"name\"]\n                         )\n-                    )[0]\n-                );\n+                    )[0];\n+                }\n+                Object.assign(selected, value);\n             }\n \n             return { selected };"
+      },
+      {
+        "sha": "be2345334ee19a8b3127d3701796d7ba984f3446",
+        "filename": "addons/html_builder/static/src/core/building_blocks/builder_many2one.xml",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0,
+        "changes": 1,
+        "blob_url": "https://github.com/odoo/odoo/blob/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Fbuilding_blocks%2Fbuilder_many2one.xml",
+        "raw_url": "https://github.com/odoo/odoo/raw/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Fbuilding_blocks%2Fbuilder_many2one.xml",
+        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Fbuilding_blocks%2Fbuilder_many2one.xml?ref=a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc",
+        "patch": "@@ -7,6 +7,7 @@\n             model=\"props.model\"\n             fields=\"props.fields\"\n             limit=\"props.limit\"\n+            nullText=\"props.nullText\"\n             domain=\"props.domain\"\n             selected=\"domState.selected ? [domState.selected] : []\"\n             select=\"select.bind(this)\""
+      },
+      {
+        "sha": "a006db2647d06b0fa4e93fbd8e75537efdb0656b",
+        "filename": "addons/html_builder/static/src/core/building_blocks/select_many2x.js",
+        "status": "modified",
+        "additions": 10,
+        "deletions": 1,
+        "changes": 11,
+        "blob_url": "https://github.com/odoo/odoo/blob/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Fbuilding_blocks%2Fselect_many2x.js",
+        "raw_url": "https://github.com/odoo/odoo/raw/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Fbuilding_blocks%2Fselect_many2x.js",
+        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Fbuilding_blocks%2Fselect_many2x.js?ref=a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc",
+        "patch": "@@ -40,6 +40,7 @@ export class SelectMany2X extends Component {\n         closeOnEnterKey: { type: Boolean, optional: true },\n         message: { type: String, optional: true },\n         create: { type: Function, optional: true },\n+        nullText: { type: String, optional: true },\n     };\n     static defaultProps = {\n         fields: [],\n@@ -100,11 +101,19 @@ export class SelectMany2X extends Component {\n             limit: this.state.limit + 1,\n         });\n         this.state.hasMore = tuples.length > this.state.limit;\n-        this.state.searchResults = await this.cachedModel.ormRead(\n+        const results = await this.cachedModel.ormRead(\n             this.props.model,\n             tuples.slice(0, this.state.limit).map(([id, _name]) => id),\n             [...new Set(this.props.fields).add(\"display_name\").add(\"name\")]\n         );\n+        if (this.props.nullText && (!results.length || results[0].id)) {\n+            results.unshift({\n+                id: 0,\n+                name: this.props.nullText,\n+                display_name: this.props.nullText,\n+            });\n+        }\n+        this.state.searchResults = results;\n     }\n     filteredSearchResult() {\n         const selectedIds = new Set(this.props.selected.map((e) => e.id));"
+      },
+      {
+        "sha": "c6f03d3d15f47343fe1ad0a8e782ee41ef2c991c",
+        "filename": "addons/html_builder/static/src/plugins/many2one_option.js",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 0,
+        "changes": 2,
+        "blob_url": "https://github.com/odoo/odoo/blob/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fplugins%2Fmany2one_option.js",
+        "raw_url": "https://github.com/odoo/odoo/raw/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fplugins%2Fmany2one_option.js",
+        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fplugins%2Fmany2one_option.js?ref=a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc",
+        "patch": "@@ -10,6 +10,8 @@ export class Many2OneOption extends BaseOptionComponent {\n         this.orm = useService(\"orm\");\n         onWillStart(async () => {\n             const el = this.env.getEditingElement();\n+            const contactOpts = JSON.parse(el.dataset.oeContactOptions || \"{}\");\n+            this.nullText = contactOpts.null_text;\n             this.model = el.dataset.oeMany2oneModel;\n             this.domain = JSON.parse(el.dataset.oeMany2oneDomain|| \"[]\");\n             const searchResult = await this.orm.searchRead("
+      },
+      {
+        "sha": "f23127cccf8a6d5f2ed8d39137040fe739e792a7",
+        "filename": "addons/html_builder/static/src/plugins/many2one_option.xml",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2,
+        "blob_url": "https://github.com/odoo/odoo/blob/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fplugins%2Fmany2one_option.xml",
+        "raw_url": "https://github.com/odoo/odoo/raw/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fplugins%2Fmany2one_option.xml",
+        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fplugins%2Fmany2one_option.xml?ref=a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc",
+        "patch": "@@ -3,7 +3,7 @@\n \n <t t-name=\"html_builder.Many2OneOption\">\n     <BuilderRow label=\"label\">\n-        <BuilderMany2One action=\"'many2One'\" model=\"model\" fields=\"['name']\" domain=\"domain\" allowUnselect=\"false\"/>\n+        <BuilderMany2One action=\"'many2One'\" model=\"model\" fields=\"['name']\" domain=\"domain\" nullText=\"nullText\" allowUnselect=\"false\"/>\n     </BuilderRow>\n </t>\n "
+      },
+      {
+        "sha": "91b2704b9ac818e07417760c9316c309b5fc1e47",
+        "filename": "addons/html_builder/static/tests/custom_tab/builder_components/builder_many2one.test.js",
+        "status": "modified",
+        "additions": 37,
+        "deletions": 0,
+        "changes": 37,
+        "blob_url": "https://github.com/odoo/odoo/blob/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Ftests%2Fcustom_tab%2Fbuilder_components%2Fbuilder_many2one.test.js",
+        "raw_url": "https://github.com/odoo/odoo/raw/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Ftests%2Fcustom_tab%2Fbuilder_components%2Fbuilder_many2one.test.js",
+        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fhtml_builder%2Fstatic%2Ftests%2Fcustom_tab%2Fbuilder_components%2Fbuilder_many2one.test.js?ref=a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc",
+        "patch": "@@ -128,3 +128,40 @@ test(\"dependency definition should not be outdated\", async () => {\n     await contains(\"span.o-dropdown-item:contains(Third)\").click();\n     expect(\"span:contains(Dependant)\").toHaveCount(0);\n });\n+\n+test(\"BuilderMany2One: add null_text option in website builder dropdown\", async () => {\n+    onRpc(\"test\", \"name_search\", () => [\n+        [1, \"First\"],\n+        [2, \"Second\"],\n+        [3, \"Third\"],\n+    ]);\n+    addBuilderAction({\n+        testAction: class extends BuilderAction {\n+            static id = \"testAction\";\n+            apply({ editingElement, value }) {\n+                editingElement.textContent = JSON.parse(value).name;\n+                editingElement.dataset.test = value;\n+            }\n+            getValue({ editingElement }) {\n+                return editingElement.dataset.test;\n+            }\n+        },\n+    });\n+    addBuilderOption(\n+        class extends BaseOptionComponent {\n+            static selector = \".test-options-target\";\n+            static template = xml`<BuilderMany2One action=\"'testAction'\" model=\"'test'\" limit=\"10\" nullText=\"'Remote'\"/>`;\n+        }\n+    );\n+    const { getEditableContent } = await setupHTMLBuilder(`\n+        <div class=\"test-options-target\">b</div>\n+    `);\n+    const editableContent = getEditableContent();\n+    await contains(\":iframe .test-options-target\").click();\n+    await contains(\".btn.o-dropdown\").click();\n+    await contains(\"span.o-dropdown-item:contains('Remote')\").click();\n+    expect(editableContent.textContent.trim()).toBe(\"Remote\");\n+    await contains(\".btn.o-dropdown\").click();\n+    await contains(\"span.o-dropdown-item:contains('First')\").click();\n+    expect(editableContent.textContent.trim()).toBe(\"First\");\n+});"
+      },
+      {
+        "sha": "10d2191f9f666b6deb7281bde6dbc46a0066ff9e",
+        "filename": "addons/html_builder/static/tests/many2one_field.test.js",
+        "status": "modified",
+        "additions": 21,
+        "deletions": 0,
+        "changes": 21,
+        "blob_url": "https://github.com/odoo/odoo/blob/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Ftests%2Fmany2one_field.test.js",
+        "raw_url": "https://github.com/odoo/odoo/raw/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Ftests%2Fmany2one_field.test.js",
+        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fhtml_builder%2Fstatic%2Ftests%2Fmany2one_field.test.js?ref=a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc",
+        "patch": "@@ -52,3 +52,24 @@ test(\"Preview changes of many2one option\", async () => {\n     expect(\":iframe span.span-2 > span\").toHaveText(\"The Address of 3\");\n     expect(\":iframe span.span-4\").toHaveText(\"Other\");\n });\n+\n+test(\"Many2OneOption: add null_text option in dropdown\", async () => {\n+    onRpc(\n+        \"ir.qweb.field.contact\",\n+        \"get_record_to_html\",\n+        ({ args: [[id]], kwargs }) => `<span>The ${kwargs.options.option} of ${id}</span>`\n+    );\n+    await setupHTMLBuilder(`\n+        <div class=\"many2oneoption_dropdown\"\n+            data-oe-many2one-id=\"1\"\n+            data-oe-many2one-model=\"res.partner\"\n+            data-oe-contact-options='{\"null_text\":\"Remote\"}'>\n+            <span>location</span>\n+        </div>\n+    `);\n+    await contains(\":iframe .many2oneoption_dropdown\").click();\n+    expect(\"button.btn.dropdown\").toHaveCount(1);\n+    await contains(\"button.btn.dropdown\").click();\n+    await contains(\"span.o-dropdown-item.dropdown-item:contains('Remote')\").click();\n+    expect(\":iframe div.many2oneoption_dropdown\").toHaveText(\"Remote\");\n+});"
+      }
+    ],
+    "paths": [
+      "addons/html_builder"
+    ]
+  },
+  {
     "sha": "be0d11b9b8a9b9a077221e9f3a4aef94636fd571",
     "node_id": "C_kwDOAS1I7NoAKGJlMGQxMWI5YjhhOWI5YTA3NzIyMWU5ZjNhNGFlZjk0NjM2ZmQ1NzE",
     "commit": {
@@ -3973,543 +4510,6 @@
     ],
     "paths": [
       "addons/website"
-    ]
-  },
-  {
-    "sha": "faf42a1555fd6d268a0b47a2692ceeabde058aef",
-    "node_id": "C_kwDOAS1I7NoAKGZhZjQyYTE1NTVmZDZkMjY4YTBiNDdhMjY5MmNlZWFiZGUwNThhZWY",
-    "commit": {
-      "author": {
-        "name": "Tiffany Chang (tic)",
-        "email": "tic@odoo.com",
-        "date": "2025-10-07T13:45:43Z"
-      },
-      "committer": {
-        "name": "Tiffany Chang (tic)",
-        "email": "tic@odoo.com",
-        "date": "2025-10-15T08:55:45Z"
-      },
-      "message": "[I18N] html_builder: add missing msgstr \"\"\n\npot file was manually edited, resulting in invalid pot file.\n\ncloses odoo/odoo#230409\n\nX-original-commit: a8818f596774a902eb8568fbe7634c3a4bcf7268\nSigned-off-by: Tiffany Chang (tic) <tic@odoo.com>",
-      "tree": {
-        "sha": "27670197c5d0eacf61d5963683415a6801371b29",
-        "url": "https://api.github.com/repos/odoo/odoo/git/trees/27670197c5d0eacf61d5963683415a6801371b29"
-      },
-      "url": "https://api.github.com/repos/odoo/odoo/git/commits/faf42a1555fd6d268a0b47a2692ceeabde058aef",
-      "comment_count": 0,
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "signature": null,
-        "payload": null,
-        "verified_at": null
-      }
-    },
-    "url": "https://api.github.com/repos/odoo/odoo/commits/faf42a1555fd6d268a0b47a2692ceeabde058aef",
-    "html_url": "https://github.com/odoo/odoo/commit/faf42a1555fd6d268a0b47a2692ceeabde058aef",
-    "comments_url": "https://api.github.com/repos/odoo/odoo/commits/faf42a1555fd6d268a0b47a2692ceeabde058aef/comments",
-    "author": {
-      "login": "ticodoo",
-      "id": 57942143,
-      "node_id": "MDQ6VXNlcjU3OTQyMTQz",
-      "avatar_url": "https://avatars.githubusercontent.com/u/57942143?v=4",
-      "gravatar_id": "",
-      "url": "https://api.github.com/users/ticodoo",
-      "html_url": "https://github.com/ticodoo",
-      "followers_url": "https://api.github.com/users/ticodoo/followers",
-      "following_url": "https://api.github.com/users/ticodoo/following{/other_user}",
-      "gists_url": "https://api.github.com/users/ticodoo/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/ticodoo/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/ticodoo/subscriptions",
-      "organizations_url": "https://api.github.com/users/ticodoo/orgs",
-      "repos_url": "https://api.github.com/users/ticodoo/repos",
-      "events_url": "https://api.github.com/users/ticodoo/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/ticodoo/received_events",
-      "type": "User",
-      "user_view_type": "public",
-      "site_admin": false
-    },
-    "committer": {
-      "login": "ticodoo",
-      "id": 57942143,
-      "node_id": "MDQ6VXNlcjU3OTQyMTQz",
-      "avatar_url": "https://avatars.githubusercontent.com/u/57942143?v=4",
-      "gravatar_id": "",
-      "url": "https://api.github.com/users/ticodoo",
-      "html_url": "https://github.com/ticodoo",
-      "followers_url": "https://api.github.com/users/ticodoo/followers",
-      "following_url": "https://api.github.com/users/ticodoo/following{/other_user}",
-      "gists_url": "https://api.github.com/users/ticodoo/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/ticodoo/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/ticodoo/subscriptions",
-      "organizations_url": "https://api.github.com/users/ticodoo/orgs",
-      "repos_url": "https://api.github.com/users/ticodoo/repos",
-      "events_url": "https://api.github.com/users/ticodoo/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/ticodoo/received_events",
-      "type": "User",
-      "user_view_type": "public",
-      "site_admin": false
-    },
-    "parents": [
-      {
-        "sha": "e29921a6df52ba567132d7ffe63de86eb1efa1ff",
-        "url": "https://api.github.com/repos/odoo/odoo/commits/e29921a6df52ba567132d7ffe63de86eb1efa1ff",
-        "html_url": "https://github.com/odoo/odoo/commit/e29921a6df52ba567132d7ffe63de86eb1efa1ff"
-      }
-    ],
-    "stats": {
-      "total": 1,
-      "additions": 1,
-      "deletions": 0
-    },
-    "files": [
-      {
-        "sha": "3be07df397e921b7f82f0c67ac03d0d492e1d141",
-        "filename": "addons/html_builder/i18n/html_builder.pot",
-        "status": "modified",
-        "additions": 1,
-        "deletions": 0,
-        "changes": 1,
-        "blob_url": "https://github.com/odoo/odoo/blob/faf42a1555fd6d268a0b47a2692ceeabde058aef/addons%2Fhtml_builder%2Fi18n%2Fhtml_builder.pot",
-        "raw_url": "https://github.com/odoo/odoo/raw/faf42a1555fd6d268a0b47a2692ceeabde058aef/addons%2Fhtml_builder%2Fi18n%2Fhtml_builder.pot",
-        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fhtml_builder%2Fi18n%2Fhtml_builder.pot?ref=faf42a1555fd6d268a0b47a2692ceeabde058aef",
-        "patch": "@@ -3024,6 +3024,7 @@ msgstr \"\"\n #. odoo-javascript\n #: code:addons/html_builder/static/src/plugins/background_option/background_shapes_definition.js:0\n msgid \"Wavy 14\"\n+msgstr \"\"\n \n #. module: html_builder\n #. odoo-javascript"
-      }
-    ],
-    "paths": [
-      "addons/html_builder"
-    ]
-  },
-  {
-    "sha": "899c08bd2ba2f8571cf025245219621d36ed999c",
-    "node_id": "C_kwDOAS1I7NoAKDg5OWMwOGJkMmJhMmY4NTcxY2YwMjUyNDUyMTk2MjFkMzZlZDk5OWM",
-    "commit": {
-      "author": {
-        "name": "Serhii Rubanskyi",
-        "email": "seru@odoo.com",
-        "date": "2025-10-14T12:28:04Z"
-      },
-      "committer": {
-        "name": "Serhii Rubanskyi",
-        "email": "seru@odoo.com",
-        "date": "2025-10-15T06:36:33Z"
-      },
-      "message": "[IMP] html_editor, web, website: export color picker tabs\n\nSince the [1] color picker tabs are plugable now, and so, in order to\nbe able to patch them we'd need to export them. This commit exports\nthem all at once.\n\n[1]: https://github.com/odoo/odoo/commit/edc9d5bb9582db704ed02051ee4adb3801ddfaa9\n\ncloses odoo/odoo#231551\n\nX-original-commit: 2e175aecf2db567ed879190531cf4f80cc81facd\nSigned-off-by: Robin Lejeune (role) <role@odoo.com>\nSigned-off-by: Serhii Rubanskyi (seru) <seru@odoo.com>",
-      "tree": {
-        "sha": "943e41abe36a75fbe714f4ff1ea3231be71e5772",
-        "url": "https://api.github.com/repos/odoo/odoo/git/trees/943e41abe36a75fbe714f4ff1ea3231be71e5772"
-      },
-      "url": "https://api.github.com/repos/odoo/odoo/git/commits/899c08bd2ba2f8571cf025245219621d36ed999c",
-      "comment_count": 0,
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "signature": null,
-        "payload": null,
-        "verified_at": null
-      }
-    },
-    "url": "https://api.github.com/repos/odoo/odoo/commits/899c08bd2ba2f8571cf025245219621d36ed999c",
-    "html_url": "https://github.com/odoo/odoo/commit/899c08bd2ba2f8571cf025245219621d36ed999c",
-    "comments_url": "https://api.github.com/repos/odoo/odoo/commits/899c08bd2ba2f8571cf025245219621d36ed999c/comments",
-    "author": {
-      "login": "Syozik",
-      "id": 82968368,
-      "node_id": "MDQ6VXNlcjgyOTY4MzY4",
-      "avatar_url": "https://avatars.githubusercontent.com/u/82968368?v=4",
-      "gravatar_id": "",
-      "url": "https://api.github.com/users/Syozik",
-      "html_url": "https://github.com/Syozik",
-      "followers_url": "https://api.github.com/users/Syozik/followers",
-      "following_url": "https://api.github.com/users/Syozik/following{/other_user}",
-      "gists_url": "https://api.github.com/users/Syozik/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/Syozik/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/Syozik/subscriptions",
-      "organizations_url": "https://api.github.com/users/Syozik/orgs",
-      "repos_url": "https://api.github.com/users/Syozik/repos",
-      "events_url": "https://api.github.com/users/Syozik/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/Syozik/received_events",
-      "type": "User",
-      "user_view_type": "public",
-      "site_admin": false
-    },
-    "committer": {
-      "login": "Syozik",
-      "id": 82968368,
-      "node_id": "MDQ6VXNlcjgyOTY4MzY4",
-      "avatar_url": "https://avatars.githubusercontent.com/u/82968368?v=4",
-      "gravatar_id": "",
-      "url": "https://api.github.com/users/Syozik",
-      "html_url": "https://github.com/Syozik",
-      "followers_url": "https://api.github.com/users/Syozik/followers",
-      "following_url": "https://api.github.com/users/Syozik/following{/other_user}",
-      "gists_url": "https://api.github.com/users/Syozik/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/Syozik/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/Syozik/subscriptions",
-      "organizations_url": "https://api.github.com/users/Syozik/orgs",
-      "repos_url": "https://api.github.com/users/Syozik/repos",
-      "events_url": "https://api.github.com/users/Syozik/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/Syozik/received_events",
-      "type": "User",
-      "user_view_type": "public",
-      "site_admin": false
-    },
-    "parents": [
-      {
-        "sha": "387bd4f830469555864a36e284339d18c049aeff",
-        "url": "https://api.github.com/repos/odoo/odoo/commits/387bd4f830469555864a36e284339d18c049aeff",
-        "html_url": "https://github.com/odoo/odoo/commit/387bd4f830469555864a36e284339d18c049aeff"
-      }
-    ],
-    "stats": {
-      "total": 8,
-      "additions": 4,
-      "deletions": 4
-    },
-    "files": [
-      {
-        "sha": "80ed3a7e57d9714944574997780145d14664dc8c",
-        "filename": "addons/html_builder/static/src/core/building_blocks/color_picker_theme_tab.js",
-        "status": "modified",
-        "additions": 1,
-        "deletions": 1,
-        "changes": 2,
-        "blob_url": "https://github.com/odoo/odoo/blob/899c08bd2ba2f8571cf025245219621d36ed999c/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Fbuilding_blocks%2Fcolor_picker_theme_tab.js",
-        "raw_url": "https://github.com/odoo/odoo/raw/899c08bd2ba2f8571cf025245219621d36ed999c/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Fbuilding_blocks%2Fcolor_picker_theme_tab.js",
-        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Fbuilding_blocks%2Fcolor_picker_theme_tab.js?ref=899c08bd2ba2f8571cf025245219621d36ed999c",
-        "patch": "@@ -2,7 +2,7 @@ import { Component } from \"@odoo/owl\";\n import { _t } from \"@web/core/l10n/translation\";\n import { registry } from \"@web/core/registry\";\n \n-class ColorPickerThemeTab extends Component {\n+export class ColorPickerThemeTab extends Component {\n     static template = \"html_builder.ColorPickerThemeTab\";\n     static props = {\n         onColorClick: Function,"
-      },
-      {
-        "sha": "9e6fea4c6124a48f7f438d223c518e20e1951aa4",
-        "filename": "addons/html_editor/static/src/main/font/color_picker_gradient_tab.js",
-        "status": "modified",
-        "additions": 1,
-        "deletions": 1,
-        "changes": 2,
-        "blob_url": "https://github.com/odoo/odoo/blob/899c08bd2ba2f8571cf025245219621d36ed999c/addons%2Fhtml_editor%2Fstatic%2Fsrc%2Fmain%2Ffont%2Fcolor_picker_gradient_tab.js",
-        "raw_url": "https://github.com/odoo/odoo/raw/899c08bd2ba2f8571cf025245219621d36ed999c/addons%2Fhtml_editor%2Fstatic%2Fsrc%2Fmain%2Ffont%2Fcolor_picker_gradient_tab.js",
-        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fhtml_editor%2Fstatic%2Fsrc%2Fmain%2Ffont%2Fcolor_picker_gradient_tab.js?ref=899c08bd2ba2f8571cf025245219621d36ed999c",
-        "patch": "@@ -15,7 +15,7 @@ const DEFAULT_GRADIENT_COLORS = [\n     \"linear-gradient(135deg, rgb(255, 222, 202) 0%, rgb(202, 115, 69) 100%)\",\n ];\n \n-class ColorPickerGradientTab extends Component {\n+export class ColorPickerGradientTab extends Component {\n     static template = \"html_editor.ColorPickerGradientTab\";\n     static components = { GradientPicker };\n     static props = {"
-      },
-      {
-        "sha": "e7feb5884e934c8779f5d85875d157998285b2e5",
-        "filename": "addons/web/static/src/core/color_picker/tabs/color_picker_custom_tab.js",
-        "status": "modified",
-        "additions": 1,
-        "deletions": 1,
-        "changes": 2,
-        "blob_url": "https://github.com/odoo/odoo/blob/899c08bd2ba2f8571cf025245219621d36ed999c/addons%2Fweb%2Fstatic%2Fsrc%2Fcore%2Fcolor_picker%2Ftabs%2Fcolor_picker_custom_tab.js",
-        "raw_url": "https://github.com/odoo/odoo/raw/899c08bd2ba2f8571cf025245219621d36ed999c/addons%2Fweb%2Fstatic%2Fsrc%2Fcore%2Fcolor_picker%2Ftabs%2Fcolor_picker_custom_tab.js",
-        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fweb%2Fstatic%2Fsrc%2Fcore%2Fcolor_picker%2Ftabs%2Fcolor_picker_custom_tab.js?ref=899c08bd2ba2f8571cf025245219621d36ed999c",
-        "patch": "@@ -4,7 +4,7 @@ import { registry } from \"@web/core/registry\";\n import { isColorGradient } from \"@web/core/utils/colors\";\n import { CustomColorPicker } from \"../custom_color_picker/custom_color_picker\";\n \n-class ColorPickerCustomTab extends Component {\n+export class ColorPickerCustomTab extends Component {\n     static template = \"web.ColorPickerCustomTab\";\n     static components = { CustomColorPicker };\n     static props = {"
-      },
-      {
-        "sha": "5025a7e4cb037e68c5732de9c9b70e491fe38ace",
-        "filename": "addons/web/static/src/core/color_picker/tabs/color_picker_solid_tab.js",
-        "status": "modified",
-        "additions": 1,
-        "deletions": 1,
-        "changes": 2,
-        "blob_url": "https://github.com/odoo/odoo/blob/899c08bd2ba2f8571cf025245219621d36ed999c/addons%2Fweb%2Fstatic%2Fsrc%2Fcore%2Fcolor_picker%2Ftabs%2Fcolor_picker_solid_tab.js",
-        "raw_url": "https://github.com/odoo/odoo/raw/899c08bd2ba2f8571cf025245219621d36ed999c/addons%2Fweb%2Fstatic%2Fsrc%2Fcore%2Fcolor_picker%2Ftabs%2Fcolor_picker_solid_tab.js",
-        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fweb%2Fstatic%2Fsrc%2Fcore%2Fcolor_picker%2Ftabs%2Fcolor_picker_solid_tab.js?ref=899c08bd2ba2f8571cf025245219621d36ed999c",
-        "patch": "@@ -2,7 +2,7 @@ import { Component } from \"@odoo/owl\";\n import { _t } from \"@web/core/l10n/translation\";\n import { registry } from \"@web/core/registry\";\n \n-class ColorPickerSolidTab extends Component {\n+export class ColorPickerSolidTab extends Component {\n     static template = \"web.ColorPickerSolidTab\";\n     static props = {\n         colorPickerNavigation: Function,"
-      }
-    ],
-    "paths": [
-      "addons/html_builder"
-    ]
-  },
-  {
-    "sha": "19409315e54c28d1b411e0e6ea3226ee09d20084",
-    "node_id": "C_kwDOAS1I7NoAKDE5NDA5MzE1ZTU0YzI4ZDFiNDExZTBlNmVhMzIyNmVlMDlkMjAwODQ",
-    "commit": {
-      "author": {
-        "name": "Julien (jula)",
-        "email": "jula@odoo.com",
-        "date": "2025-10-01T08:23:28Z"
-      },
-      "committer": {
-        "name": "Julien Launois (jula)",
-        "email": "jula@odoo.com",
-        "date": "2025-10-14T10:10:16Z"
-      },
-      "message": "[FIX] html_builder, *: fix non-deterministic crash on editor reload\n\n*: website_sale\n\n__Current behavior before commit:__\nSome builder actions (e.g `ProductPageImageLayoutAction`) reload the\neditor after being applied. If another button in the builder is pressed\nrapidly, `refreshCurrentItem` might be called after the editor is\ndestroyed leading to the following error in [`isApplied`]:\n\n`TypeError: Cannot read properties of undefined (reading 'getAction')`.\n\nThe \"Product page options\" test fails in rare occasion due to this\nissue.\n\n__Description of the fix:__\n- Add a safety guard to make sure the editor is not destroyed before\ncalling `refreshCurrentItem`.\n- Add some checks at the end of the test in order for the crash to\nappear consistently (if the fix is not applied).\n- Make the test more robust (some code is backported from\n[this commit]).\n\n[this commit]: https://github.com/odoo/odoo/commit/670b1daa2254d76\n[`isApplied`]: https://github.com/odoo/odoo/blob/f258b263136f606f7896/addons/html_builder/static/src/core/utils.js#L939\n\nRunbot error: https://runbot.odoo.com/odoo/runbot.build.error/232649\n\ncloses odoo/odoo#230179\n\nX-original-commit: c3bbd7509b381fce59fc9e1aad43d5147e5b9af4\nSigned-off-by: Francois Georis (fge) <fge@odoo.com>\nSigned-off-by: Julien Launois (jula) <jula@odoo.com>",
-      "tree": {
-        "sha": "9d1931f118d4a3abab4f0b1f88d82dd58d518f06",
-        "url": "https://api.github.com/repos/odoo/odoo/git/trees/9d1931f118d4a3abab4f0b1f88d82dd58d518f06"
-      },
-      "url": "https://api.github.com/repos/odoo/odoo/git/commits/19409315e54c28d1b411e0e6ea3226ee09d20084",
-      "comment_count": 0,
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "signature": null,
-        "payload": null,
-        "verified_at": null
-      }
-    },
-    "url": "https://api.github.com/repos/odoo/odoo/commits/19409315e54c28d1b411e0e6ea3226ee09d20084",
-    "html_url": "https://github.com/odoo/odoo/commit/19409315e54c28d1b411e0e6ea3226ee09d20084",
-    "comments_url": "https://api.github.com/repos/odoo/odoo/commits/19409315e54c28d1b411e0e6ea3226ee09d20084/comments",
-    "author": {
-      "login": "Dj0ulo",
-      "id": 46035353,
-      "node_id": "MDQ6VXNlcjQ2MDM1MzUz",
-      "avatar_url": "https://avatars.githubusercontent.com/u/46035353?v=4",
-      "gravatar_id": "",
-      "url": "https://api.github.com/users/Dj0ulo",
-      "html_url": "https://github.com/Dj0ulo",
-      "followers_url": "https://api.github.com/users/Dj0ulo/followers",
-      "following_url": "https://api.github.com/users/Dj0ulo/following{/other_user}",
-      "gists_url": "https://api.github.com/users/Dj0ulo/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/Dj0ulo/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/Dj0ulo/subscriptions",
-      "organizations_url": "https://api.github.com/users/Dj0ulo/orgs",
-      "repos_url": "https://api.github.com/users/Dj0ulo/repos",
-      "events_url": "https://api.github.com/users/Dj0ulo/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/Dj0ulo/received_events",
-      "type": "User",
-      "user_view_type": "public",
-      "site_admin": false
-    },
-    "committer": {
-      "login": "Dj0ulo",
-      "id": 46035353,
-      "node_id": "MDQ6VXNlcjQ2MDM1MzUz",
-      "avatar_url": "https://avatars.githubusercontent.com/u/46035353?v=4",
-      "gravatar_id": "",
-      "url": "https://api.github.com/users/Dj0ulo",
-      "html_url": "https://github.com/Dj0ulo",
-      "followers_url": "https://api.github.com/users/Dj0ulo/followers",
-      "following_url": "https://api.github.com/users/Dj0ulo/following{/other_user}",
-      "gists_url": "https://api.github.com/users/Dj0ulo/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/Dj0ulo/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/Dj0ulo/subscriptions",
-      "organizations_url": "https://api.github.com/users/Dj0ulo/orgs",
-      "repos_url": "https://api.github.com/users/Dj0ulo/repos",
-      "events_url": "https://api.github.com/users/Dj0ulo/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/Dj0ulo/received_events",
-      "type": "User",
-      "user_view_type": "public",
-      "site_admin": false
-    },
-    "parents": [
-      {
-        "sha": "421def4492601f15c81efe539755ca96ac2f06f1",
-        "url": "https://api.github.com/repos/odoo/odoo/commits/421def4492601f15c81efe539755ca96ac2f06f1",
-        "html_url": "https://github.com/odoo/odoo/commit/421def4492601f15c81efe539755ca96ac2f06f1"
-      }
-    ],
-    "stats": {
-      "total": 16,
-      "additions": 12,
-      "deletions": 4
-    },
-    "files": [
-      {
-        "sha": "c42f94b1378928dca48cca0591d11f32517e2dbd",
-        "filename": "addons/html_builder/static/src/core/utils.js",
-        "status": "modified",
-        "additions": 3,
-        "deletions": 0,
-        "changes": 3,
-        "blob_url": "https://github.com/odoo/odoo/blob/19409315e54c28d1b411e0e6ea3226ee09d20084/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Futils.js",
-        "raw_url": "https://github.com/odoo/odoo/raw/19409315e54c28d1b411e0e6ea3226ee09d20084/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Futils.js",
-        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Futils.js?ref=19409315e54c28d1b411e0e6ea3226ee09d20084",
-        "patch": "@@ -239,6 +239,9 @@ export function useSelectableComponent(id, { onItemChange } = {}) {\n     });\n \n     function refreshCurrentItem() {\n+        if (env.editor.isDestroyed) {\n+            return;\n+        }\n         let currentItem;\n         let itemPriority = 0;\n         for (const selectableItem of selectableItems) {"
-      },
-      {
-        "sha": "8a30786408c8e78cdaa989fb62a0d107b853f4f3",
-        "filename": "addons/website_sale/static/tests/builder/product_page_option.test.js",
-        "status": "modified",
-        "additions": 9,
-        "deletions": 4,
-        "changes": 13,
-        "blob_url": "https://github.com/odoo/odoo/blob/19409315e54c28d1b411e0e6ea3226ee09d20084/addons%2Fwebsite_sale%2Fstatic%2Ftests%2Fbuilder%2Fproduct_page_option.test.js",
-        "raw_url": "https://github.com/odoo/odoo/raw/19409315e54c28d1b411e0e6ea3226ee09d20084/addons%2Fwebsite_sale%2Fstatic%2Ftests%2Fbuilder%2Fproduct_page_option.test.js",
-        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fwebsite_sale%2Fstatic%2Ftests%2Fbuilder%2Fproduct_page_option.test.js?ref=19409315e54c28d1b411e0e6ea3226ee09d20084",
-        "patch": "@@ -97,22 +97,21 @@ test(\"Product page options\", async () => {\n     await contains(\":iframe .o_wsale_product_page\").click();\n     await contains(\"[data-action-id=productReplaceMainImage]\").click();\n     await contains(\".o_select_media_dialog .o_existing_attachment_cell button\").click();\n+    await expect.waitForSteps([\"theme_customize_data_get\", \"get_image_info\"]);\n     await waitForNone(\".o_select_media_dialog\");\n \n     expect(\":iframe #product_detail_main img[src^='data:image/webp;base64,']\").toHaveCount(1);\n     expect(\":iframe img\").toHaveCount(2);\n-    expect.verifySteps([\"theme_customize_data_get\", \"get_image_info\"]);\n-\n     await contains(\"button#o_wsale_image_width\").click();\n     // Avoid selecting the first option to prevent the image layout option from disappearing\n     await contains(\"[data-action-id=productPageImageWidth][data-action-value='50_pc']\").click();\n+    await expect.waitForSteps([\"config\"]);\n     await waitSidebarUpdated();\n-    expect.verifySteps([\"config\"]);\n \n     await contains(\"button#o_wsale_image_layout\").click();\n     await contains(\"[data-action-id=productPageImageLayout]\").click();\n     await waitSidebarUpdated();\n-    expect.verifySteps([\n+    await expect.waitForSteps([\n         // Activate the carousel view and change the shop config\n         \"config\",\n         // Shop config changes don't trigger the `savePlugin`; image edits are saved because of the\n@@ -125,4 +124,10 @@ test(\"Product page options\", async () => {\n         // Reload the view\n         \"theme_customize_data_get\"\n     ]);\n+\n+    // Make sure that clicking quickly on a builder button after an clicking on\n+    // an action that reloads the editor does not produce a crash.\n+    await contains(\"[data-action-id=websiteConfig].o_we_buy_now_btn\").click();\n+    await contains(\"button#o_wsale_image_layout\").click();\n+    await expect.waitForSteps([\"theme_customize_data\", \"theme_customize_data_get\"]);\n });"
-      }
-    ],
-    "paths": [
-      "addons/html_builder",
-      "addons/website"
-    ]
-  },
-  {
-    "sha": "a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc",
-    "node_id": "C_kwDOAS1I7NoAKGEzNGFlZTZhYWRiOGM5YTI2ZDFmMWQ5M2JjOGQ5NGQ5NjRiYmU4ZGM",
-    "commit": {
-      "author": {
-        "name": "assk-odoo",
-        "email": "assk@odoo.com",
-        "date": "2025-07-24T07:08:18Z"
-      },
-      "committer": {
-        "name": "assk-odoo",
-        "email": "assk@odoo.com",
-        "date": "2025-10-10T16:10:04Z"
-      },
-      "message": "[FIX] website: prevent crash editing job location\n\nSteps to reproduce:\n1. Go to Website \u2192 Jobs.\n2. Open any job application.\n3. Change the Job Location to the option \"Remote\".\n4. A traceback occurs.\n\nContext:\n\"Remote\" option was originally introduced in dropdown (see PR[1]).\nLater, it was removed during refactoring in (see PR[2]).\n\nBefore this commit:\nWhen selecting a job location, initially no Many2One field is selected,\nthat's why no many2oneid is find. which results in a null value being\nreturned. This caused a traceback error\n\nAfter this commit:\nThe \"Remote\" option is explicitly included in the dropdown, restoring\nthe previous behavior.\n\n[1] https://github.com/odoo/odoo/pull/67913\n[2] https://github.com/odoo/odoo/pull/187419\n\ncloses odoo/odoo#230986\n\nX-original-commit: fa81ccfbc6d6bd5837af2b8584de55196f35156a\nSigned-off-by: Francois Georis (fge) <fge@odoo.com>\nSigned-off-by: Sujal Kamleshbhai Asodariya (assk) <assk@odoo.com>",
-      "tree": {
-        "sha": "f621ae6dc44b52b7d900cbf503f6d0cf86f90e88",
-        "url": "https://api.github.com/repos/odoo/odoo/git/trees/f621ae6dc44b52b7d900cbf503f6d0cf86f90e88"
-      },
-      "url": "https://api.github.com/repos/odoo/odoo/git/commits/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc",
-      "comment_count": 0,
-      "verification": {
-        "verified": false,
-        "reason": "unsigned",
-        "signature": null,
-        "payload": null,
-        "verified_at": null
-      }
-    },
-    "url": "https://api.github.com/repos/odoo/odoo/commits/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc",
-    "html_url": "https://github.com/odoo/odoo/commit/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc",
-    "comments_url": "https://api.github.com/repos/odoo/odoo/commits/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/comments",
-    "author": {
-      "login": "assk-odoo",
-      "id": 195764924,
-      "node_id": "U_kgDOC6sivA",
-      "avatar_url": "https://avatars.githubusercontent.com/u/195764924?v=4",
-      "gravatar_id": "",
-      "url": "https://api.github.com/users/assk-odoo",
-      "html_url": "https://github.com/assk-odoo",
-      "followers_url": "https://api.github.com/users/assk-odoo/followers",
-      "following_url": "https://api.github.com/users/assk-odoo/following{/other_user}",
-      "gists_url": "https://api.github.com/users/assk-odoo/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/assk-odoo/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/assk-odoo/subscriptions",
-      "organizations_url": "https://api.github.com/users/assk-odoo/orgs",
-      "repos_url": "https://api.github.com/users/assk-odoo/repos",
-      "events_url": "https://api.github.com/users/assk-odoo/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/assk-odoo/received_events",
-      "type": "User",
-      "user_view_type": "public",
-      "site_admin": false
-    },
-    "committer": {
-      "login": "assk-odoo",
-      "id": 195764924,
-      "node_id": "U_kgDOC6sivA",
-      "avatar_url": "https://avatars.githubusercontent.com/u/195764924?v=4",
-      "gravatar_id": "",
-      "url": "https://api.github.com/users/assk-odoo",
-      "html_url": "https://github.com/assk-odoo",
-      "followers_url": "https://api.github.com/users/assk-odoo/followers",
-      "following_url": "https://api.github.com/users/assk-odoo/following{/other_user}",
-      "gists_url": "https://api.github.com/users/assk-odoo/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/assk-odoo/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/assk-odoo/subscriptions",
-      "organizations_url": "https://api.github.com/users/assk-odoo/orgs",
-      "repos_url": "https://api.github.com/users/assk-odoo/repos",
-      "events_url": "https://api.github.com/users/assk-odoo/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/assk-odoo/received_events",
-      "type": "User",
-      "user_view_type": "public",
-      "site_admin": false
-    },
-    "parents": [
-      {
-        "sha": "b39b6a0b33b8585c920ce1347ac0d2ff928ac6e2",
-        "url": "https://api.github.com/repos/odoo/odoo/commits/b39b6a0b33b8585c920ce1347ac0d2ff928ac6e2",
-        "html_url": "https://github.com/odoo/odoo/commit/b39b6a0b33b8585c920ce1347ac0d2ff928ac6e2"
-      }
-    ],
-    "stats": {
-      "total": 91,
-      "additions": 84,
-      "deletions": 7
-    },
-    "files": [
-      {
-        "sha": "39e4f239fb3e46062c065f80348133261cb27e10",
-        "filename": "addons/html_builder/static/src/core/building_blocks/builder_many2one.js",
-        "status": "modified",
-        "additions": 12,
-        "deletions": 5,
-        "changes": 17,
-        "blob_url": "https://github.com/odoo/odoo/blob/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Fbuilding_blocks%2Fbuilder_many2one.js",
-        "raw_url": "https://github.com/odoo/odoo/raw/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Fbuilding_blocks%2Fbuilder_many2one.js",
-        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Fbuilding_blocks%2Fbuilder_many2one.js?ref=a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc",
-        "patch": "@@ -23,6 +23,7 @@ export class BuilderMany2One extends Component {\n         allowUnselect: { type: Boolean, optional: true },\n         defaultMessage: { type: String, optional: true },\n         createAction: { type: String, optional: true },\n+        nullText: { type: String, optional: true },\n     };\n     static defaultProps = {\n         ...BuilderComponent.defaultProps,\n@@ -50,16 +51,22 @@ export class BuilderMany2One extends Component {\n             const selectedString = getValue(el);\n             const selected = selectedString && JSON.parse(selectedString);\n             if (selected && !(\"display_name\" in selected && \"name\" in selected)) {\n-                Object.assign(\n-                    selected,\n-                    (\n+                let value;\n+                if (!selected.id) {\n+                    value = {\n+                        display_name: this.props.nullText,\n+                        name: this.props.nullText,\n+                    };\n+                } else {\n+                    value = (\n                         await this.cachedModel.ormRead(\n                             this.props.model,\n                             [selected.id],\n                             [\"display_name\", \"name\"]\n                         )\n-                    )[0]\n-                );\n+                    )[0];\n+                }\n+                Object.assign(selected, value);\n             }\n \n             return { selected };"
-      },
-      {
-        "sha": "be2345334ee19a8b3127d3701796d7ba984f3446",
-        "filename": "addons/html_builder/static/src/core/building_blocks/builder_many2one.xml",
-        "status": "modified",
-        "additions": 1,
-        "deletions": 0,
-        "changes": 1,
-        "blob_url": "https://github.com/odoo/odoo/blob/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Fbuilding_blocks%2Fbuilder_many2one.xml",
-        "raw_url": "https://github.com/odoo/odoo/raw/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Fbuilding_blocks%2Fbuilder_many2one.xml",
-        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Fbuilding_blocks%2Fbuilder_many2one.xml?ref=a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc",
-        "patch": "@@ -7,6 +7,7 @@\n             model=\"props.model\"\n             fields=\"props.fields\"\n             limit=\"props.limit\"\n+            nullText=\"props.nullText\"\n             domain=\"props.domain\"\n             selected=\"domState.selected ? [domState.selected] : []\"\n             select=\"select.bind(this)\""
-      },
-      {
-        "sha": "a006db2647d06b0fa4e93fbd8e75537efdb0656b",
-        "filename": "addons/html_builder/static/src/core/building_blocks/select_many2x.js",
-        "status": "modified",
-        "additions": 10,
-        "deletions": 1,
-        "changes": 11,
-        "blob_url": "https://github.com/odoo/odoo/blob/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Fbuilding_blocks%2Fselect_many2x.js",
-        "raw_url": "https://github.com/odoo/odoo/raw/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Fbuilding_blocks%2Fselect_many2x.js",
-        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fcore%2Fbuilding_blocks%2Fselect_many2x.js?ref=a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc",
-        "patch": "@@ -40,6 +40,7 @@ export class SelectMany2X extends Component {\n         closeOnEnterKey: { type: Boolean, optional: true },\n         message: { type: String, optional: true },\n         create: { type: Function, optional: true },\n+        nullText: { type: String, optional: true },\n     };\n     static defaultProps = {\n         fields: [],\n@@ -100,11 +101,19 @@ export class SelectMany2X extends Component {\n             limit: this.state.limit + 1,\n         });\n         this.state.hasMore = tuples.length > this.state.limit;\n-        this.state.searchResults = await this.cachedModel.ormRead(\n+        const results = await this.cachedModel.ormRead(\n             this.props.model,\n             tuples.slice(0, this.state.limit).map(([id, _name]) => id),\n             [...new Set(this.props.fields).add(\"display_name\").add(\"name\")]\n         );\n+        if (this.props.nullText && (!results.length || results[0].id)) {\n+            results.unshift({\n+                id: 0,\n+                name: this.props.nullText,\n+                display_name: this.props.nullText,\n+            });\n+        }\n+        this.state.searchResults = results;\n     }\n     filteredSearchResult() {\n         const selectedIds = new Set(this.props.selected.map((e) => e.id));"
-      },
-      {
-        "sha": "c6f03d3d15f47343fe1ad0a8e782ee41ef2c991c",
-        "filename": "addons/html_builder/static/src/plugins/many2one_option.js",
-        "status": "modified",
-        "additions": 2,
-        "deletions": 0,
-        "changes": 2,
-        "blob_url": "https://github.com/odoo/odoo/blob/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fplugins%2Fmany2one_option.js",
-        "raw_url": "https://github.com/odoo/odoo/raw/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fplugins%2Fmany2one_option.js",
-        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fplugins%2Fmany2one_option.js?ref=a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc",
-        "patch": "@@ -10,6 +10,8 @@ export class Many2OneOption extends BaseOptionComponent {\n         this.orm = useService(\"orm\");\n         onWillStart(async () => {\n             const el = this.env.getEditingElement();\n+            const contactOpts = JSON.parse(el.dataset.oeContactOptions || \"{}\");\n+            this.nullText = contactOpts.null_text;\n             this.model = el.dataset.oeMany2oneModel;\n             this.domain = JSON.parse(el.dataset.oeMany2oneDomain|| \"[]\");\n             const searchResult = await this.orm.searchRead("
-      },
-      {
-        "sha": "f23127cccf8a6d5f2ed8d39137040fe739e792a7",
-        "filename": "addons/html_builder/static/src/plugins/many2one_option.xml",
-        "status": "modified",
-        "additions": 1,
-        "deletions": 1,
-        "changes": 2,
-        "blob_url": "https://github.com/odoo/odoo/blob/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fplugins%2Fmany2one_option.xml",
-        "raw_url": "https://github.com/odoo/odoo/raw/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fplugins%2Fmany2one_option.xml",
-        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fhtml_builder%2Fstatic%2Fsrc%2Fplugins%2Fmany2one_option.xml?ref=a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc",
-        "patch": "@@ -3,7 +3,7 @@\n \n <t t-name=\"html_builder.Many2OneOption\">\n     <BuilderRow label=\"label\">\n-        <BuilderMany2One action=\"'many2One'\" model=\"model\" fields=\"['name']\" domain=\"domain\" allowUnselect=\"false\"/>\n+        <BuilderMany2One action=\"'many2One'\" model=\"model\" fields=\"['name']\" domain=\"domain\" nullText=\"nullText\" allowUnselect=\"false\"/>\n     </BuilderRow>\n </t>\n "
-      },
-      {
-        "sha": "91b2704b9ac818e07417760c9316c309b5fc1e47",
-        "filename": "addons/html_builder/static/tests/custom_tab/builder_components/builder_many2one.test.js",
-        "status": "modified",
-        "additions": 37,
-        "deletions": 0,
-        "changes": 37,
-        "blob_url": "https://github.com/odoo/odoo/blob/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Ftests%2Fcustom_tab%2Fbuilder_components%2Fbuilder_many2one.test.js",
-        "raw_url": "https://github.com/odoo/odoo/raw/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Ftests%2Fcustom_tab%2Fbuilder_components%2Fbuilder_many2one.test.js",
-        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fhtml_builder%2Fstatic%2Ftests%2Fcustom_tab%2Fbuilder_components%2Fbuilder_many2one.test.js?ref=a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc",
-        "patch": "@@ -128,3 +128,40 @@ test(\"dependency definition should not be outdated\", async () => {\n     await contains(\"span.o-dropdown-item:contains(Third)\").click();\n     expect(\"span:contains(Dependant)\").toHaveCount(0);\n });\n+\n+test(\"BuilderMany2One: add null_text option in website builder dropdown\", async () => {\n+    onRpc(\"test\", \"name_search\", () => [\n+        [1, \"First\"],\n+        [2, \"Second\"],\n+        [3, \"Third\"],\n+    ]);\n+    addBuilderAction({\n+        testAction: class extends BuilderAction {\n+            static id = \"testAction\";\n+            apply({ editingElement, value }) {\n+                editingElement.textContent = JSON.parse(value).name;\n+                editingElement.dataset.test = value;\n+            }\n+            getValue({ editingElement }) {\n+                return editingElement.dataset.test;\n+            }\n+        },\n+    });\n+    addBuilderOption(\n+        class extends BaseOptionComponent {\n+            static selector = \".test-options-target\";\n+            static template = xml`<BuilderMany2One action=\"'testAction'\" model=\"'test'\" limit=\"10\" nullText=\"'Remote'\"/>`;\n+        }\n+    );\n+    const { getEditableContent } = await setupHTMLBuilder(`\n+        <div class=\"test-options-target\">b</div>\n+    `);\n+    const editableContent = getEditableContent();\n+    await contains(\":iframe .test-options-target\").click();\n+    await contains(\".btn.o-dropdown\").click();\n+    await contains(\"span.o-dropdown-item:contains('Remote')\").click();\n+    expect(editableContent.textContent.trim()).toBe(\"Remote\");\n+    await contains(\".btn.o-dropdown\").click();\n+    await contains(\"span.o-dropdown-item:contains('First')\").click();\n+    expect(editableContent.textContent.trim()).toBe(\"First\");\n+});"
-      },
-      {
-        "sha": "10d2191f9f666b6deb7281bde6dbc46a0066ff9e",
-        "filename": "addons/html_builder/static/tests/many2one_field.test.js",
-        "status": "modified",
-        "additions": 21,
-        "deletions": 0,
-        "changes": 21,
-        "blob_url": "https://github.com/odoo/odoo/blob/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Ftests%2Fmany2one_field.test.js",
-        "raw_url": "https://github.com/odoo/odoo/raw/a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc/addons%2Fhtml_builder%2Fstatic%2Ftests%2Fmany2one_field.test.js",
-        "contents_url": "https://api.github.com/repos/odoo/odoo/contents/addons%2Fhtml_builder%2Fstatic%2Ftests%2Fmany2one_field.test.js?ref=a34aee6aadb8c9a26d1f1d93bc8d94d964bbe8dc",
-        "patch": "@@ -52,3 +52,24 @@ test(\"Preview changes of many2one option\", async () => {\n     expect(\":iframe span.span-2 > span\").toHaveText(\"The Address of 3\");\n     expect(\":iframe span.span-4\").toHaveText(\"Other\");\n });\n+\n+test(\"Many2OneOption: add null_text option in dropdown\", async () => {\n+    onRpc(\n+        \"ir.qweb.field.contact\",\n+        \"get_record_to_html\",\n+        ({ args: [[id]], kwargs }) => `<span>The ${kwargs.options.option} of ${id}</span>`\n+    );\n+    await setupHTMLBuilder(`\n+        <div class=\"many2oneoption_dropdown\"\n+            data-oe-many2one-id=\"1\"\n+            data-oe-many2one-model=\"res.partner\"\n+            data-oe-contact-options='{\"null_text\":\"Remote\"}'>\n+            <span>location</span>\n+        </div>\n+    `);\n+    await contains(\":iframe .many2oneoption_dropdown\").click();\n+    expect(\"button.btn.dropdown\").toHaveCount(1);\n+    await contains(\"button.btn.dropdown\").click();\n+    await contains(\"span.o-dropdown-item.dropdown-item:contains('Remote')\").click();\n+    expect(\":iframe div.many2oneoption_dropdown\").toHaveText(\"Remote\");\n+});"
-      }
-    ],
-    "paths": [
-      "addons/html_builder"
     ]
   }
 ]
