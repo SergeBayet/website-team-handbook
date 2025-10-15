@@ -1,5 +1,5 @@
 # Odoo Website & HTML Builder — Weekly Commit Digest (9–15 Oct 2025)
-This digest covers all commits merged into the `odoo/odoo` repository’s `master` branch between **9 and 15 October 2025** (UTC). The window is based on the committer timestamp — the moment GitHub records the change as landing in `master` — and is limited to updates that touched `addons/website`, `addons/html_builder`, or `addons/website_sale/static/src/website_builder`. The list was assembled on 15 Oct 2025 using the GitHub REST API with scoped path filters for all three areas.
+This digest covers all commits that touched the `addons/website`, `addons/html_builder`, and `addons/website_sale/static/src/website_builder` directories of the [Odoo community repository](https://github.com/odoo/odoo) between **9 and 15 October 2025** (UTC). The list was assembled on 15 Oct 2025 using the GitHub REST API with path filters for all three areas.
 
 ## Commit of the Week
 - **[a5c02da](https://github.com/odoo/odoo/commit/a5c02da5c24bfc85b3bbb7d1410d489d3c7185b8)** — Introduces binary font bundles so icon fonts get cache-busted URLs and year-long CDN lifetimes without manual tweaks.
