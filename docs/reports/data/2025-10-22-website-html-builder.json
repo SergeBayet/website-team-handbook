@@ -1,0 +1,678 @@
+[
+  {
+    "sha": "f8e2ad0dd5c183dfd2c8dd2abc7ab97f3f675e12",
+    "html_url": "https://github.com/odoo/odoo/commit/f8e2ad0dd5c183dfd2c8dd2abc7ab97f3f675e12",
+    "commit": {
+      "author": {"name": "Tiffany Chang (tic)", "email": "tic@odoo.com", "date": "2025-10-22T17:58:42Z"},
+      "committer": {"name": "Tiffany Chang (tic)", "email": "tic@odoo.com", "date": "2025-10-22T17:58:42Z"},
+      "message": "[IMP] html_builder: add AI action metadata backfill",
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/f8e2ad0dd5c183dfd2c8dd2abc7ab97f3f675e12",
+      "comment_count": 0,
+      "verification": {"verified": false, "reason": "unsigned", "signature": null, "payload": null}
+    },
+    "author": {"login": "tic-odoo", "html_url": "https://github.com/tic-odoo", "type": "User", "site_admin": false},
+    "committer": {"login": "tic-odoo", "html_url": "https://github.com/tic-odoo", "type": "User", "site_admin": false},
+    "stats": {"total": 42, "additions": 38, "deletions": 4},
+    "files": [
+      {
+        "filename": "addons/html_builder/static/src/ai/actions_metadata.js",
+        "status": "modified",
+        "additions": 27,
+        "deletions": 3,
+        "changes": 30,
+        "blob_url": "https://github.com/odoo/odoo/blob/f8e2ad0dd5c183dfd2c8dd2abc7ab97f3f675e12/addons/html_builder/static/src/ai/actions_metadata.js"
+      },
+      {
+        "filename": "addons/html_builder/static/tests/ai/actions_metadata_test.js",
+        "status": "added",
+        "additions": 11,
+        "deletions": 0,
+        "changes": 11,
+        "blob_url": "https://github.com/odoo/odoo/blob/f8e2ad0dd5c183dfd2c8dd2abc7ab97f3f675e12/addons/html_builder/static/tests/ai/actions_metadata_test.js"
+      }
+    ],
+    "paths": ["addons/html_builder"]
+  },
+  {
+    "sha": "9c3e0f1bb0a774952821bf61862d2f39a9dd1220",
+    "html_url": "https://github.com/odoo/odoo/commit/9c3e0f1bb0a774952821bf61862d2f39a9dd1220",
+    "commit": {
+      "author": {"name": "qsm-odoo", "email": "qsm@odoo.com", "date": "2025-10-22T15:21:18Z"},
+      "committer": {"name": "qsm-odoo", "email": "qsm@odoo.com", "date": "2025-10-22T16:05:04Z"},
+      "message": "[IMP] website: stream theme css var previews",
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/9c3e0f1bb0a774952821bf61862d2f39a9dd1220",
+      "comment_count": 0,
+      "verification": {"verified": false, "reason": "unsigned", "signature": null, "payload": null}
+    },
+    "author": {"login": "qsm-odoo", "html_url": "https://github.com/qsm-odoo", "type": "User", "site_admin": false},
+    "committer": {"login": "qsm-odoo", "html_url": "https://github.com/qsm-odoo", "type": "User", "site_admin": false},
+    "stats": {"total": 188, "additions": 164, "deletions": 24},
+    "files": [
+      {
+        "filename": "addons/website/static/src/theme/editor/theme_panel.js",
+        "status": "modified",
+        "additions": 86,
+        "deletions": 12,
+        "changes": 98,
+        "blob_url": "https://github.com/odoo/odoo/blob/9c3e0f1bb0a774952821bf61862d2f39a9dd1220/addons/website/static/src/theme/editor/theme_panel.js"
+      },
+      {
+        "filename": "addons/website/static/src/theme/editor/services/theme_live_preview_service.js",
+        "status": "added",
+        "additions": 58,
+        "deletions": 0,
+        "changes": 58,
+        "blob_url": "https://github.com/odoo/odoo/blob/9c3e0f1bb0a774952821bf61862d2f39a9dd1220/addons/website/static/src/theme/editor/services/theme_live_preview_service.js"
+      }
+    ],
+    "paths": ["addons/website"]
+  },
+  {
+    "sha": "447eb9f7282f4f91c7a65ea8711335f62c6177dc",
+    "html_url": "https://github.com/odoo/odoo/commit/447eb9f7282f4f91c7a65ea8711335f62c6177dc",
+    "commit": {
+      "author": {"name": "Robin Lejeune (role)", "email": "role@odoo.com", "date": "2025-10-22T12:44:51Z"},
+      "committer": {"name": "Robin Lejeune (role)", "email": "role@odoo.com", "date": "2025-10-22T13:12:05Z"},
+      "message": "[IMP] html_builder: resilient ai prompt composer",
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/447eb9f7282f4f91c7a65ea8711335f62c6177dc",
+      "comment_count": 0,
+      "verification": {"verified": false, "reason": "unsigned", "signature": null, "payload": null}
+    },
+    "author": {"login": "robinlej", "html_url": "https://github.com/robinlej", "type": "User", "site_admin": false},
+    "committer": {"login": "robinlej", "html_url": "https://github.com/robinlej", "type": "User", "site_admin": false},
+    "stats": {"total": 132, "additions": 101, "deletions": 31},
+    "files": [
+      {
+        "filename": "addons/html_builder/static/src/ai/prompt_composer.js",
+        "status": "modified",
+        "additions": 74,
+        "deletions": 23,
+        "changes": 97,
+        "blob_url": "https://github.com/odoo/odoo/blob/447eb9f7282f4f91c7a65ea8711335f62c6177dc/addons/html_builder/static/src/ai/prompt_composer.js"
+      },
+      {
+        "filename": "addons/html_builder/static/tests/ai/prompt_composer_test.js",
+        "status": "modified",
+        "additions": 27,
+        "deletions": 6,
+        "changes": 33,
+        "blob_url": "https://github.com/odoo/odoo/blob/447eb9f7282f4f91c7a65ea8711335f62c6177dc/addons/html_builder/static/tests/ai/prompt_composer_test.js"
+      }
+    ],
+    "paths": ["addons/html_builder"]
+  },
+  {
+    "sha": "d7b4c13a4d403f0c46814ec27b2a7d24693f3bc3",
+    "html_url": "https://github.com/odoo/odoo/commit/d7b4c13a4d403f0c46814ec27b2a7d24693f3bc3",
+    "commit": {
+      "author": {"name": "Serhii Rubanskyi", "email": "seru@odoo.com", "date": "2025-10-22T09:18:07Z"},
+      "committer": {"name": "Serhii Rubanskyi", "email": "seru@odoo.com", "date": "2025-10-22T09:47:55Z"},
+      "message": "[REF] html_builder, website: reuse gradient preview hooks",
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/d7b4c13a4d403f0c46814ec27b2a7d24693f3bc3",
+      "comment_count": 0,
+      "verification": {"verified": false, "reason": "unsigned", "signature": null, "payload": null}
+    },
+    "author": {"login": "Syozik", "html_url": "https://github.com/Syozik", "type": "User", "site_admin": false},
+    "committer": {"login": "Syozik", "html_url": "https://github.com/Syozik", "type": "User", "site_admin": false},
+    "stats": {"total": 176, "additions": 133, "deletions": 43},
+    "files": [
+      {
+        "filename": "addons/html_builder/static/src/options/gradient_option.js",
+        "status": "modified",
+        "additions": 58,
+        "deletions": 21,
+        "changes": 79,
+        "blob_url": "https://github.com/odoo/odoo/blob/d7b4c13a4d403f0c46814ec27b2a7d24693f3bc3/addons/html_builder/static/src/options/gradient_option.js"
+      },
+      {
+        "filename": "addons/website/static/src/snippets/options/gradient_preview_hook.js",
+        "status": "added",
+        "additions": 42,
+        "deletions": 0,
+        "changes": 42,
+        "blob_url": "https://github.com/odoo/odoo/blob/d7b4c13a4d403f0c46814ec27b2a7d24693f3bc3/addons/website/static/src/snippets/options/gradient_preview_hook.js"
+      }
+    ],
+    "paths": ["addons/html_builder", "addons/website"]
+  },
+  {
+    "sha": "3f26b980a5c79a398635791343f6f3147f96dd98",
+    "html_url": "https://github.com/odoo/odoo/commit/3f26b980a5c79a398635791343f6f3147f96dd98",
+    "commit": {
+      "author": {"name": "Sébastien (blse)", "email": "blse@odoo.com", "date": "2025-10-21T20:12:14Z"},
+      "committer": {"name": "Sébastien (blse)", "email": "blse@odoo.com", "date": "2025-10-21T20:12:14Z"},
+      "message": "[ADD] html_builder: sidebar watchdog telemetry",
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/3f26b980a5c79a398635791343f6f3147f96dd98",
+      "comment_count": 0,
+      "verification": {"verified": false, "reason": "unsigned", "signature": null, "payload": null}
+    },
+    "author": {"login": "blse-odoo", "html_url": "https://github.com/blse-odoo", "type": "User", "site_admin": false},
+    "committer": {"login": "blse-odoo", "html_url": "https://github.com/blse-odoo", "type": "User", "site_admin": false},
+    "stats": {"total": 58, "additions": 49, "deletions": 9},
+    "files": [
+      {
+        "filename": "addons/html_builder/static/src/editor/sidebar_watchdog.js",
+        "status": "added",
+        "additions": 49,
+        "deletions": 0,
+        "changes": 49,
+        "blob_url": "https://github.com/odoo/odoo/blob/3f26b980a5c79a398635791343f6f3147f96dd98/addons/html_builder/static/src/editor/sidebar_watchdog.js"
+      },
+      {
+        "filename": "addons/html_builder/static/tests/sidebar_watchdog_test.js",
+        "status": "added",
+        "additions": 9,
+        "deletions": 0,
+        "changes": 9,
+        "blob_url": "https://github.com/odoo/odoo/blob/3f26b980a5c79a398635791343f6f3147f96dd98/addons/html_builder/static/tests/sidebar_watchdog_test.js"
+      }
+    ],
+    "paths": ["addons/html_builder"]
+  },
+  {
+    "sha": "cb52a77c3d98901ab561d61f1f58363e07b43e19",
+    "html_url": "https://github.com/odoo/odoo/commit/cb52a77c3d98901ab561d61f1f58363e07b43e19",
+    "commit": {
+      "author": {"name": "Nicolas Lempereur", "email": "nle@odoo.com", "date": "2025-10-21T16:02:11Z"},
+      "committer": {"name": "Nicolas Lempereur", "email": "nle@odoo.com", "date": "2025-10-21T16:23:47Z"},
+      "message": "[IMP] website: cache configurator context",
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/cb52a77c3d98901ab561d61f1f58363e07b43e19",
+      "comment_count": 0,
+      "verification": {"verified": false, "reason": "unsigned", "signature": null, "payload": null}
+    },
+    "author": {"login": "nle-odoo", "html_url": "https://github.com/nle-odoo", "type": "User", "site_admin": false},
+    "committer": {"login": "nle-odoo", "html_url": "https://github.com/nle-odoo", "type": "User", "site_admin": false},
+    "stats": {"total": 74, "additions": 60, "deletions": 14},
+    "files": [
+      {
+        "filename": "addons/website/static/src/configurator/services/context_cache_service.js",
+        "status": "added",
+        "additions": 57,
+        "deletions": 0,
+        "changes": 57,
+        "blob_url": "https://github.com/odoo/odoo/blob/cb52a77c3d98901ab561d61f1f58363e07b43e19/addons/website/static/src/configurator/services/context_cache_service.js"
+      },
+      {
+        "filename": "addons/website/static/src/configurator/configurator_controller.js",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 14,
+        "changes": 17,
+        "blob_url": "https://github.com/odoo/odoo/blob/cb52a77c3d98901ab561d61f1f58363e07b43e19/addons/website/static/src/configurator/configurator_controller.js"
+      }
+    ],
+    "paths": ["addons/website"]
+  },
+  {
+    "sha": "0bb47d8f08d9f6b2173a522fc31a50ab6d5a707b",
+    "html_url": "https://github.com/odoo/odoo/commit/0bb47d8f08d9f6b2173a522fc31a50ab6d5a707b",
+    "commit": {
+      "author": {"name": "Julien (jula)", "email": "jula@odoo.com", "date": "2025-10-21T11:05:37Z"},
+      "committer": {"name": "Julien (jula)", "email": "jula@odoo.com", "date": "2025-10-21T11:45:10Z"},
+      "message": "[REF] website: simplify scheduler widget fetching",
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/0bb47d8f08d9f6b2173a522fc31a50ab6d5a707b",
+      "comment_count": 0,
+      "verification": {"verified": false, "reason": "unsigned", "signature": null, "payload": null}
+    },
+    "author": {"login": "jula-odoo", "html_url": "https://github.com/jula-odoo", "type": "User", "site_admin": false},
+    "committer": {"login": "jula-odoo", "html_url": "https://github.com/jula-odoo", "type": "User", "site_admin": false},
+    "stats": {"total": 61, "additions": 43, "deletions": 18},
+    "files": [
+      {
+        "filename": "addons/website/static/src/scheduling/widgets/schedule_widget.js",
+        "status": "modified",
+        "additions": 43,
+        "deletions": 18,
+        "changes": 61,
+        "blob_url": "https://github.com/odoo/odoo/blob/0bb47d8f08d9f6b2173a522fc31a50ab6d5a707b/addons/website/static/src/scheduling/widgets/schedule_widget.js"
+      }
+    ],
+    "paths": ["addons/website"]
+  },
+  {
+    "sha": "6c5d4ac0b2c3a34720a5f88b5c19306ced5da7d1",
+    "html_url": "https://github.com/odoo/odoo/commit/6c5d4ac0b2c3a34720a5f88b5c19306ced5da7d1",
+    "commit": {
+      "author": {"name": "Rahil Ghanchi", "email": "ragh@odoo.com", "date": "2025-10-21T09:42:03Z"},
+      "committer": {"name": "Rahil Ghanchi", "email": "ragh@odoo.com", "date": "2025-10-21T10:02:47Z"},
+      "message": "[FIX] website: countdown accessibility and focus",
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/6c5d4ac0b2c3a34720a5f88b5c19306ced5da7d1",
+      "comment_count": 0,
+      "verification": {"verified": false, "reason": "unsigned", "signature": null, "payload": null}
+    },
+    "author": {"login": "ragh-odoo", "html_url": "https://github.com/ragh-odoo", "type": "User", "site_admin": false},
+    "committer": {"login": "ragh-odoo", "html_url": "https://github.com/ragh-odoo", "type": "User", "site_admin": false},
+    "stats": {"total": 47, "additions": 33, "deletions": 14},
+    "files": [
+      {
+        "filename": "addons/website/static/src/snippets/s_countdown/000.scss",
+        "status": "modified",
+        "additions": 19,
+        "deletions": 8,
+        "changes": 27,
+        "blob_url": "https://github.com/odoo/odoo/blob/6c5d4ac0b2c3a34720a5f88b5c19306ced5da7d1/addons/website/static/src/snippets/s_countdown/000.scss"
+      },
+      {
+        "filename": "addons/website/static/src/snippets/s_countdown/options.js",
+        "status": "modified",
+        "additions": 14,
+        "deletions": 6,
+        "changes": 20,
+        "blob_url": "https://github.com/odoo/odoo/blob/6c5d4ac0b2c3a34720a5f88b5c19306ced5da7d1/addons/website/static/src/snippets/s_countdown/options.js"
+      }
+    ],
+    "paths": ["addons/website"]
+  },
+  {
+    "sha": "5b9d7245bfb9a748ae284db6515eb3a1d6ddc27c",
+    "html_url": "https://github.com/odoo/odoo/commit/5b9d7245bfb9a748ae284db6515eb3a1d6ddc27c",
+    "commit": {
+      "author": {"name": "Antoine (anso)", "email": "anso@odoo.com", "date": "2025-10-21T07:58:33Z"},
+      "committer": {"name": "Antoine (anso)", "email": "anso@odoo.com", "date": "2025-10-21T08:25:09Z"},
+      "message": "[REF] website: incremental sitemap rebuilds",
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/5b9d7245bfb9a748ae284db6515eb3a1d6ddc27c",
+      "comment_count": 0,
+      "verification": {"verified": false, "reason": "unsigned", "signature": null, "payload": null}
+    },
+    "author": {"login": "anso-odoo", "html_url": "https://github.com/anso-odoo", "type": "User", "site_admin": false},
+    "committer": {"login": "anso-odoo", "html_url": "https://github.com/anso-odoo", "type": "User", "site_admin": false},
+    "stats": {"total": 83, "additions": 65, "deletions": 18},
+    "files": [
+      {
+        "filename": "addons/website/models/website.py",
+        "status": "modified",
+        "additions": 38,
+        "deletions": 12,
+        "changes": 50,
+        "blob_url": "https://github.com/odoo/odoo/blob/5b9d7245bfb9a748ae284db6515eb3a1d6ddc27c/addons/website/models/website.py"
+      },
+      {
+        "filename": "addons/website/static/src/js/backend/sitemap_rebuild_service.js",
+        "status": "added",
+        "additions": 27,
+        "deletions": 0,
+        "changes": 27,
+        "blob_url": "https://github.com/odoo/odoo/blob/5b9d7245bfb9a748ae284db6515eb3a1d6ddc27c/addons/website/static/src/js/backend/sitemap_rebuild_service.js"
+      }
+    ],
+    "paths": ["addons/website"]
+  },
+  {
+    "sha": "b6d3f4425dcfc764b8107dd99159cfa7ea40a278",
+    "html_url": "https://github.com/odoo/odoo/commit/b6d3f4425dcfc764b8107dd99159cfa7ea40a278",
+    "commit": {
+      "author": {"name": "Garvish Panchal", "email": "gap@odoo.com", "date": "2025-10-20T18:31:02Z"},
+      "committer": {"name": "Garvish Panchal", "email": "gap@odoo.com", "date": "2025-10-20T18:49:37Z"},
+      "message": "[FIX] website: configurator tour resilience",
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/b6d3f4425dcfc764b8107dd99159cfa7ea40a278",
+      "comment_count": 0,
+      "verification": {"verified": false, "reason": "unsigned", "signature": null, "payload": null}
+    },
+    "author": {"login": "gap-odoo", "html_url": "https://github.com/gap-odoo", "type": "User", "site_admin": false},
+    "committer": {"login": "gap-odoo", "html_url": "https://github.com/gap-odoo", "type": "User", "site_admin": false},
+    "stats": {"total": 39, "additions": 32, "deletions": 7},
+    "files": [
+      {
+        "filename": "addons/website/static/src/configurator/tours/configurator_tour.js",
+        "status": "modified",
+        "additions": 32,
+        "deletions": 7,
+        "changes": 39,
+        "blob_url": "https://github.com/odoo/odoo/blob/b6d3f4425dcfc764b8107dd99159cfa7ea40a278/addons/website/static/src/configurator/tours/configurator_tour.js"
+      }
+    ],
+    "paths": ["addons/website"]
+  },
+  {
+    "sha": "ad4f1c29d43bb4ddad40b8fb2d02e25d6f86bf2f",
+    "html_url": "https://github.com/odoo/odoo/commit/ad4f1c29d43bb4ddad40b8fb2d02e25d6f86bf2f",
+    "commit": {
+      "author": {"name": "Krzysztof Magusiak (krma)", "email": "krma@odoo.com", "date": "2025-10-20T15:06:52Z"},
+      "committer": {"name": "Krzysztof Magusiak (krma)", "email": "krma@odoo.com", "date": "2025-10-20T15:35:01Z"},
+      "message": "[IMP] website: batch geo lookups",
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/ad4f1c29d43bb4ddad40b8fb2d02e25d6f86bf2f",
+      "comment_count": 0,
+      "verification": {"verified": false, "reason": "unsigned", "signature": null, "payload": null}
+    },
+    "author": {"login": "krma-odoo", "html_url": "https://github.com/krma-odoo", "type": "User", "site_admin": false},
+    "committer": {"login": "krma-odoo", "html_url": "https://github.com/krma-odoo", "type": "User", "site_admin": false},
+    "stats": {"total": 52, "additions": 40, "deletions": 12},
+    "files": [
+      {
+        "filename": "addons/website/models/website_visitor.py",
+        "status": "modified",
+        "additions": 24,
+        "deletions": 9,
+        "changes": 33,
+        "blob_url": "https://github.com/odoo/odoo/blob/ad4f1c29d43bb4ddad40b8fb2d02e25d6f86bf2f/addons/website/models/website_visitor.py"
+      },
+      {
+        "filename": "addons/website/tools/geoip_batch.py",
+        "status": "added",
+        "additions": 16,
+        "deletions": 0,
+        "changes": 16,
+        "blob_url": "https://github.com/odoo/odoo/blob/ad4f1c29d43bb4ddad40b8fb2d02e25d6f86bf2f/addons/website/tools/geoip_batch.py"
+      }
+    ],
+    "paths": ["addons/website"]
+  },
+  {
+    "sha": "4e1c5aa0cfb2b0b0dd4b938e7464d0932a1883e2",
+    "html_url": "https://github.com/odoo/odoo/commit/4e1c5aa0cfb2b0b0dd4b938e7464d0932a1883e2",
+    "commit": {
+      "author": {"name": "Raphael Collet", "email": "rco@odoo.com", "date": "2025-10-20T12:48:26Z"},
+      "committer": {"name": "Raphael Collet", "email": "rco@odoo.com", "date": "2025-10-20T13:05:15Z"},
+      "message": "[REF] website: align orm queries with context cache",
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/4e1c5aa0cfb2b0b0dd4b938e7464d0932a1883e2",
+      "comment_count": 0,
+      "verification": {"verified": false, "reason": "unsigned", "signature": null, "payload": null}
+    },
+    "author": {"login": "rco-odoo", "html_url": "https://github.com/rco-odoo", "type": "User", "site_admin": false},
+    "committer": {"login": "rco-odoo", "html_url": "https://github.com/rco-odoo", "type": "User", "site_admin": false},
+    "stats": {"total": 44, "additions": 31, "deletions": 13},
+    "files": [
+      {
+        "filename": "addons/website/models/website_configurator.py",
+        "status": "modified",
+        "additions": 31,
+        "deletions": 13,
+        "changes": 44,
+        "blob_url": "https://github.com/odoo/odoo/blob/4e1c5aa0cfb2b0b0dd4b938e7464d0932a1883e2/addons/website/models/website_configurator.py"
+      }
+    ],
+    "paths": ["addons/website"]
+  },
+  {
+    "sha": "c1a28be981f205a6aee00f8cd3d9a3c2b491ff64",
+    "html_url": "https://github.com/odoo/odoo/commit/c1a28be981f205a6aee00f8cd3d9a3c2b491ff64",
+    "commit": {
+      "author": {"name": "sben-odoo", "email": "sben@odoo.com", "date": "2025-10-20T09:34:48Z"},
+      "committer": {"name": "sben-odoo", "email": "sben@odoo.com", "date": "2025-10-20T09:58:22Z"},
+      "message": "[IMP] website_sale: refresh builder price badges",
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/c1a28be981f205a6aee00f8cd3d9a3c2b491ff64",
+      "comment_count": 0,
+      "verification": {"verified": false, "reason": "unsigned", "signature": null, "payload": null}
+    },
+    "author": {"login": "sben-odoo", "html_url": "https://github.com/sben-odoo", "type": "User", "site_admin": false},
+    "committer": {"login": "sben-odoo", "html_url": "https://github.com/sben-odoo", "type": "User", "site_admin": false},
+    "stats": {"total": 91, "additions": 78, "deletions": 13},
+    "files": [
+      {
+        "filename": "addons/website_sale/static/src/website_builder/js/product_ribbon_snippet.js",
+        "status": "modified",
+        "additions": 41,
+        "deletions": 9,
+        "changes": 50,
+        "blob_url": "https://github.com/odoo/odoo/blob/c1a28be981f205a6aee00f8cd3d9a3c2b491ff64/addons/website_sale/static/src/website_builder/js/product_ribbon_snippet.js"
+      },
+      {
+        "filename": "addons/website_sale/static/src/website_builder/scss/product_badges.scss",
+        "status": "modified",
+        "additions": 37,
+        "deletions": 4,
+        "changes": 41,
+        "blob_url": "https://github.com/odoo/odoo/blob/c1a28be981f205a6aee00f8cd3d9a3c2b491ff64/addons/website_sale/static/src/website_builder/scss/product_badges.scss"
+      }
+    ],
+    "paths": ["addons/website_sale/static/src/website_builder"]
+  },
+  {
+    "sha": "0f73c4af688f38a1bfca62b7c9cf96724fbd83f9",
+    "html_url": "https://github.com/odoo/odoo/commit/0f73c4af688f38a1bfca62b7c9cf96724fbd83f9",
+    "commit": {
+      "author": {"name": "Benjamin Vray", "email": "bvr@odoo.com", "date": "2025-10-19T18:15:22Z"},
+      "committer": {"name": "Benjamin Vray", "email": "bvr@odoo.com", "date": "2025-10-19T18:15:22Z"},
+      "message": "[FIX] website: stabilize showcase video posters",
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/0f73c4af688f38a1bfca62b7c9cf96724fbd83f9",
+      "comment_count": 0,
+      "verification": {"verified": false, "reason": "unsigned", "signature": null, "payload": null}
+    },
+    "author": {"login": "bvr-odoo", "html_url": "https://github.com/bvr-odoo", "type": "User", "site_admin": false},
+    "committer": {"login": "bvr-odoo", "html_url": "https://github.com/bvr-odoo", "type": "User", "site_admin": false},
+    "stats": {"total": 37, "additions": 24, "deletions": 13},
+    "files": [
+      {
+        "filename": "addons/website/static/src/snippets/s_showcase/options.js",
+        "status": "modified",
+        "additions": 18,
+        "deletions": 9,
+        "changes": 27,
+        "blob_url": "https://github.com/odoo/odoo/blob/0f73c4af688f38a1bfca62b7c9cf96724fbd83f9/addons/website/static/src/snippets/s_showcase/options.js"
+      },
+      {
+        "filename": "addons/website/static/src/snippets/s_showcase/000.scss",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 4,
+        "changes": 10,
+        "blob_url": "https://github.com/odoo/odoo/blob/0f73c4af688f38a1bfca62b7c9cf96724fbd83f9/addons/website/static/src/snippets/s_showcase/000.scss"
+      }
+    ],
+    "paths": ["addons/website"]
+  },
+  {
+    "sha": "c48d0f9157e21c373393bde8f70d6cae5d1c6a86",
+    "html_url": "https://github.com/odoo/odoo/commit/c48d0f9157e21c373393bde8f70d6cae5d1c6a86",
+    "commit": {
+      "author": {"name": "Jinjiu Liu", "email": "jinliu@odoo.com", "date": "2025-10-19T13:02:47Z"},
+      "committer": {"name": "Jinjiu Liu", "email": "jinliu@odoo.com", "date": "2025-10-19T13:21:05Z"},
+      "message": "[FIX] website: guard contact-us autofill",
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/c48d0f9157e21c373393bde8f70d6cae5d1c6a86",
+      "comment_count": 0,
+      "verification": {"verified": false, "reason": "unsigned", "signature": null, "payload": null}
+    },
+    "author": {"login": "jinliu-odoo", "html_url": "https://github.com/jinliu-odoo", "type": "User", "site_admin": false},
+    "committer": {"login": "jinliu-odoo", "html_url": "https://github.com/jinliu-odoo", "type": "User", "site_admin": false},
+    "stats": {"total": 29, "additions": 19, "deletions": 10},
+    "files": [
+      {
+        "filename": "addons/website/static/src/snippets/s_contact_form/options.js",
+        "status": "modified",
+        "additions": 19,
+        "deletions": 10,
+        "changes": 29,
+        "blob_url": "https://github.com/odoo/odoo/blob/c48d0f9157e21c373393bde8f70d6cae5d1c6a86/addons/website/static/src/snippets/s_contact_form/options.js"
+      }
+    ],
+    "paths": ["addons/website"]
+  },
+  {
+    "sha": "68b71cf7d2efcb8fd24e65f8c2fb424c26b3a77d",
+    "html_url": "https://github.com/odoo/odoo/commit/68b71cf7d2efcb8fd24e65f8c2fb424c26b3a77d",
+    "commit": {
+      "author": {"name": "divy-odoo", "email": "divy@odoo.com", "date": "2025-10-18T16:37:58Z"},
+      "committer": {"name": "divy-odoo", "email": "divy@odoo.com", "date": "2025-10-18T16:55:49Z"},
+      "message": "[FIX] website: persist blog filters across pages",
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/68b71cf7d2efcb8fd24e65f8c2fb424c26b3a77d",
+      "comment_count": 0,
+      "verification": {"verified": false, "reason": "unsigned", "signature": null, "payload": null}
+    },
+    "author": {"login": "divy-odoo", "html_url": "https://github.com/divy-odoo", "type": "User", "site_admin": false},
+    "committer": {"login": "divy-odoo", "html_url": "https://github.com/divy-odoo", "type": "User", "site_admin": false},
+    "stats": {"total": 33, "additions": 24, "deletions": 9},
+    "files": [
+      {
+        "filename": "addons/website/static/src/blog/blog_filters.js",
+        "status": "modified",
+        "additions": 24,
+        "deletions": 9,
+        "changes": 33,
+        "blob_url": "https://github.com/odoo/odoo/blob/68b71cf7d2efcb8fd24e65f8c2fb424c26b3a77d/addons/website/static/src/blog/blog_filters.js"
+      }
+    ],
+    "paths": ["addons/website"]
+  },
+  {
+    "sha": "dda3e64a5e22415af9bdcf99aa772c85df19c9ed",
+    "html_url": "https://github.com/odoo/odoo/commit/dda3e64a5e22415af9bdcf99aa772c85df19c9ed",
+    "commit": {
+      "author": {"name": "Arib Ansari", "email": "ara@odoo.com", "date": "2025-10-18T10:22:14Z"},
+      "committer": {"name": "Arib Ansari", "email": "ara@odoo.com", "date": "2025-10-18T10:36:02Z"},
+      "message": "[REF] website: refresh translation helper tour",
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/dda3e64a5e22415af9bdcf99aa772c85df19c9ed",
+      "comment_count": 0,
+      "verification": {"verified": false, "reason": "unsigned", "signature": null, "payload": null}
+    },
+    "author": {"login": "arib-odoo", "html_url": "https://github.com/arib-odoo", "type": "User", "site_admin": false},
+    "committer": {"login": "arib-odoo", "html_url": "https://github.com/arib-odoo", "type": "User", "site_admin": false},
+    "stats": {"total": 45, "additions": 29, "deletions": 16},
+    "files": [
+      {
+        "filename": "addons/website/static/tests/tours/translation_helper_tour.js",
+        "status": "modified",
+        "additions": 29,
+        "deletions": 16,
+        "changes": 45,
+        "blob_url": "https://github.com/odoo/odoo/blob/dda3e64a5e22415af9bdcf99aa772c85df19c9ed/addons/website/static/tests/tours/translation_helper_tour.js"
+      }
+    ],
+    "paths": ["addons/website"]
+  },
+  {
+    "sha": "2c9b7e16fa9b6f0ec2bf5fb4c6e7de69fde5523c",
+    "html_url": "https://github.com/odoo/odoo/commit/2c9b7e16fa9b6f0ec2bf5fb4c6e7de69fde5523c",
+    "commit": {
+      "author": {"name": "Guillaume Jacquet", "email": "gja@odoo.com", "date": "2025-10-17T15:48:17Z"},
+      "committer": {"name": "Guillaume Jacquet", "email": "gja@odoo.com", "date": "2025-10-17T16:06:33Z"},
+      "message": "[FIX] website: Safari dropdown pointer capture",
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/2c9b7e16fa9b6f0ec2bf5fb4c6e7de69fde5523c",
+      "comment_count": 0,
+      "verification": {"verified": false, "reason": "unsigned", "signature": null, "payload": null}
+    },
+    "author": {"login": "gja-odoo", "html_url": "https://github.com/gja-odoo", "type": "User", "site_admin": false},
+    "committer": {"login": "gja-odoo", "html_url": "https://github.com/gja-odoo", "type": "User", "site_admin": false},
+    "stats": {"total": 41, "additions": 27, "deletions": 14},
+    "files": [
+      {
+        "filename": "addons/website/static/src/configurator/steps/dropdown.js",
+        "status": "modified",
+        "additions": 27,
+        "deletions": 14,
+        "changes": 41,
+        "blob_url": "https://github.com/odoo/odoo/blob/2c9b7e16fa9b6f0ec2bf5fb4c6e7de69fde5523c/addons/website/static/src/configurator/steps/dropdown.js"
+      }
+    ],
+    "paths": ["addons/website"]
+  },
+  {
+    "sha": "15e7ad49e1fd41afc827d1d4baf3f1b4f2cf18d7",
+    "html_url": "https://github.com/odoo/odoo/commit/15e7ad49e1fd41afc827d1d4baf3f1b4f2cf18d7",
+    "commit": {
+      "author": {"name": "romo", "email": "romo@odoo.com", "date": "2025-10-17T11:22:31Z"},
+      "committer": {"name": "romo", "email": "romo@odoo.com", "date": "2025-10-17T11:59:04Z"},
+      "message": "[FIX] website: unique carousel ids after duplication",
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/15e7ad49e1fd41afc827d1d4baf3f1b4f2cf18d7",
+      "comment_count": 0,
+      "verification": {"verified": false, "reason": "unsigned", "signature": null, "payload": null}
+    },
+    "author": {"login": "romo-odoo", "html_url": "https://github.com/romo-odoo", "type": "User", "site_admin": false},
+    "committer": {"login": "romo-odoo", "html_url": "https://github.com/romo-odoo", "type": "User", "site_admin": false},
+    "stats": {"total": 36, "additions": 21, "deletions": 15},
+    "files": [
+      {
+        "filename": "addons/website/static/src/snippets/s_carousel/options.js",
+        "status": "modified",
+        "additions": 21,
+        "deletions": 15,
+        "changes": 36,
+        "blob_url": "https://github.com/odoo/odoo/blob/15e7ad49e1fd41afc827d1d4baf3f1b4f2cf18d7/addons/website/static/src/snippets/s_carousel/options.js"
+      }
+    ],
+    "paths": ["addons/website"]
+  },
+  {
+    "sha": "d1f8caab73eb61ce5f934d908b4748b9371e6c9d",
+    "html_url": "https://github.com/odoo/odoo/commit/d1f8caab73eb61ce5f934d908b4748b9371e6c9d",
+    "commit": {
+      "author": {"name": "Sébastien (blse)", "email": "blse@odoo.com", "date": "2025-10-16T19:08:14Z"},
+      "committer": {"name": "Sébastien (blse)", "email": "blse@odoo.com", "date": "2025-10-16T19:08:14Z"},
+      "message": "[ADD] html_builder, website: deterministic sidebar waiters",
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/d1f8caab73eb61ce5f934d908b4748b9371e6c9d",
+      "comment_count": 0,
+      "verification": {"verified": false, "reason": "unsigned", "signature": null, "payload": null}
+    },
+    "author": {"login": "blse-odoo", "html_url": "https://github.com/blse-odoo", "type": "User", "site_admin": false},
+    "committer": {"login": "blse-odoo", "html_url": "https://github.com/blse-odoo", "type": "User", "site_admin": false},
+    "stats": {"total": 88, "additions": 67, "deletions": 21},
+    "files": [
+      {
+        "filename": "addons/html_builder/static/tests/helpers/sidebar_waiter.js",
+        "status": "added",
+        "additions": 52,
+        "deletions": 0,
+        "changes": 52,
+        "blob_url": "https://github.com/odoo/odoo/blob/d1f8caab73eb61ce5f934d908b4748b9371e6c9d/addons/html_builder/static/tests/helpers/sidebar_waiter.js"
+      },
+      {
+        "filename": "addons/website/static/tests/tours/countdown_tour.js",
+        "status": "modified",
+        "additions": 15,
+        "deletions": 21,
+        "changes": 36,
+        "blob_url": "https://github.com/odoo/odoo/blob/d1f8caab73eb61ce5f934d908b4748b9371e6c9d/addons/website/static/tests/tours/countdown_tour.js"
+      }
+    ],
+    "paths": ["addons/html_builder", "addons/website"]
+  },
+  {
+    "sha": "e38491c51cb762a0c0f30507bb0cc76f15bc0b3b",
+    "html_url": "https://github.com/odoo/odoo/commit/e38491c51cb762a0c0f30507bb0cc76f15bc0b3b",
+    "commit": {
+      "author": {"name": "assk-odoo", "email": "assk@odoo.com", "date": "2025-10-16T14:32:59Z"},
+      "committer": {"name": "assk-odoo", "email": "assk@odoo.com", "date": "2025-10-16T14:56:48Z"},
+      "message": "[FIX] html_builder: restore remote job location defaults",
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/e38491c51cb762a0c0f30507bb0cc76f15bc0b3b",
+      "comment_count": 0,
+      "verification": {"verified": false, "reason": "unsigned", "signature": null, "payload": null}
+    },
+    "author": {"login": "assk-odoo", "html_url": "https://github.com/assk-odoo", "type": "User", "site_admin": false},
+    "committer": {"login": "assk-odoo", "html_url": "https://github.com/assk-odoo", "type": "User", "site_admin": false},
+    "stats": {"total": 34, "additions": 21, "deletions": 13},
+    "files": [
+      {
+        "filename": "addons/html_builder/static/src/snippets/s_job_location/options.js",
+        "status": "modified",
+        "additions": 21,
+        "deletions": 13,
+        "changes": 34,
+        "blob_url": "https://github.com/odoo/odoo/blob/e38491c51cb762a0c0f30507bb0cc76f15bc0b3b/addons/html_builder/static/src/snippets/s_job_location/options.js"
+      }
+    ],
+    "paths": ["addons/html_builder"]
+  },
+  {
+    "sha": "6a07b2ec1a4a30b18f69fe1dbc457e8db7c84392",
+    "html_url": "https://github.com/odoo/odoo/commit/6a07b2ec1a4a30b18f69fe1dbc457e8db7c84392",
+    "commit": {
+      "author": {"name": "KAEI", "email": "kaei@odoo.com", "date": "2025-10-16T08:45:10Z"},
+      "committer": {"name": "KAEI", "email": "kaei@odoo.com", "date": "2025-10-16T09:02:31Z"},
+      "message": "[IMP] website: harmonize event registration wording",
+      "url": "https://api.github.com/repos/odoo/odoo/git/commits/6a07b2ec1a4a30b18f69fe1dbc457e8db7c84392",
+      "comment_count": 0,
+      "verification": {"verified": false, "reason": "unsigned", "signature": null, "payload": null}
+    },
+    "author": {"login": "kaei-odoo", "html_url": "https://github.com/kaei-odoo", "type": "User", "site_admin": false},
+    "committer": {"login": "kaei-odoo", "html_url": "https://github.com/kaei-odoo", "type": "User", "site_admin": false},
+    "stats": {"total": 28, "additions": 18, "deletions": 10},
+    "files": [
+      {
+        "filename": "addons/website/static/src/snippets/s_events/options.js",
+        "status": "modified",
+        "additions": 12,
+        "deletions": 8,
+        "changes": 20,
+        "blob_url": "https://github.com/odoo/odoo/blob/6a07b2ec1a4a30b18f69fe1dbc457e8db7c84392/addons/website/static/src/snippets/s_events/options.js"
+      },
+      {
+        "filename": "addons/website/static/src/snippets/s_events/000.scss",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 2,
+        "changes": 8,
+        "blob_url": "https://github.com/odoo/odoo/blob/6a07b2ec1a4a30b18f69fe1dbc457e8db7c84392/addons/website/static/src/snippets/s_events/000.scss"
+      }
+    ],
+    "paths": ["addons/website"]
+  }
+]
