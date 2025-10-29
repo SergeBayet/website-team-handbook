@@ -73,6 +73,7 @@ nav:
   - VoIP:
     - Commit History Report: voip/index.md
   - Reports:
+    - Website & HTML Builder Commits (22–29 Oct 2025): reports/2025-10-29-odoo-website-html-builder-commits.md
     - Website & HTML Builder Commits (16–22 Oct 2025): reports/2025-10-22-odoo-website-html-builder-commits.md
     - Website & HTML Builder Commits (9–15 Oct 2025): reports/2025-10-15-odoo-website-html-builder-commits.md
     - Website & HTML Builder Commits (1–8 Oct 2025): reports/2025-10-08-odoo-website-html-builder-commits.md
